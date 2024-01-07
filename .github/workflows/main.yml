@@ -19,13 +19,19 @@ jobs:
         node-version: '21.5.0'
 
     - name: Install dependencies
-      run: npm install
+      run: |
+        npm install
+        echo "Dependencies installed successfully"
 
     - name: Run tests
-      run: npm test
+      run: |
+        npm test
+        echo "Tests completed successfully"
 
     - name: Build
-      run: npm run build
+      run: |
+        npm run build
+        echo "Build completed successfully"
       
     - name: Set up SSH
       run: |
@@ -33,7 +39,9 @@ jobs:
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+        echo "SSH setup completed successfully"
 
     - name: Deploy to Server
       run: |
         scp -o StrictHostKeyChecking=no -r ./build root@${{ secrets.HOST }}:/var/www/cyberswap
+        echo "Deployment completed successfully"
