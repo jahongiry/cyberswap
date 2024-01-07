@@ -32,16 +32,15 @@ jobs:
       run: |
         npm run build
         echo "Build completed successfully"
-      
-    - name: Set up SSH
+
+    - name: Install sshpass
       run: |
-        mkdir -p ~/.ssh
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
-        echo "SSH setup completed successfully"
+          sudo apt-get install -y sshpass
+          echo "sshpass installed successfully"
+      
 
     - name: Deploy to Server
       run: |
-        scp -o StrictHostKeyChecking=no -r ./build root@${{ secrets.HOST }}:/var/www/cyberswap
-        echo "Deployment completed successfully"
+          sshpass -p ${{ secrets.SSH_PASSWORD }} scp -o StrictHostKeyChecking=no -r ./build root@${{ secrets.HOST }}:/var/www/cyberswap
+          echo "Deploy completed successfully"
+        
