@@ -1,0 +1,28 @@
+.favouriteGames {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.favouriteGames .title {
+    text-align: center;
+}
+.favouriteGames .subtitle {
+    margin-top: 12px;
+    text-align: center;
+}
+
+.favouriteGames-container {
+    margin-top: 40px;
+    width: 100%;
+}
+
+.favouriteGames-btns {
+    margin-top: 70px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}

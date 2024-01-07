@@ -1,0 +1,53 @@
+.header {
+    padding-top: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.header .logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+}
+
+.header > a span {
+    font-family: var(--roboto);
+    font-size: var(--big-fs);
+    font-weight: var(--fw-800);
+    line-height: 110.6%;
+    letter-spacing: 1.231px;
+}
+
+.header nav ul {
+    display: flex;
+    gap: 40px;
+}
+.header nav ul li a {
+    font-family: var(--lato);
+    font-size: var(--small-fs);
+    font-weight: var(--fw-400);
+    letter-spacing: 0.72px;
+    text-transform: uppercase;
+    transition: all .3s ease;
+}
+.header nav ul li a:hover,
+.header nav ul li a.active {
+    font-weight: var(--fw-800);
+}
+
+.header .basket i,
+.header .nav-btn i {
+    font-size: var(--big-fs);
+}
+
+.header .nav-btn {
+    display: none;
+}
