@@ -1,52 +1,48 @@
-import React from "react";
-import "./testimonial.css";
-import person1 from "./img/person1.png";
-import person2 from "./img/person2.png";
-import statusIcon from "./img/statusIcon.png";
+import React from 'react';
+import './testimonial.css';
+import person1 from './img/person1.png';
+import person2 from './img/person2.png';
+import statusIcon from './img/statusIcon.png';
 
 const Testimonial = () => {
   return (
-    <section className="testimonial container">
-      <div className="testimonial-container">
+    <section className='testimonial container'>
+      <div className='testimonial-container'>
         {/* testimonial content 1 start */}
-        <div className="testimonial-content">
-          <div className="testimonial-position">
-            <div className="icon1"></div>
-            <div className="icon2"></div>
+        <div className='testimonial-content'>
+          <div className='testimonial-position'>
+            <div className='icon1'></div>
+            <div className='icon2'></div>
           </div>
 
-          <div className="assess">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
+          <div className='assess'>
+            <i class='fa-solid fa-star'></i>
+            <i class='fa-solid fa-star'></i>
+            <i class='fa-solid fa-star'></i>
+            <i class='fa-solid fa-star'></i>
+            <i class='fa-solid fa-star'></i>
           </div>
 
-          <p className="subtitle">
-            One of the standout features of this gaming website is its extensive
-            library of game guides and tutorials. It has helped me level up my
-            skills, conquer challenging quests, and discover hidden secrets
-            within games. The guides are comprehensive, easy to follow, and have
-            undoubtedly elevated my gaming performance.
+          <p className='subtitle'>
+            O'zbekistondagi ilk avtomatlashgan va eng ishonli platforma
           </p>
 
-          <div className="line"></div>
+          <div className='line'></div>
 
-          <div className="testimonial-footer">
-            <div className="testimonial-person">
-              <div className="person-img">
-                <img src={person1} alt="Arlene McCoy" />
+          <div className='testimonial-footer'>
+            <div className='testimonial-person'>
+              <div className='person-img'>
+                <img src={person1} alt='Arlene McCoy' />
               </div>
-              <div className="info-box">
-                <p className="person-name">Arlene McCoy</p>
-                <span className="person-job">McDonald's</span>
+              <div className='info-box'>
+                <p className='person-name'>Arlene McCoy</p>
+                <span className='person-job'>McDonald's</span>
               </div>
             </div>
 
-            <div className="testimonial-status">
-              <div className="icon">
-                <img src={statusIcon} alt="Verified" />
+            <div className='testimonial-status'>
+              <div className='icon'>
+                <img src={statusIcon} alt='Verified' />
               </div>
               <span>Verified</span>
             </div>
@@ -55,22 +51,21 @@ const Testimonial = () => {
         {/* testimonial content 1 end */}
 
         {/* testimonial content 2 start */}
-        <div className="testimonial-content">
-          
-          <div className="testimonial-position">
-            <div className="icon1"></div>
-            <div className="icon2"></div>
+        <div className='testimonial-content'>
+          <div className='testimonial-position'>
+            <div className='icon1'></div>
+            <div className='icon2'></div>
           </div>
 
-          <div className="assess">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
+          <div className='assess'>
+            <i class='fa-solid fa-star'></i>
+            <i class='fa-solid fa-star'></i>
+            <i class='fa-solid fa-star'></i>
+            <i class='fa-solid fa-star'></i>
+            <i class='fa-solid fa-star'></i>
           </div>
 
-          <p className="subtitle">
+          <p className='subtitle'>
             Another aspect that sets this website apart is its vibrant and
             passionate community. The forum section provides a platform for
             gamers from all walks of life to connect, share their experiences,
@@ -79,22 +74,22 @@ const Testimonial = () => {
             gaming.
           </p>
 
-          <div className="line"></div>
+          <div className='line'></div>
 
-          <div className="testimonial-footer">
-            <div className="testimonial-person">
-              <div className="person-img">
-                <img src={person2} alt="Arlene McCoy" />
+          <div className='testimonial-footer'>
+            <div className='testimonial-person'>
+              <div className='person-img'>
+                <img src={person2} alt='Arlene McCoy' />
               </div>
-              <div className="info-box">
-                <p className="person-name">Kathryn Murphy</p>
-                <span className="person-job">General Electric</span>
+              <div className='info-box'>
+                <p className='person-name'>Kathryn Murphy</p>
+                <span className='person-job'>General Electric</span>
               </div>
             </div>
 
-            <div className="testimonial-status">
-              <div className="icon">
-                <img src={statusIcon} alt="Verified" />
+            <div className='testimonial-status'>
+              <div className='icon'>
+                <img src={statusIcon} alt='Verified' />
               </div>
               <span>Verified</span>
             </div>
