@@ -1,0 +1,100 @@
+.topGames {
+    padding-top: 60px;
+    padding-bottom: 60px;
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.topGames .title {
+    text-align: center;
+}
+.topGames-category {
+    margin-top: 38px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.topGames-container {
+    margin-top: 77px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 27px;
+}
+
+.topGames-container .game-content {
+    padding: 20px 18px 46px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    border-radius: 10px;
+    box-shadow: 0 0 4px #808080;
+    background: rgba(128, 128, 128, 0.1);
+}
+
+.topGames-container .game-content .topGame-img  {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 7 / 5;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+.topGames-container .game-content .game-name {
+    margin-top: 30px;
+    font-size: var(--normal-fs);
+    font-weight: var(--fw-500);
+    line-height: 110.6%; /* 26.544px */
+    letter-spacing: 0.84px;
+    text-transform: capitalize;
+}
+
+.topGames-container .game-content .content {
+    margin-top: 18px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.topGames-container .game-content .content .player-img {
+    width: 53px;
+    height: 53px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.topGames-container .game-content .content .player-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.topGames-container .game-content .content .player-info .player-name {
+    font-size: var(--small-fs);
+    font-weight: var(--fw-500);
+    line-height: 110.6%; /* 19.908px */
+    letter-spacing: 0.63px;
+    text-transform: capitalize;
+}
+.topGames-container .game-content .content .player-info span {
+    margin-top: 8px;
+    font-size: 10px;
+    font-weight: var(--fw-500);
+    line-height: 110.6%; /* 11.06px */
+    letter-spacing: 0.35px;
+    text-transform: capitalize;
+}
+
+.topGames-container .game-content > .btn {
+    margin-top: 26px;
+    width: 100%;
+    text-align: center;
+}
