@@ -1,40 +1,42 @@
-import React from "react";
-import "./mainSection.css";
+import React from 'react';
+import './mainSection.css';
 
 const MainSection = () => {
   return (
-    <section className="mainSection container">
-      <div className="home-container">
-        <h1 className="title">
-          Let your <br />mind <span>explore</span><br />new world
+    <section className='mainSection container'>
+      <div className='home-container'>
+        <h1 className='title'>
+          biz bilan <br />
+          <span>"Kiber savdo"</span>
+          <br />
+          Garant va Ishonchli
         </h1>
-        <p className="subtitle">
-          Playing electronic games, whether through consoles, computers, mobile
-          phones or another medium altogether. Gaming is a nuanced term that
-          suggests regular gameplay, possibly as a hobby.
+        <p className='subtitle'>
+          Oyin accountlari, Telegram nomlar va kanallar, Instagram nomlarini
+          havsiz soting va sotib oling!
         </p>
 
-        <div className="home-btns">
-          <button className="btn">
-            <span>Buy now</span>
+        <div className='home-btns'>
+          <button className='btn'>
+            <span>Elon berish/Sotish</span>
           </button>
-          <button className="btn">
-            <span>Play now</span>
+          <button className='btn'>
+            <span>Sotib olish</span>
           </button>
         </div>
-        
-        <div className="statistics">
-          <div className="content">
-            <h3>300+</h3>
-            <p>Unique style</p>
+
+        <div className='statistics'>
+          <div className='content'>
+            <h3>100+</h3>
+            <p>Pubg accountlar</p>
           </div>
-          <div className="content project">
-            <h3>200+</h3>
-            <p>Project finished</p>
+          <div className='content project'>
+            <h3>100+</h3>
+            <p>Ishonchli sotuvchilar</p>
           </div>
-          <div className="content">
+          <div className='content'>
             <h3>500+</h3>
-            <p>Happy customer</p>
+            <p>Sotilgan accountlar</p>
           </div>
         </div>
       </div>

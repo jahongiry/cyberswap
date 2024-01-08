@@ -1,26 +1,26 @@
-import React from "react";
-import "./favouriteGames.css";
+import React from 'react';
+import './favouriteGames.css';
 
 const FavouriteGames = () => {
   return (
-    <section className="favouriteGames">
-      <h1 className="title">
-        choose your <br />
-        <span>favorite</span> games
+    <section className='favouriteGames'>
+      <h1 className='title'>
+        O'zingizga mos <br />
+        <span>takliflarni</span> toping
       </h1>
-      <p className="subtitle">
-        Offer sneak peeks and previews of upcoming games, including <br />
-        trailers, screenshots, and information about release.
+      <p className='subtitle'>
+        Eng arzon va yuqori darajadagi pubg accountlar <br />
+        Ishonchli va qiziquvchan haridorlar, real timedagi savdo
       </p>
 
-      <div className="favouriteGames-container"></div>
+      <div className='favouriteGames-container'></div>
 
-      <div className="favouriteGames-btns">
-        <button className="btn">
-          <span>View All</span>
+      <div className='favouriteGames-btns'>
+        <button className='btn'>
+          <span>Accountarni ko'rish</span>
         </button>
-        <button className="btn">
-          <span>Play now</span>
+        <button className='btn'>
+          <span>Yangi e'lon yaratish</span>
         </button>
       </div>
     </section>
