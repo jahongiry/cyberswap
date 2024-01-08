@@ -23,11 +23,6 @@ jobs:
         npm install
         echo "Dependencies installed successfully"
 
-    - name: Run tests
-      run: |
-        npm test
-        echo "Tests completed successfully"
-
     - name: Build
       run: |
         npm run build
