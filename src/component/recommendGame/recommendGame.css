@@ -1,6 +1,6 @@
 .recommendGame {
-  padding-top: 110px;
-  padding-bottom: 86px;
+  padding-top: 2vw;
+  padding-bottom: 2vw;
   width: 100%;
   display: flex;
   align-items: center;
@@ -25,7 +25,7 @@
   position: relative;
 }
 .game-img {
-  width: 110%;
+  width: 100%;
   position: absolute;
   bottom: -4px;
 }
@@ -45,4 +45,21 @@
 
 .recommend-content .btn {
   margin-top: 35px;
+}
+
+@media screen and (max-width: 768px) {
+  .recommend-container {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .recommend-content {
+    padding: 40px 30px;
+  }
+  .recommendGame-img {
+    order: 2;
+  }
+  .game-img {
+    width: 100%;
+    position: relative;
+  }
 }
