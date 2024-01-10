@@ -16,7 +16,6 @@ const Testimonial = () => {
             <div className="icon1"></div>
             <div className="icon2"></div>
           </div>
-Name
           <div className="assess">
             <i className="fa-solid fa-star"></i>
             <i className="fa-solid fa-star"></i>

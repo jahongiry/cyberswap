@@ -2,6 +2,7 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 :root {
@@ -13,13 +14,13 @@ html {
   --btn-bg-color: linear-gradient(45deg, #6547F7 0%, #6547f7 30%, #f77cff, #b8009b 80%, #b8009b 100%);
   --text-bg-color: linear-gradient(45deg, #6547F7 0%, #6547f7 30%, #f77cff, #b8009b 80%, #b8009b 100%);
 
-  --biggest-fs: 3.5rem; /* 63px */
-  --bigger-fs: 2.7rem; /* 48px */
-  --big-fs: 2rem; /* 36px */ 
-  --normal-fs: 1.4rem; /* 25.2px */
-  --small-fs: 1.2rem; /* 20px */
-  --smaller-fs: 1rem; /* 18px */
-  --smallest-fs: 0.8rem; /* 14px */
+  --biggest-fs: 3.5rem; /* 56px */
+  --bigger-fs: 3rem; /* 48px */
+  --big-fs: 2.5rem; /* 40px */ 
+  --normal-fs: 2rem; /* 32px */
+  --small-fs: 1.8rem; /* 28px */
+  --smaller-fs: 1.4rem; /* 22px */
+  --smallest-fs: 1rem; /* 16px */
 
 
   --fw-800: 800;
@@ -27,43 +28,47 @@ html {
   --fw-400: 400;
 
 }
-
-@media screen and (max-width: 1200px) {
-  :root {
-    --biggest-fs: 3.3rem; /* 63px */
-    --bigger-fs: 2.5rem; /* 48px */
-    --big-fs: 1.8rem; /* 36px */ 
-    --normal-fs: 1.2rem; /* 25.2px */
-  }
-}
-
 @media screen and (max-width: 992px) {
   :root {
-    --biggest-fs: 2.6rem; /* 63px */
-    --bigger-fs: 2.2rem; /* 48px */
-    --big-fs: 1.6rem; /* 36px */ 
-    --normal-fs: 1.2rem; /* 25.2px */
-    --small-fs: 1rem; /* 20px */
+    --biggest-fs: 3rem; /* 56px */
+    --bigger-fs: 2.5rem; /* 48px */
+    --big-fs: 2rem; /* 40px */ 
+    --normal-fs: 1.8rem; /* 32px */
+    --small-fs: 1.4rem; /* 28px */
+    --smaller-fs: 1rem; /* 22px */
+    --smallest-fs: 0.8rem; /* 16px */
   }
 }
+
 @media screen and (max-width: 768px) {
   :root {
-    --biggest-fs: 2.2rem;
-    --bigger-fs: 2rem; 
-    --big-fs: 1.4rem; 
-    --normal-fs: 1rem; 
-    --small-fs: 0.8rem; 
+    --biggest-fs: 2.5rem; /* 56px */
+    --bigger-fs: 2rem; /* 48px */
+    --big-fs: 1.8rem; /* 40px */ 
+    --normal-fs: 1.4rem; /* 32px */
+    --small-fs: 1rem; /* 28px */
+    --smaller-fs: 0.8rem; /* 22px */
   }
 }
 @media screen and (max-width: 568px) {
   :root {
-    --biggest-fs: 1.8rem;
-    --bigger-fs: 1.6rem; 
-    --big-fs: 1.2rem;
-    --small-fs: 0.6rem; 
+    --biggest-fs: 2rem; /* 56px */
+    --bigger-fs: 1.8rem; /* 48px */
+    --big-fs: 1.4rem; /* 40px */ 
+    --normal-fs: 1.4rem; /* 32px */
+    --small-fs: 1rem; /* 28px */
   }
 }
 
+@media screen and (max-width: 460px) {
+  :root {
+    --biggest-fs: 1.8rem; /* 56px */
+    --bigger-fs: 1.4rem; /* 48px */
+    --big-fs: 1.2rem; /* 40px */ 
+    --normal-fs: 1rem; /* 32px */
+    
+  }
+}
 
 /* ====== Scroll Bar start ====== */
 

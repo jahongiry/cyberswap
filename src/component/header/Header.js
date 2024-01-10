@@ -21,22 +21,23 @@ const Header = () => {
         <ul>
           <li onClick={navBtn}>
             <NavLink activeclassname='active' to='/'>
+            <i className="fa-solid fa-house"></i>
               Asosiy
             </NavLink>
           </li>
           <li onClick={navBtn}>
-            <NavLink to='/about'>Biz haqimizda</NavLink>
+            <NavLink to='/about'><i className="fa-solid fa-circle-info"></i>Biz haqimizda</NavLink>
           </li>
           <li onClick={navBtn}>
-            <NavLink to='/contact'>Bog'lanish</NavLink>
+            <NavLink to='/contact'><i className="fa-solid fa-comments"></i>Bog'lanish</NavLink>
           </li>
         </ul>
       </nav>
 
       <div className='header-btns'>
-        <Link to='/login' className='basket'>
+        <Link to='/login' className='sign-in'>
           <span>Kirish</span>
-          <i class='fa fa-sign-in' aria-hidden='true'></i>
+          <i className='fa fa-sign-in' aria-hidden='true'></i>
         </Link>
 
         <Link className='nav-btn' onClick={navBtn}>
