@@ -1,0 +1,149 @@
+.login-container {
+  background-image: linear-gradient(
+    to right top,
+    #1a1643,
+    #2b1d47,
+    #39254b,
+    #452d4f,
+    #503653
+  );
+  border-radius: 25px;
+  padding: 10px;
+  box-shadow: 5px 5px 10px #000000, -5px -5px 10px #2b2b2b; /* Adjusted to create a subtle depth */
+  color: white;
+  max-width: 400px;
+  margin: -1rem 0.8rem 1rem 0.8rem;
+  overflow: hidden;
+  height: 80vh;
+}
+
+.login-border {
+  border: 2px solid #7069b1;
+  border-top: none;
+  border-radius: 25px;
+  height: 100%;
+  position: relative;
+}
+
+.line {
+  display: flex;
+  gap: 1rem;
+}
+
+.line hr {
+  margin: auto;
+  border: 0;
+  height: 2px;
+  border-radius: 5px;
+  width: 12%;
+  background-image: linear-gradient(to right, #612a39, #d4abb6);
+  box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.5);
+  margin-bottom: -1rem;
+}
+
+.corner-item {
+  position: absolute;
+  background-image: linear-gradient(
+    to bottom,
+    #f94984,
+    #f13f9f,
+    #df41bc,
+    #c04dda,
+    #8e5df5
+  );
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%; /* This will make it perfectly round */
+  box-shadow: -4px 8px 10px rgba(0, 0, 0, 0.856);
+  border: 1px solid black;
+}
+
+.top-left {
+  top: 0.9rem; /* Half of the height to ensure it's centered on the corner */
+  left: 0.8rem; /* Half of the width to ensure it's centered on the corner */
+}
+
+.top-right {
+  top: 0.9rem;
+  right: 0.8rem;
+}
+
+.bottom-left {
+  bottom: 0.9rem;
+  left: 0.8rem;
+  background-image: linear-gradient(to bottom, #df41bc, #c04dda, #8e5df5);
+  box-shadow: none;
+}
+
+.bottom-right {
+  bottom: 0.7rem;
+  right: 0.8rem;
+  background-image: linear-gradient(to bottom, #df41bc, #c04dda, #8e5df5);
+  box-shadow: none;
+}
+
+.logo-in {
+  width: 3rem;
+  height: 3rem;
+  margin-left: 45%;
+  margin-top: 1rem;
+}
+
+h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  margin-bottom: 15px;
+}
+
+.input-container label {
+  display: block;
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #2b2b2b;
+  box-shadow: inset 2px 2px 5px #1b1b1b, inset -2px -2px 5px #3b3b3b; /* Neumorphism effect */
+  color: white;
+}
+
+.login-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+button {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: white;
+  background-image: linear-gradient(
+    to left bottom,
+    #88347b,
+    #6f2b75,
+    #54236e,
+    #371c65,
+    #10165c
+  );
+  box-shadow: 4px 4px 6px #1b1b1b, -4px -4px 6px #3b3b3b; /* Neumorphism effect */
+  cursor: pointer;
+}
+
+.forgot-password {
+  display: block;
+  text-align: center;
+  color: #aaa;
+  text-decoration: none;
+  font-size: 0.8rem;
+}
