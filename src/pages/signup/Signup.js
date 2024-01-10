@@ -1,9 +1,9 @@
 import React from 'react';
-import './login.css';
+import './signup.css';
 import logo1 from '../../component/header/logo1_1.png';
 import { NavLink, Link } from 'react-router-dom';
 
-const Login = () => {
+const Signup = () => {
   return (
     <div className='about-container'>
       <div className='login-container'>
@@ -15,44 +15,44 @@ const Login = () => {
             <div className='corner-item top-right'></div>
           </div>
           <img className='logo-in' src={logo1} alt='logo' />
-          <h2>Hush kelibsiz</h2>
+          <h2>Ro'yxatdan o'ting</h2>
           <form className='login-form'>
             <div className='input-container'>
               <label htmlFor='username'>Telefon nomer</label>
               <input type='text' id='username' placeholder='+998912345678' />
             </div>
             <div className='input-container'>
-              <label htmlFor='password'>Parolingiz</label>
-              <input type='password' id='password' placeholder='Password' />
+              <label htmlFor='username'>PAROL KIRITNG</label>
+              <input type='text' id='username' placeholder='Parol' />
+            </div>
+            <div className='input-container'>
+              <label htmlFor='password'>PAROLINGIZNI QAYTADAN KIRITNG</label>
+              <input type='password' id='password' placeholder='Parol' />
             </div>
             <div className='login-footer'>
               <div>
-                <label htmlFor='button'>Parol esdan chiqdi</label>
+                <label htmlFor='button'>SMSni tasdiqlash</label>
                 <button type='button' className='signup-button'>
-                  Parol tiklash
+                  SMS keldi
                 </button>
               </div>
               <hr class='vertical-hr' />
               <div>
                 <hr className='horizontal-hr' />
-                <NavLink to='/signup'>
-                  <button type='submit' className='login-button royhat'>
-                    Royhatdan o'tish
-                  </button>
-                </NavLink>
+                <button type='submit' className='login-button royhat'>
+                  Kirish
+                </button>
               </div>
             </div>
+            <input
+              className='sms'
+              type='text'
+              id='username'
+              placeholder='sms codeni kiriting'
+            />
             <button type='submit' className='login-button login-main'>
-              Kirish
+              Ro'yxatdan o'tish
             </button>
-            <div className='back-home'>
-              <hr />
-              <NavLink activeclassname='forgot-password' to='/'>
-                ASOSIYGA QAYTISH
-              </NavLink>
-              <hr />
-            </div>
-            <hr className='bottom-line' />
           </form>
           <div className='corner-item bottom-left'></div>
           <div className='corner-item bottom-right'></div>
@@ -62,4 +62,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
