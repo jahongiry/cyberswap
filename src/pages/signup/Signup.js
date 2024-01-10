@@ -39,9 +39,11 @@ const Signup = () => {
               <hr class='vertical-hr' />
               <div>
                 <hr className='horizontal-hr' />
-                <button type='submit' className='login-button royhat'>
-                  Kirish
-                </button>
+                <NavLink to='/login'>
+                  <button type='submit' className='login-button royhat'>
+                    Kirish
+                  </button>
+                </NavLink>
               </div>
             </div>
             <input
