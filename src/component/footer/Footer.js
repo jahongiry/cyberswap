@@ -103,16 +103,16 @@ const Footer = () => {
 
         <div className="footer-social__network">
           <Link to="#" className="icon twitter">
-            <i class="fa-brands fa-twitter"></i>
+            <i className="fa-brands fa-twitter"></i>
           </Link>
           <Link to="#" className="icon facebook">
-            <i class="fa-brands fa-facebook-f"></i>
+            <i className="fa-brands fa-facebook-f"></i>
           </Link>
           <Link to="#" className="icon instagram">
-            <i class="fa-brands fa-instagram"></i>
+            <i className="fa-brands fa-instagram"></i>
           </Link>
           <Link to="#" className="icon github">
-            <i class="fa-brands fa-github"></i>
+            <i className="fa-brands fa-github"></i>
           </Link>
         </div>
 

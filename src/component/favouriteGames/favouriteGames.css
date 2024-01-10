@@ -1,6 +1,6 @@
 .favouriteGames {
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 2vw;
+  padding-bottom: 2vw;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -17,8 +17,146 @@
 
 .favouriteGames-container {
   margin-top: 40px;
+  width: 90%;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px; */
+}
+.favouriteGames-container .slick-slider {
   width: 100%;
 }
+.favouriteGames-container .slick-list {
+  padding: 60px !important;
+  width: 100%;
+}
+.favouriteGames-container .slick-list .slick-track {
+  display: flex;
+  gap: 60px;
+}
+.favouriteGames-container .slick-slide {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: red;
+}
+.favouriteGames-container .slick-slide > div { 
+  width: 100%;
+  height: 100%;
+}
+
+.favouriteGames-content {
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  background: var(--btn-bg-color);
+  border-radius: 4px;
+  position: relative;
+}
+.favouriteGames-content .favouriteGame-img {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 4px var(--text-color);
+  border-radius: 4px;
+}
+
+/* position frame start */
+
+
+.favouriteGames-content .position-side {
+  display: flex;
+  padding: 8px;
+  background: var(--bg-color);
+  gap: 8px;
+  position: absolute;
+  z-index: 2;
+  transform-origin: center;
+}
+.favouriteGames-content .position-side > div {
+  width: 8px;
+  height: 14px;
+  background: var(--btn-bg-color);
+}
+.favouriteGames-content .left-side {
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%) rotate(90deg) skewX(30deg);
+}
+.favouriteGames-content .right-side {
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%) rotate(90deg) skewX(-30deg);
+}
+.favouriteGames-content .top-left__side {
+  top: 0;
+  right: 50%;
+  transform: translate(0%, -50%) rotate(0) skewX(30deg);
+}
+.favouriteGames-content .top-right__side {
+  top: 0;
+  left: 50%;
+  transform: translate(0%, -50%) skewX(-30deg);
+}
+.favouriteGames-content .top-center {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 11;
+  transform: translate(-50%, -60%);
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--btn-bg-color);
+  box-shadow: 0 0 20px rgb(224, 116, 116);
+}
+.favouriteGames-content .top-center i {
+  color: #fff;
+  font-size: var(--normal-fs);
+}
+
+.favouriteGames-content .bottom-center {
+  display: inline-block;
+  width: fit-content;
+  padding: 8px 60px;
+  clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
+  background: var(--btn-bg-color);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+  white-space: nowrap;
+}
+.favouriteGames-content .bottom-center > p{
+  font-family: var(--roboto);
+  font-size: var(--normal-fs);
+  font-weight: var(--fw-800);
+  line-height: 110.6%;
+  letter-spacing: 1.122px;
+  text-transform: uppercase;
+}
+
+.favouriteGames-content .position-frame {
+  display: none;
+  opacity: 0;
+  transition: all .5s ease-in-out;
+}
+
+/* slick-current */
+
+.favouriteGames-container .slick-slide.slick-current .favouriteGames-content  .position-frame{
+  display: flex;
+  opacity: 1;
+} 
+
+
+
+/* position frame end */
+
 
 .favouriteGames-btns {
   margin-top: 70px;
