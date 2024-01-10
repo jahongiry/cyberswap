@@ -1,6 +1,7 @@
 import React from 'react';
 import './login.css';
 import logo1 from '../../component/header/logo1_1.png';
+import { NavLink, Link } from 'react-router-dom';
 
 const Login = () => {
   return (
@@ -18,23 +19,38 @@ const Login = () => {
           <form className='login-form'>
             <div className='input-container'>
               <label htmlFor='username'>Telefon nomer</label>
-              <input type='text' id='username' placeholder='Username' />
+              <input type='text' id='username' placeholder='+998912345678' />
             </div>
             <div className='input-container'>
               <label htmlFor='password'>Parolingiz</label>
               <input type='password' id='password' placeholder='Password' />
             </div>
             <div className='login-footer'>
-              <button type='button' className='signup-button'>
-                Ro'yxatdan o'tish
-              </button>
-              <button type='submit' className='login-button'>
-                Kirish
-              </button>
+              <div>
+                <label htmlFor='button'>Parol esdan chiqdi</label>
+                <button type='button' className='signup-button'>
+                  Parol tiklash
+                </button>
+              </div>
+              <hr class='vertical-hr' />
+              <div>
+                <hr className='horizontal-hr' />
+                <button type='submit' className='login-button royhat'>
+                  Royhatdan o'tish
+                </button>
+              </div>
             </div>
-            <a href='#' className='forgot-password'>
-              Parolingiz esizdan chiqdimi?
-            </a>
+            <button type='submit' className='login-button login-main'>
+              Kirish
+            </button>
+            <div className='back-home'>
+              <hr />
+              <NavLink activeclassname='forgot-password' to='/'>
+                ASOSIYGA QAYTISH
+              </NavLink>
+              <hr />
+            </div>
+            <hr className='bottom-line' />
           </form>
           <div className='corner-item bottom-left'></div>
           <div className='corner-item bottom-right'></div>
