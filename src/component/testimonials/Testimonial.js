@@ -1,26 +1,28 @@
+
 import React from 'react';
 import './testimonial.css';
 import person1 from './img/author1.png';
 import person2 from './img/person2.png';
 import statusIcon from './img/statusIcon.png';
 
+
 const Testimonial = () => {
   return (
-    <section className='testimonial container'>
-      <div className='testimonial-container'>
+    <section className="testimonial container">
+      <div className="testimonial-container">
         {/* testimonial content 1 start */}
-        <div className='testimonial-content'>
-          <div className='testimonial-position'>
-            <div className='icon1'></div>
-            <div className='icon2'></div>
+        <div className="testimonial-content">
+          <div className="testimonial-position">
+            <div className="icon1"></div>
+            <div className="icon2"></div>
           </div>
-
-          <div className='assess'>
-            <i class='fa-solid fa-star'></i>
-            <i class='fa-solid fa-star'></i>
-            <i class='fa-solid fa-star'></i>
-            <i class='fa-solid fa-star'></i>
-            <i class='fa-solid fa-star'></i>
+Name
+          <div className="assess">
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
           </div>
 
           <p className='subtitle'>
@@ -30,7 +32,7 @@ const Testimonial = () => {
             oylayman!
           </p>
 
-          <div className='line'></div>
+          <div className="line"></div>
 
           <div className='testimonial-footer'>
             <div className='testimonial-person'>
@@ -43,9 +45,9 @@ const Testimonial = () => {
               </div>
             </div>
 
-            <div className='testimonial-status'>
-              <div className='icon'>
-                <img src={statusIcon} alt='Verified' />
+            <div className="testimonial-status">
+              <div className="icon">
+                <img src={statusIcon} alt="Verified" />
               </div>
               <span>Verified</span>
             </div>
@@ -54,18 +56,18 @@ const Testimonial = () => {
         {/* testimonial content 1 end */}
 
         {/* testimonial content 2 start */}
-        <div className='testimonial-content'>
-          <div className='testimonial-position'>
-            <div className='icon1'></div>
-            <div className='icon2'></div>
+        <div className="testimonial-content">
+          <div className="testimonial-position">
+            <div className="icon1"></div>
+            <div className="icon2"></div>
           </div>
 
-          <div className='assess'>
-            <i class='fa-solid fa-star'></i>
-            <i class='fa-solid fa-star'></i>
-            <i class='fa-solid fa-star'></i>
-            <i class='fa-solid fa-star'></i>
-            <i class='fa-solid fa-star'></i>
+          <div className="assess">
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
           </div>
 
           <p className='subtitle'>
@@ -75,12 +77,12 @@ const Testimonial = () => {
             qilishlari mumkin!
           </p>
 
-          <div className='line'></div>
+          <div className="line"></div>
 
-          <div className='testimonial-footer'>
-            <div className='testimonial-person'>
-              <div className='person-img'>
-                <img src={person2} alt='Arlene McCoy' />
+          <div className="testimonial-footer">
+            <div className="testimonial-person">
+              <div className="person-img">
+                <img src={person2} alt="Arlene McCoy" />
               </div>
               <div className='info-box'>
                 <p className='person-name'>Sanjar Holmirzayev</p>
@@ -88,9 +90,9 @@ const Testimonial = () => {
               </div>
             </div>
 
-            <div className='testimonial-status'>
-              <div className='icon'>
-                <img src={statusIcon} alt='Verified' />
+            <div className="testimonial-status">
+              <div className="icon">
+                <img src={statusIcon} alt="Verified" />
               </div>
               <span>Verified</span>
             </div>

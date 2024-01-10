@@ -116,7 +116,6 @@ const Footer = () => {
             <i class='fa-brands fa-tiktok'></i>
           </Link>
         </div>
-
         <p>&copy; Copyright 2024, All Rights Reserved by oddiy inson</p>
       </div>
       {/* footer-copyright end */}

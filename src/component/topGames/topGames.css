@@ -1,6 +1,6 @@
 .topGames {
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
 
     width: 100%;
     display: flex;
@@ -28,7 +28,7 @@
 }
 
 .topGames-container .game-content {
-    padding: 20px 18px 46px;
+    padding: 20px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -97,4 +97,30 @@
     margin-top: 26px;
     width: 100%;
     text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .topGames-container {
+        margin-top: 20px;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    .topGames-container .game-content {
+        padding: 10px;
+    }
+    .topGames-container .game-content .game-name {
+        margin-top: 10px;
+    }
+    .topGames-container .game-content .content {
+        margin-top: 10px;
+    }
+    .topGames-container .game-content > .btn {
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    .topGames-container {
+        grid-template-columns: 1fr;
+    }
 }

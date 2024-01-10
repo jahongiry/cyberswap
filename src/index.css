@@ -28,6 +28,59 @@ html {
 
 }
 
+@media screen and (max-width: 1200px) {
+  :root {
+    --biggest-fs: 3.3rem; /* 63px */
+    --bigger-fs: 2.5rem; /* 48px */
+    --big-fs: 1.8rem; /* 36px */ 
+    --normal-fs: 1.2rem; /* 25.2px */
+  }
+}
+
+@media screen and (max-width: 992px) {
+  :root {
+    --biggest-fs: 2.6rem; /* 63px */
+    --bigger-fs: 2.2rem; /* 48px */
+    --big-fs: 1.6rem; /* 36px */ 
+    --normal-fs: 1.2rem; /* 25.2px */
+    --small-fs: 1rem; /* 20px */
+  }
+}
+@media screen and (max-width: 768px) {
+  :root {
+    --biggest-fs: 2.2rem;
+    --bigger-fs: 2rem; 
+    --big-fs: 1.4rem; 
+    --normal-fs: 1rem; 
+    --small-fs: 0.8rem; 
+  }
+}
+@media screen and (max-width: 568px) {
+  :root {
+    --biggest-fs: 1.8rem;
+    --bigger-fs: 1.6rem; 
+    --big-fs: 1.2rem;
+    --small-fs: 0.6rem; 
+  }
+}
+
+
+/* ====== Scroll Bar start ====== */
+
+::-webkit-scrollbar
+{
+  width: 10px;
+  background-color: var(--bg-color);
+}
+::-webkit-scrollbar-thumb
+{
+  /* background-color: #bfbfbf; */
+  background: var(--btn-bg-color);
+  border-radius: 10px;
+}
+
+/* ====== Scroll Bar end ====== */
+
 * {
   margin: 0;
   padding: 0;
