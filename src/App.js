@@ -5,11 +5,11 @@ import Header from './component/header/Header';
 import Footer from './component/footer/Footer';
 import Home from './pages/home/Home';
 import About from './pages/about/About';
-import Basket from './pages/basket/Basket';
 import Contact from './pages/contact/Contact';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
 import Cards from './pages/cards/Cards';
+import Offer from './pages/offer/Offer';
 
 function App() {
   return (
@@ -22,6 +22,7 @@ function App() {
         <Route path='/login' exact element={<Login />} />
         <Route path='/signup' exact element={<Signup />} />
         <Route path='/cards' exact element={<Cards />} />
+        <Route path='/offer' element={<Offer />} />
       </Routes>
 
       <Footer />
