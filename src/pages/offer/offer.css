@@ -112,9 +112,15 @@
 }
 
 .offer-container form .form-btn {
+    padding: 0.6rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 10px;
     margin: 1rem auto 0;
     background: rgb(47, 47, 235);
     
+}
+.offer-container form .form-btn:hover {
+    background: var(--btn-bg-color);
 }
 
 @media screen and (max-width: 768px) {
