@@ -47,21 +47,21 @@ const MainSection = () => {
             <img src={homeImg} alt="Game" />
           </div>
         </div>
-        
-        <div className="statistics">
-            <div className="content">
-              <h3>100+</h3>
-              <p>Pubg accountlar</p>
-            </div>
-            <div className="content project">
-              <h3>100+</h3>
-              <p>Ishonchli sotuvchilar</p>
-            </div>
-            <div className="content">
-              <h3>500+</h3>
-              <p>Sotilgan accountlar</p>
-            </div>
-          </div>
+      </div>
+      
+      <div className="statistics">
+        <div className="content">
+          <h3>100+</h3>
+          <p>Pubg accountlar</p>
+        </div>
+        <div className="content project">
+          <h3>100+</h3>
+          <p>Ishonchli sotuvchilar</p>
+        </div>
+        <div className="content">
+          <h3>500+</h3>
+          <p>Sotilgan accountlar</p>
+        </div>
       </div>
     </section>
   );

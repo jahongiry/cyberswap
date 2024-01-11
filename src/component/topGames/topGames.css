@@ -1,6 +1,6 @@
 .topGames {
-    padding-top: 2vw;
-    padding-bottom: 2vw;
+    padding-top: 6vw;
+    padding-bottom: 6vw;
 
     width: 100%;
     display: flex;
@@ -12,28 +12,29 @@
     text-align: center;
 }
 .topGames-category {
-    margin-top: 38px;
+    margin-top: 3rem;
     width: fit-content;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
     gap: 10px;
 }
 
 .topGames-container {
-    margin-top: 77px;
+    margin-top: 4rem;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 27px;
+    gap: 2rem;
 }
 
 .topGames-container .game-content {
-    padding: 20px;
+    padding: 3%;
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-
+    align-items: center;
     border-radius: 10px;
     box-shadow: 0 0 4px #808080;
     background: rgba(128, 128, 128, 0.1);
@@ -47,9 +48,10 @@
     overflow: hidden;
 }
 
-
 .topGames-container .game-content .game-name {
-    margin-top: 30px;
+    margin-top: 1rem;
+    width: 100%;
+    text-align: center;
     font-size: var(--normal-fs);
     font-weight: var(--fw-500);
     line-height: 110.6%; /* 26.544px */
@@ -62,11 +64,12 @@
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
 }
 .topGames-container .game-content .content .player-img {
-    width: 53px;
-    height: 53px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     overflow: hidden;
 }
@@ -78,7 +81,7 @@
 }
 
 .topGames-container .game-content .content .player-info .player-name {
-    font-size: var(--small-fs);
+    font-size: var(--smallest-fs);
     font-weight: var(--fw-500);
     line-height: 110.6%; /* 19.908px */
     letter-spacing: 0.63px;
@@ -94,16 +97,19 @@
 }
 
 .topGames-container .game-content > .btn {
-    margin-top: 26px;
-    width: 100%;
+    margin-top: 1.2rem;
+    width: 90%;
     text-align: center;
+}
+.topGames-container .game-content > .btn span {
+    font-size: var(--smaller-fs);
 }
 
 @media screen and (max-width: 768px) {
     .topGames-container {
-        margin-top: 20px;
+        margin-top: 2rem;
         grid-template-columns: 1fr 1fr;
-        gap: 20px;
+        gap: 1.2rem;
     }
     .topGames-container .game-content {
         padding: 10px;

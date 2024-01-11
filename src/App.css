@@ -33,8 +33,8 @@ img {
 }
 
 .container {
-  padding-left: 6.5%;
-  padding-right: 6.5%;
+  padding-left: 5vw;
+  padding-right: 5vw;
 }
 
 .btn {
@@ -43,6 +43,7 @@ img {
   background: var(--btn-bg-color);
   transform: skewX(-15deg);
   cursor: pointer;
+  border-radius: 10px;
 }
 .btn span {
   display: inline-block;
@@ -56,7 +57,7 @@ img {
 
 .title {
   font-family: var(--roboto);
-  font-size: var(--biggest-fs);
+  font-size: var(--bigger-fs);
   font-weight: var(--fw-800);
   line-height: 110.6%; /* 76.245px */
   letter-spacing: 2.757px;

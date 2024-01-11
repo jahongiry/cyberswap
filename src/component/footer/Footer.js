@@ -101,19 +101,19 @@ const Footer = () => {
       <div className='footer-copyright'>
         <div className='footer-social__network'>
           <Link to='https://t.me/cyberswap_uz' className='icon twitter'>
-            <i class='fa-brands fa-telegram'></i>
+            <i className='fa-brands fa-telegram'></i>
           </Link>
           <Link to='https://t.me/cyberswap_uz' className='icon facebook'>
-            <i class='fa-brands fa-facebook-f'></i>
+            <i className='fa-brands fa-facebook-f'></i>
           </Link>
           <Link
             to='https://www.instagram.com/cyberswap.uz'
             className='icon instagram'
           >
-            <i class='fa-brands fa-instagram'></i>
+            <i className='fa-brands fa-instagram'></i>
           </Link>
           <Link to='https://t.me/cyberswap_uz' className='icon github'>
-            <i class='fa-brands fa-tiktok'></i>
+            <i className='fa-brands fa-tiktok'></i>
           </Link>
         </div>
         <p>&copy; Copyright 2024, All Rights Reserved by oddiy inson</p>
