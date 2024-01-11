@@ -163,7 +163,7 @@ h2 {
   margin-top: 2rem;
 }
 
-button {
+.login-container button {
   border: none;
   padding: 13px 20px;
   border-radius: 20px;
