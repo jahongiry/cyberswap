@@ -153,7 +153,7 @@ h2 {
   margin-top: 2rem;
 }
 
-button {
+.login-container button {
   border: none;
   padding: 13px 20px;
   border-radius: 20px;
@@ -166,14 +166,14 @@ button {
     #371c65,
     #10165c
   );
-  box-shadow: 4px 4px 6px #1b1b1b, -4px -4px 6px #3b3b3b; /* Neumorphism effect */
+  box-shadow: 4px 4px 6px #1b1b1b, -4px -4px 6px #3b3b3b;
   cursor: pointer;
   width: 9rem;
   margin-top: 1rem;
-  border-top: 2px solid #d6b1d6; /* Light blue top border */
-  border-right: 2px solid #d969c6; /* Regular blue for the right border */
-  border-bottom: 2px solid #775fcf; /* Regular blue for the bottom border */
-  border-left: 2px solid #775fcf; /* Regular blue for the left border */
+  border-top: 2px solid #d6b1d6;
+  border-right: 2px solid #d969c6;
+  border-bottom: 2px solid #775fcf;
+  border-left: 2px solid #775fcf;
 }
 
 .royhat {

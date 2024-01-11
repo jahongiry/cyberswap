@@ -9,6 +9,7 @@ import Basket from './pages/basket/Basket';
 import Contact from './pages/contact/Contact';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
+import Cards from './pages/cards/Cards';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path='/contact' element={<Contact />} />
         <Route path='/login' exact element={<Login />} />
         <Route path='/signup' exact element={<Signup />} />
+        <Route path='/cards' exact element={<Cards />} />
       </Routes>
 
       <Footer />
