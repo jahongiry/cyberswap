@@ -1,0 +1,135 @@
+.pop-up-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #8bbafb;
+  padding: 0.4rem;
+}
+
+.pop-up {
+  position: relative;
+  background-color: #202b50;
+  padding: 20px 15px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.top {
+  background-image: linear-gradient(
+    to right,
+    #2a3f78,
+    #3454a2,
+    #3d69cf,
+    #4580fd,
+    #3454a2
+  );
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 2px solid #6d86e3;
+  gap: 0.5rem;
+}
+
+.top img {
+  border-radius: 45%;
+  -webkit-box-shadow: -14px 18px 34px -3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -14px 18px 34px -3px rgba(0, 0, 0, 0.75);
+  box-shadow: -14px 18px 34px -3px rgba(0, 0, 0, 0.75);
+}
+/* Add additional styling to match the theme from the image */
+
+.divider {
+  margin: 1rem 0;
+  border: 1px solid #524fb7;
+  width: 100%;
+}
+
+.account-details {
+  background-image: linear-gradient(to top, #2a3f78, #3454a2, #7b94ce);
+  padding: 1rem;
+  border-radius: 15px;
+  border: 2px solid #bdc6e7;
+  border-top: 2px solid #ffffffe0;
+}
+
+.account-details h2 {
+  color: white;
+  font-size: 2rem;
+  margin-top: -0.1rem;
+}
+
+.divider2 {
+  margin: auto;
+  border: 0;
+  height: 2px;
+  border-radius: 5px;
+  background-image: linear-gradient(to right, #7b94d2, #3f63c0, #817db6);
+  width: 90%;
+}
+
+.account-details p {
+  margin: 1rem 1rem 0.5rem;
+}
+
+.each-row {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 1rem;
+}
+
+.sotib-olish {
+  border: none;
+  padding: 13px 20px;
+  border-radius: 20px;
+  color: white;
+  background-image: linear-gradient(
+    to left top,
+    #2b3caa,
+    #2d3da5,
+    #3a4bbd,
+    #5168fc,
+    #5168fc
+  );
+  box-shadow: 4px 4px 6px #1b1b1b, -4px -4px 6px #3b3b3b;
+  cursor: pointer;
+  width: 90%;
+  margin-top: 1rem;
+  border-top: 2px solid #d6b1d6;
+  border-right: 2px solid #d969c6;
+  border-bottom: 2px solid #775fcf;
+  border-left: 2px solid #775fcf;
+  font-size: 1rem;
+  margin-left: 1rem;
+}
+
+.close {
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  background-color: #202b50;
+  color: white; /* Ensures the icon is clearly visible */
+  border: none; /* Removes default button border */
+  font-size: 2rem; /* Adjusts the size of the icon */
+  padding: 5px; /* Provides some space around the icon */
+  border-radius: 50%; /* Makes the button circular */
+  cursor: pointer; /* Changes the cursor on hover */
+  display: flex; /* Ensures the icon is centered within the button */
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.close:hover {
+  background-color: #4248b2; /* Changes background color on hover */
+}
+
+.close:focus {
+  outline: none; /* Removes the focus outline */
+}

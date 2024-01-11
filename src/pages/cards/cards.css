@@ -122,6 +122,7 @@
   box-shadow: 4px 4px 6px #1b1b1b, -4px -4px 6px #3b3b3b; /* Neumorphism effect */
   font-weight: 700;
   width: 100%;
+  cursor: pointer;
 }
 .price-button {
   transform: translateY(3.7rem);
