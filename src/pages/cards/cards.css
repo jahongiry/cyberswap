@@ -11,12 +11,17 @@
     #4540bb
   );
   padding: 1rem;
+  border-bottom: 1px solid white;
 }
 
 .search-container {
   display: flex;
   justify-content: space-between;
   margin-bottom: 1rem;
+}
+
+.filterlash {
+  margin-bottom: 0.15rem;
 }
 
 .search-input {
@@ -52,11 +57,72 @@
   border: none;
   border-radius: 0.5rem;
   margin-right: 0.5rem;
+  margin-top: 0.4rem;
   background-color: #5e5e80;
   color: white;
   cursor: pointer;
+  background-image: linear-gradient(
+    to left bottom,
+    #88347b,
+    #6f2b75,
+    #54236e,
+    #371c65,
+    #10165c
+  );
+  box-shadow: 4px 4px 6px #1b1b1b, -4px -4px 6px #3b3b3b;
 }
 
 .filter-button.active {
   background-color: #7a7aae;
+}
+
+.cards-section {
+  background-color: #142251;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 1.5rem;
+  column-gap: 0.1rem;
+  padding-bottom: 2.5rem;
+}
+
+.card {
+  background: #1d65b3;
+  border-radius: 15px;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  margin: 1rem 0.5rem;
+  padding: 1rem;
+  border-top: 3px solid #9ba6dc;
+  border-right: 3px solid #5d98ef;
+  border-bottom: 3px solid #5d98ef;
+  border-left: 3px solid #5d98ef;
+  cursor: pointer;
+}
+
+.card-img {
+  width: 7.4rem;
+  height: 4rem;
+  border-radius: 10px;
+}
+
+.icon-gold {
+  color: #ffd700;
+}
+
+.stars {
+  margin: 1rem 0 -2.5rem 1rem;
+}
+
+.price-button {
+  background-color: #454adf;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  background-image: linear-gradient(to right, #88347b, #454adf, #454adf);
+  box-shadow: 4px 4px 6px #1b1b1b, -4px -4px 6px #3b3b3b; /* Neumorphism effect */
+  font-weight: 700;
+  width: 100%;
+}
+.price-button {
+  transform: translateY(3.7rem);
 }
