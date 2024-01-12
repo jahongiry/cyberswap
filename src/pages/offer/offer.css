@@ -1,138 +1,158 @@
 .offer {
-    padding-top: 90px;
-    padding-bottom: 6vw;
-    width: 100%;
-    min-height: 100vh;
-    height: 100%;
-    background: url("../../img/background_2.png") no-repeat;
-    background-position: center;
-    background-size: cover;
+  padding-top: 90px;
+  padding-bottom: 6vw;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  background: url("../../img/background_2.png") no-repeat;
+  background-position: center;
+  background-size: cover;
 
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
 }
 
 .offer-container {
-    padding: 1rem;
-    width: 600px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: rgb(3, 3, 45);
-    background: var(--bg-color);
-    border-radius: 1rem;
-    /* clip-path: polygon(0% 0%, 34% 0%, 34% 6%, 66% 6%, 66% 0%, 100% 0%, 100% 100%, 0% 100%); */
-    border: 1px solid #000;
-    box-shadow: 0 0 10px #000;
+  padding: 1rem;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: linear-gradient(
+    to right top,
+    #1a1643,
+    #2b1d47,
+    #39254b,
+    #452d4f,
+    #503653
+  );
+  border-radius: 1rem;
+  /* clip-path: polygon(0% 0%, 34% 0%, 34% 6%, 66% 6%, 66% 0%, 100% 0%, 100% 100%, 0% 100%); */
+  border: 1px solid #000;
+  box-shadow: 0 0 10px #000;
 }
 
 .offer-container h1 {
-    font-size: 1.4rem;
-    letter-spacing: 1px;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
 }
 .offer-container p {
-    margin-top: 0.5rem;
-    font-size: 1.2rem;
-    opacity: 0.8;
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+  opacity: 0.8;
 }
 
 .offer-container form {
-    margin-top: 2rem;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: .5rem;
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
 }
 
 .form-group {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
 
 .offer-container form .form-input {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .offer-container form .form-input > label {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 .offer-container form .form-input input,
 .offer-container form .form-input textarea {
-    padding: 0.5rem 1rem;
-    color: #fff;
-    font-size: 1.2rem;
-    border: 2px inset #000;
-    background: rgb(255, 255, 255, 0.2);
-    border-radius: 5px;
-    box-shadow: 0 0 4px #000;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  font-size: 1.2rem;
+  border: 2px inset #000;
+  background: rgb(255, 255, 255, 0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 4px #000;
 }
 .offer-container form .form-input textarea {
-    outline: none;
-    height: 100px;
-    resize: none;
+  outline: none;
+  height: 100px;
+  resize: none;
 }
 
 .offer-container form .form-input .connect-input {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
 }
 .offer-container form .form-input .connect-input label input {
-    display: none;
+  display: none;
 }
 .offer-container form .form-input .connect-input label i {
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px inset #000;
-    border-radius: 5px;
-    transition: all .3s ease;
-    box-shadow: 0 0 4px #000;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px inset #000;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 4px #000;
 }
 
 .offer-container form input[type="checkbox"]:checked ~ i {
-    border: 2px outset #000;
-    background: var(--btn-bg-color);
-    color: #fff;
-    font-size: 1.4rem;
+  border: 2px outset #000;
+  background: var(--btn-bg-color);
+  color: #fff;
+  font-size: 1.4rem;
 }
 
 .offer-container form .form-btn {
-    padding: 0.6rem 2rem;
-    font-size: 1.2rem;
-    border-radius: 10px;
-    margin: 1rem auto 0;
-    background: rgb(47, 47, 235);
-    
+  padding: 0.6rem 2rem;
+  font-size: 1.2rem;
+  margin: 1rem auto 0;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background-image: linear-gradient(
+    to left bottom,
+    #88347b,
+    #6f2b75,
+    #54236e,
+    #371c65,
+    #10165c
+  );
+  box-shadow: 4px 4px 6px #1b1b1b, -4px -4px 6px #3b3b3b;
+  cursor: pointer;
+  border-top: 2px solid #d6b1d6;
+  border-right: 2px solid #d969c6;
+  border-bottom: 2px solid #775fcf;
+  border-left: 2px solid #775fcf;
+  transition: all .5s ease;
 }
 .offer-container form .form-btn:hover {
-    background: var(--btn-bg-color);
+  background: var(--btn-bg-color);
 }
 
 @media screen and (max-width: 768px) {
-    .offer-container {
-        width: 80%;
-    }
-    .form-group {
-        grid-template-columns: 1fr;
-    }
+  .offer-container {
+    width: 80%;
+  }
+  .form-group {
+    grid-template-columns: 1fr;
+  }
 }
 @media screen and (max-width: 576px) {
-    .offer-container {
-        width: 100%;
-    }
+  .offer-container {
+    width: 100%;
+  }
 }
