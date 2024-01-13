@@ -1,4 +1,4 @@
-.login-container {
+.login-container-signup {
   font-family: Arial, Helvetica, sans-serif;
   background-image: linear-gradient(
     to right top,
@@ -15,7 +15,7 @@
   max-width: 400px;
   margin: -1rem 0.8rem 1rem 0.8rem;
   overflow: hidden;
-  height: 80vh;
+  height: 95vh;
 }
 
 .login-border {
@@ -163,7 +163,7 @@ h2 {
   margin-top: 2rem;
 }
 
-.login-container button {
+.login-container-signup button {
   border: none;
   padding: 13px 20px;
   border-radius: 20px;
@@ -187,7 +187,7 @@ h2 {
 }
 
 .royhat {
-  margin-top: 2rem;
+  margin-top: 2rem !important;
   margin-right: -0.35rem;
 }
 
@@ -198,8 +198,8 @@ h2 {
   text-decoration: none;
 }
 
-.login-main {
-  width: 19rem;
+.login-main-signup {
+  width: 100% !important;
   font-size: 1.6rem;
   font-weight: 800;
   letter-spacing: 2px;
