@@ -119,10 +119,19 @@ img {
   .subtitle {
     line-height: 110%; /* 34.642px */
   }
+
+  .app {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
 }
 
 @media screen and (max-width: 568px) {
   .btn {
     padding: 5px 10px;
+  }
+  .app {
+    overflow-x: hidden;
+    max-width: 100%;
   }
 }
