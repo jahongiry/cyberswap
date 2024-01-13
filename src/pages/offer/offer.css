@@ -1,10 +1,10 @@
 .offer {
-  padding-top: 90px;
+  padding-top: 80px;
   padding-bottom: 6vw;
   width: 100%;
   min-height: 100vh;
   height: 100%;
-  background: url("../../img/background_2.png") no-repeat;
+  background: url('../../img/background_2.png') no-repeat;
   background-position: center;
   background-size: cover;
 
@@ -20,18 +20,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-top: 2px solid #d6b1d6; /* Light blue top border */
+  border-right: 2px solid #d969c6; /* Regular blue for the right border */
+  border-bottom: 2px solid #775fcf; /* Regular blue for the bottom border */
+  border-left: 2px solid #775fcf; /* Regular blue for the left border */
   background-image: linear-gradient(
-    to right top,
-    #1a1643,
-    #2b1d47,
-    #39254b,
-    #452d4f,
-    #503653
+    to left bottom,
+    #88347b,
+    #6f2b75,
+    #54236e,
+    #371c65,
+    #10165c
   );
   border-radius: 1rem;
   /* clip-path: polygon(0% 0%, 34% 0%, 34% 6%, 66% 6%, 66% 0%, 100% 0%, 100% 100%, 0% 100%); */
-  border: 1px solid #000;
-  box-shadow: 0 0 10px #000;
 }
 
 .offer-container h1 {
@@ -76,10 +78,8 @@
   padding: 0.5rem 1rem;
   color: #fff;
   font-size: 1.2rem;
-  border: 2px inset #000;
   background: rgb(255, 255, 255, 0.2);
   border-radius: 5px;
-  box-shadow: 0 0 4px #000;
 }
 .offer-container form .form-input textarea {
   outline: none;
@@ -109,7 +109,7 @@
   box-shadow: 0 0 4px #000;
 }
 
-.offer-container form input[type="checkbox"]:checked ~ i {
+.offer-container form input[type='checkbox']:checked ~ i {
   border: 2px outset #000;
   background: var(--btn-bg-color);
   color: #fff;
@@ -137,7 +137,7 @@
   border-right: 2px solid #d969c6;
   border-bottom: 2px solid #775fcf;
   border-left: 2px solid #775fcf;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 .offer-container form .form-btn:hover {
   background: var(--btn-bg-color);
