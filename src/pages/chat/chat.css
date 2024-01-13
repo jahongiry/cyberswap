@@ -1,0 +1,173 @@
+.chat-page {
+  padding: 3rem 0.05rem;
+  background-image: linear-gradient(to bottom, #273e5f, #12212b, #112532);
+}
+
+.chat-container {
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: linear-gradient(to bottom, #3d4e65, #263743, #112532);
+  border-radius: 25px;
+  color: white;
+  margin: -1rem 0.8rem 1rem 0.8rem;
+  overflow: hidden;
+  height: 80vh;
+  border-top: 1px solid #8da3c0;
+  border-right: 1px solid #6582a1c2;
+  border-left: 1px solid #6582a1c2;
+  border-bottom: 1px solid #6582a1c2;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.sender-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.receiver-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.receiver,
+.sender {
+  background-image: linear-gradient(to bottom, #587093, #294364);
+  border-radius: 25px;
+  padding: 1rem;
+  position: relative; /* Needed for absolute positioning of ::after pseudo-element */
+  display: inline-block;
+  word-wrap: break-word;
+  align-self: flex-end;
+  margin-bottom: -0.5rem;
+}
+
+.short-message {
+  width: auto;
+}
+
+.single-message {
+  width: 25%;
+}
+
+.long-message {
+  width: 80%; /* Fixed maximum width for long messages */
+}
+
+.bubble {
+  --r: 25px; /* the radius */
+  --t: 30px; /* the size of the tail */
+
+  max-width: 300px;
+  padding: calc(2 * var(--r) / 3);
+  -webkit-mask: radial-gradient(var(--t) at var(--_d) 0, #0000 98%, #000 102%)
+      var(--_d) 100% / calc(100% - var(--r)) var(--t) no-repeat,
+    conic-gradient(at var(--r) var(--r), #000 75%, #0000 0) calc(var(--r) / -2)
+      calc(var(--r) / -2) padding-box,
+    radial-gradient(50% 50%, #000 98%, #0000 101%) 0 0 / var(--r) var(--r) space
+      padding-box;
+  background: linear-gradient(135deg, #587093, #344a66) border-box;
+  color: #fff;
+}
+.receiver {
+  --_d: 0%;
+  border-left: var(--t) solid #0000;
+  margin-right: var(--t);
+  place-self: start;
+}
+.sender {
+  --_d: 100%;
+  border-right: var(--t) solid #0000;
+  margin-left: var(--t);
+  place-self: end;
+}
+
+.form {
+  margin-top: auto;
+  margin-right: 0.2rem;
+  margin-left: 0.2rem;
+  display: grid;
+  grid-template-columns: 1fr 10fr 1fr;
+}
+
+.file-upload ion-icon {
+  width: 3rem;
+  height: 4rem;
+  margin-top: -0.5rem;
+}
+
+.send-button ion-icon {
+  width: 3rem;
+  height: 4rem;
+  margin-top: -0.5rem;
+}
+
+.input-container input {
+  padding: 15px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #587093, #344a66) border-box;
+  box-shadow: inset 2px 2px 5px #1b1b1b, inset -2px -2px 5px #3b3b3b; /* Neumorphism effect */
+  color: white;
+  border: 2px solid white;
+  margin-bottom: 1rem;
+}
+
+.bottom-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.cancel {
+  border: none;
+  padding: 13px 20px;
+  border-radius: 20px;
+  color: white;
+  background-image: linear-gradient(
+    to left bottom,
+    #88347b,
+    #6f2b75,
+    #54236e,
+    #371c65,
+    #10165c
+  );
+  box-shadow: 4px 4px 6px #1b1b1b, -4px -4px 6px #3b3b3b;
+  cursor: pointer;
+  width: 9rem;
+  margin-top: 1rem;
+  border-top: 2px solid #d6b1d6;
+  border-right: 2px solid #d969c6;
+  border-bottom: 2px solid #775fcf;
+  border-left: 2px solid #775fcf;
+}
+
+.finish {
+  border: none;
+  padding: 13px 20px;
+  border-radius: 20px;
+  color: white;
+  background-image: linear-gradient(
+    to left bottom,
+    #88347b,
+    #6f2b75,
+    #54236e,
+    #371c65,
+    #10165c
+  );
+  box-shadow: 4px 4px 6px #1b1b1b, -4px -4px 6px #3b3b3b;
+  cursor: pointer;
+  width: 9rem;
+  margin-top: 1rem;
+  border-top: 2px solid #d6b1d6;
+  border-right: 2px solid #d969c6;
+  border-bottom: 2px solid #775fcf;
+  border-left: 2px solid #775fcf;
+}
+
+.bottom-container ion-icon {
+  font-size: 1rem;
+  margin-bottom: -0.2rem;
+}
