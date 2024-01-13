@@ -1,0 +1,119 @@
+.payment {
+    padding-top: 90px;
+    padding-bottom: 6vw;
+    width: 100%;
+    min-height: 100vh;
+    background: url("../../img/background_2.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.payment-container {
+    padding: 1rem;
+    width: 400px;
+    box-shadow: 0 0 8px #fff;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.payment-container h1 {
+    padding: 0.6rem 1.2rem;
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 8px #fff;
+    background: rgb(2, 4, 37);
+}
+
+.payment-content {
+    padding: 1.2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    border-radius: 10px;
+    box-shadow: 0 0 8px #fff;
+    background: rgb(2, 4, 37);
+}
+
+.payment-content > p {
+    font-size: 1rem;
+    opacity: 0.9;
+    text-indent: 1rem;
+    text-align: justify;
+}
+.payment-content > .line {
+    width: 100%;
+    height: 2px;
+    background: rgb(2, 4, 37);
+    border-radius: 5px;
+    box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.5);
+}
+.payment-content > .line-right {
+    background-image: linear-gradient(to right, #612a39, #d4abb6);
+}
+.payment-content > .line-left {
+    background-image: linear-gradient(to left, #612a39, #d4abb6);
+}
+
+.payment-content .payment-type {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    position: relative;
+}
+.payment-content .payment-type .click,
+.payment-content .payment-type .plastic-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+}
+.payment-content .payment-type .click > p,
+.payment-content .payment-type .plastic-card > p {
+    font-size: 1rem;
+    font-style: italic;
+    letter-spacing: 2px;
+}
+.payment-content .payment-type .click > input,
+.payment-content .payment-type .plastic-card > input {
+    width: 100%;
+    padding: 0.6rem;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 2px #fff;
+}
+.payment-content .total-price {
+    margin-top: 1.2rem;
+    width: 100%;
+    font-size: 1.2rem;
+    text-align: right;
+}
+.payment-content .total-price span {
+    color: red;
+    font-weight: 900;
+}
+.payment-container .payment-btn {
+    border: none;
+    padding: 0.6rem;
+    font-size: 1.2rem;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 8px #fff;
+    background: rgb(2, 4, 37);
+}
+.payment-container .payment-btn:hover {
+    background: rgb(5, 10, 93);
+}

@@ -17,35 +17,13 @@
 
 .favouriteGames-container {
   margin-top: 40px;
-  width: 90%;
+  width: 100%;
+  overflow: hidden;
   /* display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 30px; */
 }
-.favouriteGames-container .slick-slider {
-  width: 100%;
-}
-.favouriteGames-container .slick-list {
-  padding: 60px !important;
-  width: 100%;
-}
-.favouriteGames-container .slick-list .slick-track {
-  display: flex;
-  gap: 60px;
-}
-.favouriteGames-container .slick-slide {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: red;
-}
-.favouriteGames-container .slick-slide > div { 
-  width: 100%;
-  height: 100%;
-}
+
 
 .favouriteGames-content {
   width: 100%;
@@ -148,7 +126,7 @@
 
 /* slick-current */
 
-.favouriteGames-container .slick-slide.slick-current .favouriteGames-content  .position-frame{
+.favouriteGames-container .swiper-slide-active .favouriteGames-content  .position-frame{
   display: flex;
   opacity: 1;
 } 
@@ -164,3 +142,24 @@
   align-items: center;
   gap: 20px;
 }
+
+
+.favouriteGames .swiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.favouriteGames .swiper-wrapper {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.favouriteGames .swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: auto !important;
+  aspect-ratio: 4 / 3 !important;
+}
+

@@ -20,9 +20,11 @@ const MainSection = () => {
           </p>
 
           <div className='home-btns'>
+            <Link to="/offer" className='offer-link'>
             <button className='btn'>
               <span>Elon berish/Sotish</span>
             </button>
+            </Link>
             <Link to='/cards' className='cards-link'>
               <button className='btn'>
                 <span>Sotib olish</span>
