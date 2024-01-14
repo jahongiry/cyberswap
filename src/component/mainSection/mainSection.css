@@ -123,3 +123,8 @@
         width: 80%;
     }
 }
+@media screen and (max-width:576px){ 
+    .home-container {
+        gap: 2rem;
+    }
+}

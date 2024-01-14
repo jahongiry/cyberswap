@@ -11,6 +11,7 @@ import Signup from './pages/signup/Signup';
 import Cards from './pages/cards/Cards';
 import Offer from './pages/offer/Offer';
 import Payment from './pages/payment/Payment';
+import Profile from './pages/profile/Profile';
 
 function App() {
   return (
@@ -23,8 +24,9 @@ function App() {
         <Route path='/login' exact element={<Login />} />
         <Route path='/signup' exact element={<Signup />} />
         <Route path='/cards' exact element={<Cards />} />
-        <Route path='/offer' element={<Offer />} />
+        <Route path='/offer' exact element={<Offer />} />
         <Route path='/payment' exact element={<Payment />} />
+        <Route path='/profile' exact element={<Profile />} />
       </Routes>
 
       <Footer />
