@@ -36,13 +36,13 @@ const Login = () => {
               <div>
                 <hr className='horizontal-hr' />
                 <NavLink to='/signup'>
-                  <button type='submit' className='login-button royhat'>
+                  <button type='submit' className='login-button royhat-login'>
                     Royhatdan o'tish
                   </button>
                 </NavLink>
               </div>
             </div>
-            <button type='submit' className='login-button login-main'>
+            <button type='submit' className='login-main'>
               Kirish
             </button>
             <div className='back-home'>

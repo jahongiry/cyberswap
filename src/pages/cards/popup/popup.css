@@ -114,20 +114,20 @@
   right: -5px;
   top: -5px;
   background-color: #202b50;
-  color: white; /* Ensures the icon is clearly visible */
-  border: none; /* Removes default button border */
-  font-size: 2rem; /* Adjusts the size of the icon */
-  padding: 5px; /* Provides some space around the icon */
-  border-radius: 50%; /* Makes the button circular */
-  cursor: pointer; /* Changes the cursor on hover */
-  display: flex; /* Ensures the icon is centered within the button */
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.3s; /* Smooth transition for hover effect */
+  transition: background-color 0.3s;
 }
 
 .close:hover {
-  background-color: #4248b2; /* Changes background color on hover */
+  background-color: #4248b2;
 }
 
 .close:focus {

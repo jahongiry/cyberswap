@@ -6,7 +6,7 @@ import { NavLink, Link } from 'react-router-dom';
 const Signup = () => {
   return (
     <div className='about-container'>
-      <div className='login-container'>
+      <div className='login-container-signup'>
         <div className='login-border'>
           <div className='line'>
             <div className='corner-item top-left'></div>
@@ -52,7 +52,7 @@ const Signup = () => {
               id='username'
               placeholder='sms codeni kiriting'
             />
-            <button type='submit' className='login-button login-main'>
+            <button type='submit' className='login-button login-main-signup'>
               Ro'yxatdan o'tish
             </button>
           </form>
