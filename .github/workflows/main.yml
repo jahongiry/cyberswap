@@ -18,17 +18,17 @@ jobs:
       with:
         node-version: '20'
 
-    - name: Install dependencies
+    - name: npm install
       run: |
         npm install
         echo "Dependencies installed successfully"
 
-    - name: Build
+    - name: npm run build
       run: |
         npm run build
         echo "Build completed successfully"
 
-    - name: Deploy builded React app to cyberswap.uz
+    - name: Deploy to cyberswap
       uses: appleboy/scp-action@v0.1.7
       with:
         host: ${{ secrets.HOST }}
@@ -39,7 +39,7 @@ jobs:
         target: "/var/www/cyberswap/"
       continue-on-error: true
 
-    - name: Adjust file locations on server
+    - name: Set to production
       uses: appleboy/ssh-action@v1.0.3
       with:
         host: ${{ secrets.HOST }}
