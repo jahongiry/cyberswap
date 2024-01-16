@@ -39,11 +39,12 @@ jobs:
         target: "/var/www/cyberswap/"
       continue-on-error: true
 
-    - name: Deployment status
-      run: |
-        if [ $? -eq 0 ]; then
-          echo "Deployment successful"
-        else
-          echo "Deployment failed"
-        fi
-
+    - name: Adjust file locations on server
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          mv /var/www/cyberswap/build/* /var/www/cyberswap/
+          rmdir /var/www/cyberswap/build
