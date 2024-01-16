@@ -23,15 +23,21 @@ const TopGames = () => {
       </h1>
 
       <div className='topGames-category'>
-        <button className='btn'>
-          <span>PubG accountlar</span>
-        </button>
-        <button className='btn'>
-          <span>Telegram usernamelar</span>
-        </button>
-        <button className='btn'>
-          <span>Instagran usernamelar</span>
-        </button>
+        <Link to='/offer' className='cards-link'>
+          <button className='btn'>
+            <span>PubG accountlar</span>
+          </button>
+        </Link>
+        <Link to='/offer' className='cards-link'>
+          <button className='btn'>
+            <span>Telegram usernamelar</span>
+          </button>
+        </Link>
+        <Link to='/offer' className='cards-link'>
+          <button className='btn'>
+            <span>Instagran usernamelar</span>
+          </button>
+        </Link>
       </div>
 
       <div className='topGames-container'>
