@@ -14,9 +14,9 @@
 .payment-container {
     padding: 1rem;
     width: 400px;
-    box-shadow: 0 0 8px #fff;
+    box-shadow: 0 0 4px #fff;
     border-radius: 10px;
-    background: rgba(0, 0, 0, 0.8);
+    background: linear-gradient(to top right, #160214, #4d1a7a, #893b88, #160214);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -30,8 +30,15 @@
     font-weight: bold;
     text-align: center;
     border-radius: 10px;
-    box-shadow: 0 0 8px #fff;
-    background: rgb(2, 4, 37);
+    box-shadow: 0 0 8px #000;
+    background-image: linear-gradient(
+    to left bottom,
+    #88347b,
+    #6f2b75,
+    #54236e,
+    #371c65,
+    #10165c
+  );
 }
 
 .payment-content {
@@ -42,8 +49,16 @@
     align-items: center;
     gap: 0.6rem;
     border-radius: 10px;
-    box-shadow: 0 0 8px #fff;
-    background: rgb(2, 4, 37);
+    box-shadow: 0 0 8px #000;
+    /* background: linear-gradient(to top right, #160214, #4d1a7a, #893b88, #160214); */
+    background-image: linear-gradient(
+    to left bottom,
+    #88347b,
+    #6f2b75,
+    #54236e,
+    #371c65,
+    #10165c
+  );
 }
 
 .payment-content > p {
@@ -111,9 +126,18 @@
     font-size: 1.2rem;
     width: 100%;
     border-radius: 10px;
-    box-shadow: 0 0 8px #fff;
-    background: rgb(2, 4, 37);
+    box-shadow: 0 0 4px #000;
+    background-image: linear-gradient(
+    to left bottom,
+    #88347b,
+    #6f2b75,
+    #54236e,
+    #371c65,
+    #10165c
+  );
+    cursor: pointer;
 }
 .payment-container .payment-btn:hover {
-    background: rgb(5, 10, 93);
+    background: linear-gradient(to top right, #160214, #7731b4, #7a2f79, #5d0854);
+    box-shadow: 0 0 8px #160214;
 }
