@@ -28,12 +28,52 @@ jobs:
         npm run build
         echo "Build completed successfully"
 
-    - name: Deploy to Server
-      uses: appleboy/ssh-action@v1.0.3
+name: React CI/CD on server
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Install dependencies
+      run: |
+        npm install
+        echo "Dependencies installed successfully"
+
+    - name: Build
+      run: |
+        npm run build
+        echo "Build completed successfully"
+
+    - name: Deploy builded React app to cyberswap.uz
+      uses: appleboy/scp-action@v0.1.7
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.SSH_KEY }}
-        script: |
-          scp -o StrictHostKeyChecking=no -r ./build/* root@${{ secrets.HOST }}:/var/www/cyberswap
-          echo "Deploy completed successfully"
+        port: ${{ secrets.PORT }}
+        key: ${{ secrets.KEY }}
+        source: "./build/*"
+        target: "/var/www/cyberswap"
+      continue-on-error: true
+
+    - name: Deployment status
+      run: |
+        if [ $? -eq 0 ]; then
+          echo "Deployment successful"
+        else
+          echo "Deployment failed"
+        fi
+
