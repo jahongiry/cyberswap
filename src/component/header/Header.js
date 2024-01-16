@@ -26,7 +26,7 @@ const Header = () => {
             </NavLink>
           </li>
           <li onClick={navBtn}>
-            <NavLink to='/about'><i className="fa-solid fa-circle-info"></i>Biz haqimizda</NavLink>
+            <NavLink to='/advertisement'><i className="fa-solid fa-circle-info"></i>E'lonlar</NavLink>
           </li>
           <li onClick={navBtn}>
             <NavLink to='/contact'><i className="fa-solid fa-comments"></i>Bog'lanish</NavLink>

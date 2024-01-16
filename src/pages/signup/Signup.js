@@ -5,7 +5,7 @@ import { NavLink, Link } from 'react-router-dom';
 
 const Signup = () => {
   return (
-    <div className='about-container'>
+    <div className='login-section'>
       <div className='login-container-signup'>
         <div className='login-border'>
           <div className='line'>

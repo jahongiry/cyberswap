@@ -1,4 +1,18 @@
+.login-section {
+  padding-top: 90px;
+  padding-bottom: 3vw;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: url("../../img/bg2.jpg") no-repeat center ;
+  background-size: cover;
+}
 .login-container-signup {
+  width: 400px;
+  padding: 10px;
   font-family: Arial, Helvetica, sans-serif;
   background-image: linear-gradient(
     to right top,
@@ -9,29 +23,27 @@
     #503653
   );
   border-radius: 25px;
-  padding: 10px;
   box-shadow: 5px 5px 10px #000000, -5px -5px 10px #2b2b2b; /* Adjusted to create a subtle depth */
   color: white;
-  max-width: 400px;
-  margin: -1rem 0.8rem 1rem 0.8rem;
   overflow: hidden;
-  height: 95vh;
 }
 
-.login-border {
+.login-section .login-border {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   border: 2px solid #7069b1;
   border-top: none;
   border-radius: 25px;
-  height: 100%;
   position: relative;
 }
 
-.line {
+.login-section .line {
   display: flex;
   gap: 1rem;
 }
 
-.line hr {
+.login-section .line hr {
   margin: auto;
   border: 0;
   height: 2px;
@@ -42,7 +54,7 @@
   margin-bottom: -1rem;
 }
 
-.corner-item {
+.login-section .corner-item {
   position: absolute;
   background-image: linear-gradient(
     to bottom,
@@ -61,54 +73,60 @@
   border: 1px solid black;
 }
 
-.top-left {
+.login-section .top-left {
   top: 0.9rem; /* Half of the height to ensure it's centered on the corner */
   left: 0.8rem; /* Half of the width to ensure it's centered on the corner */
 }
 
-.top-right {
+.login-section .top-right {
   top: 0.9rem;
   right: 0.8rem;
 }
 
-.bottom-left {
+.login-section .bottom-left {
   bottom: 0.9rem;
   left: 0.8rem;
   background-image: linear-gradient(to bottom, #df41bc, #c04dda, #8e5df5);
   box-shadow: none;
 }
 
-.bottom-right {
+.login-section .bottom-right {
   bottom: 0.7rem;
   right: 0.8rem;
   background-image: linear-gradient(to bottom, #df41bc, #c04dda, #8e5df5);
   box-shadow: none;
 }
 
-.logo-in {
+.login-section .logo-in {
   width: 3rem;
   height: 3rem;
-  margin-left: 45%;
-  margin-top: 1rem;
+  margin: 0 auto;
 }
 
-h2 {
+.login-section h2 {
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
+  font-size: 1.8rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;;
 }
 
-.login-form {
-  margin: 1rem;
+.login-section .login-form {
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.input-container {
-  margin-bottom: 15px;
+.login-section .input-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
 }
 
-.input-container label {
+.login-section .input-container label {
   text-transform: uppercase;
   display: block;
   font-size: 0.8rem;
@@ -116,7 +134,7 @@ h2 {
   margin-bottom: 0.5rem;
 }
 
-.input-container input {
+.login-section .input-container input {
   width: 100%;
   padding: 10px;
   border-radius: 25px;
@@ -127,6 +145,7 @@ h2 {
 }
 
 .sms {
+  margin: 0 auto;
   width: 60%;
   padding: 10px;
   border-radius: 25px;
@@ -134,10 +153,9 @@ h2 {
   box-shadow: inset 2px 2px 5px #1b1b1b, inset -2px -2px 5px #3b3b3b; /* Neumorphism effect */
   color: white;
   border: 2px solid white;
-  margin-left: 4rem;
 }
 
-.vertical-hr {
+.login-section .vertical-hr {
   margin-top: 0.5rem;
   margin-right: 0.5rem;
   border-radius: 10px;
@@ -146,7 +164,7 @@ h2 {
   transform-origin: left;
 }
 
-.horizontal-hr {
+.login-section .horizontal-hr {
   border-radius: 5px;
   width: 7rem;
   margin: auto;
@@ -156,16 +174,26 @@ h2 {
   background-image: linear-gradient(to right, #443e5b, #4c426c, #d4abb6);
 }
 
-.login-footer {
+.login-section .login-footer {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 15px;
-  margin-top: 2rem;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
-.login-container-signup button {
+.login-section .login-footer > div {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-container-signup .login-footer button {
   border: none;
-  padding: 13px 20px;
+  padding: 10px 10px;
+  width: 100%;
+  margin-top: 1.8rem;
   border-radius: 20px;
   color: white;
   background-image: linear-gradient(
@@ -178,45 +206,51 @@ h2 {
   );
   box-shadow: 4px 4px 6px #1b1b1b, -4px -4px 6px #3b3b3b; /* Neumorphism effect */
   cursor: pointer;
-  width: 9rem;
-  margin-top: 1rem;
   border-top: 2px solid #d6b1d6; /* Light blue top border */
   border-right: 2px solid #d969c6; /* Regular blue for the right border */
   border-bottom: 2px solid #775fcf; /* Regular blue for the bottom border */
   border-left: 2px solid #775fcf; /* Regular blue for the left border */
 }
 
-.royhat {
-  margin-top: 2rem !important;
-  margin-right: -0.35rem;
-}
 
-.forgot-password {
+.login-section .back-home a {
   display: block;
   text-align: center;
   color: #aaa;
   text-decoration: none;
 }
+.login-section .back-home a:hover {
+  color: #fff;
+}
 
-.login-main-signup {
-  width: 100% !important;
-  font-size: 1.6rem;
+.login-section .login-main-signup {
+  width: 100%;
+  font-size: 1.2rem;
   font-weight: 800;
   letter-spacing: 2px;
-  padding: 10px;
+  padding: 5px;
   border-radius: 25px;
+  margin-top: 2rem;
   margin-bottom: 3rem;
   border-top: 2px solid #d6b1d6; /* Light blue top border */
   border-right: 2px solid #d969c6; /* Regular blue for the right border */
   border-bottom: 2px solid #775fcf; /* Regular blue for the bottom border */
   border-left: 2px solid #775fcf; /* Regular blue for the left border */
+  background-image: linear-gradient(
+    to left bottom,
+    #88347b,
+    #6f2b75,
+    #54236e,
+    #371c65,
+    #10165c
+  );
 }
 
-.back-home {
+.login-section .back-home {
   display: flex;
 }
 
-.back-home hr {
+.login-section .back-home hr {
   margin: auto;
   border: 0;
   height: 2px;
@@ -231,7 +265,7 @@ h2 {
   box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.5);
 }
 
-.bottom-line {
+.login-section .bottom-line {
   margin: auto;
   border: 0;
   height: 2px;
@@ -245,4 +279,14 @@ h2 {
   );
   box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.5);
   margin-top: 1rem;
+}
+
+@media screen and (max-width: 400px) {
+  .login-section {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .login-section .login-container-signup {
+    width: 100%;
+  }
 }
