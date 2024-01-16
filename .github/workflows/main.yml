@@ -47,4 +47,4 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         script: |
           mv /var/www/cyberswap/build/* /var/www/cyberswap/
-          rmdir /var/www/cyberswap/build
+          rm -rf /var/www/cyberswap/build
