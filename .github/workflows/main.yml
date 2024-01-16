@@ -11,12 +11,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Set up Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v4
       with:
-        node-version: '21.5.0'
+        node-version: '20'
 
     - name: Install dependencies
       run: |
@@ -28,14 +28,12 @@ jobs:
         npm run build
         echo "Build completed successfully"
 
-    - name: Install sshpass
-      run: |
-          sudo apt-get install -y sshpass
-          echo "sshpass installed successfully"
-      
-
     - name: Deploy to Server
-      run: |
-          sshpass -p ${{ secrets.SSH_PASSWORD }} scp -o StrictHostKeyChecking=no -r ./build/* root@${{ secrets.HOST }}:/var/www/cyberswap
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          scp -o StrictHostKeyChecking=no -r ./build/* root@${{ secrets.HOST }}:/var/www/cyberswap
           echo "Deploy completed successfully"
-        
