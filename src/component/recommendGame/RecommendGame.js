@@ -1,6 +1,7 @@
 import React from 'react';
 import './recommendGame.css';
 import gamePerson from './gamePerson.png';
+import { NavLink, Link } from 'react-router-dom';
 
 const RecommendGame = () => {
   return (
@@ -25,10 +26,11 @@ const RecommendGame = () => {
             elon telegram kanali orqali ham elon beriladi. Barcha sotuvchi va
             sotib oluvchi ma'lumotlari himoyalangan!
           </p>
-
-          <button className='btn'>
-            <span>Barcha e'lonlarni ko'rish </span>
-          </button>
+          <Link to='/cards' className='cards-link'>
+            <button className='btn'>
+              <span>Barcha e'lonlarni ko'rish </span>
+            </button>
+          </Link>
         </div>
       </div>
     </section>
