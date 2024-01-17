@@ -28,6 +28,16 @@ jobs:
         npm run build
         echo "Build completed successfully"
 
+    - name: Set to production directory
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          rm -rf /var/www/cyberswap/*
+    
+
     - name: Deploy to cyberswap
       uses: appleboy/scp-action@v0.1.7
       with:
