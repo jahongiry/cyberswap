@@ -28,8 +28,8 @@ jobs:
         npm run build
         echo "Build completed successfully"
         
-    - name: deploy
-    - uses: appleboy/scp-action@v0.1.7
+    - name: Deploy to Server
+      uses: appleboy/scp-action@v0.1.7
       with:
         host: ${{ secrets.REMOTE_HOST }}
         username: ${{ secrets.REMOTE_USER }}
