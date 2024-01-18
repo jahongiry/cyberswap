@@ -22,36 +22,12 @@ jobs:
       run: |
         npm install
         echo "Dependencies installed successfully"
+
     - name: npm run build
       run: |
         npm run build
         echo "Build completed successfully"
-    - name: Set to production directory
-      uses: appleboy/ssh-action@v1.0.3
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
-        script: |
-          rm -rf /var/www/cyberswap/*
-    
 
-    - name: Deploy to cyberswap
-      uses: appleboy/scp-action@v0.1.7
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
-        source: "./build/*"
-        target: "/var/www/cyberswap/"
-      continue-on-error: true
-
-    - name: Set to production
-      uses: appleboy/ssh-action@v1.0.3
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
-        script: |
-          mv /var/www/cyberswap/build/* /var/www/cyberswap/
-          rm -rf /var/www/cyberswap/build
+    - name: Deploy to Hosting
+      run: |
+        scp -r -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} ./build/* ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.TARGET }}
