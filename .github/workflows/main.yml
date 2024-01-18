@@ -27,6 +27,7 @@ jobs:
       run: |
         npm run build
         echo "Build completed successfully"
+        
     - name: deploy
     - uses: appleboy/scp-action@v0.1.7
       with:
