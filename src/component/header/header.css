@@ -1,166 +1,183 @@
 .header {
-    width: 100%;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: var(--bg-color);
-    z-index: 1000;
-    box-shadow: 0 0 10px rgb(88, 5, 44);
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: var(--bg-color);
+  z-index: 1000;
+  box-shadow: 0 0 10px rgb(88, 5, 44);
 }
 .header > a {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
-.header .logo{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
+.header .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
 }
 
 .header > a span {
-    font-family: var(--roboto);
-    font-size: var(--small-fs);
-    font-weight: var(--fw-800);
-    letter-spacing: 1.2px;
+  font-family: var(--roboto);
+  font-size: var(--small-fs);
+  font-weight: var(--fw-800);
+  letter-spacing: 1.2px;
 }
 
 .header nav ul {
-    display: flex;
-    gap: 1.4rem;
+  display: flex;
+  gap: 1.4rem;
 }
 .header nav ul li a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: var(--lato);
-    font-size: var(--smallest-fs);
-    font-weight: var(--fw-400);
-    letter-spacing: 0.72px;
-    text-transform: uppercase;
-    transition: all .3s ease;
-    position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--lato);
+  font-size: var(--smallest-fs);
+  font-weight: var(--fw-400);
+  letter-spacing: 0.72px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  position: relative;
 }
 .header nav ul li a i {
-    font-size: var(--smaller-fs);
-    display: none;
+  font-size: var(--smaller-fs);
+  display: none;
 }
 .header nav ul li a::after {
-    content: '';
-    width: 0%;
-    height: 2px;
-    background: var(--btn-bg-color);
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    transition: all .5s ease;
+  content: '';
+  width: 0%;
+  height: 2px;
+  background: var(--btn-bg-color);
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  transition: all 0.5s ease;
 }
 .header nav ul li a:hover::after,
 .header nav ul li a.active::after {
-    width: 100%;
+  width: 100%;
 }
 .header-btns {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 .header .sign-in {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 .header .sign-in > span {
-    font-family: var(--lato);
-    font-size: var(--smallest-fs);
-    font-weight: var(--fw-400);
-    letter-spacing: 0.72px;
-    text-transform: uppercase;
-    transform: translateX(-10%);
-    transition: all .3s ease;
+  font-family: var(--lato);
+  font-size: var(--smallest-fs);
+  font-weight: var(--fw-400);
+  letter-spacing: 0.72px;
+  text-transform: uppercase;
+  transform: translateX(-10%);
+  transition: all 0.3s ease;
 }
 .header .sign-in:hover > span {
-    transform: translateX(0);
+  transform: translateX(0);
 }
 .header .sign-in i,
 .header .nav-btn i {
-    font-size: var(--big-fs);
+  font-size: var(--big-fs);
 }
 
 .header .nav-btn {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    display: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+.halmet {
+  width: 15%;
+  height: 15%;
+  margin-left: auto;
 }
 
 @media screen and (max-width: 992px) {
-    .header nav ul {
-        gap: 1rem;
-    }
+  .header nav ul {
+    gap: 1rem;
+  }
+  .halmet {
+    width: 18%;
+    height: 18%;
+    margin-left: auto;
+  }
 }
 
-@media  screen and (max-width: 768px){
-    .header .nav-btn {
-        display: flex;
-    }
-    
-    .header nav {
-        width: 70%;
-        height: 100vh;
-        position: absolute;
-        top: 100%;
-        right: 0;
-        transform: translateX(105%);
-        transition: all 0.5s ease;
-    }
-    .header nav.mobile {
-        transform: translateX(0);
-    } 
-    
-    .header nav ul {
-        padding: 40px;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        border-left: 2px solid rgb(142, 19, 19);
-        background: var(--bg-color);
-    }
-    .header nav ul li {
-        width: 100%;
-        padding: 10px;
-        display: flex;
-        justify-content: center;
-        border: 2px solid black;
-        background: white;
-    }
-    .header nav ul li a {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        color: #000;
-    }
-    .header nav ul li a i {
-        display: block;
-        color: #000;
-    }
-    .header nav ul li:hover {
-        background: rgb(88, 5, 44);
-    }
-    .header nav ul li:hover a {
-        color: #fff;
-    }
-    .header nav ul li a::after {
-        display: none;
-    }
+@media screen and (max-width: 768px) {
+  .halmet {
+    width: 30%;
+    height: 30%;
+    margin-left: auto;
+  }
+
+  .header .nav-btn {
+    display: flex;
+  }
+
+  .header nav {
+    width: 70%;
+    height: 100vh;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    transform: translateX(105%);
+    transition: all 0.5s ease;
+  }
+  .header nav.mobile {
+    transform: translateX(0);
+  }
+
+  .header nav ul {
+    padding: 40px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border-left: 2px solid rgb(142, 19, 19);
+    background: var(--bg-color);
+  }
+  .header nav ul li {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    border: 2px solid black;
+    background: white;
+  }
+  .header nav ul li a {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    color: #000;
+  }
+  .header nav ul li a i {
+    display: block;
+    color: #000;
+  }
+  .header nav ul li:hover {
+    background: rgb(88, 5, 44);
+  }
+  .header nav ul li:hover a {
+    color: #fff;
+  }
+  .header nav ul li a::after {
+    display: none;
+  }
 }

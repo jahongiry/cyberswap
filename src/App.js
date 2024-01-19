@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import Header from './component/header/Header';
@@ -10,14 +10,19 @@ import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
 import Cards from './pages/cards/Cards';
 import Offer from './pages/offer/Offer';
-
 import Chat from './pages/chat/Chat';
-
 import Payment from './pages/payment/Payment';
 import Profile from './pages/profile/Profile';
-
+import { useDispatch } from 'react-redux';
+import { checkLogIn } from './slices/authSlice';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(checkLogIn());
+  }, [dispatch]);
+
   return (
     <div className='app'>
       <Header />
@@ -32,7 +37,6 @@ function App() {
         <Route path='/payment' exact element={<Payment />} />
         <Route path='/profile' exact element={<Profile />} />
         <Route path='/chat' exact element={<Chat />} />
-
       </Routes>
 
       <Footer />
