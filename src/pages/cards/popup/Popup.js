@@ -13,7 +13,7 @@ const PopUp = ({ isVisible, togglePopUp, game }) => {
         <div className='top'>
           <img src={game.img} alt='game name' />
           <div>
-            <h3>Owner: {game.owner}</h3>
+            <h3><span>Owner:</span> {game.owner}</h3>
             <p>{game.description}</p>
             <ion-icon name='star'></ion-icon>
             <ion-icon name='star'></ion-icon>

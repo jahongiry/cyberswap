@@ -1,5 +1,10 @@
+.cards-wrapper {
+  padding-top: 3.5rem;
+  width: 100%;
+  display: flex;  
+  flex-direction: column;
+}
 .cards-container {
-  margin-top: 3.5rem;
   display: flex;
   flex-direction: column;
   background-image: linear-gradient(
@@ -10,21 +15,21 @@
     #5346c3,
     #4540bb
   );
-  padding: 1rem;
+  padding: 1.5rem 5% 1rem;
   border-bottom: 1px solid white;
 }
 
-.search-container {
+.cards-container .search-container {
   display: flex;
   justify-content: space-between;
   margin-bottom: 1rem;
 }
 
-.filterlash {
+.cards-container .filterlash {
   margin-bottom: 0.15rem;
 }
 
-.search-input {
+.cards-container .search-input {
   flex-grow: 1;
   margin-right: 0.5rem;
   padding: 0.5rem;
@@ -34,7 +39,7 @@
   font-size: 1rem;
 }
 
-.search-button {
+.cards-container .search-button {
   margin-top: -0.2rem;
   padding: 0.5rem 0.5rem;
   border: none;
@@ -47,12 +52,21 @@
   width: 5rem;
 }
 
-.filter-container {
+.cards-container .filter-container {
+  width: 100%;
+  padding: 5px;
   display: flex;
-  justify-content: space-around;
+  /* flex-wrap: wrap; */
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  overflow-x: scroll;
+}
+.cards-container .filter-container::-webkit-scrollbar {
+  display: none;
 }
 
-.filter-button {
+.cards-container .filter-button {
   padding: 0.5rem 0.8rem;
   border: none;
   border-radius: 0.5rem;
@@ -72,26 +86,26 @@
   box-shadow: 4px 4px 6px #1b1b1b, -4px -4px 6px #3b3b3b;
 }
 
-.filter-button.active {
+.cards-container .filter-button.active {
   background-color: #7a7aae;
 }
 
 .cards-section {
+  width: 100%;
   background-color: #142251;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  row-gap: 1.5rem;
-  column-gap: 0.1rem;
-  padding-bottom: 2.5rem;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding: 1.5rem 3% 1.5rem;
 }
 
-.card {
+.cards-section .card {
+  width: 100%;
   background: #1d65b3;
   border-radius: 15px;
   color: #fff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  margin: 1rem 0.5rem;
-  padding: 1rem;
+  padding: 10px;
   border-top: 3px solid #9ba6dc;
   border-right: 3px solid #5d98ef;
   border-bottom: 3px solid #5d98ef;
@@ -99,24 +113,54 @@
   cursor: pointer;
 }
 
-.card-img {
-  width: 7.4rem;
-  height: 4rem;
+.cards-section .card-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
   border-radius: 10px;
 }
+.cards-section .card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-.icon-gold {
+.cards-section .card > h5 {
+  font-size: 1rem;
+  margin-top: 5px;
+  letter-spacing: 2px;
+}
+.cards-section .card > p {
+  margin-top: 5px;
+  font-size: 14px;
+  text-shadow: 0 0 4px black;
+}
+.cards-section .card > p > span {
+  font-size: 16px;
+  color: #d9398b;
+  font-weight: bold;
+  text-shadow: 1px 1px 4px black;
+}
+
+
+
+.cards-section .stars {
+  margin-top: 5px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.cards-section .stars ion-icon {
   color: #ffd700;
 }
 
-.stars {
-  margin: 1rem 0 -2.5rem 1rem;
-}
-
-.price-button {
+.cards-section .price-button {
+  margin-top: 10px;
   background-color: #454adf;
   border: none;
-  padding: 0.6rem 1rem;
+  padding: 5px;
   border-radius: 10px;
   background-image: linear-gradient(to right, #88347b, #454adf, #454adf);
   box-shadow: 4px 4px 6px #1b1b1b, -4px -4px 6px #3b3b3b; /* Neumorphism effect */
@@ -124,6 +168,39 @@
   width: 100%;
   cursor: pointer;
 }
-.price-button {
-  transform: translateY(3.7rem);
+
+@media screen and (min-width: 420px) {
+  .cards-section {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 1.5rem 5% 1.5rem;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .cards-section .card > h5 {
+    font-size: 1.2rem;
+  }
+  .cards-section .card > p {
+    font-size: 1rem;
+  }
+  .cards-section .card > p > span {
+    font-size: 1.1rem;
+  }
+}
+
+
+@media screen and (min-width: 768px) {
+  .cards-container .filterlash {
+    font-size: 1.4rem;
+  }
+  .cards-section {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .cards-section {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 }
