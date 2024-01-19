@@ -23,7 +23,6 @@ const Login = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
-    console.log('should not');
     event.preventDefault();
     dispatch(logIn(credentials));
   };
@@ -63,9 +62,9 @@ const Login = () => {
             </div>
             <div className='login-footer'>
               <div>
-                <label htmlFor='button'>Parol esdan chiqdi</label>
+                <label htmlFor='button'>Parol unitdingizmi</label>
                 <button type='button' className='signup-button'>
-                  Parol tiklash
+                  Parolni tiklash
                 </button>
               </div>
               <hr class='vertical-hr' />

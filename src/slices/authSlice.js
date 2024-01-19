@@ -8,25 +8,11 @@ const initialState = {
   error: null,
 };
 
-// Async thunk for signing up
-export const signUp = createAsyncThunk(
-  'auth/signUp',
-  async (userData, thunkAPI) => {
-    try {
-      const response = await axios.post('/signup', userData); // Replace '/signup' with your endpoint
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
-    }
-  }
-);
-
-// Async thunk for logging in
 export const logIn = createAsyncThunk(
   'auth/logIn',
   async (credentials, thunkAPI) => {
     try {
-      const response = await axios.post('/login', credentials); // Replace '/login' with your endpoint
+      const response = await axios.post('/login', credentials);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -50,8 +36,38 @@ export const logOutUser = createAsyncThunk(
   'auth/logOutUser',
   async (_, thunkAPI) => {
     try {
-      await axios.post('/logout'); // Replace '/logout' with your endpoint
-      thunkAPI.dispatch(logOut()); // Dispatch the logOut action to update state
+      await axios.post('/logout');
+      thunkAPI.dispatch(logOut());
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const signUp = createAsyncThunk(
+  'auth/signUp',
+  async ({ number, password }, thunkAPI) => {
+    try {
+      const response = await axios.post('/registration', {
+        number,
+        password,
+      });
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const verifyNumber = createAsyncThunk(
+  'auth/verifyNumber',
+  async (otp, thunkAPI) => {
+    try {
+      const response = await axios.post('/registration/verify', {
+        ot_password: otp,
+      });
+      console.log(response.data);
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
     }
@@ -70,7 +86,7 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(signUp.fulfilled, (state, action) => {
+      .addCase(verifyNumber.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.user = action.payload;
       })

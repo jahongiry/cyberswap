@@ -9,7 +9,6 @@ import { selectCurrentUser } from '../../slices/authSlice';
 const Header = () => {
   const [navbar, setNavbar] = useState(false);
   const user = useSelector(selectCurrentUser);
-  console.log(user);
 
   const navBtn = () => setNavbar(!navbar);
   return (

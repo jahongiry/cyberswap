@@ -15,6 +15,7 @@ import Payment from './pages/payment/Payment';
 import Profile from './pages/profile/Profile';
 import { useDispatch } from 'react-redux';
 import { checkLogIn } from './slices/authSlice';
+import Confirm from './pages/signup/confirm/Confirm';
 
 function App() {
   const dispatch = useDispatch();
@@ -32,13 +33,13 @@ function App() {
         <Route path='/contact' element={<Contact />} />
         <Route path='/login' exact element={<Login />} />
         <Route path='/signup' exact element={<Signup />} />
+        <Route path='/confirm' exact element={<Confirm />} />
         <Route path='/cards' exact element={<Cards />} />
         <Route path='/offer' exact element={<Offer />} />
         <Route path='/payment' exact element={<Payment />} />
         <Route path='/profile' exact element={<Profile />} />
         <Route path='/chat' exact element={<Chat />} />
       </Routes>
-
       <Footer />
     </div>
   );
