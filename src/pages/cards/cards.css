@@ -1,7 +1,7 @@
 .cards-wrapper {
   padding-top: 3.5rem;
   width: 100%;
-  display: flex;  
+  display: flex;
   flex-direction: column;
 }
 .cards-container {
@@ -143,8 +143,6 @@
   text-shadow: 1px 1px 4px black;
 }
 
-
-
 .cards-section .stars {
   margin-top: 5px;
   width: 100%;
@@ -169,15 +167,12 @@
   cursor: pointer;
 }
 
-@media screen and (min-width: 420px) {
+@media screen and (min-width: 576px) {
   .cards-section {
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     padding: 1.5rem 5% 1.5rem;
   }
-}
-
-@media screen and (min-width: 576px) {
   .cards-section .card > h5 {
     font-size: 1.2rem;
   }
@@ -188,7 +183,6 @@
     font-size: 1.1rem;
   }
 }
-
 
 @media screen and (min-width: 768px) {
   .cards-container .filterlash {

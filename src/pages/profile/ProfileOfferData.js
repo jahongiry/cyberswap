@@ -1,4 +1,4 @@
-import profileImg from './img/profile-img.png';
+import profileImg from '../../img/halmet.png';
 
 const ProfileOfferData = [
   {

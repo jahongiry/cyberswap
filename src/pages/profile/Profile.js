@@ -1,6 +1,6 @@
 import React from 'react';
 import './profile.css';
-import profileImg from './img/profile-img.png';
+import profileImg from '../../img/halmet.png';
 import ProfileOfferData from './ProfileOfferData';
 import { logOutUser } from '../../slices/authSlice';
 import { useDispatch } from 'react-redux';
