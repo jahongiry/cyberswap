@@ -1,23 +1,32 @@
 .pop-up-overlay {
+  width: 100%;
+  min-height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #8bbafb;
-  padding: 0.4rem;
+  background: url("../../../img/bg2.jpg") no-repeat center;
+  background-size: cover;
+  padding-top: 90px;
 }
 
+
+
 .pop-up {
+  width: 400px;
   position: relative;
   background-color: #202b50;
   padding: 20px 15px;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .top {
@@ -38,10 +47,26 @@
 }
 
 .top img {
-  border-radius: 45%;
+  width: 100%;
+  height: auto;
+  align-self: center;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
   -webkit-box-shadow: -14px 18px 34px -3px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: -14px 18px 34px -3px rgba(0, 0, 0, 0.75);
   box-shadow: -14px 18px 34px -3px rgba(0, 0, 0, 0.75);
+}
+
+.top div > h3 {
+  font-size: 1.2rem;
+}
+.top div > h3 > span {
+  color: #d9398b;
+  text-shadow: 1px 1px 4px black;
+}
+.top div > p {
+  margin-top: 5px;
+  opacity: 0.8;
 }
 /* Add additional styling to match the theme from the image */
 
@@ -52,6 +77,10 @@
 }
 
 .account-details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   background-image: linear-gradient(to top, #2a3f78, #3454a2, #7b94ce);
   padding: 1rem;
   border-radius: 15px;
@@ -60,11 +89,37 @@
 }
 
 .account-details h2 {
+  width: 100%;
   color: white;
   font-size: 2rem;
-  margin-top: -0.1rem;
+  text-align: center;
+  text-shadow: 0 0 4px black;
+  position: relative;
 }
-
+.account-details .each-row {
+  padding: 1rem 1rem 0.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.account-details .each-row ion-icon {
+  font-size: 1.2rem;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+.account-details .each-row > p:nth-child(1){
+  color: #d9398b;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 0 0 4px black;
+}
+.account-details .each-row > p:nth-child(2){
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 0 0 4px black;
+}
 .divider2 {
   margin: auto;
   border: 0;
@@ -74,15 +129,13 @@
   width: 90%;
 }
 
-.account-details p {
+.account-details > p {
   margin: 1rem 1rem 0.5rem;
+  letter-spacing: 1px;
+  font-size: 1rem;
 }
 
-.each-row {
-  display: flex;
-  justify-content: space-between;
-  margin-right: 1rem;
-}
+
 
 .sotib-olish {
   border: none;
