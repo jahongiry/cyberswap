@@ -35,4 +35,4 @@ jobs:
         username: ${{ secrets.REMOTE_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         source: "build/*"
-        target: "/domains/cyberswap.uz/public_html/"
+        target: "${{ secrets.TARGET }}"
