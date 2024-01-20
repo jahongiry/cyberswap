@@ -4,8 +4,11 @@ import logo1 from '../../component/header/logo1_1.png';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { signUp } from '../../slices/authSlice';
+import { selectTranslations } from '../../slices/languageSlice';
+import { useSelector } from 'react-redux';
 
 const Signup = () => {
+  const translations = useSelector(selectTranslations);
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -38,10 +41,10 @@ const Signup = () => {
             <div className='corner-item top-right'></div>
           </div>
           <img className='logo-in' src={logo1} alt='logo' />
-          <h2>Ro'yxatdan o'ting</h2>
+          <h2>{translations.signup.title}</h2>
           <form className='login-form' onSubmit={handleSubmit}>
             <div className='input-container'>
-              <label htmlFor='phone-number'>Telefon nomer</label>
+              <label htmlFor='phone-number'>{translations.signup.phone}</label>
               <input
                 type='text'
                 id='phone-number' // Make sure this ID is unique and descriptive
@@ -51,23 +54,23 @@ const Signup = () => {
               />
             </div>
             <div className='input-container'>
-              <label htmlFor='password'>PAROL KIRITNG</label>
+              <label htmlFor='password'>{translations.signup.password}</label>
               <input
                 type='password'
                 id='password'
-                placeholder='Parol'
+                placeholder={translations.signup.passwordplaceholder}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className='input-container'>
               <label htmlFor='confirm-password'>
-                PAROLINGIZNI QAYTADAN KIRITNG
+                {translations.signup.repassword}
               </label>
               <input
                 type='password'
                 id='confirm-password'
-                placeholder='Parol'
+                placeholder={translations.signup.passwordplaceholder}
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
@@ -77,10 +80,12 @@ const Signup = () => {
             </div>
             <div className='login-footer'>
               <div>
-                <label htmlFor='button'>Kirishga o'tish</label>
+                <label htmlFor='button'>
+                  {translations.signup.backtoenter}
+                </label>
                 <NavLink to='/login'>
                   <button type='button' className='signup-button'>
-                    Kirish
+                    {translations.signup.enter}
                   </button>
                 </NavLink>
               </div>
@@ -89,13 +94,13 @@ const Signup = () => {
                 <hr className='horizontal-hr' />
                 <NavLink to='/login'>
                   <button type='submit' className='login-button royhat'>
-                    Ortga
+                    {translations.signup.back}
                   </button>
                 </NavLink>
               </div>
             </div>
             <button type='submit' className='login-button login-main-signup'>
-              Ro'yxatdan o'tish
+              {translations.signup.signup}
             </button>
           </form>
           <div className='corner-item bottom-left'></div>

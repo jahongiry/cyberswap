@@ -7,11 +7,13 @@ import robloxImg from './img/roblax.png';
 import asusImg from './img/asus.png';
 import canonImg from './img/canon.png';
 import microsoftImg from './img/microsoft.png';
+import { useSelector } from 'react-redux';
+import { selectTranslations } from '../../slices/languageSlice';
 
 const Footer = () => {
+  const translations = useSelector(selectTranslations);
   return (
     <footer className='container footer'>
-      {/* footer-container start */}
       <div className='footer-container'>
         <div className='footer-content footer-logo'>
           <Link to='/'>
@@ -21,10 +23,7 @@ const Footer = () => {
             <span>Cyberswap</span>
           </Link>
 
-          <p>
-            To'lov tizimlar hozircha faqat Click evolution va Payme orqali
-            amalga oshiriladi! Agar savdo tuganlanmasa pul qaytarib beriladi!
-          </p>
+          <p>{translations.footer.paragraph1}</p>
         </div>
 
         <div className='footer-content company'>
@@ -32,45 +31,45 @@ const Footer = () => {
 
           <ul>
             <li>
-              <Link>Mahsulotlar</Link>
+              <Link>{translations.footer.link1}</Link>
             </li>
             <li>
-              <Link>Telefonga application</Link>
+              <Link>{translations.footer.link2}</Link>
             </li>
             <li>
-              <Link>Biz haqimizda</Link>
+              <Link>{translations.footer.link3}</Link>
             </li>
           </ul>
         </div>
 
         <div className='footer-content help'>
-          <h3>Yordam</h3>
+          <h3>{translations.footer.help}</h3>
 
           <ul>
             <li>
-              <Link>Biz bilan bog'lanish</Link>
+              <Link>{translations.footer.link4}</Link>
             </li>
             <li>
-              <Link>Bizning kontactlar</Link>
+              <Link>{translations.footer.link5}</Link>
             </li>
             <li>
-              <Link>Telegram kanalimiz</Link>
+              <Link>{translations.footer.link6}</Link>
             </li>
           </ul>
         </div>
 
         <div className='footer-content resource'>
-          <h3>resources</h3>
+          <h3>{translations.footer.socialmedia}</h3>
 
           <ul>
             <li>
-              <Link>youtube videolarimiz</Link>
+              <Link>{translations.footer.link7}</Link>
             </li>
             <li>
-              <Link>Instagram accountimiz</Link>
+              <Link>{translations.footer.link8}</Link>
             </li>
             <li>
-              <Link>terms & conditions</Link>
+              <Link>{translations.footer.link9}</Link>
             </li>
           </ul>
         </div>
@@ -116,7 +115,10 @@ const Footer = () => {
             <i className='fa-brands fa-tiktok'></i>
           </Link>
         </div>
-        <p>&copy; Copyright 2024, All Rights Reserved by oddiy inson</p>
+        <p>
+          &copy; Copyright 2024, All Rights Reserved by Azimjon, Jahongir,
+          Sanjar
+        </p>
       </div>
       {/* footer-copyright end */}
     </footer>

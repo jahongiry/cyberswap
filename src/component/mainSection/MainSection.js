@@ -2,47 +2,47 @@ import React from 'react';
 import './mainSection.css';
 import homeImg from './logo1_1.png';
 import { NavLink, Link } from 'react-router-dom';
+import { selectTranslations } from '../../slices/languageSlice';
+import { useSelector } from 'react-redux';
 
 const MainSection = () => {
+  const translations = useSelector(selectTranslations);
   return (
     <section className='mainSection container'>
       <div className='home-container'>
         <div className='home-container__info'>
           <h1 className='title'>
-            biz bilan <br />
-            <span>"Kiber savdo"</span>
+            {translations.main.title} <br />
+            <span>"{translations.main.span}"</span>
             <br />
-            Garant va Ishonchli
+            {translations.main.garant}
           </h1>
-          <p className='subtitle'>
-            Oyin accountlari, Telegram nomlar va kanallar, Instagram nomlarini
-            havsiz soting va sotib oling!
-          </p>
+          <p className='subtitle'>{translations.main.subtitle}</p>
 
           <div className='home-btns'>
-            <Link to="/offer" className='offer-link'>
-            <button className='btn'>
-              <span>Elon berish/Sotish</span>
-            </button>
+            <Link to='/offer' className='offer-link'>
+              <button className='btn'>
+                <span>{translations.main.offergiving}</span>
+              </button>
             </Link>
             <Link to='/cards' className='cards-link'>
               <button className='btn'>
-                <span>Sotib olish</span>
+                <span>{translations.main.offerbuy}</span>
               </button>
             </Link>
           </div>
           <div className='statistics'>
             <div className='content'>
-              <h3>100+</h3>
-              <p>Pubg accountlar</p>
+              <h3>{translations.main.numberaccounts}</h3>
+              <p>{translations.main.pubgaccounts}</p>
             </div>
             <div className='content project'>
-              <h3>100+</h3>
-              <p>Ishonchli sotuvchilar</p>
+              <h3>{translations.main.numberaccounts}</h3>
+              <p>{translations.main.pubgsellers}</p>
             </div>
             <div className='content'>
-              <h3>500+</h3>
-              <p>Sotilgan accountlar</p>
+              <h3>{translations.main.soldaccountsnumber}</h3>
+              <p>{translations.main.soldaccounts}</p>
             </div>
           </div>
         </div>
@@ -56,16 +56,16 @@ const MainSection = () => {
 
       <div className='statistics'>
         <div className='content'>
-          <h3>100+</h3>
-          <p>Pubg accountlar</p>
+          <h3>{translations.main.numberaccounts}</h3>
+          <p>{translations.main.pubgaccounts}</p>
         </div>
         <div className='content project'>
-          <h3>100+</h3>
-          <p>Ishonchli sotuvchilar</p>
+          <h3>{translations.main.numberaccounts}</h3>
+          <p>{translations.main.pubgsellers}</p>
         </div>
         <div className='content'>
-          <h3>500+</h3>
-          <p>Sotilgan accountlar</p>
+          <h3>{translations.main.soldaccountsnumber}</h3>
+          <p>{translations.main.soldaccounts}</p>
         </div>
       </div>
     </section>

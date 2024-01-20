@@ -6,10 +6,12 @@ import { NavLink, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import Popup from './popup/Popup';
+import { selectTranslations } from '../../slices/languageSlice';
+import { useSelector } from 'react-redux';
 
 const Cards = () => {
+  const translations = useSelector(selectTranslations);
   const [selectedGameId, setSelectedGameId] = useState(null);
-
   const togglePopUp = () => {
     setSelectedGameId(null); // This will only be used to close the Popup
   };
@@ -76,16 +78,18 @@ const Cards = () => {
         <div className='search-container'>
           <input
             type='text'
-            placeholder="Kerakli so'zini yozing"
+            placeholder={translations.cards.placeholder}
             className='search-input'
           />
-          <button className='search-button'>Qidirish</button>
+          <button className='search-button'>{translations.cards.search}</button>
         </div>
-        <h4 className='filterlash'>Filterlash</h4>
+        <h4 className='filterlash'>{translations.cards.filter}</h4>
         <div className='filter-container'>
-          <button className='filter-button'>Yangilari</button>
-          <button className='filter-button'>Arzonlari</button>
-          <button className='filter-button'>Qimmatlari</button>
+          <button className='filter-button'>{translations.cards.new}</button>
+          <button className='filter-button'>{translations.cards.cheap}</button>
+          <button className='filter-button'>
+            {translations.cards.expensive}
+          </button>
         </div>
       </div>
       <div className='cards-section'>

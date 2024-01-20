@@ -4,8 +4,11 @@ import { verifyNumber } from '../../../slices/authSlice';
 import './confirm.css';
 import logo1 from '../../../component/header/logo1_1.png';
 import { NavLink, Link } from 'react-router-dom';
+import { selectTranslations } from '../../../slices/languageSlice';
+import { useSelector } from 'react-redux';
 
 const Confirm = () => {
+  const translations = useSelector(selectTranslations);
   const [otp, setOtp] = useState('');
   const dispatch = useDispatch();
   const handleSubmit = (event) => {
@@ -26,12 +29,10 @@ const Confirm = () => {
             <div className='corner-item top-right'></div>
           </div>
           <img className='logo-in' src={logo1} alt='logo' />
-          <h2>Nomeringizni tasdiqlang</h2>
+          <h2>{translations.confirm.confirmn}</h2>
           <form className='login-form' onSubmit={handleSubmit}>
             <div className='input-container'>
-              <label htmlFor='password'>
-                Telefoningizga kelgan kodeni kiriting
-              </label>
+              <label htmlFor='password'>{translations.confirm.code}</label>
               <input
                 type='text'
                 id='otp'
@@ -43,9 +44,9 @@ const Confirm = () => {
             <div className='login-footer'>
               <NavLink to='/signup'>
                 <div>
-                  <label htmlFor='button'>Ro'yxatdan o'tish</label>
+                  <label htmlFor='button'>{translations.confirm.signup}</label>
                   <button type='button' className='signup-button'>
-                    Ro'yatdan o'tish
+                    {translations.confirm.signup}
                   </button>
                 </div>
               </NavLink>
@@ -54,13 +55,13 @@ const Confirm = () => {
                 <hr className='horizontal-hr' />
                 <NavLink to='/signup'>
                   <button type='submit' className='login-button royhat'>
-                    Ortga
+                    {translations.confirm.back}
                   </button>
                 </NavLink>
               </div>
             </div>
             <button type='submit' className='login-button login-main-signup'>
-              Tasdiqlash
+              {translations.confirm.confirm}
             </button>
           </form>
           <div className='corner-item bottom-left'></div>
