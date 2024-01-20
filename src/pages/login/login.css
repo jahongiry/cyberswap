@@ -9,6 +9,7 @@
 
   background: url("../../img/bg2.jpg") no-repeat center ;
   background-size: cover;
+  overflow-y: scroll;
 }
 .login-section .login-container {
   width: 400px;
@@ -269,13 +270,14 @@
   margin-top: 1rem;
 }
 
-
-@media screen and (max-width: 400px) {
+@media (max-width: 576px) {
   .login-section {
     padding-left: 15px;
     padding-right: 15px;
+    align-items: flex-start;
   }
   .login-section .login-container {
     width: 100%;
   }
 }
+

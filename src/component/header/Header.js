@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import halmet from '../../img/halmet.png';
 import './header.css';
 import logo from './logo1_1.png';
 import { useSelector } from 'react-redux';
@@ -13,6 +12,14 @@ const Header = () => {
   const [navbar, setNavbar] = useState(false);
   const user = useSelector(selectCurrentUser);
   const navBtn = () => setNavbar(!navbar);
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 0) {
+        setNavbar(false)
+      }
+    });
+  }, []);
+
 
   return (
     <header className='container header'>
@@ -23,7 +30,7 @@ const Header = () => {
         <span>CyberSwap</span>
       </Link>
 
-      <nav className={navbar ? 'mobile' : ''}>
+      <nav className={navbar ? 'mobile' : ''} onClick={navBtn}>
         <ul>
           <li onClick={navBtn}>
             <NavLink activeclassname='active' to='/'>
