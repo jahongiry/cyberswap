@@ -5,8 +5,12 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../slices/authSlice';
 import axios from 'axios';
+import { selectTranslations } from '../../slices/languageSlice';
+import { useSelector } from 'react-redux';
 
 const Login = () => {
+  const translations = useSelector(selectTranslations);
+
   const [credentials, setCredentials] = useState({
     login: '',
     password: '',
@@ -38,10 +42,10 @@ const Login = () => {
             <div className='corner-item top-right'></div>
           </div>
           <img className='logo-in' src={logo1} alt='logo' />
-          <h2>Hush kelibsiz</h2>
+          <h2>{translations.login.welcome}</h2>
           <form className='login-form' onSubmit={handleSubmit}>
             <div className='input-container'>
-              <label htmlFor='login'>Telefon nomer</label>
+              <label htmlFor='login'>{translations.login.phone}</label>
               <input
                 type='text'
                 id='login'
@@ -51,7 +55,7 @@ const Login = () => {
               />
             </div>
             <div className='input-container'>
-              <label htmlFor='password'>Parolingiz</label>
+              <label htmlFor='password'>{translations.login.password}</label>
               <input
                 type='password'
                 id='password'
@@ -62,9 +66,9 @@ const Login = () => {
             </div>
             <div className='login-footer'>
               <div>
-                <label htmlFor='button'>Parol unitdingizmi</label>
+                <label htmlFor='button'>{translations.login.forget}</label>
                 <button type='button' className='signup-button'>
-                  Parolni tiklash
+                  {translations.login.restore}
                 </button>
               </div>
               <hr class='vertical-hr' />
@@ -72,18 +76,18 @@ const Login = () => {
                 <hr className='horizontal-hr' />
                 <NavLink to='/signup'>
                   <button type='submit' className='login-button royhat-login'>
-                    Royhatdan o'tish
+                    {translations.login.signup}
                   </button>
                 </NavLink>
               </div>
             </div>
             <button type='submit' className='login-main'>
-              Kirish
+              {translations.login.enter}
             </button>
             <div className='back-home'>
               <hr />
               <NavLink activeclassname='forgot-password' to='/'>
-                ASOSIYGA QAYTISH
+                {translations.login.main}
               </NavLink>
               <hr />
             </div>
