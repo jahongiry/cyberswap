@@ -87,13 +87,19 @@
     "title": "E'lon yaratish",
     "subtitle": "E'lon yaratish mutlaqo bepul!",
     "level": "LVL",
-    "pass": "Royal pass",
+    "pass": "Royal pass (RP)",
     "skins": "Skinlar",
     "achiv": "Достижения",
-    "connect": "Ulangan",
+    "connect": "Barcha ulanganlarni tanlang",
     "price": "Narxi",
-    "message": "Message",
-    "create": "Yaratish"
+    "message": "Qo'shima malumotlar",
+    "create": "Yaratish",
+    "royalPass": "Royal passni kiriting...",
+    "skinsEnter": "Skinlarni passni kiriting...",
+    "pricePlaceholder": "Namuna: 125000",
+    "levelPlaceholder": "Namuna: 65",
+    "levelAchiv": "Namuna: 700+",
+    "messagePlaceholder": "Lednik lvl 3, Qilich lvl 2, Redki skinlar..."
   },
   "signup": {
     "title": "Ro'yxatdan o'ting",

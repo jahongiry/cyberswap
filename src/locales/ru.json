@@ -85,14 +85,20 @@
   "offer": {
     "title": "Создать объявление",
     "subtitle": "Создание объявления абсолютно бесплатно!",
-    "level": "Уровень",
-    "pass": "Royal pass",
+    "level": "LVL",
+    "pass": "Royal pass (RP)",
     "skins": "Скины",
     "achiv": "Достижения",
-    "connect": "Подключен",
+    "connect": "Выбрать все подключенные",
     "price": "Цена",
-    "message": "Сообщение",
-    "create": "Создать"
+    "message": "Дополнительная информация",
+    "create": "Создать",
+    "royalPass": "Введите Royal pass...",
+    "skinsEnter": "Введите скины...",
+    "pricePlaceholder": "Пример: 125000",
+    "levelPlaceholder": "Пример: 65",
+    "levelAchiv": "Пример: 700+",
+    "messagePlaceholder": "Ледник lvl 3, Меч lvl 2, Редкие скины..."
   },
   "signup": {
     "title": "Зарегистрироваться",
