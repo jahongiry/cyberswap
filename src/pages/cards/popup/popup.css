@@ -7,7 +7,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url("../../../img/bg2.jpg") no-repeat center;
+  background-color: #8bbafb;
+  background: url('../../../img/bg2.jpg') no-repeat center;
+
   background-size: cover;
   padding-top: 90px;
   padding-bottom: 3vw;
@@ -16,8 +18,6 @@
 .pop-up-overlay::-webkit-scrollbar {
   display: none;
 }
-
-
 
 .pop-up {
   width: 400px;
@@ -112,13 +112,13 @@
   height: 20px;
   margin-right: 10px;
 }
-.account-details .each-row > p:nth-child(1){
+.account-details .each-row > p:nth-child(1) {
   color: #d9398b;
   font-weight: bold;
   letter-spacing: 2px;
   text-shadow: 0 0 4px black;
 }
-.account-details .each-row > p:nth-child(2){
+.account-details .each-row > p:nth-child(2) {
   font-weight: bold;
   letter-spacing: 2px;
   text-shadow: 0 0 4px black;
@@ -137,8 +137,6 @@
   letter-spacing: 1px;
   font-size: 1rem;
 }
-
-
 
 .sotib-olish {
   border: none;
@@ -190,6 +188,53 @@
   outline: none; /* Removes the focus outline */
 }
 
+.carousel-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.carousel-container img {
+  width: 370px; /* Fixed width */
+  height: 190px; /* Fixed height */
+  object-fit: cover; /* This ensures the image covers the area, might crop */
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background-color: #3454a2;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  z-index: 1;
+}
+
+.carousel-btn.left {
+  left: 10px;
+}
+
+.carousel-btn.right {
+  right: 10px;
+}
+
+.carousel-btn:hover {
+  background-color: #5168fc;
+}
+
+.star-in-popup {
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+}
 
 @media screen and (max-width: 576px){
   .pop-up-overlay {
