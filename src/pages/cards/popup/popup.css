@@ -1,17 +1,20 @@
 .pop-up-overlay {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #8bbafb;
   background: url("../../../img/bg2.jpg") no-repeat center;
   background-size: cover;
   padding-top: 90px;
+  padding-bottom: 3vw;
+  overflow-y: scroll;
+}
+.pop-up-overlay::-webkit-scrollbar {
+  display: none;
 }
 
 
@@ -185,4 +188,12 @@
 
 .close:focus {
   outline: none; /* Removes the focus outline */
+}
+
+
+@media screen and (max-width: 576px){
+  .pop-up-overlay {
+    align-items: center;
+    padding-top: 100px;
+  }
 }
