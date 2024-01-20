@@ -26,8 +26,7 @@ const Cards = () => {
       skins: "Juda ko'p",
       price: 2000,
       owner: 'Jahongir',
-      description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, ipsa!',
+      lastSeen: '12:15 PM',
     },
     {
       id: 2,
@@ -38,8 +37,7 @@ const Cards = () => {
       skins: "Juda ko'p",
       price: 2000,
       owner: 'Jahongir',
-      description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, ipsa!',
+      lastSeen: '12:15 PM',
     },
     {
       id: 3,
@@ -50,8 +48,7 @@ const Cards = () => {
       skins: "Juda ko'p",
       price: 2000,
       owner: 'Jahongir',
-      description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, ipsa!',
+      lastSeen: '12:15 PM',
     },
     {
       id: 4,
@@ -62,8 +59,7 @@ const Cards = () => {
       skins: "Juda ko'p",
       price: 2000,
       owner: 'Jahongir',
-      description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, ipsa!',
+      lastSeen: '12:15 PM',
     },
   ];
 

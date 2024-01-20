@@ -81,7 +81,8 @@
     "rp": "RP",
     "skins": "Skins",
     "extra": "Qo'shimcha malumotlar",
-    "buy": "Sotib olish"
+    "buy": "Sotib olish",
+    "lastseen": "Oxirgi online vaqti"
   },
   "offer": {
     "title": "E'lon yaratish",
