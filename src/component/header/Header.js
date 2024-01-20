@@ -5,19 +5,22 @@ import './header.css';
 import logo from './logo1_1.png';
 import { useSelector } from 'react-redux';
 import { selectCurrentUser } from '../../slices/authSlice';
+import LanguageSwitcher from './languageSwitcher';
+import { selectTranslations } from '../../slices/languageSlice';
 
 const Header = () => {
+  const translations = useSelector(selectTranslations);
   const [navbar, setNavbar] = useState(false);
   const user = useSelector(selectCurrentUser);
-
   const navBtn = () => setNavbar(!navbar);
+
   return (
     <header className='container header'>
       <Link to='/'>
         <div className='logo'>
           <img src={logo} alt='Cyberswap' />
         </div>
-        <span>Cyberswap</span>
+        <span>CyberSwap</span>
       </Link>
 
       <nav className={navbar ? 'mobile' : ''}>
@@ -25,22 +28,24 @@ const Header = () => {
           <li onClick={navBtn}>
             <NavLink activeclassname='active' to='/'>
               <i className='fa-solid fa-house'></i>
-              Asosiy
+              {translations.header.main}
             </NavLink>
           </li>
           <li onClick={navBtn}>
             <NavLink to='/advertisement'>
-              <i className='fa-solid fa-circle-info'></i>E'lonlar
+              <i className='fa-solid fa-circle-info'></i>
+              {translations.header.offers}
             </NavLink>
           </li>
           <li onClick={navBtn}>
             <NavLink to='/contact'>
-              <i className='fa-solid fa-comments'></i>Bog'lanish
+              <i className='fa-solid fa-comments'></i>
+              {translations.header.contact}
             </NavLink>
           </li>
         </ul>
       </nav>
-
+      <LanguageSwitcher />
       <div className='header-btns'>
         {user ? (
           <Link to='/profile' className='sign-in'>
@@ -48,7 +53,7 @@ const Header = () => {
           </Link>
         ) : (
           <Link to='/login' className='sign-in'>
-            <span>Kirish</span>
+            <span>{translations.header.enter}</span>
             <i className='fa fa-sign-in' aria-hidden='true'></i>
           </Link>
         )}

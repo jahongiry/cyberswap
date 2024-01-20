@@ -1,38 +1,41 @@
 import React from 'react';
 import './offer.css';
+import { selectTranslations } from '../../slices/languageSlice';
+import { useSelector } from 'react-redux';
 
 const Offer = () => {
+  const translations = useSelector(selectTranslations);
   return (
     <section className='offer container'>
       <div className='offer-container'>
-        <h1>E'lon yaratish</h1>
-        <p>E'lon yaratish mutlaqo bepul!</p>
+        <h1>{translations.offer.title}</h1>
+        <p>{translations.offer.subtitle}</p>
 
         <form action='#'>
           <div className='form-group'>
             <div className='form-input'>
-              <label htmlFor='level'>Daraja</label>
+              <label htmlFor='level'>{translations.offer.level}</label>
               <input type='number' name='level' id='level' min={0} />
             </div>
             <div className='form-input'>
-              <label htmlFor='royalPass'>Royal pass</label>
+              <label htmlFor='royalPass'>{translations.offer.pass}</label>
               <input type='text' name='royalPass' id='royalPass' />
             </div>
           </div>
 
           <div className='form-group'>
             <div className='form-input'>
-              <label htmlFor='skin'>Skins</label>
+              <label htmlFor='skin'>{translations.offer.skins}</label>
               <input type='text' name='skin' id='skin' />
             </div>
             <div className='form-input'>
-              <label htmlFor='achievement'>Achievement</label>
+              <label htmlFor='achievement'>{translations.offer.achiv}</label>
               <input type='text' name='achievement' id='achievement' />
             </div>
           </div>
 
           <div className='form-input'>
-            <span>Ulangan</span>
+            <span>{translations.offer.connect}</span>
             <div className='connect-input'>
               <label htmlFor='phone'>
                 <input type='checkbox' name='connected' id='phone' />
@@ -57,16 +60,16 @@ const Offer = () => {
             </div>
           </div>
           <div className='form-input'>
-            <label htmlFor='cost'>Narxi</label>
+            <label htmlFor='cost'>{translations.offer.price}</label>
             <input type='number' name='cost' id='cost' min={0} />
           </div>
           <div className='form-input'>
-            <label htmlFor='message'>Message:</label>
+            <label htmlFor='message'>{translations.offer.message}:</label>
             <textarea name='message' id='message'></textarea>
           </div>
 
           <button className='form-btn' type='button'>
-            Yaratish
+            {translations.offer.create}
           </button>
         </form>
       </div>

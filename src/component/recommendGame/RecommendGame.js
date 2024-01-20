@@ -2,8 +2,11 @@ import React from 'react';
 import './recommendGame.css';
 import gamePerson from './gamePerson.png';
 import { NavLink, Link } from 'react-router-dom';
+import { selectTranslations } from '../../slices/languageSlice';
+import { useSelector } from 'react-redux';
 
 const RecommendGame = () => {
+  const translations = useSelector(selectTranslations);
   return (
     <section className='recommendGame container'>
       <div className='recommend-container'>
@@ -19,16 +22,13 @@ const RecommendGame = () => {
 
         <div className='recommend-content'>
           <h1 className='title'>
-            Sifatli va arzon <br /> <span>PubG accountlar</span>
+            {translations.recommendation.title} <br />
+            <span>{translations.recommendation.span} </span>
           </h1>
-          <p className='subtitle'>
-            Avtomatlashgan to'lov tizimi orqali soting va sotib oling, har bir
-            elon telegram kanali orqali ham elon beriladi. Barcha sotuvchi va
-            sotib oluvchi ma'lumotlari himoyalangan!
-          </p>
+          <p className='subtitle'>{translations.recommendation.subtitle}</p>
           <Link to='/cards' className='cards-link'>
             <button className='btn'>
-              <span>Barcha e'lonlarni ko'rish </span>
+              <span>{translations.recommendation.span2} </span>
             </button>
           </Link>
         </div>

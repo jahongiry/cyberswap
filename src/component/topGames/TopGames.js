@@ -13,29 +13,32 @@ import player3 from './img/player3.png';
 import player4 from './img/player4.png';
 import player5 from './img/player5.png';
 import player6 from './img/player6.png';
+import { selectTranslations } from '../../slices/languageSlice';
+import { useSelector } from 'react-redux';
 
 const TopGames = () => {
+  const translations = useSelector(selectTranslations);
+
   return (
     <section className='topGames container'>
       <h1 className='title'>
-        Eng saralangan <br />
-        <span>e'lonlar</span>
+        {translations.topgames.title} <br />
+        <span>{translations.topgames.span1}</span>
       </h1>
-
       <div className='topGames-category'>
         <Link to='/offer' className='cards-link'>
           <button className='btn'>
-            <span>PubG accountlar</span>
+            <span>{translations.topgames.pubgaccounts}</span>
           </button>
         </Link>
         <Link to='/offer' className='cards-link'>
           <button className='btn'>
-            <span>Telegram usernamelar</span>
+            <span>{translations.topgames.telegram}</span>
           </button>
         </Link>
         <Link to='/offer' className='cards-link'>
           <button className='btn'>
-            <span>Instagran usernamelar</span>
+            <span>{translations.topgames.instagram}</span>
           </button>
         </Link>
       </div>

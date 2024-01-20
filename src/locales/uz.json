@@ -1,0 +1,116 @@
+{
+  "header": {
+    "main": "Asosiy",
+    "offers": "Elonlar",
+    "contact": "Bog'lanish",
+    "enter": "Kirish"
+  },
+
+  "main": {
+    "title": "biz bilan",
+    "span": "Kiber savdo",
+    "garant": "Garant va Ishonchli",
+    "subtitle": "Oyin accountlari, Telegram nomlar va kanallar, Instagram nomlarini havsiz soting va sotib oling!",
+    "offergiving": "Elon berish/Sotish",
+    "offerbuy": "Sotib olish",
+    "numberaccounts": "100+",
+    "pubgaccounts": "Pubg accountlar",
+    "pubgsellers": "Ishonchli sotuvchilar",
+    "soldaccountsnumber": "500+",
+    "soldaccounts": "Sotilgan accountlar"
+  },
+  "recommendation": {
+    "title": "Sifatli va arzon",
+    "span": "PubG accountlar",
+    "subtitle": "Avtomatlashgan to'lov tizimi orqali soting va sotib oling, har bir elon telegram kanali orqali ham elon beriladi. Barcha sotuvchi va sotib oluvchi ma'lumotlari himoyalangan!",
+    "span2": "Barcha e'lonlarni ko'rish"
+  },
+  "favourite": {
+    "title": "O'zingizga mos",
+    "span": "takliflarni",
+    "span2": "toping",
+    "subtitle1": "Eng arzon va yuqori darajadagi pubg accountlar",
+    "subtitle2": "Ishonchli va qiziquvchan haridorlar, real timedagi savdo",
+    "span3": "Accountarni ko'rish",
+    "span4": "Yangi e'lon yaratish"
+  },
+  "footer": {
+    "paragraph1": "To'lov tizimlar hozircha faqat Click evolution va Payme orqali amalga oshiriladi! Agar savdo tuganlanmasa pul qaytarib beriladi!",
+    "link1": "Mahsulotlar",
+    "help": "Yordam",
+    "socialmedia": "Social Media",
+    "link2": "Telefonga application",
+    "link3": "Biz haqimizda",
+    "link4": "Biz bilan bog'lanish",
+    "link5": "Bizning kontactlar",
+    "link6": "Telegram kanalimiz",
+    "link7": "youtube videolarimiz",
+    "link8": "Instagram accountimiz",
+    "link9": "terms & conditions"
+  },
+  "topgames": {
+    "title": "Eng saralangan",
+    "span1": "e'lonlar",
+    "pubgaccounts": "PubG accountlar",
+    "telegram": "Telegram usernamelar",
+    "instagram": "Instagran usernamelar"
+  },
+  "cards": {
+    "search": "Qidirish",
+    "filter": "Filterlash",
+    "new": "Yangilari",
+    "cheap": "Arzonlari",
+    "expensive": "Qimmatlari",
+    "placeholder": "Kerakli so'zini yozing"
+  },
+  "login": {
+    "welcome": "Hush kelibsiz",
+    "phone": "Telefon nomer",
+    "password": "Parolingiz",
+    "forget": "Parol unitdingizmi",
+    "restore": "Parolni tiklash",
+    "signup": "Royhatdan o'tish",
+    "enter": "Kirish",
+    "main": "ASOSIYGA QAYTISH"
+  },
+  "popup": {
+    "owner": "egasi",
+    "about": "Account haqida",
+    "id": "ID",
+    "level": "Level",
+    "rp": "RP",
+    "skins": "Skins",
+    "extra": "Qo'shimcha malumotlar",
+    "buy": "Sotib olish"
+  },
+  "offer": {
+    "title": "E'lon yaratish",
+    "subtitle": "E'lon yaratish mutlaqo bepul!",
+    "level": "LVL",
+    "pass": "Royal pass",
+    "skins": "Skinlar",
+    "achiv": "Достижения",
+    "connect": "Ulangan",
+    "price": "Narxi",
+    "message": "Message",
+    "create": "Yaratish"
+  },
+  "signup": {
+    "title": "Ro'yxatdan o'ting",
+    "phone": "Telefon nomer",
+    "pasword": "PAROL KIRITNG",
+    "repassword": "PAROLINGIZNI QAYTADAN KIRITNG",
+    "enter": "Kirish",
+    "backtoenter": "Kirishga o'tish",
+    "back": "Ortga",
+    "signup": " Ro'yxatdan o'tish",
+    "passwordplaceholder": "Parol"
+  },
+  "confirm": {
+    "confirmn": "Nomeringizni tasdiqlang",
+    "code": "Telefoningizga kelgan kodeni kiriting",
+    "signup": "Ro'yatdan o'tish",
+    "back": "Ortga",
+    "confirm": "Tasdiqlash"
+  }
+}
