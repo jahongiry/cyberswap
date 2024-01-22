@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import "./header.css";
@@ -15,7 +16,7 @@ const Header = () => {
   const user = useSelector(selectCurrentUser);
   const navBtn = () => setNavbar(!navbar);
   useEffect(() => {
-    window.addEventListener("scroll", () => {
+    window.addEventListener('scroll', () => {
       if (window.scrollY > 0) {
         setNavbar(false);
       }
