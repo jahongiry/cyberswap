@@ -112,5 +112,20 @@
     "signup": "Ro'yatdan o'tish",
     "back": "Ortga",
     "confirm": "Tasdiqlash"
+  },
+  "profile": {
+    "exit": "Chiqish",
+    "span1": "Profilingiz",
+    "proileEdit": "Ma'lumotlarni o'zgartirish",
+    "editPhone": "Telefon",
+    "editName": "Ism",
+    "editDetail": "Men haqimda",
+    "editPassword": "Parol",
+    "profileOffer": "E'lonlarim",
+    "profileHistory": "Arxivlarim",
+    "price": "Narx",
+    "level": "Lvl",
+    "updateInfo": "Yangilash"
+
   }
 }

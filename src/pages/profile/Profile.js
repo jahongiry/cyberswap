@@ -6,9 +6,13 @@ import { logOutUser } from '../../slices/authSlice';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
+import { selectTranslations } from '../../slices/languageSlice';
+import { useSelector } from 'react-redux';
+
+
 const Profile = () => {
   const dispatch = useDispatch();
-
+  const translations = useSelector(selectTranslations);
   const handleLogout = () => {
     dispatch(logOutUser());
   };
@@ -19,9 +23,9 @@ const Profile = () => {
         <div className='profile-header'>
           <NavLink className='chiqish' onClick={handleLogout} to='/'>
             <ion-icon name='arrow-back-circle-outline'></ion-icon>
-            <span>Chiqish</span>
+            <span>{translations.profile.exit}</span>
           </NavLink>
-          <span>Profilingiz</span>
+          <span>{translations.profile.span1}</span>
           <div className='img'>
             <img src={profileImg} alt='user user' />
           </div>
@@ -34,19 +38,19 @@ const Profile = () => {
             voluptate. Quod amet repudiandae impedit!
           </p>
 
-          <p className='profile-edit'>Ma'lumotlarni o'zgartirish:</p>
+          <p className='profile-edit'>{translations.profile.profileEdit}:</p>
           <div className='edit-btns'>
-            <button className='edit-phone'>Telfon</button>
-            <button className='edit-name'>Ism</button>
-            <button className='edit-detail'>Men haqimda</button>
-            <button className='edit-password'>Parol</button>
+            <button className='edit-phone'>{translations.profile.editPhone}</button>
+            <button className='edit-name'>{translations.profile.editName}</button>
+            <button className='edit-detail'>{translations.profile.editDetail}</button>
+            <button className='edit-password'>{translations.profile.editPassword}</button>
           </div>
         </div>
 
         <div className='profile-container'>
           <div className='profile-filter'>
-            <button className='profile-offer__btn active'>E'lonlarim</button>
-            <button className='profile-history__btn'>Arxivlarim</button>
+            <button className='profile-offer__btn active'>{translations.profile.profileOffer}</button>
+            <button className='profile-history__btn'>{translations.profile.profileHistory}</button>
           </div>
 
           <div className='data-container'>
@@ -59,10 +63,10 @@ const Profile = () => {
                     </div>
                     <div className='content-info'>
                       <p className='content-level'>
-                        Lvl: <span>{offerData.level}</span>
+                      {translations.profile.level}: <span>{offerData.level}</span>
                       </p>
                       <p className='content-price'>
-                        Price: <span>{offerData.price}</span> so'm
+                      {translations.profile.price}: <span>{offerData.price}</span> so'm
                       </p>
                     </div>
                   </div>
@@ -70,7 +74,7 @@ const Profile = () => {
                     <button className='delete-info__btn'>
                       <ion-icon name='trash-outline'></ion-icon>
                     </button>
-                    <button className='update-info__btn'>Yangilash</button>
+                    <button className='update-info__btn'>{translations.profile.updateInfo}</button>
                   </div>
                 </div>
               );

@@ -16,7 +16,7 @@ const Testimonial = () => {
     <section className='testimonial container'>
       <div className='testimonial-container'>
         <Swiper
-          slidesPerView={2}
+          slidesPerView={'auto'}
           spaceBetween={30}
           loop={true}
           pagination={{

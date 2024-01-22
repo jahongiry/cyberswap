@@ -111,5 +111,20 @@
     "signup": "Регистрация",
     "back": "Назад",
     "confirm": "Подтвердить"
-  }
+  },
+  "profile": {
+    "exit": "Выход",
+    "span1": "Ваш Профиль",
+    "profileEdit": "Редактировать Информацию",
+    "editPhone": "Телефон",
+    "editName": "Имя",
+    "editDetail": "Обо мне",
+    "editPassword": "Пароль",
+    "profileOffer": "Мои Предложения",
+    "profileHistory": "Моя История",
+    "price": "Цена",
+    "level": "Уровень",
+    "updateInfo": "Обновить Информацию"
+}
+
 }
