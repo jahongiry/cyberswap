@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { selectCurrentUser } from '../../slices/authSlice';
 import LanguageSwitcher from './languageSwitcher';
 import { selectTranslations } from '../../slices/languageSlice';
+import halmet from '../../img/halmet.png';
 
 const Header = () => {
   const translations = useSelector(selectTranslations);
@@ -13,13 +14,12 @@ const Header = () => {
   const user = useSelector(selectCurrentUser);
   const navBtn = () => setNavbar(!navbar);
   useEffect(() => {
-    window.addEventListener("scroll", () => {
+    window.addEventListener('scroll', () => {
       if (window.scrollY > 0) {
-        setNavbar(false)
+        setNavbar(false);
       }
     });
   }, []);
-
 
   return (
     <header className='container header'>
