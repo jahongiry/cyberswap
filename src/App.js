@@ -16,6 +16,8 @@ import Profile from "./pages/profile/Profile";
 import { useDispatch } from "react-redux";
 import { checkLogIn } from "./slices/authSlice";
 import Confirm from "./pages/signup/confirm/Confirm";
+// import Loader from "./component/loader/Loader1";
+import Loader from "./component/loader/Loader2";
 
 function App() {
   const dispatch = useDispatch();
@@ -43,6 +45,7 @@ function App() {
         <Route path="/payment" exact element={<Payment />} />
         <Route path="/profile" exact element={<Profile />} />
         <Route path="/chat" exact element={<Chat />} />
+        <Route path="/loader" element={<Loader />} />
       </Routes>
       <Footer />
     </div>

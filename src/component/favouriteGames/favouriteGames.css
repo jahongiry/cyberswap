@@ -16,7 +16,6 @@
 }
 
 .favouriteGames-container {
-  margin-top: 40px;
   width: 100%;
   overflow: hidden;
   /* display: grid;
@@ -45,16 +44,16 @@
 
 .favouriteGames-content .position-side {
   display: flex;
-  padding: 8px;
+  padding: 1%;
   background: var(--bg-color);
-  gap: 8px;
+  gap: 5%;
   position: absolute;
   z-index: 2;
   transform-origin: center;
 }
 .favouriteGames-content .position-side > div {
-  width: 8px;
-  height: 14px;
+  width: 1vw;
+  height: 8px;
   background: var(--btn-bg-color);
 }
 .favouriteGames-content .left-side {
@@ -78,13 +77,14 @@
   transform: translate(0%, -50%) skewX(-30deg);
 }
 .favouriteGames-content .top-center {
+  padding: 10px;
+  width: auto;
+  aspect-ratio: 1 / 1;
   position: absolute;
   top: 0;
   left: 50%;
   z-index: 11;
   transform: translate(-50%, -60%);
-  width: 65px;
-  height: 65px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -94,13 +94,13 @@
 }
 .favouriteGames-content .top-center i {
   color: #fff;
-  font-size: var(--normal-fs);
+  font-size: 1.4rem;
 }
 
 .favouriteGames-content .bottom-center {
   display: inline-block;
   width: fit-content;
-  padding: 8px 60px;
+  padding: 1% 10%;
   clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
   background: var(--btn-bg-color);
   position: absolute;
@@ -111,7 +111,7 @@
 }
 .favouriteGames-content .bottom-center > p{
   font-family: var(--roboto);
-  font-size: var(--normal-fs);
+  font-size: 1.2rem;
   font-weight: var(--fw-800);
   line-height: 110.6%;
   letter-spacing: 1.122px;
@@ -146,8 +146,10 @@
 
 .favouriteGames .swiper {
   width: 100%;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 3vw;
+  padding-bottom: 3vw;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .favouriteGames .swiper-wrapper {
@@ -158,8 +160,29 @@
 .favouriteGames .swiper-slide {
   background-position: center;
   background-size: cover;
-  width: 300px;
+  width: 33.3% !important;
   height: auto !important;
   aspect-ratio: 4 / 3 !important;
+}
+
+@media screen and (max-width: 768px) {
+  .favouriteGames .swiper-slide {
+    width: 60% !important;
+  }
+  .favouriteGames-content .position-side > div {
+    width: 2vw;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .favouriteGames .swiper-slide {
+    width: 80% !important;
+  }
+  .favouriteGames-content .top-center i {
+    font-size: 1rem;
+  }
+  .favouriteGames-content .bottom-center > p{
+    font-size: 1rem;
+  }
 }
 

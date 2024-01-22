@@ -19,6 +19,15 @@ html {
     #b8009b 80%,
     #b8009b 100%
   );
+  --btn-hover-bg-color: linear-gradient(
+    45deg,
+    #6547f7 0%,
+    #6547f7 10%,
+    #f77cff 50%,
+    #b8009b 70%,
+    #b8009b 90%,
+    #000000 100%
+  );
   --text-bg-color: linear-gradient(
     45deg,
     #6547f7 0%,

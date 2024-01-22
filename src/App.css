@@ -18,7 +18,7 @@ a {
   background-position: center;
   background-repeat: no-repeat;
 } */
-® button,
+button,
 input {
   border: none;
   outline: none;
@@ -42,6 +42,10 @@ img {
   transform: skewX(-15deg);
   cursor: pointer;
   border-radius: 10px;
+  transition: background 0.5s ease;
+}
+.btn:hover {
+  background: var(--btn-hover-bg-color);
 }
 .btn span {
   display: inline-block;
