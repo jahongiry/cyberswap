@@ -1,0 +1,41 @@
+.main-offers-container {
+  margin: 1rem 0.2rem;
+}
+
+.main-offers-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.main-offers-container th,
+.main-offers-container td {
+  border: 1px solid #828181;
+  padding: 8px;
+  text-align: left;
+  color: black;
+}
+
+.main-offers-container th {
+  background-color: #f3f3f3;
+  color: black;
+}
+
+.main-offers-container tr:nth-child(even) {
+  background-color: #f2f2f2;
+  color: black;
+}
+
+.main-offers-container tr:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.main-offers-container button {
+  color: black;
+  background: none;
+}
+
+.main-offers-container button {
+  margin-top: 10px;
+  /* Add more styling as needed */
+}

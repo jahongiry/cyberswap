@@ -1,0 +1,138 @@
+.admin-page {
+  background-color: white;
+  height: 100vh;
+  color: black;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #f3f3f3;
+  border-bottom: 1px solid #ddd;
+}
+
+.filter-container-main {
+  display: flex;
+  gap: 10rem;
+  padding: 0 2rem;
+}
+
+.filter-title {
+  color: black;
+  margin-top: 0.4rem;
+  margin-right: -7rem;
+}
+
+.search-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 300px;
+  color: black;
+}
+
+.filter-button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.filter-button:hover {
+  background-color: #0056b3;
+}
+
+.search-submit {
+  padding: 8px 10px;
+  background-color: #323539;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.admin-container {
+  display: flex;
+  height: 100vh;
+}
+
+.admin-nav {
+  width: 300px; /* Adjust width as needed */
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  padding-top: 4rem;
+}
+
+.nav-link {
+  display: block;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+}
+
+.nav-link:hover {
+  background-color: #444;
+}
+
+.admin-content {
+  flex-grow: 1;
+  background-color: white;
+}
+
+.date-picker-container {
+  position: relative;
+  display: inline-block;
+}
+
+.date-input {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+  color: black;
+  padding: 8px;
+  margin-left: -8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Add to your existing admin.css */
+
+.filter-container {
+  position: relative;
+  display: inline-block;
+}
+
+.filter-input {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+  color: black;
+  padding: 8px;
+  margin-left: -8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px; /* Adjust as needed */
+}
+
+/* Add to your existing admin.css */
+
+.status-dropdown {
+  color: white;
+  padding: 8px;
+  background-color: #007bff;
+  padding: 10px 10px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}

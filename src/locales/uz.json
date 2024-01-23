@@ -3,7 +3,8 @@
     "main": "Asosiy",
     "offers": "Elonlar",
     "contact": "Bog'lanish",
-    "enter": "Kirish"
+    "enter": "Kirish",
+    "admin": "Admin"
   },
 
   "main": {
@@ -133,6 +134,5 @@
     "price": "Narx",
     "level": "Lvl",
     "updateInfo": "Yangilash"
-
   }
 }
