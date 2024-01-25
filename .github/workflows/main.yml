@@ -28,33 +28,11 @@ jobs:
         npm run build
         echo "Build completed successfully"
 
-    - name: Remove old hosting temp directory 
-      uses: appleboy/ssh-action@v1.0.3
-      with:
-        host: ${{ secrets.REMOTE_HOST }}
-        username: ${{ secrets.REMOTE_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        script: |
-          cd ${{ secrets.TARGET }}
-          rm -rf build
-
     - name: Deploy to Server
       uses: appleboy/scp-action@v0.1.7
       with:
-        host: ${{ secrets.REMOTE_HOST }}
-        username: ${{ secrets.REMOTE_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
         source: "build/*"
         target: "${{ secrets.TARGET }}"
-
-    - name: Remove old hosting temp directory 
-      uses: appleboy/ssh-action@v1.0.3
-      with:
-        host: ${{ secrets.REMOTE_HOST }}
-        username: ${{ secrets.REMOTE_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        script: |
-          cd ${{ secrets.TARGET }}/public_html
-          rm -rf *
-          cd ${{ secrets.TARGET }}
-          mv build/* public_html/
