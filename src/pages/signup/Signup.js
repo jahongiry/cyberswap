@@ -25,7 +25,7 @@ const Signup = () => {
     }
 
     setPasswordError('');
-    dispatch(signUp({ number: phoneNumber, password }));
+    dispatch(signUp({ phone_number: phoneNumber, password }));
 
     navigate('/confirm');
   };

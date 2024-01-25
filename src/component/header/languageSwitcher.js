@@ -16,8 +16,12 @@ const LanguageSwitcher = () => {
 
   return (
     <button className='language-btn' onClick={toggleLanguage}>
-      <span className='desktop-lang__btn'>{currentLanguage === 'uz' ? 'Russian' : 'Uzbek'}</span>
-      <span className='mobile-lang__btn'>{currentLanguage === 'uz' ? '🇷🇺' : '🇺🇿'}</span>
+      <span className='desktop-lang__btn'>
+        {currentLanguage === 'uz' ? 'Russian' : 'Uzbek'}
+      </span>
+      <span className='mobile-lang__btn'>
+        {currentLanguage === 'uz' ? 'Ru 🇷🇺' : 'Uz 🇺🇿'}
+      </span>
     </button>
   );
 };
