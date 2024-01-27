@@ -1,17 +1,32 @@
 import React, { useState } from 'react';
 import './offer.css';
 import { selectTranslations } from '../../slices/languageSlice';
-import { useSelector } from 'react-redux';
 import sampleImage from '../../img/pubg_page.png';
+import { createOffer } from '../../slices/offerSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { json } from 'react-router-dom';
 
 const Offer = () => {
   const translations = useSelector(selectTranslations);
+  const dispatch = useDispatch();
   const [images, setImages] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]);
-  const [royalPasses, setRoyalPasses] = useState([]);
+  const [royal_pass, setRoyal_pass] = useState([]);
   const [currentRoyalPass, setCurrentRoyalPass] = useState('');
   const [skins, setSkins] = useState([]);
   const [currentSkin, setCurrentSkin] = useState('');
+  const [level, setLevel] = useState('');
+  const [rating, setRating] = useState('');
+  const [cost, setCost] = useState('');
+  const [description, setDescription] = useState('');
+  const [connects, setConnects] = useState({
+    phone_number: false,
+    email: false,
+    apple_id: false,
+    facebook: false,
+    twitter: false,
+    game_center: false,
+  });
 
   const handleAddSkin = () => {
     if (currentSkin.trim() !== '' && !skins.includes(currentSkin.trim())) {
@@ -27,26 +42,29 @@ const Offer = () => {
   const handleAddRoyalPass = () => {
     if (
       currentRoyalPass.trim() !== '' &&
-      !royalPasses.includes(currentRoyalPass.trim())
+      !royal_pass.includes(currentRoyalPass.trim())
     ) {
-      setRoyalPasses([...royalPasses, currentRoyalPass.trim()]);
+      setRoyal_pass([...royal_pass, currentRoyalPass.trim()]);
       setCurrentRoyalPass('');
     }
   };
 
   const handleRemoveRoyalPass = (passToRemove) => {
-    setRoyalPasses(royalPasses.filter((pass) => pass !== passToRemove));
+    setRoyal_pass(royal_pass.filter((pass) => pass !== passToRemove));
   };
 
   const handleImageChange = (e) => {
-    if (e.target.files) {
-      const filesArray = Array.from(e.target.files).map((file) =>
+    if (e.target.files && e.target.files.length > 0) {
+      const newImages = Array.from(e.target.files);
+      setImages((prevImages) => [...prevImages, ...newImages]);
+
+      const newImagePreviews = newImages.map((file) =>
         URL.createObjectURL(file)
       );
-
-      setImagePreviews((prevImages) => prevImages.concat(filesArray));
-      setImages((prevImages) => prevImages.concat(Array.from(e.target.files)));
-      e.target.value = null;
+      setImagePreviews((prevPreviews) => [
+        ...prevPreviews,
+        ...newImagePreviews,
+      ]);
     }
   };
 
@@ -55,13 +73,38 @@ const Offer = () => {
     setImages((prevImages) => prevImages.filter((_, i) => i !== index));
   };
 
+  const handleConnectChange = (connectType) => {
+    setConnects((prevConnects) => ({
+      ...prevConnects,
+      [connectType]: !prevConnects[connectType],
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log('w');
+    const offerData = {
+      data: {
+        level: parseInt(level, 10),
+        rating: parseInt(rating, 10),
+        royal_pass,
+        skins,
+        cost: parseInt(cost, 10),
+        description,
+        connects,
+      },
+      images,
+    };
+    dispatch(createOffer(offerData));
+  };
+
   return (
     <section className='offer container'>
       <div className='offer-container'>
         <h1>{translations.offer.title}</h1>
         <p>{translations.offer.subtitle}</p>
 
-        <form action='#'>
+        <form onSubmit={handleSubmit}>
           <div className='image-upload-container'>
             {imagePreviews.map((image, index) => (
               <div key={index} className='image-preview'>
@@ -88,6 +131,8 @@ const Offer = () => {
               <input
                 type='number'
                 name='level'
+                value={level}
+                onChange={(e) => setLevel(e.target.value)}
                 id='level'
                 min={0}
                 placeholder={translations.offer.levelPlaceholder}
@@ -99,16 +144,17 @@ const Offer = () => {
                 type='text'
                 name='achievement'
                 id='achievement'
+                value={rating}
+                onChange={(e) => setRating(e.target.value)}
                 placeholder={translations.offer.levelAchiv}
               />
             </div>
           </div>
-
           <div className='form-group'>
             <div className='form-input'>
               <label htmlFor='royalPass'>{translations.offer.pass}</label>
               <div className='royal-pass-input-container'>
-                {royalPasses.map((pass, index) => (
+                {royal_pass.map((pass, index) => (
                   <span key={index} className='royal-pass-tag'>
                     {pass}
                     <button
@@ -125,7 +171,7 @@ const Offer = () => {
                   value={currentRoyalPass}
                   onChange={(e) => setCurrentRoyalPass(e.target.value)}
                   placeholder={
-                    royalPasses.length === 0 ? translations.offer.royalPass : ''
+                    royal_pass.length === 0 ? translations.offer.royalPass : ''
                   }
                 />
                 {currentRoyalPass && (
@@ -175,28 +221,67 @@ const Offer = () => {
               </div>
             </div>
           </div>
-
           <div className='form-input'>
             <span>{translations.offer.connect}</span>
             <div className='connect-input'>
               <label htmlFor='phone'>
-                <input type='checkbox' name='connected' id='phone' />
+                <input
+                  type='checkbox'
+                  id='phone'
+                  checked={connects.phone_number}
+                  onChange={() => handleConnectChange('phone_number')}
+                />
                 <i className='fa-solid fa-phone'></i>
               </label>
-              <label htmlFor='google'>
-                <input type='checkbox' name='connected' id='google' />
-                <i className='fa-brands fa-google'></i>
+
+              <label htmlFor='email'>
+                <input
+                  type='checkbox'
+                  id='email'
+                  checked={connects.email}
+                  onChange={() => handleConnectChange('email')}
+                />
+                <i className='fa-solid fa-envelope'></i>{' '}
+                {/* Replace with appropriate icon */}
               </label>
+
               <label htmlFor='apple'>
-                <input type='checkbox' name='connected' id='apple' />
+                <input
+                  type='checkbox'
+                  id='apple'
+                  checked={connects.apple_id}
+                  onChange={() => handleConnectChange('apple_id')}
+                />
                 <i className='fa-brands fa-apple'></i>
               </label>
+
               <label htmlFor='facebook'>
-                <input type='checkbox' name='connected' id='facebook' />
+                <input
+                  type='checkbox'
+                  id='facebook'
+                  checked={connects.facebook}
+                  onChange={() => handleConnectChange('facebook')}
+                />
                 <i className='fa-brands fa-facebook-f'></i>
               </label>
+
+              <label htmlFor='twitter'>
+                <input
+                  type='checkbox'
+                  id='twitter'
+                  checked={connects.twitter}
+                  onChange={() => handleConnectChange('twitter')}
+                />
+                <i className='fa-brands fa-twitter'></i>
+              </label>
+
               <label htmlFor='gamecenter'>
-                <input type='checkbox' name='connected' id='gamecenter' />
+                <input
+                  type='checkbox'
+                  id='gamecenter'
+                  checked={connects.game_center}
+                  onChange={() => handleConnectChange('game_center')}
+                />
                 <i className='fa-solid fa-gamepad'></i>
               </label>
             </div>
@@ -207,20 +292,23 @@ const Offer = () => {
               type='number'
               name='cost'
               id='cost'
+              value={cost}
+              onChange={(e) => setCost(e.target.value)}
               min={0}
               placeholder={translations.offer.pricePlaceholder}
             />
           </div>
           <div className='form-input'>
-            <label htmlFor='message'>{translations.offer.message}:</label>
+            <label htmlFor='description'>{translations.offer.message}:</label>
             <textarea
-              name='message'
-              id='message'
+              name='description'
+              id='description'
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
               placeholder={translations.offer.messagePlaceholder}
             ></textarea>
           </div>
-
-          <button className='form-btn' type='button'>
+          <button className='form-btn' type='submit'>
             {translations.offer.create}
           </button>
         </form>

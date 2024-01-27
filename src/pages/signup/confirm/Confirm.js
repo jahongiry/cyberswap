@@ -14,8 +14,6 @@ const Confirm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(verifyNumber(otp));
-    // handle response or navigate to another page as needed
-    console.log('Boldii');
   };
 
   return (
