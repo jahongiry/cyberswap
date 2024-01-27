@@ -38,8 +38,6 @@ const Cards = () => {
     return <div>Error: {error}</div>; // display the error message
   }
 
-  console.log(cards.skins);
-
   return (
     <div className='cards-wrapper'>
       <div className='cards-container'>
