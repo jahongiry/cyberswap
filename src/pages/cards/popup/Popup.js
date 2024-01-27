@@ -33,7 +33,6 @@ const PopUp = ({ isVisible, togglePopUp, game, images, seller }) => {
           <ion-icon name='close-circle-outline'></ion-icon>
         </button>
         <div className='carousel-container'>
-          {/* Conditionally render the left button */}
           {shouldRenderButtons && (
             <button className='carousel-btn left' onClick={prevImage}>
               &#10094;
@@ -51,7 +50,7 @@ const PopUp = ({ isVisible, togglePopUp, game, images, seller }) => {
           )}
         </div>
         <div className='top'>
-          <img src={images} alt='game name' />
+          <img src={game.seller.image} alt='game name' />
           <div>
             <h3>
               <span>{translations.popup.owner}:</span> {game.seller.username}
@@ -85,7 +84,11 @@ const PopUp = ({ isVisible, togglePopUp, game, images, seller }) => {
               <ion-icon name='aperture-outline'></ion-icon>{' '}
               {translations.popup.rp}:
             </p>
-            <p className='facts'>{game.rp}</p>
+            <div className='facts'>
+              {game.royal_pass.map((rp, index) => (
+                <p key={index}>{rp}</p>
+              ))}
+            </div>
           </div>
           <hr className='divider2' />
           <div className='each-row'>
@@ -93,12 +96,20 @@ const PopUp = ({ isVisible, togglePopUp, game, images, seller }) => {
               <ion-icon name='body-outline'></ion-icon>
               {translations.popup.skins}:
             </p>
-            <p className='facts'>{game.skins}</p>
+            <div className='facts'>
+              {game.skins.map((skin, index) => (
+                <p key={index}>{skin}</p>
+              ))}
+            </div>
           </div>
           <hr className='divider2' />
-          <p>
-            {translations.popup.extra}: {game.description}
-          </p>
+          <div className='each-row'>
+            <p>
+              <ion-icon name='flame-outline'></ion-icon>
+              {translations.popup.extra}: <br />
+              <p className='facts'>{game.description}</p>
+            </p>
+          </div>
           <hr className='divider2' />
           <button className='sotib-olish'>{translations.popup.buy}</button>
         </div>

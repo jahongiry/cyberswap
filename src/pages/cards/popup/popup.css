@@ -23,7 +23,7 @@
   width: 400px;
   position: relative;
   background-color: #202b50;
-  padding: 20px 15px;
+  padding: 20px 10px;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   color: white;
@@ -46,18 +46,19 @@
   padding: 1rem;
   border-radius: 10px;
   border: 2px solid #6d86e3;
-  gap: 0.5rem;
+  gap: 1.2rem;
 }
 
 .top img {
-  width: 100%;
+  width: 110%;
   height: auto;
   align-self: center;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   -webkit-box-shadow: -14px 18px 34px -3px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: -14px 18px 34px -3px rgba(0, 0, 0, 0.75);
-  box-shadow: -14px 18px 34px -3px rgba(0, 0, 0, 0.75);
+  box-shadow: -14px 18px 24px -3px rgba(0, 0, 0, 0.75);
+  padding: 0;
 }
 
 .top div > h3 {
@@ -100,7 +101,7 @@
   position: relative;
 }
 .account-details .each-row {
-  padding: 1rem 1rem 0.5rem;
+  padding: 1rem 0.2rem 0.5rem;
   width: 100%;
   display: flex;
   align-items: center;
@@ -117,6 +118,7 @@
   font-weight: bold;
   letter-spacing: 2px;
   text-shadow: 0 0 4px black;
+  line-height: 1.5rem;
 }
 .account-details .each-row > p:nth-child(2) {
   font-weight: bold;
@@ -129,11 +131,11 @@
   height: 2px;
   border-radius: 5px;
   background-image: linear-gradient(to right, #7b94d2, #3f63c0, #817db6);
-  width: 90%;
+  width: 100%;
 }
 
 .account-details > p {
-  margin: 1rem 1rem 0.5rem;
+  margin: 1rem 0.2rem 0.5rem;
   letter-spacing: 1px;
   font-size: 1rem;
 }
@@ -236,7 +238,7 @@
   font-size: 1.2rem;
 }
 
-@media screen and (max-width: 576px){
+@media screen and (max-width: 576px) {
   .pop-up-overlay {
     align-items: center;
     padding-top: 100px;
