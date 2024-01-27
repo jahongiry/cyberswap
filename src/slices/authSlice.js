@@ -13,6 +13,9 @@ export const logIn = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const response = await axios.post('/login', credentials);
+      if (response.data.token) {
+        localStorage.setItem('token', response.data.token);
+      }
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -22,9 +25,18 @@ export const logIn = createAsyncThunk(
 
 export const checkLogIn = createAsyncThunk(
   'auth/checkLogIn',
-  async (thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
-      const userResponse = await axios.get('/profile');
+      const token = localStorage.getItem('token');
+      if (!token) {
+        return thunkAPI.rejectWithValue('No token found, user not logged in');
+      }
+      const userResponse = await axios.get('/profile', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
       return userResponse.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -32,17 +44,10 @@ export const checkLogIn = createAsyncThunk(
   }
 );
 
-export const logOutUser = createAsyncThunk(
-  'auth/logOutUser',
-  async (_, thunkAPI) => {
-    try {
-      await axios.post('/logout');
-      thunkAPI.dispatch(logOut());
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
-    }
-  }
-);
+export const logOutUser = createAsyncThunk('auth/logOutUser', async () => {
+  localStorage.removeItem('token');
+  return 'Logged out successfully';
+});
 
 export const signUp = createAsyncThunk(
   'auth/signUp',
@@ -52,6 +57,11 @@ export const signUp = createAsyncThunk(
         phone_number,
         password,
       });
+
+      if (response.data.access_token) {
+        localStorage.setItem('verify_token', response.data.access_token);
+      }
+
       console.log(response.data);
       return response.data;
     } catch (error) {
@@ -64,13 +74,31 @@ export const verifyNumber = createAsyncThunk(
   'auth/verifyNumber',
   async (otp, thunkAPI) => {
     try {
-      const response = await axios.post('/registration/verify', {
-        ot_password: otp,
-      });
+      const verify_token = localStorage.getItem('verify_token');
+
+      if (!verify_token) {
+        throw new Error('No verification token found');
+      }
+
+      const response = await axios.post(
+        '/registration/verify',
+        { one_time_password: otp },
+        { headers: { Authorization: `Bearer ${verify_token}` } }
+      );
+      console.log('working');
+
+      localStorage.removeItem('verify_token');
+
+      if (response.data.token) {
+        localStorage.setItem('token', response.data.token);
+      }
+
       console.log(response.data);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      return thunkAPI.rejectWithValue(
+        error.response ? error.response.data : error.message
+      );
     }
   }
 );
@@ -99,8 +127,12 @@ const authSlice = createSlice({
       .addCase(checkLogIn.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.user = action.payload;
+      })
+      .addCase(logOutUser.fulfilled, (state) => {
+        state.user = null;
+        state.status = 'idle';
+        state.error = null;
       });
-    // Add other cases for pending and rejected states if needed
   },
 });
 

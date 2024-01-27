@@ -5,9 +5,7 @@ import { useSelector } from 'react-redux';
 import image1 from '../../../img/pubg_page.png';
 import image2 from '../../../img/pubg.jpeg';
 
-const images = [image1, image2];
-
-const PopUp = ({ isVisible, togglePopUp, game }) => {
+const PopUp = ({ isVisible, togglePopUp, game, images, seller }) => {
   const translations = useSelector(selectTranslations);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -53,13 +51,13 @@ const PopUp = ({ isVisible, togglePopUp, game }) => {
           )}
         </div>
         <div className='top'>
-          <img src={game.img} alt='game name' />
+          <img src={images} alt='game name' />
           <div>
             <h3>
-              <span>{translations.popup.owner}:</span> {game.owner}
+              <span>{translations.popup.owner}:</span> {game.seller.username}
             </h3>
             <p>
-              {translations.popup.lastseen} {game.lastSeen}
+              {translations.popup.lastseen} {seller.signed_at}
             </p>
             <div className='star-in-popup'>
               <ion-icon name='star'></ion-icon>
@@ -74,13 +72,6 @@ const PopUp = ({ isVisible, togglePopUp, game }) => {
         <hr className='divider' />
         <div className='account-details'>
           <h2>{translations.popup.about}</h2>
-          <div className='each-row'>
-            <p>
-              <ion-icon name='id-card-outline'></ion-icon>Id:
-            </p>
-            <p className='facts'>{game.id}</p>
-          </div>
-          <hr className='divider2' />
           <div className='each-row'>
             <p>
               <ion-icon name='analytics-outline'></ion-icon>
