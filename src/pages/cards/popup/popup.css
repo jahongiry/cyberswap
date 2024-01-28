@@ -6,17 +6,24 @@
   left: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   background-color: #8bbafb;
   background: url('../../../img/bg2.jpg') no-repeat center;
 
   background-size: cover;
   padding-top: 90px;
-  padding-bottom: 3vw;
   overflow-y: scroll;
 }
 .pop-up-overlay::-webkit-scrollbar {
   display: none;
+}
+.pop-up__container {
+  width: 100%;
+  height: fit-content;
+  /* padding-bottom: 3vw; */
+  display: flex;
+  justify-content: center;
+  overflow: scroll;
 }
 
 .pop-up {
@@ -50,7 +57,7 @@
 }
 
 .top img {
-  width: 110%;
+  width: 100%;
   height: auto;
   align-self: center;
   aspect-ratio: 1 / 1;
@@ -104,6 +111,7 @@
   padding: 1rem 0.2rem 0.5rem;
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
 }
@@ -124,6 +132,11 @@
   font-weight: bold;
   letter-spacing: 2px;
   text-shadow: 0 0 4px black;
+}
+.account-details .each-row ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 .divider2 {
   margin: auto;
@@ -167,8 +180,8 @@
 
 .close {
   position: absolute;
-  right: -5px;
-  top: -5px;
+  right: 0px;
+  top: 0px;
   background-color: #202b50;
   color: white;
   border: none;
@@ -200,8 +213,11 @@
 }
 
 .carousel-container img {
-  width: 370px; /* Fixed width */
-  height: 190px; /* Fixed height */
+  /* width: 370px; Fixed width */
+  width: 100%;
+  /* height: 190px; Fixed height */
+  height: auto;
+  aspect-ratio: 4 / 3;
   object-fit: cover; /* This ensures the image covers the area, might crop */
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
@@ -214,8 +230,12 @@
   border: none;
   background-color: #3454a2;
   color: white;
-  padding: 10px;
   cursor: pointer;
+  width: 40px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
   font-size: 1.5rem;
   z-index: 1;
@@ -236,11 +256,4 @@
 .star-in-popup {
   margin-top: 0.5rem;
   font-size: 1.2rem;
-}
-
-@media screen and (max-width: 576px) {
-  .pop-up-overlay {
-    align-items: center;
-    padding-top: 100px;
-  }
 }

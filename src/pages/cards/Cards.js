@@ -17,6 +17,7 @@ const Cards = () => {
   const [selectedGameId, setSelectedGameId] = useState(null);
   const togglePopUp = () => {
     setSelectedGameId(null);
+    window.scrollTo(0, 0);
   };
 
   console.log(cards);

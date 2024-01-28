@@ -104,7 +104,7 @@
 .halmet {
   width: 15%;
   height: 15%;
-  margin-left: auto;
+  /* margin-left: auto; */
 }
 
 .language-btn {
@@ -141,7 +141,6 @@
   .halmet {
     width: 18%;
     height: 18%;
-    margin-left: auto;
   }
   .language-btn {
     font-size: 0.8rem;
@@ -155,7 +154,6 @@
   .halmet {
     width: 30%;
     height: 30%;
-    margin-left: auto;
   }
 
   .header .nav-btn {

@@ -52,6 +52,7 @@ const Login = () => {
                 placeholder='+998912345678'
                 value={credentials.login}
                 onChange={handleInputChange}
+                autoComplete="off"
               />
             </div>
             <div className='input-container'>

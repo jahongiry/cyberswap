@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { verifyNumber } from '../../../slices/authSlice';
 import './confirm.css';
 import logo1 from '../../../component/header/logo1_1.png';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { selectTranslations } from '../../../slices/languageSlice';
 import { useSelector } from 'react-redux';
 
