@@ -116,7 +116,7 @@
 .cards-section .card-img {
   width: 100%;
   height: auto;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   border-radius: 10px;
 }
@@ -158,8 +158,9 @@
   margin-top: 10px;
   background-color: #454adf;
   border: none;
-  padding: 5px;
+  padding: 10px;
   border-radius: 10px;
+  font-size: 1rem;
   background-image: linear-gradient(to right, #88347b, #454adf, #454adf);
   box-shadow: 4px 4px 6px #1b1b1b, -4px -4px 6px #3b3b3b; /* Neumorphism effect */
   font-weight: 700;

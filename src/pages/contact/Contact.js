@@ -59,7 +59,7 @@ const Contact = () => {
             <div className="infoBox">
               <div>
                 <span>
-                  <ion-icon name="location"></ion-icon>
+                  <ion-icon className="location"></ion-icon>
                 </span>
                 <p>
                   Namangan viloyat, Namangan shahar, King street
@@ -67,13 +67,13 @@ const Contact = () => {
               </div>
               <div>
                 <span>
-                  <ion-icon name="mail"></ion-icon>
+                  <ion-icon className="mail"></ion-icon>
                 </span>
                 <Link to="mailto:loremipsum@email.com">loremipsum@email.com</Link>
               </div>
               <div>
                 <span>
-                  <ion-icon name="call"></ion-icon>
+                  <ion-icon className="call"></ion-icon>
                 </span>
                 <Link to="tel:+999899******">+998** *** ** **</Link>
               </div>
@@ -81,23 +81,23 @@ const Contact = () => {
               {/* social media links */}
               <ul className="sci">
                 <li>
-                  <Link href="#">
-                    <ion-icon name="logo-facebook"></ion-icon>
+                  <Link to="#">
+                    <ion-icon className="logo-facebook"></ion-icon>
                   </Link>
                 </li>
                 <li>
-                  <Link href="#">
-                    <ion-icon name="logo-twitter"></ion-icon>
+                  <Link to="#">
+                    <ion-icon className="logo-twitter"></ion-icon>
                   </Link>
                 </li>
                 <li>
-                  <Link href="#">
-                    <ion-icon name="logo-linkedin"></ion-icon>
+                  <Link to="#">
+                    <ion-icon className="logo-linkedin"></ion-icon>
                   </Link>
                 </li>
                 <li>
-                  <Link href="#">
-                    <ion-icon name="logo-instagram"></ion-icon>
+                  <Link to="#">
+                    <ion-icon className="logo-instagram"></ion-icon>
                   </Link>
                 </li>
               </ul>
@@ -106,7 +106,7 @@ const Contact = () => {
 
           {/* Map */}
           <div className="contact map">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d760.7296714613573!2d71.683115469632!3d40.99136689820956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38bb4f1ce6f138eb%3A0x3e52b70b6bcb557b!2sALGORITM%20-%20education%20centre%20(Lola%20branch)!5e1!3m2!1sen!2s!4v1705996363953!5m2!1sen!2s" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d760.7296714613573!2d71.683115469632!3d40.99136689820956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38bb4f1ce6f138eb%3A0x3e52b70b6bcb557b!2sALGORITM%20-%20education%20centre%20(Lola%20branch)!5e1!3m2!1sen!2s!4v1705996363953!5m2!1sen!2s" width="600" height="450" allowFullScreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="our location"></iframe>
           </div>
         </div>
       </div>
