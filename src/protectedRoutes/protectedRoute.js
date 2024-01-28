@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { selectCurrentUser } from '../slices/authSlice';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { checkLogIn } from '../slices/authSlice';
 
 const ProtectedRoute = ({ children }) => {
   const location = useLocation();
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.auth.token);
   const currentUser = useSelector(selectCurrentUser);
   const isLoggedIn = currentUser != null;
 

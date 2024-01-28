@@ -148,6 +148,63 @@ export const deleteOffer = createAsyncThunk(
   }
 );
 
+export const updateOffer = createAsyncThunk(
+  'profile/updateOffer',
+  async ({ offerId, offerData }, thunkAPI) => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        return thunkAPI.rejectWithValue('No authorization token found');
+      }
+
+      const response = await axios.patch(
+        `/profile/offers/${offerId}`,
+        offerData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const updateOfferImages = createAsyncThunk(
+  'profile/updateOfferImages',
+  async ({ offerId, images }, thunkAPI) => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        return thunkAPI.rejectWithValue('No authorization token found');
+      }
+
+      const formData = new FormData();
+      images.forEach((image) => formData.append('images', image));
+
+      const response = await axios.put(
+        `/profile/offers/${offerId}/images`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
+
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
 const profileSlice = createSlice({
   name: 'profile',
   initialState,

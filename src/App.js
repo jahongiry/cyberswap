@@ -64,15 +64,7 @@ function App() {
           }
         />
         <Route path='/payment' exact element={<Payment />} />
-        <Route
-          path='/profile'
-          exact
-          element={
-            <ProtectedRoute>
-              <Profile />
-            </ProtectedRoute>
-          }
-        />
+        <Route path='/profile' exact element={<Profile />} />
         <Route path='/chat' exact element={<Chat />} />
         <Route path='/loader' element={<Loader />} />
         <Route path='/loginadmin' element={<LoginAdmin />} />

@@ -143,7 +143,9 @@
     "old_password": "Eski parol",
     "new_password": "Yangi parol",
     "change_password": "O'zgartirish",
-    "change_username": "O'zgartirish"
+    "change_username": "O'zgartirish",
+    "edit_offer": "Yangilash",
+    "offer_heading": "E'lonni o'zgartirish"
   },
   "popup_delete": {
     "are_you_sure": "E'loningizni o'chirmoqchimisiz?",

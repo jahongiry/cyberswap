@@ -142,7 +142,9 @@
     "old_password": "Старый пароль",
     "new_password": "Новый пароль",
     "change_password": "Изменить",
-    "change_username": "Изменить"
+    "change_username": "Изменить",
+    "edit_offer": "Обновить",
+    "offer_heading": "Изменение объявления"
   },
   "popup_delete": {
     "are_you_sure": "Вы уверены, что хотите удалить ваше объявление?",

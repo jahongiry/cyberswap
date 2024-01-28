@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './popupOffer.css';
 import { selectTranslations } from '../../../slices/languageSlice';
-import { createOffer } from '../../../slices/offerSlice';
+import { updateOfferImages, updateOffer } from '../../../slices/profileSlice';
 import { useSelector, useDispatch } from 'react-redux';
+import { fetchOffer } from '../../../slices/profileSlice';
 
 const EditOffer = ({ isOpen, onClose, offerInfo }) => {
   const translations = useSelector(selectTranslations);
@@ -95,19 +96,33 @@ const EditOffer = ({ isOpen, onClose, offerInfo }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const offerData = {
-      data: {
-        level: parseInt(level, 10),
-        rating: parseInt(rating, 10),
-        royal_pass,
-        skins,
-        cost: parseInt(cost, 10),
-        description,
-        connects,
-      },
-      images,
+    const offerDataWithoutImages = {
+      level: parseInt(level, 10),
+      rating: parseInt(rating, 10),
+      royal_pass,
+      skins,
+      cost: parseInt(cost, 10),
+      description,
+      connects,
     };
-    dispatch(createOffer(offerData));
+    try {
+      await dispatch(
+        updateOffer({
+          offerId: offerInfo.id,
+          offerData: offerDataWithoutImages,
+        })
+      );
+      if (images.length > 0) {
+        await dispatch(
+          updateOfferImages({ offerId: offerInfo.id, images })
+        ).then(() => {
+          dispatch(fetchOffer());
+        });
+      }
+      onClose();
+    } catch (error) {
+      console.error('Error updating offer:', error);
+    }
   };
 
   return (
@@ -116,7 +131,7 @@ const EditOffer = ({ isOpen, onClose, offerInfo }) => {
         <button className='close-edit-offer' onClick={onClose}>
           <ion-icon name='close-circle-outline'></ion-icon>
         </button>
-        <h1>Elonni o'zgartirish</h1>
+        <h1>{translations.popup_profile.offer_heading}</h1>
         <form onSubmit={handleSubmit}>
           <div className='image-upload-container'>
             {imagePreviews.map((image, index) => (
@@ -322,7 +337,7 @@ const EditOffer = ({ isOpen, onClose, offerInfo }) => {
             ></textarea>
           </div>
           <button className='form-btn' type='submit'>
-            Yangilash
+            {translations.popup_profile.edit_offer}
           </button>
         </form>
       </div>
