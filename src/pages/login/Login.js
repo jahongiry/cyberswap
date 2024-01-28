@@ -1,6 +1,6 @@
 import './login.css';
 import logo1 from '../../component/header/logo1_1.png';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../slices/authSlice';
@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 
 const Login = () => {
   const translations = useSelector(selectTranslations);
+  const navigate = useNavigate();
 
   const [credentials, setCredentials] = useState({
     login: '',
@@ -26,9 +27,22 @@ const Login = () => {
 
   const dispatch = useDispatch();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    dispatch(logIn(credentials));
+    try {
+      const actionResult = await dispatch(logIn(credentials));
+      const userData = actionResult.payload;
+
+      if (userData && userData.token) {
+        const lastPath = localStorage.getItem('lastPath') || '/';
+        navigate(lastPath);
+        localStorage.removeItem('lastPath');
+      } else {
+        // Handle login failure (e.g., show an error message)
+      }
+    } catch (error) {
+      // Handle error (e.g., incorrect credentials, server error)
+    }
   };
 
   return (

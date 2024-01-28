@@ -124,7 +124,7 @@
   "profile": {
     "exit": "Chiqish",
     "span1": "Profilingiz",
-    "profileEdit": "Malumotlarni ozgartirish",
+    "profileEdit": "Malumotlarni o'zgartirish",
     "editPhone": "Telefon",
     "editName": "Ism",
     "editDetail": "Men haqimda",
@@ -133,6 +133,21 @@
     "profileHistory": "Arxivlarim",
     "price": "Narx",
     "level": "Lvl",
-    "updateInfo": "Yangilash"
+    "updateInfo": "Yangilash",
+    "no_active_orders": "Hozirda faol e'loningiz yo'q",
+    "create_new": "Yangi e'lon yaratish"
+  },
+  "popup_profile": {
+    "edit_username": "Username o'zgartirish",
+    "edit_password": "Parolni kiriting",
+    "old_password": "Eski parol",
+    "new_password": "Yangi parol",
+    "change_password": "O'zgartirish",
+    "change_username": "O'zgartirish"
+  },
+  "popup_delete": {
+    "are_you_sure": "E'loningizni o'chirmoqchimisiz?",
+    "yes": "Ha, o'chirish",
+    "cancel": "Ortga qaytish"
   }
 }

@@ -132,6 +132,21 @@
     "profileHistory": "Моя История",
     "price": "Цена",
     "level": "Уровень",
-    "updateInfo": "Обновить Информацию"
+    "updateInfo": "Обновить",
+    "no_active_orders": "У вас сейчас нет активных объявлений",
+    "create_new": "Создать новое объявление"
+  },
+  "popup_profile": {
+    "edit_username": "Изменить имя пользователя",
+    "edit_password": "Введите пароль",
+    "old_password": "Старый пароль",
+    "new_password": "Новый пароль",
+    "change_password": "Изменить",
+    "change_username": "Изменить"
+  },
+  "popup_delete": {
+    "are_you_sure": "Вы уверены, что хотите удалить ваше объявление?",
+    "yes": "Да, удалить",
+    "cancel": "Отмена"
   }
 }
