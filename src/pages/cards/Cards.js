@@ -20,7 +20,6 @@ const Cards = () => {
     window.scrollTo(0, 0);
   };
 
-  console.log(cards);
   useEffect(() => {
     dispatch(fetchCards());
   }, [dispatch]);

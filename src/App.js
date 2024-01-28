@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import './App.css';
 import Header from './component/header/Header';
 import Footer from './component/footer/Footer';
@@ -20,14 +21,20 @@ import Confirm from './pages/signup/confirm/Confirm';
 import Loader from './component/loader/Loader2';
 import LoginAdmin from './pages/admin/LoginAdmin';
 import Admin from './pages/admin/Admin';
+import ProtectedRoute from './protectedRoutes/protectedRoute';
 
 function App() {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
+  const token = useSelector((state) => state.auth.token);
 
+  dispatch(checkLogIn());
   useEffect(() => {
-    dispatch(checkLogIn());
-  }, [dispatch]);
+    if (token) {
+      dispatch(checkLogIn());
+    }
+  }, [dispatch, token]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
@@ -47,9 +54,25 @@ function App() {
         <Route path='/signup' exact element={<Signup />} />
         <Route path='/confirm' exact element={<Confirm />} />
         <Route path='/cards' exact element={<Cards />} />
-        <Route path='/offer' exact element={<Offer />} />
+        <Route
+          path='/offer'
+          exact
+          element={
+            <ProtectedRoute>
+              <Offer />
+            </ProtectedRoute>
+          }
+        />
         <Route path='/payment' exact element={<Payment />} />
-        <Route path='/profile' exact element={<Profile />} />
+        <Route
+          path='/profile'
+          exact
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
         <Route path='/chat' exact element={<Chat />} />
         <Route path='/loader' element={<Loader />} />
         <Route path='/loginadmin' element={<LoginAdmin />} />

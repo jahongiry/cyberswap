@@ -62,8 +62,8 @@ const Header = () => {
       <div className="header-btns">
         <LanguageSwitcher />
         {user ? (
-          <Link to="/profile" className="sign-in">
-            <img src={halmet} className="halmet"></img>
+          <Link to='/profile' className='sign-in'>
+            <img src={user.image} className='halmet'></img>
           </Link>
         ) : (
           <Link to="/login" className="sign-in">

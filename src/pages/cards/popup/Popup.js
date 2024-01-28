@@ -9,7 +9,7 @@ const PopUp = ({ isVisible, togglePopUp, game, images, seller }) => {
   const translations = useSelector(selectTranslations);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const transitionDelay = 300; // Delay in milliseconds
+  const transitionDelay = 300;
 
   const nextImage = () => {
     setTimeout(() => {

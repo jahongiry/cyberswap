@@ -4,6 +4,7 @@ import authReducer from './slices/authSlice';
 import languageReducer from './slices/languageSlice';
 import offersReducer from './slices/offerSlice';
 import cardsSlice from './slices/cardSlice';
+import profileSlice from './slices/profileSlice';
 
 export const store = configureStore({
   reducer: {
@@ -11,5 +12,6 @@ export const store = configureStore({
     language: languageReducer,
     offers: offersReducer,
     cards: cardsSlice,
+    profiles: profileSlice,
   },
 });

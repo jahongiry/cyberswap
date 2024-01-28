@@ -6,6 +6,7 @@ const initialState = {
   user: null,
   status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
   error: null,
+  token: null,
 };
 
 export const logIn = createAsyncThunk(
@@ -62,7 +63,6 @@ export const signUp = createAsyncThunk(
         localStorage.setItem('verify_token', response.data.access_token);
       }
 
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -118,10 +118,12 @@ const authSlice = createSlice({
       .addCase(verifyNumber.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.user = action.payload;
+        state.token = action.payload.token;
       })
       .addCase(logIn.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.user = action.payload;
+        state.token = action.payload.token;
       })
       // Handle the fulfilled state of checkLogIn
       .addCase(checkLogIn.fulfilled, (state, action) => {
@@ -132,6 +134,7 @@ const authSlice = createSlice({
         state.user = null;
         state.status = 'idle';
         state.error = null;
+        state.token = null;
       });
   },
 });

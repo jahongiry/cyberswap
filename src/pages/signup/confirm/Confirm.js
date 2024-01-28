@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { verifyNumber } from '../../../slices/authSlice';
 import './confirm.css';
 import logo1 from '../../../component/header/logo1_1.png';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { selectTranslations } from '../../../slices/languageSlice';
 import { useSelector } from 'react-redux';
 
@@ -11,9 +11,24 @@ const Confirm = () => {
   const translations = useSelector(selectTranslations);
   const [otp, setOtp] = useState('');
   const dispatch = useDispatch();
-  const handleSubmit = (event) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    dispatch(verifyNumber(otp));
+    try {
+      const actionResult = await dispatch(verifyNumber(otp));
+      const userData = actionResult.payload;
+
+      if (userData && userData.token) {
+        const lastPath = localStorage.getItem('lastPath') || '/';
+        navigate(lastPath);
+        localStorage.removeItem('lastPath');
+      } else {
+        // Handle login failure (e.g., show an error message)
+      }
+    } catch (error) {
+      // Handle error (e.g., incorrect credentials, server error)
+    }
   };
 
   return (

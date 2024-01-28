@@ -1,15 +1,11 @@
-import React, { useState } from 'react';
-import './offer.css';
-import { selectTranslations } from '../../slices/languageSlice';
-import sampleImage from '../../img/pubg_page.png';
-import { createOffer } from '../../slices/offerSlice';
+import React, { useState, useEffect } from 'react';
+import './popupOffer.css';
+import { selectTranslations } from '../../../slices/languageSlice';
+import { createOffer } from '../../../slices/offerSlice';
 import { useSelector, useDispatch } from 'react-redux';
-import { json } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 
-const Offer = () => {
+const EditOffer = ({ isOpen, onClose, offerInfo }) => {
   const translations = useSelector(selectTranslations);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [images, setImages] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]);
@@ -29,6 +25,21 @@ const Offer = () => {
     twitter: false,
     game_center: false,
   });
+
+  useEffect(() => {
+    if (offerInfo && offerInfo.images) {
+      setImagePreviews(offerInfo.images);
+      setLevel(offerInfo.level.toString());
+      setRoyal_pass(offerInfo.royal_pass);
+      setSkins(offerInfo.skins);
+      setRating(offerInfo.rating);
+      setCost(offerInfo.cost.toString());
+      setDescription(offerInfo.description);
+      setConnects(offerInfo.connects);
+    }
+  }, [offerInfo]);
+
+  if (!isOpen) return null;
 
   const handleAddSkin = () => {
     if (currentSkin.trim() !== '' && !skins.includes(currentSkin.trim())) {
@@ -96,20 +107,16 @@ const Offer = () => {
       },
       images,
     };
-    try {
-      await dispatch(createOffer(offerData)).unwrap();
-      navigate('/profile');
-    } catch (error) {
-      console.error('Failed to create offer:', error);
-    }
+    dispatch(createOffer(offerData));
   };
 
   return (
-    <section className='offer container'>
+    <section className='edit-offer edit-container'>
       <div className='offer-container'>
-        <h1>{translations.offer.title}</h1>
-        <p>{translations.offer.subtitle}</p>
-
+        <button className='close-edit-offer' onClick={onClose}>
+          <ion-icon name='close-circle-outline'></ion-icon>
+        </button>
+        <h1>Elonni o'zgartirish</h1>
         <form onSubmit={handleSubmit}>
           <div className='image-upload-container'>
             {imagePreviews.map((image, index) => (
@@ -315,7 +322,7 @@ const Offer = () => {
             ></textarea>
           </div>
           <button className='form-btn' type='submit'>
-            {translations.offer.create}
+            Yangilash
           </button>
         </form>
       </div>
@@ -323,4 +330,4 @@ const Offer = () => {
   );
 };
 
-export default Offer;
+export default EditOffer;
