@@ -19,7 +19,6 @@ const Cards = () => {
     setSelectedGameId(null);
   };
 
-  console.log(cards);
   useEffect(() => {
     dispatch(fetchCards());
   }, [dispatch]);

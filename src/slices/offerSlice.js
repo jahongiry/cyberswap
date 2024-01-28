@@ -22,7 +22,6 @@ export const createOffer = createAsyncThunk(
       images.forEach((image) => {
         formData.append('images', image);
       });
-      console.log(formData);
 
       const response = await axios.post('/offers', formData, {
         headers: {

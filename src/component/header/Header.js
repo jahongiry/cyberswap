@@ -63,7 +63,7 @@ const Header = () => {
         <LanguageSwitcher />
         {user ? (
           <Link to='/profile' className='sign-in'>
-            <img src={halmet} className='halmet'></img>
+            <img src={user.image} className='user image'></img>
           </Link>
         ) : (
           <Link to='/login' className='sign-in'>
