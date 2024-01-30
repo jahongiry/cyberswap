@@ -9,6 +9,7 @@ import Popup from './popup/Popup';
 import { selectTranslations } from '../../slices/languageSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCards } from '../../slices/cardSlice';
+import Loader from '../../component/loader/Loader2';
 
 const Cards = () => {
   const dispatch = useDispatch();
@@ -31,10 +32,15 @@ const Cards = () => {
   const selectedGame = cards.find((game) => game.id === selectedGameId);
 
   if (status === 'loading') {
-    return <div>Loading...</div>; // or any other loading indicator
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
   }
 
   if (status === 'failed') {
+    console.log(error);
     return <div>Error: {error}</div>; // display the error message
   }
 

@@ -38,7 +38,6 @@ export const updateUsername = createAsyncThunk(
       if (!token) {
         return thunkAPI.rejectWithValue('No authorization token found');
       }
-      console.log(newUsername);
       const response = await axios.put(
         '/profile/username',
         { username: newUsername },
@@ -122,6 +121,7 @@ export const fetchOffer = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       });
+
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);

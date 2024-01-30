@@ -14,6 +14,7 @@ import {
   fetchOffer,
   getUserOffers,
   deleteOffer,
+  errorState,
 } from '../../slices/profileSlice';
 import { useDispatch } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';

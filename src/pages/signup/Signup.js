@@ -89,7 +89,7 @@ const Signup = () => {
                   </button>
                 </NavLink>
               </div>
-              <hr class='vertical-hr' />
+              <hr className='vertical-hr' />
               <div>
                 <hr className='horizontal-hr' />
                 <NavLink to='/login'>

@@ -1,15 +1,16 @@
 import './login.css';
 import logo1 from '../../component/header/logo1_1.png';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { logIn } from '../../slices/authSlice';
-import axios from 'axios';
+import { logIn, errorState } from '../../slices/authSlice';
 import { selectTranslations } from '../../slices/languageSlice';
 import { useSelector } from 'react-redux';
 
 const Login = () => {
   const translations = useSelector(selectTranslations);
+
+  const errors = useSelector(errorState);
   const navigate = useNavigate();
 
   const [credentials, setCredentials] = useState({
@@ -31,17 +32,21 @@ const Login = () => {
     event.preventDefault();
     try {
       const actionResult = await dispatch(logIn(credentials));
+      if (logIn.rejected.match(actionResult)) {
+        const errorDetail = actionResult.payload
+          ? actionResult.payload.detail
+          : 'Unknown error';
+        console.log('Login Error:', errorDetail);
+        return;
+      }
       const userData = actionResult.payload;
-
       if (userData && userData.token) {
         const lastPath = localStorage.getItem('lastPath') || '/';
         navigate(lastPath);
         localStorage.removeItem('lastPath');
-      } else {
-        // Handle login failure (e.g., show an error message)
       }
     } catch (error) {
-      // Handle error (e.g., incorrect credentials, server error)
+      console.log('Error:', error.message);
     }
   };
 
@@ -66,7 +71,7 @@ const Login = () => {
                 placeholder='+998912345678'
                 value={credentials.login}
                 onChange={handleInputChange}
-                autoComplete="off"
+                autoComplete='off'
               />
             </div>
             <div className='input-container'>
@@ -86,7 +91,7 @@ const Login = () => {
                   {translations.login.restore}
                 </button>
               </div>
-              <hr class='vertical-hr' />
+              <hr className='vertical-hr' />
               <div>
                 <hr className='horizontal-hr' />
                 <NavLink to='/signup'>

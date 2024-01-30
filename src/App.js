@@ -29,6 +29,7 @@ function App() {
   const token = useSelector((state) => state.auth.token);
 
   dispatch(checkLogIn());
+
   useEffect(() => {
     if (token) {
       dispatch(checkLogIn());
