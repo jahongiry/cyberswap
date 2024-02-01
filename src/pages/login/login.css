@@ -7,10 +7,15 @@
   align-items: center;
   justify-content: center;
 
-  background: url("../../img/bg2.jpg") no-repeat center ;
+  background: url('../../img/bg2.jpg') no-repeat center;
   background-size: cover;
   overflow-y: scroll;
 }
+
+.red-text-important {
+  color: red !important;
+}
+
 .login-section .login-container {
   width: 400px;
   padding: 10px;
@@ -24,7 +29,7 @@
     #503653
   );
   border-radius: 25px;
-  
+
   box-shadow: 5px 5px 10px #000000, -5px -5px 10px #2b2b2b; /* Adjusted to create a subtle depth */
   color: white;
   overflow: hidden;
@@ -202,7 +207,6 @@
   border-left: 2px solid #775fcf; /* Regular blue for the left border */
 }
 
-
 .login-section .back-home a {
   display: block;
   text-align: center;
@@ -280,4 +284,3 @@
     width: 100%;
   }
 }
-
