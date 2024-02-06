@@ -112,7 +112,8 @@
     "backtoenter": "Перейти к входу",
     "back": "Назад",
     "signup": "Зарегистрироваться",
-    "passwordplaceholder": "Пароль"
+    "passwordplaceholder": "Пароль",
+    "mismatch_error": "Пароли не совпадают"
   },
   "confirm": {
     "confirmn": "Подтвердите свой номер",

@@ -113,7 +113,8 @@
     "backtoenter": "Kirishga o'tish",
     "back": "Ortga",
     "signup": " Ro'yxatdan o'tish",
-    "passwordplaceholder": "Parol"
+    "passwordplaceholder": "Parol",
+    "mismatch_error": "Parol to'g'ri kelmadi"
   },
   "confirm": {
     "confirmn": "Nomeringizni tasdiqlang",

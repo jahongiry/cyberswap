@@ -49,7 +49,6 @@ const Login = () => {
       }
     } catch (error) {
       toast.error(<p className='red-text-important'>{error.message}</p>);
-      console.log('Error:', error.message);
     }
   };
 

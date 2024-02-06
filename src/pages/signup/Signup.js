@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux';
 import { signUp } from '../../slices/authSlice';
 import { selectTranslations } from '../../slices/languageSlice';
 import { useSelector } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Signup = () => {
   const translations = useSelector(selectTranslations);
@@ -16,18 +18,29 @@ const Signup = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (password !== confirmPassword) {
-      setPasswordError('Parol togri kemadi');
-      console.log(passwordError);
+      setPasswordError(translations.signup.mismatch_error);
       return;
     }
 
     setPasswordError('');
-    dispatch(signUp({ phone_number: phoneNumber, password }));
-
-    navigate('/confirm');
+    try {
+      const actionResult = await dispatch(
+        signUp({ phone_number: phoneNumber, password })
+      );
+      if (signUp.fulfilled.match(actionResult)) {
+        navigate('/confirm');
+      } else if (signUp.rejected.match(actionResult)) {
+        const errorDetail =
+          actionResult.payload || 'An error occurred during sign up.';
+        setPasswordError(errorDetail);
+        toast.error(<p className='red-text-important'>{errorDetail}</p>);
+      }
+    } catch (error) {
+      toast.error(<p className='red-text-important'>{error.message}</p>);
+    }
   };
 
   return (
@@ -75,7 +88,9 @@ const Signup = () => {
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
               {passwordError && (
-                <div className='error-message'>{passwordError}</div>
+                <div>
+                  <p className='error-message-signup'>{passwordError}</p>
+                </div>
               )}
             </div>
             <div className='login-footer'>
