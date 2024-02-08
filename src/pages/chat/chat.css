@@ -10,10 +10,10 @@
   background-image: linear-gradient(to bottom, #3d4e65, #263743, #112532);
   color: white;
   overflow: hidden;
-  border-top: 1px solid #8da3c0;
+  /* border-top: 1px solid #8da3c0;
   border-right: 1px solid #6582a1c2;
   border-left: 1px solid #6582a1c2;
-  border-bottom: 1px solid #6582a1c2;
+  border-bottom: 1px solid #6582a1c2; */
   padding-top: 1rem;
   display: flex;
   flex-direction: column;
@@ -57,12 +57,12 @@
 }
 
 .long-message {
-  width: 80%; /* Fixed maximum width for long messages */
+  width: 80%;
 }
 
 .bubble {
-  --r: 25px; /* the radius */
-  --t: 30px; /* the size of the tail */
+  --r: 25px;
+  --t: 30px;
 
   max-width: 300px;
   padding: calc(2 * var(--r) / 3);

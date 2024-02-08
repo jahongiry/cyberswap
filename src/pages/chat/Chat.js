@@ -26,7 +26,7 @@ const Chat = () => {
     },
     {
       id: 5,
-      text: '222hiiifsfs safsfsf asfsfsaf asfsafsaf asfdsafsa',
+      text: '222hiiifsfs ',
       isSender: 'receiver',
     },
     {

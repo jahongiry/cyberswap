@@ -24,6 +24,7 @@ import Admin from './pages/admin/Admin';
 import ProtectedRoute from './protectedRoutes/protectedRoute';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import FrontChat from './pages/chat/chatFront/chatFront';
 
 function App() {
   const dispatch = useDispatch();
@@ -43,7 +44,11 @@ function App() {
   }, [pathname]);
 
   const shouldHideHeaderAndFooter = () => {
-    return pathname.startsWith('/admin') || pathname === '/chat';
+    return (
+      pathname.startsWith('/admin') ||
+      pathname === '/chat' ||
+      pathname === '/chatfront'
+    );
   };
 
   return (
@@ -70,6 +75,7 @@ function App() {
         <Route path='/payment' exact element={<Payment />} />
         <Route path='/profile' exact element={<Profile />} />
         <Route path='/chat' exact element={<Chat />} />
+        <Route path='/chatfront' exact element={<FrontChat />} />
         <Route path='/loader' element={<Loader />} />
         <Route path='/loginadmin' element={<LoginAdmin />} />
         <Route path='/admin' element={<Admin />} />
