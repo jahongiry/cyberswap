@@ -42,13 +42,13 @@ function App() {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  const isAdminRoute = () => {
-    return pathname.startsWith('/admin');
+  const shouldHideHeaderAndFooter = () => {
+    return pathname.startsWith('/admin') || pathname === '/chat';
   };
 
   return (
     <div className='app'>
-      {!isAdminRoute() && <Header />}
+      {!shouldHideHeaderAndFooter() && <Header />}
       <ToastContainer />
       <Routes>
         <Route path='/' exact element={<Home />} />
@@ -74,7 +74,7 @@ function App() {
         <Route path='/loginadmin' element={<LoginAdmin />} />
         <Route path='/admin' element={<Admin />} />
       </Routes>
-      {!isAdminRoute() && <Footer />}
+      {!shouldHideHeaderAndFooter() && <Footer />}
     </div>
   );
 }

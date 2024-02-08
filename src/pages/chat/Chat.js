@@ -1,5 +1,6 @@
 import React from 'react';
 import './chat.css';
+import ChatHeader from './charHeader/chatHeader';
 
 const Chat = () => {
   const messages = [
@@ -51,39 +52,44 @@ const Chat = () => {
   };
 
   return (
-    <div className='chat-page'>
+    <div className='chat-page-main'>
+      <ChatHeader />
       <div className='chat-container'>
-        <div className='sender-container'>
-          {messages.map((message) =>
-            message.isSender === 'sender' ? (
-              <React.Fragment key={message.id}>
-                <div
-                  key={message.id}
-                  className={`bubble sender ${getMessageClass(message.text)}`}
-                >
-                  {message.text}
-                </div>
-                <br />
-              </React.Fragment>
-            ) : null
-          )}
+        <div className='chat-messages'>
+          <div className='sender-container'>
+            {messages.map((message) =>
+              message.isSender === 'sender' ? (
+                <React.Fragment key={message.id}>
+                  <div
+                    key={message.id}
+                    className={`bubble sender ${getMessageClass(message.text)}`}
+                  >
+                    {message.text}
+                  </div>
+                  <br />
+                </React.Fragment>
+              ) : null
+            )}
+          </div>
+          <div className='receiver-container'>
+            {messages.map((message) =>
+              message.isSender === 'receiver' ? (
+                <React.Fragment key={message.id}>
+                  <div
+                    key={message.id}
+                    className={`bubble receiver ${getMessageClass(
+                      message.text
+                    )}`}
+                  >
+                    {message.text}
+                  </div>
+                  <br />
+                </React.Fragment>
+              ) : null
+            )}
+          </div>
         </div>
-        <div className='receiver-container'>
-          {messages.map((message) =>
-            message.isSender === 'receiver' ? (
-              <React.Fragment key={message.id}>
-                <div
-                  key={message.id}
-                  className={`bubble receiver ${getMessageClass(message.text)}`}
-                >
-                  {message.text}
-                </div>
-                <br />
-              </React.Fragment>
-            ) : null
-          )}
-        </div>
-        <form className='form'>
+        <form className='form-chat'>
           <div className='file-upload'>
             <ion-icon name='attach-outline'></ion-icon>
           </div>
@@ -95,14 +101,14 @@ const Chat = () => {
           </div>
         </form>
       </div>
-      <div className='bottom-container'>
+      {/* <div className='bottom-container'>
         <button className='cancel'>
           <ion-icon name='close-outline'></ion-icon> Bekor qilish
         </button>
         <button className='finish'>
           <ion-icon name='checkmark-outline'></ion-icon> Tugatish
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

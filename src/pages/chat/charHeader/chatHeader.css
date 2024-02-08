@@ -1,0 +1,35 @@
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem;
+  color: white;
+  background-color: #263743;
+}
+
+.back-button ion-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.user-info {
+  text-align: center;
+}
+
+.username {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.last-seen {
+  font-size: 0.8rem;
+  color: #b0c4de;
+}
+
+.user-image img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid white;
+  object-fit: cover;
+}
