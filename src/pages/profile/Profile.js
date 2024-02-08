@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './profile.css';
 import profileImg from '../../img/halmet.png';
-import ProfileOfferData from './ProfileOfferData';
 import {
   logOutUser,
   selectCurrentUser,
@@ -25,6 +24,7 @@ import EditUsernamePopup from './popupName/popupName';
 import EditPasswordPopup from './popupPassword/popupPassword';
 import ConfirmationPopup from './offerDeletePopUp';
 import EditOffer from './popupOffer/popupOffer';
+import { toast } from 'react-toastify';
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -55,9 +55,30 @@ const Profile = () => {
   };
 
   const handleDeleteConfirm = () => {
-    dispatch(deleteOffer(selectedOfferId)).then(() => {
-      dispatch(fetchOffer());
-    });
+    dispatch(deleteOffer(selectedOfferId))
+      .then((response) => {
+        if (response.type.endsWith('fulfilled')) {
+          toast.success(
+            <p className='green-text-important'>
+              {translations.profile.offerDeleteSuccess}
+            </p>
+          );
+          dispatch(fetchOffer());
+        } else {
+          toast.error(
+            <p className='red-text-important'>
+              {translations.profile.offerDeleteError}
+            </p>
+          );
+        }
+      })
+      .catch((error) => {
+        toast.error(
+          <p className='red-text-important'>
+            {translations.profile.offerDeleteError}
+          </p>
+        );
+      });
     setIsConfirmPopupOpen(false);
     setSelectedOfferId(null);
   };
@@ -89,10 +110,26 @@ const Profile = () => {
   };
 
   const handlePasswordSubmit = ({ oldPassword, newPassword }) => {
-    dispatch(updatePassword({ oldPassword, newPassword })).then(() => {
-      dispatch(checkLogIn());
-    });
-    setIsEditPasswordPopupVisible(false);
+    dispatch(updatePassword({ oldPassword, newPassword }))
+      .then((response) => {
+        if (response.type.endsWith('fulfilled')) {
+          toast.success(
+            <p className='green-text-important'>
+              {translations.profile.passwordUpdateSuccess}
+            </p>
+          );
+          setIsEditPasswordPopupVisible(false);
+        } else {
+          toast.error(
+            <p className='red-text-important'>
+              {translations.profile.passwordUpdateError}
+            </p>
+          );
+        }
+      })
+      .catch(() => {
+        toast.error(translations.profile.passwordUpdateError);
+      });
   };
 
   const handleEditNameClick = () => {
@@ -104,10 +141,27 @@ const Profile = () => {
   };
 
   const handleUsernameSubmit = (newUsername) => {
-    dispatch(updateUsername(newUsername)).then(() => {
-      dispatch(checkLogIn());
-    });
-    setIsEditPopupVisible(false);
+    dispatch(updateUsername(newUsername))
+      .then((response) => {
+        if (response.type.endsWith('fulfilled')) {
+          toast.success(
+            <p className='green-text-important'>
+              {translations.profile.userNameUpdateSuccess}
+            </p>
+          );
+          dispatch(checkLogIn());
+          setIsEditPopupVisible(false);
+        } else {
+          toast.error(translations.profile.usernameUpdateError);
+        }
+      })
+      .catch(() => {
+        toast.error(
+          <p className='red-text-important'>
+            {translations.profile.userNameUpdateError}
+          </p>
+        );
+      });
   };
 
   const handleLogout = () => {
@@ -118,7 +172,7 @@ const Profile = () => {
     if (!currentUser) {
       dispatch(checkLogIn());
     }
-  }, [dispatch, currentUser]);
+  }, [dispatch]);
 
   const toggleEditButtons = () => {
     setShowEditButtons(!showEditButtons);
@@ -127,6 +181,10 @@ const Profile = () => {
   useEffect(() => {
     dispatch(fetchOffer());
   }, [dispatch]);
+
+  const refreshOffers = () => {
+    dispatch(fetchOffer());
+  };
 
   if (!currentUser) {
     return (
@@ -251,6 +309,7 @@ const Profile = () => {
             />
             {isEditOfferPopupVisible && selectedOffer && (
               <EditOffer
+                onSuccessfulSubmit={refreshOffers}
                 isOpen={isEditOfferPopupVisible}
                 onClose={handleCloseEditOfferPopup}
                 offerInfo={selectedOffer}

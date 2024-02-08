@@ -5,7 +5,7 @@ import { updateOfferImages, updateOffer } from '../../../slices/profileSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchOffer } from '../../../slices/profileSlice';
 
-const EditOffer = ({ isOpen, onClose, offerInfo }) => {
+const EditOffer = ({ isOpen, onClose, offerInfo, onSuccessfulSubmit }) => {
   const translations = useSelector(selectTranslations);
   const dispatch = useDispatch();
   const [images, setImages] = useState([]);
@@ -115,10 +115,9 @@ const EditOffer = ({ isOpen, onClose, offerInfo }) => {
       if (images.length > 0) {
         await dispatch(
           updateOfferImages({ offerId: offerInfo.id, images })
-        ).then(() => {
-          dispatch(fetchOffer());
-        });
+        ).then(() => {});
       }
+      onSuccessfulSubmit();
       onClose();
     } catch (error) {
       console.error('Error updating offer:', error);

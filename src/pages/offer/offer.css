@@ -143,6 +143,10 @@
   background: var(--btn-bg-color);
 }
 
+.error-message {
+  color: red;
+}
+
 .image-upload-section {
   display: flex;
   align-items: center;

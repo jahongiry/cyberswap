@@ -338,6 +338,14 @@
   margin-top: 1rem;
 }
 
+.green-text-important {
+  color: green;
+}
+
+.red-text-important {
+  color: red;
+}
+
 .create-offer-profile h3 {
   padding: 10px 20px;
   margin: 0; /* Removes default margin from h3 */

@@ -22,6 +22,8 @@ import Loader from './component/loader/Loader2';
 import LoginAdmin from './pages/admin/LoginAdmin';
 import Admin from './pages/admin/Admin';
 import ProtectedRoute from './protectedRoutes/protectedRoute';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const dispatch = useDispatch();
@@ -47,6 +49,7 @@ function App() {
   return (
     <div className='app'>
       {!isAdminRoute() && <Header />}
+      <ToastContainer />
       <Routes>
         <Route path='/' exact element={<Home />} />
         <Route path='/advertisement' element={<Advertisement />} />

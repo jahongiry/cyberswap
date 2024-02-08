@@ -6,8 +6,7 @@ import { useDispatch } from 'react-redux';
 import { logIn, errorState } from '../../slices/authSlice';
 import { selectTranslations } from '../../slices/languageSlice';
 import { useSelector } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const translations = useSelector(selectTranslations);
@@ -38,7 +37,12 @@ const Login = () => {
           ? actionResult.payload.detail
           : 'Unknown error';
         setErrorMessage(errorDetail);
-        toast.error(<p className='red-text-important'>{errorDetail}</p>);
+        const languagePreference = localStorage.getItem('languagePreference');
+        toast.error(
+          <p className='red-text-important'>
+            {errorDetail[languagePreference]}
+          </p>
+        );
         return;
       }
       const userData = actionResult.payload;
@@ -55,7 +59,6 @@ const Login = () => {
   return (
     <div className='login-section'>
       <div className='login-container'>
-        <ToastContainer />
         <div className='login-border'>
           <div className='line'>
             <div className='corner-item top-left'></div>

@@ -16,7 +16,7 @@ export const createOffer = createAsyncThunk(
         return thunkAPI.rejectWithValue('No authorization token found');
       }
 
-      let response = await axios.post('/offers', data, {
+      let response = await axios.post('profile/offers', data, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
@@ -32,12 +32,16 @@ export const createOffer = createAsyncThunk(
           formData.append('images', image);
         });
 
-        response = await axios.post(`/offers/images/${offerId}`, formData, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'multipart/form-data',
-          },
-        });
+        response = await axios.post(
+          `profile/offers/images/${offerId}`,
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'multipart/form-data',
+            },
+          }
+        );
       }
 
       return response.data;

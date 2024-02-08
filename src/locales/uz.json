@@ -102,7 +102,9 @@
     "pricePlaceholder": "Namuna: 125000",
     "levelPlaceholder": "Namuna: 65",
     "levelAchiv": "Namuna: 700+",
-    "messagePlaceholder": "Lednik lvl 3, Qilich lvl 2, Redki skinlar..."
+    "messagePlaceholder": "Lednik lvl 3, Qilich lvl 2, Redki skinlar...",
+    "connectRequiredMessage": "Kamida bitta connectni tanlang 👆",
+    "imageRequiredMessage": "Rasm yuklash majburiy"
   },
   "signup": {
     "title": "Ro'yxatdan o'ting",
@@ -137,7 +139,13 @@
     "level": "Lvl",
     "updateInfo": "Yangilash",
     "no_active_orders": "Hozirda faol e'loningiz yo'q",
-    "create_new": "Yangi e'lon yaratish"
+    "create_new": "Yangi e'lon yaratish",
+    "passwordUpdateSuccess": "Sizning parolingiz muvofaqqiyatli o'zgartirildi",
+    "userNameUpdateSuccess": "Sizning usernamingiz muvofaqqiyatli o'zgartirildi",
+    "passwordUpdateError": "Parol almashitirshda xatolik yuz berdi",
+    "userNameUpdateError": "Username almashitirshda xatolik yuz berdi",
+    "offerDeleteSuccess": "Sizning e'loningiz o'chirildi",
+    "offerDeleteError": "Sizning e'loningiz o'chirilishda xatolik ro'y berdi"
   },
   "popup_profile": {
     "edit_username": "Username o'zgartirish",

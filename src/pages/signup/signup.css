@@ -11,6 +11,15 @@
   background-size: cover;
   overflow-y: scroll;
 }
+
+.red-text-important {
+  color: red !important;
+}
+
+.Toastify__close-button svg path {
+  color: red !important;
+}
+
 .login-container-signup {
   width: 400px;
   padding: 10px;

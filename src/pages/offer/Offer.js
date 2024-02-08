@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './offer.css';
 import { selectTranslations } from '../../slices/languageSlice';
-import sampleImage from '../../img/pubg_page.png';
+import defaultImage from '../../img/pubg.jpeg';
 import { createOffer } from '../../slices/offerSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { json } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import Loader from '../../component/loader/Loader2';
+import { toast } from 'react-toastify';
 
 const Offer = () => {
   const translations = useSelector(selectTranslations);
@@ -21,6 +23,9 @@ const Offer = () => {
   const [rating, setRating] = useState('');
   const [cost, setCost] = useState('');
   const [description, setDescription] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [isConnectRequired, setIsConnectRequired] = useState(false);
+  const [isImageRequired, setIsImageRequired] = useState(false);
   const [connects, setConnects] = useState({
     phone_number: false,
     email: false,
@@ -84,6 +89,16 @@ const Offer = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+
+    const isAnyConnectSelected = Object.values(connects).some((value) => value);
+    if (!isAnyConnectSelected) {
+      setIsConnectRequired(true);
+      setLoading(false);
+      return;
+    }
+    setIsConnectRequired(false);
+
     const offerData = {
       data: {
         level: parseInt(level, 10),
@@ -96,13 +111,27 @@ const Offer = () => {
       },
       images,
     };
+
     try {
       await dispatch(createOffer(offerData)).unwrap();
       navigate('/profile');
     } catch (error) {
-      console.error('Failed to create offer:', error);
+      toast.error(<p className='red-text-important'>"Error while creating"</p>);
+    } finally {
+      setLoading(false);
     }
   };
+
+  useEffect(() => {
+    const isAnyConnectSelected = Object.values(connects).some((value) => value);
+    if (isAnyConnectSelected) {
+      setIsConnectRequired(false);
+    }
+  }, [connects]);
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <section className='offer container'>
@@ -126,6 +155,7 @@ const Offer = () => {
                   multiple
                   accept='image/*'
                   style={{ display: 'none' }}
+                  required
                 />
                 <div className='plus-sign'>+</div>
               </label>
@@ -142,6 +172,7 @@ const Offer = () => {
                 id='level'
                 min={0}
                 placeholder={translations.offer.levelPlaceholder}
+                required
               />
             </div>
             <div className='form-input'>
@@ -153,6 +184,7 @@ const Offer = () => {
                 value={rating}
                 onChange={(e) => setRating(e.target.value)}
                 placeholder={translations.offer.levelAchiv}
+                required
               />
             </div>
           </div>
@@ -248,7 +280,6 @@ const Offer = () => {
                   onChange={() => handleConnectChange('email')}
                 />
                 <i className='fa-solid fa-envelope'></i>{' '}
-                {/* Replace with appropriate icon */}
               </label>
 
               <label htmlFor='apple'>
@@ -292,6 +323,11 @@ const Offer = () => {
               </label>
             </div>
           </div>
+          {isConnectRequired && (
+            <p className='error-message'>
+              {translations.offer.connectRequiredMessage}
+            </p>
+          )}
           <div className='form-input'>
             <label htmlFor='cost'>{translations.offer.price}</label>
             <input
@@ -302,6 +338,7 @@ const Offer = () => {
               onChange={(e) => setCost(e.target.value)}
               min={0}
               placeholder={translations.offer.pricePlaceholder}
+              required
             />
           </div>
           <div className='form-input'>
@@ -312,6 +349,7 @@ const Offer = () => {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder={translations.offer.messagePlaceholder}
+              required
             ></textarea>
           </div>
           <button className='form-btn' type='submit'>

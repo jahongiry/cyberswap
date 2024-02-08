@@ -4,7 +4,12 @@ import ru from '../locales/ru.json';
 
 const getInitialLanguage = () => {
   const savedLang = localStorage.getItem('languagePreference');
-  return savedLang || 'uz'; // Default to 'uz' if no preference is stored
+  if (savedLang) {
+    return savedLang;
+  } else {
+    localStorage.setItem('languagePreference', 'uz');
+    return 'uz';
+  }
 };
 
 const initialState = {

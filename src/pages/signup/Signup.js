@@ -15,6 +15,7 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [errorMessage, setErrorMessage] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -22,9 +23,13 @@ const Signup = () => {
     event.preventDefault();
     if (password !== confirmPassword) {
       setPasswordError(translations.signup.mismatch_error);
+      toast.error(
+        <p className='red-text-important'>
+          {translations.signup.mismatch_error}
+        </p>
+      );
       return;
     }
-
     setPasswordError('');
     try {
       const actionResult = await dispatch(
@@ -35,8 +40,13 @@ const Signup = () => {
       } else if (signUp.rejected.match(actionResult)) {
         const errorDetail =
           actionResult.payload || 'An error occurred during sign up.';
-        setPasswordError(errorDetail);
-        toast.error(<p className='red-text-important'>{errorDetail}</p>);
+        setErrorMessage(errorDetail);
+        const languagePreference = localStorage.getItem('languagePreference');
+        toast.error(
+          <p className='red-text-important'>
+            {errorDetail.detail[languagePreference]}
+          </p>
+        );
       }
     } catch (error) {
       toast.error(<p className='red-text-important'>{error.message}</p>);
