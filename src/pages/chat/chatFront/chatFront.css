@@ -2,13 +2,14 @@
   font-family: Arial, Helvetica, sans-serif;
   color: white;
   height: 100vh;
+  background-color: #425360; /* Main background color */
 }
 
 .chat-header {
   display: flex;
   justify-content: space-between;
   padding: 1rem;
-  background-color: #263743; /* Adjust color as needed */
+  background-color: #263743; /* Header background color */
 }
 
 .home-button,
@@ -20,7 +21,7 @@
 }
 
 .chat-list {
-  padding: 1rem;
+  padding: 0.5rem;
   overflow-y: auto;
 }
 
@@ -28,6 +29,10 @@
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
+  background-color: #2d3e50; /* Slightly different shade for chat items */
+  padding: 0.8rem;
+  border-radius: 5px; /* Optional rounded corners */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
 }
 
 .user-image {

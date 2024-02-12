@@ -4,7 +4,9 @@ import { fetchChats } from '../../../slices/chatSlice';
 import test_image from '../../../img/halmet.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Chat from '../Chat';
+import Loader from '../../../component/loader/Loader2';
 
 const FrontChat = () => {
   const dispatch = useDispatch();
@@ -21,7 +23,11 @@ const FrontChat = () => {
   };
 
   if (status === 'loading') {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
   }
 
   if (status === 'failed') {
@@ -31,12 +37,16 @@ const FrontChat = () => {
   return (
     <div className='front-chat-container'>
       <header className='chat-header'>
-        <button className='home-button'>
-          <ion-icon name='home-outline'></ion-icon>
-        </button>
-        <button className='profile-button'>
-          <ion-icon name='person-circle-outline'></ion-icon>
-        </button>
+        <Link to='/'>
+          <button className='home-button'>
+            <ion-icon name='home-outline'></ion-icon>
+          </button>
+        </Link>
+        <Link to='/profile'>
+          <button className='profile-button'>
+            <ion-icon name='person-circle-outline'></ion-icon>
+          </button>
+        </Link>
       </header>
       <div className='chat-list'>
         {chats.map((chat) => (

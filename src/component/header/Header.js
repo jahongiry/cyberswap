@@ -58,7 +58,7 @@ const Header = () => {
           </li>
           {user ? (
             <li>
-              <Link to='/chat' className='sign-in'>
+              <Link to='/chatfront' className='sign-in'>
                 <i className='fa-solid fa-comments'></i>
                 {translations.header.chat}
               </Link>
