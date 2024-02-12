@@ -6,33 +6,34 @@ import ChatHeader from './charHeader/chatHeader';
 import {
   establishWebSocketConnection,
   selectMessages,
-  sendMessage,
 } from '../../slices/chatSlice';
+
+import { sendMessage, closeConnection } from '../../slices/websocketManager';
 
 const Chat = () => {
   const [inputValue, setInputValue] = useState('');
   const messages = useSelector(selectMessages);
   const dispatch = useDispatch();
-  const chatEndRef = useRef(null);
   const location = useLocation();
   const { selectedChatId } = location.state || {};
-
-  console.log(messages);
 
   useEffect(() => {
     if (selectedChatId) {
       dispatch(establishWebSocketConnection(selectedChatId));
     }
+
+    return () => {
+      closeConnection();
+    };
   }, [dispatch, selectedChatId]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (inputValue.trim()) {
-      const message = {
+      sendMessage({
         chat_id: selectedChatId,
         content: inputValue,
-      };
-      dispatch(sendMessage(message));
+      });
       setInputValue('');
     }
   };

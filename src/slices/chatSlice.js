@@ -1,5 +1,14 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from '../api/axios';
+import { establishConnection, closeConnection } from './websocketManager';
+
+const initialState = {
+  socket: null,
+  messages: [],
+  status: 'disconnected',
+  error: null,
+  chats: [],
+};
 
 export const fetchChats = createAsyncThunk(
   'profile/fetchChats',
@@ -29,63 +38,61 @@ export const fetchChats = createAsyncThunk(
 
 export const establishWebSocketConnection = createAsyncThunk(
   'chat/establishWebSocketConnection',
-  async (chatId, { dispatch, getState }) => {
-    const existingSocket = getState().chat.socket;
-    if (existingSocket) {
-      existingSocket.close();
-    }
-    const token = localStorage.getItem('token');
-    // const socketUrl = token
-    //   ? `wss://cyberswap.uz/api?token=${token}`
-    //   : 'wss://cyberswap.uz/api';
-    const socketUrl = `wss://cyberswap.uz/api?token=${token}`;
-    const socket = new WebSocket(socketUrl);
-
-    socket.onopen = () => dispatch(connectWebSocket());
-    socket.onclose = () => dispatch(disconnectWebSocket());
-    socket.onerror = (error) => dispatch(webSocketError(error.message));
-    socket.onmessage = (event) => {
-      console.log('keldi');
-      const message = JSON.parse(event.data);
-      if (message.chat_id === chatId) {
-        dispatch(messageReceived(message));
-      }
-    };
+  async (chatId, { dispatch }) => {
+    establishConnection(
+      dispatch,
+      chatId,
+      connectWebSocket,
+      disconnectWebSocket,
+      webSocketError,
+      messageReceived
+    );
   }
 );
 
-const initialState = {
-  socket: null,
-  messages: [],
-  status: 'disconnected', // 'connected', 'disconnected', 'error'
-  error: null,
-  chats: [],
-};
+// export const establishWebSocketConnection = createAsyncThunk(
+//   'chat/establishWebSocketConnection',
+//   async (chatId, { dispatch, getState }) => {
+//     const existingSocket = getState().chat.socket;
+//     if (existingSocket) {
+//       existingSocket.close();
+//     }
+//     const token = localStorage.getItem('token');
+//     const socketUrl = token
+//       ? `ws://192.168.0.54:8000/api?token=${token}`
+//       : 'ws://192.168.0.54:8000/api';
+//     const socket = new WebSocket(socketUrl);
+
+//     socket.onopen = () => dispatch(connectWebSocket(socket));
+//     socket.onclose = () => dispatch(disconnectWebSocket());
+//     socket.onerror = (error) => dispatch(webSocketError(error.message));
+//     socket.onmessage = (event) => {
+//       const message = JSON.parse(event.data);
+//       if (message.chat_id === chatId) {
+//         dispatch(messageReceived(message));
+//       }
+//     };
+//   }
+// );
 
 const chatSlice = createSlice({
   name: 'chat',
   initialState,
   reducers: {
-    connectWebSocket: (state, action) => {
+    connectWebSocket: (state) => {
       state.status = 'connected';
-      state.socket = action.payload;
     },
     disconnectWebSocket: (state) => {
       state.status = 'disconnected';
-      state.socket = null;
     },
     webSocketError: (state, action) => {
       state.status = 'error';
       state.error = action.payload;
     },
-    sendMessage: (state, action) => {
-      if (state.socket) {
-        state.socket.send(JSON.stringify(action.payload));
-      }
-    },
     messageReceived: (state, action) => {
       state.messages.push(action.payload);
     },
+    // No need for sendMessage reducer anymore
   },
   extraReducers: (builder) => {
     builder
@@ -109,13 +116,10 @@ const chatSlice = createSlice({
 // Selectors
 export const selectMessages = (state) => state.chat.messages;
 export const selectConnectionStatus = (state) => state.chat.status;
-
-// Actions
 export const {
   connectWebSocket,
   disconnectWebSocket,
   webSocketError,
-  sendMessage,
   messageReceived,
 } = chatSlice.actions;
 
