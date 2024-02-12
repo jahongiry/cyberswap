@@ -12,7 +12,8 @@ export const fetchCards = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axios.get('/offers');
-      return response.data; // Assuming this returns an array of cards
+      console.log(response.data);
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
     }

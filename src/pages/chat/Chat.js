@@ -1,45 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import './chat.css';
 import ChatHeader from './charHeader/chatHeader';
+import {
+  establishWebSocketConnection,
+  selectMessages,
+  sendMessage,
+} from '../../slices/chatSlice';
 
 const Chat = () => {
-  const messages = [
-    {
-      id: 1,
-      text: 'hiiifs',
-      isSender: 'sender',
-    },
-    {
-      id: 4,
-      text: 'hiiifsfs safsfsf asfsfsaf asfsafsaf asfdsafsa',
-      isSender: 'sender',
-    },
-    {
-      id: 2,
-      text: '222',
-      isSender: 'sender',
-    },
-    {
-      id: 3,
-      text: '222hiiifsfs safsfsf asfsfsaf asfsafsaf asfdsafsa',
-      isSender: 'receiver',
-    },
-    {
-      id: 5,
-      text: '222hiiifsfs ',
-      isSender: 'receiver',
-    },
-    {
-      id: 7,
-      text: '?',
-      isSender: 'sender',
-    },
-    {
-      id: 6,
-      text: '222hiiifsfs safsfsf asfsfsaf asfsafsaf asfdsafsa',
-      isSender: 'receiver',
-    },
-  ];
+  const [inputValue, setInputValue] = useState('');
+  const messages = useSelector(selectMessages);
+  const dispatch = useDispatch();
+  const chatEndRef = useRef(null);
+  const location = useLocation();
+  const { selectedChatId } = location.state || {};
+
+  console.log(messages);
+
+  useEffect(() => {
+    if (selectedChatId) {
+      dispatch(establishWebSocketConnection(selectedChatId));
+    }
+  }, [dispatch, selectedChatId]);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (inputValue.trim()) {
+      const message = {
+        chat_id: selectedChatId,
+        content: inputValue,
+      };
+      dispatch(sendMessage(message));
+      setInputValue('');
+    }
+  };
 
   const getMessageClass = (message) => {
     if (message.length <= 20) {
@@ -74,9 +70,9 @@ const Chat = () => {
           <div className='receiver-container'>
             {messages.map((message) =>
               message.isSender === 'receiver' ? (
-                <React.Fragment key={message.id}>
+                <React.Fragment key={messages.indexOf(message)}>
                   <div
-                    key={message.id}
+                    key={messages.indexOf(message)}
                     className={`bubble receiver ${getMessageClass(
                       message.text
                     )}`}
@@ -89,26 +85,23 @@ const Chat = () => {
             )}
           </div>
         </div>
-        <form className='form-chat'>
+        <form className='form-chat' onSubmit={handleSubmit}>
           <div className='file-upload'>
             <ion-icon name='attach-outline'></ion-icon>
           </div>
           <div className='input-container'>
-            <input type='text' id='username' />
+            <input
+              type='text'
+              id='username'
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+            />
           </div>
-          <div className='send-button'>
+          <div className='send-button' onClick={handleSubmit}>
             <ion-icon name='arrow-up-circle-outline'></ion-icon>
           </div>
         </form>
       </div>
-      {/* <div className='bottom-container'>
-        <button className='cancel'>
-          <ion-icon name='close-outline'></ion-icon> Bekor qilish
-        </button>
-        <button className='finish'>
-          <ion-icon name='checkmark-outline'></ion-icon> Tugatish
-        </button>
-      </div> */}
     </div>
   );
 };

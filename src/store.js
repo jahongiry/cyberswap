@@ -5,6 +5,7 @@ import languageReducer from './slices/languageSlice';
 import offersReducer from './slices/offerSlice';
 import cardsSlice from './slices/cardSlice';
 import profileSlice from './slices/profileSlice';
+import chatReducer from './slices/chatSlice';
 
 export const store = configureStore({
   reducer: {
@@ -13,5 +14,6 @@ export const store = configureStore({
     offers: offersReducer,
     cards: cardsSlice,
     profiles: profileSlice,
+    chat: chatReducer,
   },
 });

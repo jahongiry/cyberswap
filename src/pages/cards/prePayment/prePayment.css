@@ -1,0 +1,109 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.important-info {
+  border: 2px solid #d9398b; /* Pink border color */
+  padding: 10px;
+  margin: 20px 0;
+  border-radius: 8px;
+  background: rgba(217, 57, 139, 0.1); /* Slight pink background */
+  color: #d9398b; /* Text color */
+  font-weight: bold;
+}
+
+.modal-content {
+  background: #202b50;
+  width: 500px;
+  border-radius: 8px;
+  padding: 20px;
+  color: white;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-close-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modal-content hr {
+  border-color: #3454a2;
+  margin-top: 10px;
+}
+
+.modal-body {
+  margin-top: 20px;
+}
+
+.modal-item {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.modal-item input[type='checkbox'] {
+  margin-right: 10px;
+}
+
+.modal-item label {
+  color: #d9398b;
+}
+
+.text-area-payment {
+  width: calc(100% - 20px);
+  margin-top: 10px;
+  border: none;
+  background: #2a3f78;
+  color: white;
+  border-radius: 4px;
+  padding: 10px;
+  height: 100px;
+}
+
+.modal-pay-logo {
+  background: #3454a2;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: block;
+  width: 50%;
+  margin-top: 20px;
+}
+
+.choose-payment {
+  margin-top: 1rem;
+}
+
+.choose-payment ion-icon {
+  font-size: 1.2rem;
+  margin-bottom: -0.3rem;
+  padding-left: 0.5rem;
+}
+
+.modal-pay-logo img {
+  height: 10rem;
+  width: 10rem;
+}
+
+.modal-next-button:hover {
+  background: #5168fc;
+}

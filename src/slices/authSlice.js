@@ -1,6 +1,7 @@
 // src/features/auth/authSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from '../api/axios';
+import { establishWebSocketConnection } from './chatSlice';
 
 const initialState = {
   user: null,
@@ -16,6 +17,7 @@ export const logIn = createAsyncThunk(
       const response = await axios.post('/login', credentials);
       if (response.data.token) {
         localStorage.setItem('token', response.data.token);
+        thunkAPI.dispatch(establishWebSocketConnection());
       }
       return response.data;
     } catch (error) {

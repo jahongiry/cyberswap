@@ -10,12 +10,17 @@ import { selectTranslations } from '../../slices/languageSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCards } from '../../slices/cardSlice';
 import Loader from '../../component/loader/Loader2';
+import PrePayment from './prePayment/prePayment';
 
 const Cards = () => {
   const dispatch = useDispatch();
   const { cards, status, error } = useSelector((state) => state.cards);
   const translations = useSelector(selectTranslations);
   const [selectedGameId, setSelectedGameId] = useState(null);
+  const [selectedGameToPay, setSelectedGameToPay] = useState(null);
+  const [showPrePayment, setShowPrePayment] = useState(false);
+  const selectedGame = cards.find((game) => game.id === selectedGameId);
+
   const togglePopUp = () => {
     setSelectedGameId(null);
     window.scrollTo(0, 0);
@@ -29,7 +34,15 @@ const Cards = () => {
     setSelectedGameId(id);
   };
 
-  const selectedGame = cards.find((game) => game.id === selectedGameId);
+  const openPrePayment = () => {
+    setShowPrePayment(true);
+    setSelectedGameToPay(selectedGame);
+    setSelectedGameId(null);
+  };
+
+  const closePrePayment = () => {
+    setShowPrePayment(false);
+  };
 
   if (status === 'loading') {
     return (
@@ -105,6 +118,13 @@ const Cards = () => {
                 game={selectedGame}
                 images={selectedGame.images}
                 seller={selectedGame.seller}
+                openPrePayment={openPrePayment}
+              />
+            )}
+            {showPrePayment && (
+              <PrePayment
+                game={selectedGameToPay}
+                closePrePayment={closePrePayment}
               />
             )}
           </div>

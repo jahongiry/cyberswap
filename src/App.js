@@ -17,14 +17,14 @@ import Profile from './pages/profile/Profile';
 import { useDispatch } from 'react-redux';
 import { checkLogIn } from './slices/authSlice';
 import Confirm from './pages/signup/confirm/Confirm';
-// import Loader from "./component/loader/Loader1";
 import Loader from './component/loader/Loader2';
 import LoginAdmin from './pages/admin/LoginAdmin';
 import Admin from './pages/admin/Admin';
 import ProtectedRoute from './protectedRoutes/protectedRoute';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import FrontChat from './pages/chat/chatFront/chatFront';
+import { establishWebSocketConnection } from './slices/chatSlice';
 
 function App() {
   const dispatch = useDispatch();
@@ -38,6 +38,10 @@ function App() {
       dispatch(checkLogIn());
     }
   }, [dispatch, token]);
+
+  useEffect(() => {
+    dispatch(establishWebSocketConnection());
+  }, [dispatch]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
