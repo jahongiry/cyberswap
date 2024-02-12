@@ -10,6 +10,7 @@ html {
   --roboto: 'Roboto', sans-serif;
 
   --text-color: #fff;
+  --error-color: red;
   --bg-color: linear-gradient(45deg, #401c74, #4e1a7a, #3a1c73, #2e1f6d);
   --btn-bg-color: linear-gradient(
     45deg,

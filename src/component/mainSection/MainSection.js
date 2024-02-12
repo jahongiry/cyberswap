@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './mainSection.css';
 import homeImg from './logo1_1.png';
 import { NavLink, Link } from 'react-router-dom';
@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 
 const MainSection = () => {
   const translations = useSelector(selectTranslations);
+
   return (
     <section className='mainSection container'>
       <div className='home-container'>

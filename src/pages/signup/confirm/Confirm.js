@@ -63,7 +63,7 @@ const Confirm = () => {
                   </button>
                 </div>
               </NavLink>
-              <hr class='vertical-hr' />
+              <hr className='vertical-hr' />
               <div>
                 <hr className='horizontal-hr' />
                 <NavLink to='/signup'>

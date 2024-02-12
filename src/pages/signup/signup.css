@@ -7,10 +7,19 @@
   align-items: center;
   justify-content: center;
 
-  background: url("../../img/bg2.jpg") no-repeat center ;
+  background: url('../../img/bg2.jpg') no-repeat center;
   background-size: cover;
   overflow-y: scroll;
 }
+
+.red-text-important {
+  color: red !important;
+}
+
+.Toastify__close-button svg path {
+  color: red !important;
+}
+
 .login-container-signup {
   width: 400px;
   padding: 10px;
@@ -219,8 +228,13 @@
   color: #aaa;
   text-decoration: none;
 }
+
 .login-section .back-home a:hover {
   color: #fff;
+}
+
+.error-message-signup {
+  color: red;
 }
 
 .login-section .login-main-signup {
@@ -291,4 +305,3 @@
     width: 100%;
   }
 }
-

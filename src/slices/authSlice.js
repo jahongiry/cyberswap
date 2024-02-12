@@ -1,10 +1,11 @@
 // src/features/auth/authSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from '../api/axios';
+import { establishWebSocketConnection } from './chatSlice';
 
 const initialState = {
   user: null,
-  status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
+  status: 'idle',
   error: null,
   token: null,
 };
@@ -16,6 +17,7 @@ export const logIn = createAsyncThunk(
       const response = await axios.post('/login', credentials);
       if (response.data.token) {
         localStorage.setItem('token', response.data.token);
+        thunkAPI.dispatch(establishWebSocketConnection());
       }
       return response.data;
     } catch (error) {
@@ -40,7 +42,7 @@ export const checkLogIn = createAsyncThunk(
 
       return userResponse.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      return thunkAPI.rejectWithValue(error.response.data.detail);
     }
   }
 );
@@ -85,7 +87,6 @@ export const verifyNumber = createAsyncThunk(
         { one_time_password: otp },
         { headers: { Authorization: `Bearer ${verify_token}` } }
       );
-      console.log('working');
 
       localStorage.removeItem('verify_token');
 
@@ -93,7 +94,6 @@ export const verifyNumber = createAsyncThunk(
         localStorage.setItem('token', response.data.token);
       }
 
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
@@ -125,10 +125,18 @@ const authSlice = createSlice({
         state.user = action.payload;
         state.token = action.payload.token;
       })
-      // Handle the fulfilled state of checkLogIn
+      .addCase(logIn.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.payload;
+      })
       .addCase(checkLogIn.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.user = action.payload;
+        state.error = null;
+      })
+      .addCase(checkLogIn.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
       })
       .addCase(logOutUser.fulfilled, (state) => {
         state.user = null;
@@ -140,5 +148,6 @@ const authSlice = createSlice({
 });
 
 export const selectCurrentUser = (state) => state.auth.user;
+export const errorState = (state) => state.auth.error;
 export const { logOut } = authSlice.actions;
 export default authSlice.reducer;

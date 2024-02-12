@@ -38,7 +38,6 @@ export const updateUsername = createAsyncThunk(
       if (!token) {
         return thunkAPI.rejectWithValue('No authorization token found');
       }
-      console.log(newUsername);
       const response = await axios.put(
         '/profile/username',
         { username: newUsername },
@@ -122,7 +121,11 @@ export const fetchOffer = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       });
-      return response.data;
+      if (response.data) {
+        if (response.data.selling_offers) {
+          return response.data.selling_offers;
+        }
+      }
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
     }
@@ -156,8 +159,7 @@ export const updateOffer = createAsyncThunk(
       if (!token) {
         return thunkAPI.rejectWithValue('No authorization token found');
       }
-
-      const response = await axios.patch(
+      const response = await axios.put(
         `/profile/offers/${offerId}`,
         offerData,
         {
@@ -167,7 +169,6 @@ export const updateOffer = createAsyncThunk(
           },
         }
       );
-
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -282,7 +283,6 @@ const profileSlice = createSlice({
       })
       .addCase(deleteOffer.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        // Remove the deleted offer from the offers array
         state.offers = state.offers.filter(
           (offer) => offer.id !== action.payload
         );

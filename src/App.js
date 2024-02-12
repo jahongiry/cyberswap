@@ -17,11 +17,14 @@ import Profile from './pages/profile/Profile';
 import { useDispatch } from 'react-redux';
 import { checkLogIn } from './slices/authSlice';
 import Confirm from './pages/signup/confirm/Confirm';
-// import Loader from "./component/loader/Loader1";
 import Loader from './component/loader/Loader2';
 import LoginAdmin from './pages/admin/LoginAdmin';
 import Admin from './pages/admin/Admin';
 import ProtectedRoute from './protectedRoutes/protectedRoute';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import FrontChat from './pages/chat/chatFront/chatFront';
+import { establishWebSocketConnection } from './slices/chatSlice';
 
 function App() {
   const dispatch = useDispatch();
@@ -29,6 +32,7 @@ function App() {
   const token = useSelector((state) => state.auth.token);
 
   dispatch(checkLogIn());
+
   useEffect(() => {
     if (token) {
       dispatch(checkLogIn());
@@ -36,16 +40,25 @@ function App() {
   }, [dispatch, token]);
 
   useEffect(() => {
+    dispatch(establishWebSocketConnection());
+  }, [dispatch]);
+
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  const isAdminRoute = () => {
-    return pathname.startsWith('/admin');
+  const shouldHideHeaderAndFooter = () => {
+    return (
+      pathname.startsWith('/admin') ||
+      pathname === '/chat' ||
+      pathname === '/chatfront'
+    );
   };
 
   return (
     <div className='app'>
-      {!isAdminRoute() && <Header />}
+      {!shouldHideHeaderAndFooter() && <Header />}
+      <ToastContainer />
       <Routes>
         <Route path='/' exact element={<Home />} />
         <Route path='/advertisement' element={<Advertisement />} />
@@ -66,11 +79,12 @@ function App() {
         <Route path='/payment' exact element={<Payment />} />
         <Route path='/profile' exact element={<Profile />} />
         <Route path='/chat' exact element={<Chat />} />
+        <Route path='/chatfront' exact element={<FrontChat />} />
         <Route path='/loader' element={<Loader />} />
         <Route path='/loginadmin' element={<LoginAdmin />} />
         <Route path='/admin' element={<Admin />} />
       </Routes>
-      {!isAdminRoute() && <Footer />}
+      {!shouldHideHeaderAndFooter() && <Footer />}
     </div>
   );
 }
