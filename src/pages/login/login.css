@@ -219,11 +219,12 @@
 
 .login-section .login-main {
   width: 100%;
-  font-size: 1.2rem;
+  font-size: 1.5rem !important;
   font-weight: 800;
   letter-spacing: 2px;
-  padding: 5px;
+  padding: 10px !important;
   border-radius: 25px;
+  margin-top: 1rem;
   margin-bottom: 3rem;
   border-top: 2px solid #d6b1d6; /* Light blue top border */
   border-right: 2px solid #d969c6; /* Regular blue for the right border */

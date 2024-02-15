@@ -103,6 +103,9 @@ const Signup = () => {
                 </div>
               )}
             </div>
+            <button type='submit' className='login-button login-main-signup'>
+              {translations.signup.signup}
+            </button>
             <div className='login-footer'>
               <div>
                 <label htmlFor='button'>
@@ -124,9 +127,6 @@ const Signup = () => {
                 </NavLink>
               </div>
             </div>
-            <button type='submit' className='login-button login-main-signup'>
-              {translations.signup.signup}
-            </button>
           </form>
           <div className='corner-item bottom-left'></div>
           <div className='corner-item bottom-right'></div>
