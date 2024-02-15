@@ -22,12 +22,17 @@ const MainSection = () => {
 
           <div className='home-btns'>
             <Link to='/offer' className='offer-link'>
-              <button className='btn'>
-                <span>{translations.main.offergiving}</span>
+              <button className='btn main-btn'>
+                <span>{translations.main.ucsell}</span>
+              </button>
+            </Link>
+            <Link to='/offer' className='offer-link'>
+              <button className='btn main-btn'>
+                <span>{translations.main.pubgsell}</span>
               </button>
             </Link>
             <Link to='/cards' className='cards-link'>
-              <button className='btn'>
+              <button className='btn main-btn'>
                 <span>{translations.main.offerbuy}</span>
               </button>
             </Link>

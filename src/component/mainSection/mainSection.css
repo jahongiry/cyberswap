@@ -11,6 +11,10 @@
   gap: 2rem;
 }
 
+.main-btn span {
+  font-size: 0.79rem;
+}
+
 .home-container {
   width: 100%;
   display: grid;
@@ -49,7 +53,7 @@
   margin-top: 2rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 .mainSection .statistics {
   margin-top: 4rem;
@@ -126,8 +130,8 @@
     width: 80%;
   }
 }
-@media screen and (max-width:576px){ 
-    .home-container {
-        gap: 2rem;
-    }
+@media screen and (max-width: 576px) {
+  .home-container {
+    gap: 2rem;
+  }
 }

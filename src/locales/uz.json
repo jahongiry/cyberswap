@@ -14,12 +14,14 @@
     "garant": "Garant va Ishonchli",
     "subtitle": "Oyin accountlari, Telegram nomlar va kanallar, Instagram nomlarini havsiz soting va sotib oling!",
     "offergiving": "Elon berish/Sotish",
-    "offerbuy": "Sotib olish",
+    "offerbuy": "E'lonlar",
     "numberaccounts": "100+",
     "pubgaccounts": "Pubg accountlar",
     "pubgsellers": "Ishonchli sotuvchilar",
     "soldaccountsnumber": "500+",
-    "soldaccounts": "Sotilgan accountlar"
+    "soldaccounts": "Sotilgan accountlar",
+    "ucsell": "UC sotish",
+    "pubgsell": "Account sotish"
   },
   "recommendation": {
     "title": "Sifatli va arzon",
@@ -87,7 +89,7 @@
     "lastseen": "Oxirgi online vaqti"
   },
   "offer": {
-    "title": "E'lon yaratish",
+    "title": "Account uchun e'lon yaratish",
     "subtitle": "E'lon yaratish mutlaqo bepul!",
     "level": "LVL",
     "pass": "Royal pass (RP)",

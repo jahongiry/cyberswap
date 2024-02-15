@@ -50,31 +50,6 @@ export const establishWebSocketConnection = createAsyncThunk(
   }
 );
 
-// export const establishWebSocketConnection = createAsyncThunk(
-//   'chat/establishWebSocketConnection',
-//   async (chatId, { dispatch, getState }) => {
-//     const existingSocket = getState().chat.socket;
-//     if (existingSocket) {
-//       existingSocket.close();
-//     }
-//     const token = localStorage.getItem('token');
-//     const socketUrl = token
-//       ? `ws://192.168.0.54:8000/api?token=${token}`
-//       : 'ws://192.168.0.54:8000/api';
-//     const socket = new WebSocket(socketUrl);
-
-//     socket.onopen = () => dispatch(connectWebSocket(socket));
-//     socket.onclose = () => dispatch(disconnectWebSocket());
-//     socket.onerror = (error) => dispatch(webSocketError(error.message));
-//     socket.onmessage = (event) => {
-//       const message = JSON.parse(event.data);
-//       if (message.chat_id === chatId) {
-//         dispatch(messageReceived(message));
-//       }
-//     };
-//   }
-// );
-
 const chatSlice = createSlice({
   name: 'chat',
   initialState,

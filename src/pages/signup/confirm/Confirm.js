@@ -54,6 +54,9 @@ const Confirm = () => {
                 onChange={(e) => setOtp(e.target.value)}
               />
             </div>
+            <button type='submit' className='login-button login-main-signup'>
+              {translations.confirm.confirm}
+            </button>
             <div className='login-footer'>
               <NavLink to='/signup'>
                 <div>
@@ -73,9 +76,6 @@ const Confirm = () => {
                 </NavLink>
               </div>
             </div>
-            <button type='submit' className='login-button login-main-signup'>
-              {translations.confirm.confirm}
-            </button>
           </form>
           <div className='corner-item bottom-left'></div>
           <div className='corner-item bottom-right'></div>

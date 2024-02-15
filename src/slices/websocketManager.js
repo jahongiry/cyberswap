@@ -1,3 +1,4 @@
+import { MAINURL } from '../api/axios';
 let socket = null;
 
 export const establishConnection = (
@@ -10,10 +11,8 @@ export const establishConnection = (
 ) => {
   const token = localStorage.getItem('token');
   const socketUrl = token
-    ? `wss://cyberswap.uz/api?token=${token}`
-    : 'wss://cyberswap.uz/api';
-  //  ? `ws://192.168.0.54:8000/api?token=${token}`
-  // : 'ws://192.168.0.54:8000/api';
+    ? `ws://${MAINURL}?token=${token}`
+    : `ws://${MAINURL}`;
 
   socket = new WebSocket(socketUrl);
 

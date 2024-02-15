@@ -11,6 +11,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCards } from '../../slices/cardSlice';
 import Loader from '../../component/loader/Loader2';
 import PrePayment from './prePayment/prePayment';
+import WinterPubg from '../../img/pubg_winter.avif';
+import WinterPubg2 from '../../img//Winterpubg.webp';
 
 const Cards = () => {
   const dispatch = useDispatch();
@@ -20,6 +22,11 @@ const Cards = () => {
   const [selectedGameToPay, setSelectedGameToPay] = useState(null);
   const [showPrePayment, setShowPrePayment] = useState(false);
   const selectedGame = cards.find((game) => game.id === selectedGameId);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+  };
 
   const togglePopUp = () => {
     setSelectedGameId(null);
@@ -54,12 +61,13 @@ const Cards = () => {
 
   if (status === 'failed') {
     console.log(error);
-    return <div>Error: {error}</div>; // display the error message
+    return <div>Error: {error}</div>;
   }
 
   return (
     <div className='cards-wrapper'>
       <div className='cards-container'>
+        <img src={WinterPubg2} alt='Pubg background' />
         <div className='search-container'>
           <input
             type='text'
@@ -68,14 +76,45 @@ const Cards = () => {
           />
           <button className='search-button'>{translations.cards.search}</button>
         </div>
-        <h4 className='filterlash'>{translations.cards.filter}</h4>
-        <div className='filter-container'>
-          <button className='filter-button'>{translations.cards.new}</button>
-          <button className='filter-button'>{translations.cards.cheap}</button>
-          <button className='filter-button'>
-            {translations.cards.expensive}
+        <div className='category-container'>
+          <button
+            className={`category-button ${
+              selectedCategory === 'UC' ? 'active' : ''
+            }`}
+            onClick={() => handleCategoryClick('UC')}
+          >
+            UC
+          </button>
+          <button
+            className={`category-button ${
+              selectedCategory === 'Accounts' ? 'active' : ''
+            }`}
+            onClick={() => handleCategoryClick('Accounts')}
+          >
+            Accounts
           </button>
         </div>
+        {selectedCategory && (
+          <>
+            {/* <h4 className='filterlash'>{translations.cards.filter}</h4> */}
+            <div
+              className={`filter-container ${selectedCategory ? 'active' : ''}`}
+            >
+              <button className='filter-button'>
+                <ion-icon name='sparkles-outline'></ion-icon>
+                {translations.cards.new}
+              </button>
+              <button className='filter-button'>
+                <ion-icon name='trending-up-outline'></ion-icon>
+                {translations.cards.cheap}
+              </button>
+              <button className='filter-button'>
+                <ion-icon name='trending-down-outline'></ion-icon>
+                {translations.cards.expensive}
+              </button>
+            </div>
+          </>
+        )}
       </div>
       <div className='cards-section'>
         {cards.map((game) => (
