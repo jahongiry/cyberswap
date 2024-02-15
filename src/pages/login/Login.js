@@ -90,6 +90,9 @@ const Login = () => {
                 onChange={handleInputChange}
               />
             </div>
+            <button type='submit' className='login-main'>
+              {translations.login.enter}
+            </button>
             <div className='login-footer'>
               <div>
                 <label htmlFor='button'>{translations.login.forget}</label>
@@ -107,9 +110,7 @@ const Login = () => {
                 </NavLink>
               </div>
             </div>
-            <button type='submit' className='login-main'>
-              {translations.login.enter}
-            </button>
+
             <div className='back-home'>
               <hr />
               <NavLink activeclassname='forgot-password' to='/'>
