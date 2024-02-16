@@ -21,9 +21,8 @@ export const establishConnection = (
   socket.onerror = (error) => dispatch(webSocketError(error.message));
   socket.onmessage = (event) => {
     const message = JSON.parse(event.data);
-    if (message.chat_id === chatId) {
-      dispatch(messageReceived(message));
-    }
+    // console.log(message);
+    dispatch(messageReceived(message));
   };
 };
 
@@ -44,5 +43,8 @@ export const sendMessage = (chatId, content) => {
       },
     };
     socket.send(JSON.stringify(message));
+
+    // Optionally, wait for server confirmation before dispatching
+    // dispatch(messageSent(message)); // Implement this if needed
   }
 };

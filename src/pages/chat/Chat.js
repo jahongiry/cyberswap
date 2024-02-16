@@ -1,23 +1,29 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import './chat.css';
 import ChatHeader from './charHeader/chatHeader';
 import {
+  fetchChats,
   establishWebSocketConnection,
-  selectMessages,
 } from '../../slices/chatSlice';
-
+import { selectCurrentUser } from '../../slices/authSlice';
 import { sendMessage, closeConnection } from '../../slices/websocketManager';
 
 const Chat = () => {
   const [inputValue, setInputValue] = useState('');
-  const messages = useSelector(selectMessages);
   const dispatch = useDispatch();
   const location = useLocation();
   const { selectedChatId } = location.state || {};
+  const chats = useSelector((state) => state.chat.chats);
+  const messages = chats[selectedChatId]?.messages || [];
+  const user = useSelector(selectCurrentUser);
 
   useEffect(() => {
+    if (Object.keys(chats).length === 0) {
+      dispatch(fetchChats());
+    }
+
     if (selectedChatId) {
       dispatch(establishWebSocketConnection(selectedChatId));
     }
@@ -25,7 +31,7 @@ const Chat = () => {
     return () => {
       closeConnection();
     };
-  }, [dispatch, selectedChatId]);
+  }, [dispatch, selectedChatId, chats]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -36,8 +42,8 @@ const Chat = () => {
   };
 
   const getMessageClass = (message) => {
-    if (message.length <= 20) {
-      if (message.length <= 1) {
+    if (message.content.length <= 20) {
+      if (message.content.length <= 1) {
         return 'single-message';
       }
       return 'short-message';
@@ -50,38 +56,20 @@ const Chat = () => {
       <ChatHeader />
       <div className='chat-container'>
         <div className='chat-messages'>
-          <div className='sender-container'>
-            {messages.map((message) =>
-              message.isSender === 'sender' ? (
-                <React.Fragment key={message.id}>
-                  <div
-                    key={message.id}
-                    className={`bubble sender ${getMessageClass(message.text)}`}
-                  >
-                    {message.text}
-                  </div>
-                  <br />
-                </React.Fragment>
-              ) : null
-            )}
-          </div>
-          <div className='receiver-container'>
-            {messages.map((message) =>
-              message.isSender === 'receiver' ? (
-                <React.Fragment key={messages.indexOf(message)}>
-                  <div
-                    key={messages.indexOf(message)}
-                    className={`bubble receiver ${getMessageClass(
-                      message.text
-                    )}`}
-                  >
-                    {message.text}
-                  </div>
-                  <br />
-                </React.Fragment>
-              ) : null
-            )}
-          </div>
+          {messages.map((message) => {
+            const isSender = message.sender.id === user.id;
+            const messageClass = getMessageClass(message);
+            const bubbleClass = isSender ? 'sender' : 'receiver';
+
+            return (
+              <React.Fragment key={message.id}>
+                <div className={`bubble ${bubbleClass} ${messageClass}`}>
+                  {message.content}
+                </div>
+                <br />
+              </React.Fragment>
+            );
+          })}
         </div>
         <form className='form-chat' onSubmit={handleSubmit}>
           <div className='file-upload'>

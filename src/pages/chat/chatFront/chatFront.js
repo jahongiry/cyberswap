@@ -13,10 +13,14 @@ const FrontChat = () => {
   const navigate = useNavigate();
   const { chats, status, error } = useSelector((state) => state.chat);
   const [selectedChatId, setSelectedChatId] = useState(null);
+  const chatsObject = useSelector((state) => state.chat.chats);
+  const chatsArray = Object.values(chatsObject);
 
   useEffect(() => {
-    dispatch(fetchChats());
-  }, [dispatch]);
+    if (Object.keys(chats).length === 0) {
+      dispatch(fetchChats());
+    }
+  }, [dispatch, chats]);
 
   const openChat = (chatId) => {
     navigate('/chat', { state: { selectedChatId: chatId } });
@@ -49,7 +53,7 @@ const FrontChat = () => {
         </Link>
       </header>
       <div className='chat-list'>
-        {chats.map((chat) => (
+        {chatsArray.map((chat) => (
           <div
             key={chat.id}
             className='chat-info'

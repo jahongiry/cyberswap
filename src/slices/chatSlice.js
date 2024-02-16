@@ -1,13 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from '../api/axios';
 import { establishConnection, closeConnection } from './websocketManager';
+import { act } from 'react-dom/test-utils';
 
 const initialState = {
   socket: null,
-  messages: [],
+  chats: {},
   status: 'disconnected',
   error: null,
-  chats: [],
 };
 
 export const fetchChats = createAsyncThunk(
@@ -24,7 +24,6 @@ export const fetchChats = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response.data);
       return response.data;
     } catch (error) {
       if (error.response) {
@@ -65,30 +64,32 @@ const chatSlice = createSlice({
       state.error = action.payload;
     },
     messageReceived: (state, action) => {
-      state.messages.push(action.payload);
+      const {
+        metadata: { chat_id, message },
+      } = action.payload;
+      if (chat_id) {
+        state.chats[chat_id].messages.push(message);
+      }
     },
-    // No need for sendMessage reducer anymore
   },
   extraReducers: (builder) => {
     builder
-      // ... other cases ...
       .addCase(fetchChats.pending, (state) => {
         state.status = 'loading';
       })
       .addCase(fetchChats.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        // Add a chats field to your state or decide how you want to store the chats
-        state.chats = action.payload;
+        action.payload.forEach((chat) => {
+          state.chats[chat.id] = { ...chat, messages: chat.messages };
+        });
       })
       .addCase(fetchChats.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.payload;
       });
-    // ... other cases ...
   },
 });
 
-// Selectors
 export const selectMessages = (state) => state.chat.messages;
 export const selectConnectionStatus = (state) => state.chat.status;
 export const {

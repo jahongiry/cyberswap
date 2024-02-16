@@ -10,10 +10,6 @@
   background-image: linear-gradient(to bottom, #3d4e65, #263743, #112532);
   color: white;
   overflow: hidden;
-  /* border-top: 1px solid #8da3c0;
-  border-right: 1px solid #6582a1c2;
-  border-left: 1px solid #6582a1c2;
-  border-bottom: 1px solid #6582a1c2; */
   padding-top: 1rem;
   display: flex;
   flex-direction: column;
@@ -24,28 +20,30 @@
 .chat-messages {
   flex-grow: 1;
   overflow-y: auto;
-}
-
-.sender-container {
   display: flex;
   flex-direction: column;
+  gap: 0.2rem;
 }
 
-.receiver-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.receiver,
-.sender {
-  background-image: linear-gradient(to bottom, #587093, #294364);
-  border-radius: 25px;
-  padding: 1rem;
-  position: relative;
-  display: inline-block;
+.bubble {
+  max-width: 300px;
   word-wrap: break-word;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.sender {
+  background-color: #587093;
+  color: white;
   align-self: flex-end;
-  margin-bottom: -0.5rem;
+}
+
+.receiver {
+  background-color: #294364;
+  color: white;
+  align-self: flex-start;
 }
 
 .short-message {
