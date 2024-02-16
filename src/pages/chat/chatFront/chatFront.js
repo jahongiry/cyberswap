@@ -23,7 +23,10 @@ const FrontChat = () => {
   }, [dispatch, chats]);
 
   const openChat = (chatId) => {
-    navigate('/chat', { state: { selectedChatId: chatId } });
+    const chat = chatsObject[chatId];
+    navigate('/chat', {
+      state: { selectedChatId: chatId, chatUsers: chat.users },
+    });
   };
 
   if (status === 'loading') {

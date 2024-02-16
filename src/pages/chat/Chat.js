@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import './chat.css';
@@ -14,10 +14,19 @@ const Chat = () => {
   const [inputValue, setInputValue] = useState('');
   const dispatch = useDispatch();
   const location = useLocation();
-  const { selectedChatId } = location.state || {};
+  const { selectedChatId, chatUsers } = location.state || {};
   const chats = useSelector((state) => state.chat.chats);
   const messages = chats[selectedChatId]?.messages || [];
   const user = useSelector(selectCurrentUser);
+  // const messagesEndRef = useRef(null);
+
+  // const scrollToBottom = () => {
+  //   messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  // };
+
+  // useEffect(() => {
+  //   scrollToBottom();
+  // }, [messages]);
 
   useEffect(() => {
     if (Object.keys(chats).length === 0) {
@@ -53,7 +62,7 @@ const Chat = () => {
 
   return (
     <div className='chat-page-main'>
-      <ChatHeader />
+      <ChatHeader sender={chatUsers} />
       <div className='chat-container'>
         <div className='chat-messages'>
           {messages.map((message) => {
