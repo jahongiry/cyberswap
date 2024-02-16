@@ -11,8 +11,8 @@ export const establishConnection = (
 ) => {
   const token = localStorage.getItem('token');
   const socketUrl = token
-    ? `ws://${MAINURLSOCKET}?token=${token}`
-    : `ws://${MAINURLSOCKET}`;
+    ? `wss://${MAINURLSOCKET}?token=${token}`
+    : `wss://${MAINURLSOCKET}`;
 
   socket = new WebSocket(socketUrl);
 
