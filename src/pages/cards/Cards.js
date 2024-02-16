@@ -129,16 +129,16 @@ const Cards = () => {
             </div>
             <h5 onClick={() => openPopUp(game.id)}>{game.name}</h5>
             <p onClick={() => openPopUp(game.id)}>
-              <span>Level:</span> {game.level}
+              <span>{translations.cards.level}:</span> {game.level}
             </p>
             <p onClick={() => openPopUp(game.id)}>
-              <span>RP:</span> {game.royal_pass}
+              <span>{translations.cards.rp}:</span> {game.royal_pass}
             </p>
             <p onClick={() => openPopUp(game.id)}>
-              <span>Skins:</span> {game.skins}
+              <span>{translations.cards.skins}:</span> {game.skins}
             </p>
             <p onClick={() => openPopUp(game.id)}>
-              <span>Owner:</span> {game.seller.username}
+              <span>{translations.cards.owner}:</span> {game.seller.username}
             </p>
             <div className='stars' onClick={() => openPopUp(game.id)}>
               <ion-icon name='star' className='icon-gold'></ion-icon>

@@ -30,10 +30,7 @@ const Chat = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (inputValue.trim()) {
-      sendMessage({
-        chat_id: selectedChatId,
-        content: inputValue,
-      });
+      sendMessage(selectedChatId, inputValue);
       setInputValue('');
     }
   };

@@ -25,6 +25,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import FrontChat from './pages/chat/chatFront/chatFront';
 import { establishWebSocketConnection } from './slices/chatSlice';
+import UcOffer from './pages/offer/UcOffer';
 
 function App() {
   const dispatch = useDispatch();
@@ -68,11 +69,20 @@ function App() {
         <Route path='/confirm' exact element={<Confirm />} />
         <Route path='/cards' exact element={<Cards />} />
         <Route
-          path='/offer'
+          path='/pubgaccountoffer'
           exact
           element={
             <ProtectedRoute>
               <Offer />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/pubgucoffer'
+          exact
+          element={
+            <ProtectedRoute>
+              <UcOffer />
             </ProtectedRoute>
           }
         />

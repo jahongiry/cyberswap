@@ -21,12 +21,12 @@ const MainSection = () => {
           <p className='subtitle'>{translations.main.subtitle}</p>
 
           <div className='home-btns'>
-            <Link to='/offer' className='offer-link'>
+            <Link to='/pubgucoffer' className='offer-link'>
               <button className='btn main-btn'>
                 <span>{translations.main.ucsell}</span>
               </button>
             </Link>
-            <Link to='/offer' className='offer-link'>
+            <Link to='/pubgaccountoffer' className='offer-link'>
               <button className='btn main-btn'>
                 <span>{translations.main.pubgsell}</span>
               </button>

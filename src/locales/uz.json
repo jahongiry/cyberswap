@@ -65,7 +65,11 @@
     "new": "Yangilari",
     "cheap": "Arzonlari",
     "expensive": "Qimmatlari",
-    "placeholder": "Kerakli so'zini yozing"
+    "placeholder": "Kerakli so'zini yozing",
+    "level": "Level",
+    "rp": "RP",
+    "skins": "Skinlar",
+    "owner": "Sotuvchi"
   },
   "login": {
     "welcome": "Hush kelibsiz",
@@ -106,6 +110,22 @@
     "levelAchiv": "Namuna: 700+",
     "messagePlaceholder": "Lednik lvl 3, Qilich lvl 2, Redki skinlar...",
     "connectRequiredMessage": "Kamida bitta connectni tanlang 👆",
+    "imageRequiredMessage": "Rasm yuklash majburiy"
+  },
+  "ucoffer": {
+    "title": "UC uchun e'lon yaratish",
+    "subtitle": "E'lon yaratish mutlaqo bepul!",
+    "ucamount": "Nechi UC sotasiz",
+    "workhours": "Ish vaqtingiz",
+    "price": "Narxi (uzb so'mida)",
+    "message": "Qo'shima malumotlar",
+    "create": "Yaratish",
+    "workminutes": "Buyurtmadan keyin qanchada UC tushadi",
+    "workminutesPlaceholder": "30 daqiqada",
+    "pricePlaceholder": "Namuna: 13000",
+    "ucamountPlaceholder": "60",
+    "workhoursPlaceholder": "9:00 dan 23:00 gacha",
+    "messagePlaceholder": "Eng arzon UC lar va tez himat...",
     "imageRequiredMessage": "Rasm yuklash majburiy"
   },
   "signup": {

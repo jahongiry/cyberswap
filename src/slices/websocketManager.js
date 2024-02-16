@@ -1,4 +1,4 @@
-import { MAINURL } from '../api/axios';
+import { MAINURLSOCKET } from '../api/axios';
 let socket = null;
 
 export const establishConnection = (
@@ -11,8 +11,8 @@ export const establishConnection = (
 ) => {
   const token = localStorage.getItem('token');
   const socketUrl = token
-    ? `ws://${MAINURL}?token=${token}`
-    : `ws://${MAINURL}`;
+    ? `ws://${MAINURLSOCKET}?token=${token}`
+    : `ws://${MAINURLSOCKET}`;
 
   socket = new WebSocket(socketUrl);
 
@@ -33,8 +33,16 @@ export const closeConnection = () => {
   }
 };
 
-export const sendMessage = (message) => {
+export const sendMessage = (chatId, content) => {
   if (socket && socket.readyState === WebSocket.OPEN) {
+    const message = {
+      type: 'action',
+      action: 'send',
+      metadata: {
+        chat_id: chatId,
+        content: content,
+      },
+    };
     socket.send(JSON.stringify(message));
   }
 };

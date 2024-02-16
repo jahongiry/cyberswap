@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { selectCurrentUser } from '../slices/authSlice';
 import { useSelector, useDispatch } from 'react-redux';
+import { selectCurrentUser } from '../slices/authSlice';
 import { checkLogIn } from '../slices/authSlice';
 
 const ProtectedRoute = ({ children }) => {
@@ -9,7 +9,15 @@ const ProtectedRoute = ({ children }) => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
   const currentUser = useSelector(selectCurrentUser);
-  const isLoggedIn = currentUser != null;
+  const localStorageToken = localStorage.getItem('token');
+
+  useEffect(() => {
+    if (!token && localStorageToken) {
+      dispatch(checkLogIn(localStorageToken));
+    }
+  }, [dispatch, token, localStorageToken]);
+
+  const isLoggedIn = currentUser != null || localStorageToken != null;
 
   if (!isLoggedIn) {
     localStorage.setItem('lastPath', location.pathname);

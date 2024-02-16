@@ -260,7 +260,6 @@
   cursor: pointer;
 }
 
-/* Adjust placeholder color if needed */
 .royal-pass-input-container input::placeholder {
   color: #aaa;
 }
