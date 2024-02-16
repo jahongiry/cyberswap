@@ -31,8 +31,15 @@ export const closeConnection = () => {
   }
 };
 
+let messageQueue = [];
+
 export const sendMessage = (chatId, content) => {
   if (socket && socket.readyState === WebSocket.OPEN) {
+    if (messageQueue.length > 0) {
+      messageQueue.forEach((msg) => socket.send(JSON.stringify(msg)));
+      messageQueue = [];
+    }
+
     const message = {
       type: 'action',
       action: 'send',
@@ -43,6 +50,14 @@ export const sendMessage = (chatId, content) => {
     };
     socket.send(JSON.stringify(message));
   } else {
-    console.log('Not sending this time');
+    messageQueue.push({
+      type: 'action',
+      action: 'send',
+      metadata: {
+        chat_id: chatId,
+        content: content,
+      },
+    });
+    console.log('Message queued');
   }
 };
