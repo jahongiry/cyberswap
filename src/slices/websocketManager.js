@@ -42,5 +42,7 @@ export const sendMessage = (chatId, content) => {
       },
     };
     socket.send(JSON.stringify(message));
+  } else {
+    console.log('Not sending this time');
   }
 };

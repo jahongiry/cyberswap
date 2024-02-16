@@ -18,15 +18,15 @@ const Chat = () => {
   const chats = useSelector((state) => state.chat.chats);
   const messages = chats[selectedChatId]?.messages || [];
   const user = useSelector(selectCurrentUser);
-  // const messagesEndRef = useRef(null);
+  const messagesEndRef = useRef(null);
 
-  // const scrollToBottom = () => {
-  //   messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  // };
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
 
-  // useEffect(() => {
-  //   scrollToBottom();
-  // }, [messages]);
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]); // Dependency array includes messages
 
   useEffect(() => {
     if (Object.keys(chats).length === 0) {
@@ -79,6 +79,7 @@ const Chat = () => {
               </React.Fragment>
             );
           })}
+          <div ref={messagesEndRef} />
         </div>
         <form className='form-chat' onSubmit={handleSubmit}>
           <div className='file-upload'>
