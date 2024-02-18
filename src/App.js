@@ -29,14 +29,14 @@ import UcOffer from './pages/offer/UcOffer';
 function App() {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
-  const token = useSelector((state) => state.auth.token);
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     const storedToken = localStorage.getItem('token');
     if (storedToken) {
       dispatch(checkLogIn());
     }
-  }, [dispatch]);
+  }, [dispatch, token]);
 
   useEffect(() => {
     window.scrollTo(0, 0);

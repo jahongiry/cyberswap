@@ -22,8 +22,9 @@ const Chat = () => {
   useEffect(() => {
     if (token) {
       const newSocket = io('https://cyberswap.uz', {
+        path: '/api/socket.io',
         query: { token: encodeURIComponent(token) },
-        transports: ['websocket'], // use WebSocket first, fallback to polling if necessary
+        transports: ['websocket'],
       });
       setSocket(newSocket);
 
