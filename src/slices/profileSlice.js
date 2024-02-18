@@ -99,7 +99,6 @@ export const updateProfileImage = createAsyncThunk(
           'Content-Type': 'multipart/form-data',
         },
       });
-
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);

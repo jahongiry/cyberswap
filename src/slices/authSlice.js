@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from '../api/axios';
-import { establishWebSocketConnection } from './chatSlice';
 
 const initialState = {
   user: null,
@@ -16,7 +15,6 @@ export const logIn = createAsyncThunk(
       const response = await axios.post('/login', credentials);
       if (response.data.token) {
         localStorage.setItem('token', response.data.token);
-        thunkAPI.dispatch(establishWebSocketConnection());
       }
       return response.data;
     } catch (error) {
@@ -28,6 +26,10 @@ export const logIn = createAsyncThunk(
 export const checkLogIn = createAsyncThunk(
   'auth/checkLogIn',
   async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    if (state.auth.user) {
+      return state.auth.user;
+    }
     try {
       const token = localStorage.getItem('token');
       if (!token) {
@@ -38,7 +40,26 @@ export const checkLogIn = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       });
+      return userResponse.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data.detail);
+    }
+  }
+);
 
+export const updatedProfileInfo = createAsyncThunk(
+  'auth/updatedProfileInfo',
+  async (_, thunkAPI) => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        return thunkAPI.rejectWithValue('No token found, user not logged in');
+      }
+      const userResponse = await axios.get('/profile', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       return userResponse.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.detail);
@@ -142,6 +163,15 @@ const authSlice = createSlice({
         state.status = 'idle';
         state.error = null;
         state.token = null;
+      })
+      .addCase(updatedProfileInfo.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.user = action.payload;
+        state.error = null;
+      })
+      .addCase(updatedProfileInfo.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
       });
   },
 });

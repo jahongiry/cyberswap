@@ -24,7 +24,6 @@ import ProtectedRoute from './protectedRoutes/protectedRoute';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import FrontChat from './pages/chat/chatFront/chatFront';
-import { establishWebSocketConnection } from './slices/chatSlice';
 import UcOffer from './pages/offer/UcOffer';
 
 function App() {
@@ -32,16 +31,11 @@ function App() {
   const { pathname } = useLocation();
   const token = useSelector((state) => state.auth.token);
 
-  dispatch(checkLogIn());
-
   useEffect(() => {
-    if (token) {
+    const storedToken = localStorage.getItem('token');
+    if (storedToken) {
       dispatch(checkLogIn());
     }
-  }, [dispatch, token]);
-
-  useEffect(() => {
-    dispatch(establishWebSocketConnection());
   }, [dispatch]);
 
   useEffect(() => {

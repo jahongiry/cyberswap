@@ -3,12 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import './chat.css';
 import ChatHeader from './charHeader/chatHeader';
-import {
-  fetchChats,
-  establishWebSocketConnection,
-} from '../../slices/chatSlice';
+import { fetchChats } from '../../slices/chatSlice';
 import { selectCurrentUser } from '../../slices/authSlice';
-import { sendMessage, closeConnection } from '../../slices/websocketManager';
 
 const Chat = () => {
   const [inputValue, setInputValue] = useState('');
@@ -26,26 +22,11 @@ const Chat = () => {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages]); // Dependency array includes messages
-
-  useEffect(() => {
-    if (Object.keys(chats).length === 0) {
-      dispatch(fetchChats());
-    }
-
-    if (selectedChatId) {
-      dispatch(establishWebSocketConnection(selectedChatId));
-    }
-
-    return () => {
-      closeConnection();
-    };
-  }, [dispatch, selectedChatId, chats]);
+  }, [messages]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (inputValue.trim()) {
-      sendMessage(selectedChatId, inputValue);
       setInputValue('');
     }
   };

@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from '../api/axios';
-import { establishConnection, closeConnection } from './websocketManager';
 import { act } from 'react-dom/test-utils';
 
 const initialState = {
@@ -35,43 +34,10 @@ export const fetchChats = createAsyncThunk(
   }
 );
 
-export const establishWebSocketConnection = createAsyncThunk(
-  'chat/establishWebSocketConnection',
-  async (chatId, { dispatch }) => {
-    establishConnection(
-      dispatch,
-      chatId,
-      connectWebSocket,
-      disconnectWebSocket,
-      webSocketError,
-      messageReceived
-    );
-  }
-);
-
 const chatSlice = createSlice({
   name: 'chat',
   initialState,
-  reducers: {
-    connectWebSocket: (state) => {
-      state.status = 'connected';
-    },
-    disconnectWebSocket: (state) => {
-      state.status = 'disconnected';
-    },
-    webSocketError: (state, action) => {
-      state.status = 'error';
-      state.error = action.payload;
-    },
-    messageReceived: (state, action) => {
-      const {
-        metadata: { chat_id, message },
-      } = action.payload;
-      if (chat_id) {
-        state.chats[chat_id].messages.push(message);
-      }
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchChats.pending, (state) => {
@@ -91,12 +57,5 @@ const chatSlice = createSlice({
 });
 
 export const selectMessages = (state) => state.chat.messages;
-export const selectConnectionStatus = (state) => state.chat.status;
-export const {
-  connectWebSocket,
-  disconnectWebSocket,
-  webSocketError,
-  messageReceived,
-} = chatSlice.actions;
 
 export default chatSlice.reducer;

@@ -4,7 +4,7 @@ import profileImg from '../../img/halmet.png';
 import {
   logOutUser,
   selectCurrentUser,
-  checkLogIn,
+  updatedProfileInfo,
 } from '../../slices/authSlice';
 import {
   updateUsername,
@@ -92,7 +92,7 @@ const Profile = () => {
     const file = event.target.files[0];
     if (file) {
       dispatch(updateProfileImage(file)).then(() => {
-        dispatch(checkLogIn());
+        dispatch(updatedProfileInfo());
       });
     }
   };
@@ -149,7 +149,7 @@ const Profile = () => {
               {translations.profile.userNameUpdateSuccess}
             </p>
           );
-          dispatch(checkLogIn());
+          dispatch(updatedProfileInfo());
           setIsEditPopupVisible(false);
         } else {
           toast.error(translations.profile.usernameUpdateError);
@@ -168,11 +168,11 @@ const Profile = () => {
     dispatch(logOutUser());
   };
 
-  useEffect(() => {
-    if (!currentUser) {
-      dispatch(checkLogIn());
-    }
-  }, [dispatch]);
+  // useEffect(() => {
+  //   if (!currentUser) {
+  //     dispatch(checkLogIn());
+  //   }
+  // }, [dispatch, currentUser]);
 
   const toggleEditButtons = () => {
     setShowEditButtons(!showEditButtons);

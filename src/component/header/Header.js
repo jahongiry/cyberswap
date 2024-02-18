@@ -7,12 +7,18 @@ import { selectCurrentUser } from '../../slices/authSlice';
 import LanguageSwitcher from './languageSwitcher';
 import { selectTranslations } from '../../slices/languageSlice';
 import halmet from '../../img/halmet.png';
+import { checkLogIn } from '../../slices/authSlice';
+// import { useDispatch } from 'react-redux';
 
 const Header = () => {
   const translations = useSelector(selectTranslations);
   const [navbar, setNavbar] = useState(false);
   const user = useSelector(selectCurrentUser);
   const navBtn = () => setNavbar(!navbar);
+
+  // const dispatch = useDispatch();
+  const token = useSelector((state) => state.auth.token);
+
   useEffect(() => {
     window.addEventListener('scroll', () => {
       if (window.scrollY > 0) {
@@ -20,6 +26,12 @@ const Header = () => {
       }
     });
   }, []);
+
+  // useEffect(() => {
+  //   if (token) {
+  //     dispatch(checkLogIn());
+  //   }
+  // }, [dispatch, token]);
 
   return (
     <header className='container header'>
