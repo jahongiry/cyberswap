@@ -5,9 +5,11 @@ import './chat.css';
 import ChatHeader from './charHeader/chatHeader';
 import { fetchChats } from '../../slices/chatSlice';
 import { selectCurrentUser } from '../../slices/authSlice';
+import io from 'socket.io-client';
 
 const Chat = () => {
   const [inputValue, setInputValue] = useState('');
+  const [socket, setSocket] = useState(null);
   const dispatch = useDispatch();
   const location = useLocation();
   const { selectedChatId, chatUsers } = location.state || {};
@@ -15,6 +17,19 @@ const Chat = () => {
   const messages = chats[selectedChatId]?.messages || [];
   const user = useSelector(selectCurrentUser);
   const messagesEndRef = useRef(null);
+  const token = localStorage.getItem('token');
+
+  useEffect(() => {
+    if (token) {
+      const newSocket = io('https://cyberswap.uz', {
+        query: { token: encodeURIComponent(token) },
+        transports: ['websocket'], // use WebSocket first, fallback to polling if necessary
+      });
+      setSocket(newSocket);
+
+      return () => newSocket.close();
+    }
+  }, [token]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -27,9 +42,18 @@ const Chat = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (inputValue.trim()) {
+      socket.emit('message', { content: inputValue, chat_id: selectedChatId });
       setInputValue('');
     }
   };
+
+  useEffect(() => {
+    if (socket) {
+      socket.on('message', (newMessage) => {
+        console.log(newMessage);
+      });
+    }
+  }, [socket]);
 
   const getMessageClass = (message) => {
     if (message.content.length <= 20) {
