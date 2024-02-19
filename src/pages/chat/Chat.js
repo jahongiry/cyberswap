@@ -9,6 +9,8 @@ import {
 import { fetchChats } from '../../slices/chatSlice';
 import ChatHeader from './charHeader/chatHeader';
 import './chat.css';
+import unread_tick from '../../img/checkmark-outline.svg';
+import read_tick from '../../img/checkmark-done-outline.svg';
 
 const Chat = () => {
   const dispatch = useDispatch();
@@ -50,6 +52,13 @@ const Chat = () => {
     }
   };
 
+  const getMilitaryTime = (dateString) => {
+    const date = new Date(dateString);
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    return `${hours}:${minutes}`;
+  };
+
   useEffect(() => {
     dispatch(fetchChats());
   }, [dispatch]);
@@ -75,6 +84,12 @@ const Chat = () => {
               } ${getMessageClass(message)}`}
             >
               {message.content}
+              <div className='message-details'>
+                <span className='message-time'>
+                  {getMilitaryTime(message.created_at)}
+                </span>
+                <img src={unread_tick} alt='Unread' className='unread-tick' />
+              </div>
             </div>
           ))}
           <div ref={messagesEndRef} />

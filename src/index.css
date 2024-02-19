@@ -94,12 +94,14 @@ html {
 /* ====== Scroll Bar start ====== */
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 3px;
   background-color: var(--bg-color);
 }
+
 ::-webkit-scrollbar-thumb {
   /* background-color: #bfbfbf; */
-  background: var(--btn-bg-color);
+  background: #344a66;
+  height: 35%;
   border-radius: 10px;
 }
 
