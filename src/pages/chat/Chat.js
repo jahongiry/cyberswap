@@ -65,7 +65,7 @@ const Chat = () => {
 
   const getMessageClass = (message) => {
     return message.content.length <= 20
-      ? message.content.length <= 1
+      ? message.content.length <= 2
         ? 'single-message'
         : 'short-message'
       : 'long-message';
