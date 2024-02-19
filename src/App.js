@@ -39,13 +39,6 @@ function App() {
     };
   }, []);
 
-  // useEffect(() => {
-  //   const storedToken = localStorage.getItem('token');
-  //   if (storedToken) {
-  //     dispatch(checkLogIn());
-  //   }
-  // }, [dispatch, token]);
-
   useEffect(() => {
     dispatch(updatedProfileInfo());
   }, [dispatch, token]);

@@ -1,5 +1,5 @@
 .chat-page-main {
-  height: 100vh;
+  max-height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -143,61 +143,3 @@
   border: 2px solid white;
   font-size: 1rem;
 }
-
-/* .bottom-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-} */
-
-/* .cancel {
-  border: none;
-  padding: 13px 20px;
-  border-radius: 20px;
-  color: white;
-  background-image: linear-gradient(
-    to left bottom,
-    #88347b,
-    #6f2b75,
-    #54236e,
-    #371c65,
-    #10165c
-  );
-  box-shadow: 4px 4px 6px #1b1b1b, -4px -4px 6px #3b3b3b;
-  cursor: pointer;
-  width: 9rem;
-  margin-top: 1rem;
-  border-top: 2px solid #d6b1d6;
-  border-right: 2px solid #d969c6;
-  border-bottom: 2px solid #775fcf;
-  border-left: 2px solid #775fcf;
-} */
-
-/* .finish {
-  border: none;
-  padding: 13px 20px;
-  border-radius: 20px;
-  color: white;
-  background-image: linear-gradient(
-    to left bottom,
-    #88347b,
-    #6f2b75,
-    #54236e,
-    #371c65,
-    #10165c
-  );
-  box-shadow: 4px 4px 6px #1b1b1b, -4px -4px 6px #3b3b3b;
-  cursor: pointer;
-  width: 9rem;
-  margin-top: 1rem;
-  border-top: 2px solid #d6b1d6;
-  border-right: 2px solid #d969c6;
-  border-bottom: 2px solid #775fcf;
-  border-left: 2px solid #775fcf;
-} */
-
-/* .bottom-container ion-icon {
-  font-size: 1rem;
-  margin-bottom: -0.2rem;
-} */
