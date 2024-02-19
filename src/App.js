@@ -15,7 +15,7 @@ import Chat from './pages/chat/Chat';
 import Payment from './pages/payment/Payment';
 import Profile from './pages/profile/Profile';
 import { useDispatch } from 'react-redux';
-import { checkLogIn } from './slices/authSlice';
+import { checkLogIn, updatedProfileInfo } from './slices/authSlice';
 import Confirm from './pages/signup/confirm/Confirm';
 import Loader from './component/loader/Loader2';
 import LoginAdmin from './pages/admin/LoginAdmin';
@@ -39,11 +39,15 @@ function App() {
     };
   }, []);
 
+  // useEffect(() => {
+  //   const storedToken = localStorage.getItem('token');
+  //   if (storedToken) {
+  //     dispatch(checkLogIn());
+  //   }
+  // }, [dispatch, token]);
+
   useEffect(() => {
-    const storedToken = localStorage.getItem('token');
-    if (storedToken) {
-      dispatch(checkLogIn());
-    }
+    dispatch(updatedProfileInfo());
   }, [dispatch, token]);
 
   useEffect(() => {
