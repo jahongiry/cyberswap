@@ -6,10 +6,12 @@ import {
   disconnectSocket,
   getSocket,
 } from '../../slices/Socket';
+import { fetchChats } from '../../slices/chatSlice';
 import ChatHeader from './charHeader/chatHeader';
 import './chat.css';
 
 const Chat = () => {
+  const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState('');
   const location = useLocation();
   const { selectedChatId, chatUsers } = location.state || {};
@@ -17,6 +19,23 @@ const Chat = () => {
   const messages = chats[selectedChatId]?.messages || [];
   const user = useSelector((state) => state.auth.user);
   const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    if (!selectedChatId || !chatUsers) {
+      const storedSelectedChatId = localStorage.getItem('selectedChatId');
+      const storedChatUsers = localStorage.getItem('chatUsers');
+
+      if (storedSelectedChatId) {
+        selectedChatId = JSON.parse(storedSelectedChatId);
+      }
+      if (storedChatUsers) {
+        chatUsers = JSON.parse(storedChatUsers);
+      }
+    } else {
+      localStorage.setItem('selectedChatId', JSON.stringify(selectedChatId));
+      localStorage.setItem('chatUsers', JSON.stringify(chatUsers));
+    }
+  }, []);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -30,6 +49,10 @@ const Chat = () => {
       setInputValue('');
     }
   };
+
+  useEffect(() => {
+    dispatch(fetchChats());
+  }, [dispatch]);
 
   const getMessageClass = (message) => {
     return message.content.length <= 20

@@ -40,11 +40,10 @@ const chatSlice = createSlice({
   initialState,
   reducers: {
     addMessage: (state, action) => {
-      console.log(action.payload);
       const chatRoomID = action.payload.chatRoomID;
-      //   if (!state.chats[chatRoomID]) {
-      //     state.chats[chatRoomID] = { messages: [] };
-      //   }
+      if (!state.chats[chatRoomID]) {
+        state.chats[chatRoomID] = { messages: [] };
+      }
       state.chats[chatRoomID].messages.push(action.payload.content);
     },
   },
@@ -58,7 +57,6 @@ const chatSlice = createSlice({
         state.status = 'succeeded';
         action.payload.forEach((chat) => {
           state.chats[chat.id] = { ...chat, messages: chat.messages };
-          console.log(state.chats[chat.id]);
         });
       })
       .addCase(fetchChats.rejected, (state, action) => {
