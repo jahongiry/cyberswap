@@ -25,11 +25,19 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import FrontChat from './pages/chat/chatFront/chatFront';
 import UcOffer from './pages/offer/UcOffer';
+import { initializeSocket, disconnectSocket } from '../src/slices/Socket';
 
 function App() {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const token = localStorage.getItem('token');
+
+  useEffect(() => {
+    initializeSocket();
+    return () => {
+      disconnectSocket();
+    };
+  }, []);
 
   useEffect(() => {
     const storedToken = localStorage.getItem('token');
