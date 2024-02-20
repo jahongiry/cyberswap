@@ -14,6 +14,7 @@ export const initializeSocket = () => {
     });
 
     socket.on('message', (newMessage) => {
+      console.log(newMessage);
       store.dispatch(addMessage(newMessage));
     });
   }
