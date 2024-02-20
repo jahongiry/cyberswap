@@ -15,7 +15,7 @@ const FrontChat = () => {
   const [selectedChatId, setSelectedChatId] = useState(null);
   const chatsObject = useSelector((state) => state.chat.chats);
   const chatsArray = Object.values(chatsObject);
-
+  console.log(chats);
   useEffect(() => {
     if (Object.keys(chats).length === 0) {
       dispatch(fetchChats());
@@ -27,6 +27,35 @@ const FrontChat = () => {
     navigate('/chat', {
       state: { selectedChatId: chatId, chatUsers: chat.users },
     });
+  };
+
+  const truncateUsername = (username) => {
+    if (username.length > 15) {
+      return username.substring(0, 15) + '...';
+    }
+    return username;
+  };
+
+  const truncateChatFront = (lastChat) => {
+    if (lastChat.length > 30) {
+      return lastChat.substring(0, 30) + '...';
+    }
+    return lastChat;
+  };
+
+  const getMilitaryTime = (dateString) => {
+    if (!dateString || typeof dateString !== 'string') {
+      return 'Invalid Date';
+    }
+    try {
+      const date = new Date(dateString);
+      const hours = date.getHours().toString().padStart(2, '0');
+      const minutes = date.getMinutes().toString().padStart(2, '0');
+
+      return `${hours}:${minutes}`;
+    } catch (e) {
+      console.log({ dateString });
+    }
   };
 
   if (status === 'loading') {
@@ -57,17 +86,33 @@ const FrontChat = () => {
       </header>
       <div className='chat-list'>
         {chatsArray.map((chat) => (
-          <div
-            key={chat.id}
-            className='chat-info'
-            onClick={() => openChat(chat.id)}
-          >
+          <div className='chat-info' onClick={() => openChat(chat.id)}>
             <img
               src={chat.users[0].image}
               alt={chat.users[0].username}
               className='user-image'
             />
-            <div className='user-name'>{chat.users[0].username}</div>
+            <div className='user-name-chat-last'>
+              <div>
+                <div className='user-name'>
+                  {truncateUsername(chat.users[0].username)}
+                </div>
+                <p className='last-message'>
+                  {truncateChatFront(
+                    chat.messages[chat.messages.length - 1].content
+                  )}
+                </p>
+              </div>
+              <p className='last-message-time'>
+                {getMilitaryTime(
+                  chat.messages[chat.messages.length - 1].created_at
+                )}
+              </p>
+            </div>
+            <div className='offer-show'>
+              <p>LVL: {chat.offer.level}</p>
+              <p>UZS: {chat.offer.cost}</p>
+            </div>
           </div>
         ))}
       </div>

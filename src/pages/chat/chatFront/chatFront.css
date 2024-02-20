@@ -27,12 +27,13 @@
 
 .chat-info {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
-  background-color: #2d3e50; /* Slightly different shade for chat items */
+  background-color: #2d3e50;
   padding: 0.8rem;
-  border-radius: 5px; /* Optional rounded corners */
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .user-image {
@@ -43,5 +44,49 @@
 }
 
 .user-name {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+}
+
+.last-message {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.554);
+}
+
+.user-name-chat-last {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.last-message-time {
+  align-self: flex-end;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.7rem;
+  margin-top: 2.8rem;
+  margin-right: 1.5rem;
+  position: absolute;
+}
+
+.offer-show {
+  background-color: #3b4e5a;
+  border: 1px solid #2d3e50;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 0.5rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  text-align: start;
+  width: max-content;
+  align-self: flex-end;
+  width: 25%;
+}
+
+.offer-show p {
+  margin: 0.2rem;
+  font-size: 0.8rem;
+  color: #d0dfe8;
+  font-weight: bold;
 }
