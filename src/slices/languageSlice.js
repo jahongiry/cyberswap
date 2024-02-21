@@ -3,12 +3,14 @@ import uz from '../locales/uz.json';
 import ru from '../locales/ru.json';
 
 const getInitialLanguage = () => {
+  const defaultLanguage = navigator.language;
   const savedLang = localStorage.getItem('languagePreference');
   if (savedLang) {
     return savedLang;
   } else {
-    localStorage.setItem('languagePreference', 'uz');
-    return 'uz';
+    const initialLanguage = defaultLanguage.startsWith('ru') ? 'ru' : 'uz';
+    localStorage.setItem('languagePreference', initialLanguage);
+    return initialLanguage;
   }
 };
 
