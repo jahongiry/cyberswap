@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './mainSection.css';
-import homeImg from './logo1_1.png';
+import homeImg from '../../img/mainSection/logo1_1.png';
 import { NavLink, Link } from 'react-router-dom';
 import { selectTranslations } from '../../slices/languageSlice';
 import { useSelector } from 'react-redux';

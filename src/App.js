@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import './App.css';
 import Header from './component/header/Header';
 import Footer from './component/footer/Footer';
@@ -15,7 +14,7 @@ import Chat from './pages/chat/Chat';
 import Payment from './pages/payment/Payment';
 import Profile from './pages/profile/Profile';
 import { useDispatch } from 'react-redux';
-import { checkLogIn, updatedProfileInfo } from './slices/authSlice';
+import { updatedProfileInfo } from './slices/authSlice';
 import Confirm from './pages/signup/confirm/Confirm';
 import Loader from './component/loader/Loader2';
 import LoginAdmin from './pages/admin/LoginAdmin';

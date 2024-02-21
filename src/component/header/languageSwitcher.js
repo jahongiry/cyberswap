@@ -1,5 +1,4 @@
 import React from 'react';
-// import  from 'module'
 import { useDispatch, useSelector } from 'react-redux';
 import {
   switchLanguage,

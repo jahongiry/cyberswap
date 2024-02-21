@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import './header.css';
-import logo from './logo1_1.png';
+import logo from '../../img/mainSection/logo1_1.png';
 import { useSelector } from 'react-redux';
 import { selectCurrentUser } from '../../slices/authSlice';
 import LanguageSwitcher from './languageSwitcher';
 import { selectTranslations } from '../../slices/languageSlice';
-import halmet from '../../img/halmet.png';
-import { checkLogIn } from '../../slices/authSlice';
-// import { useDispatch } from 'react-redux';
 
 const Header = () => {
   const translations = useSelector(selectTranslations);
@@ -16,7 +13,6 @@ const Header = () => {
   const user = useSelector(selectCurrentUser);
   const navBtn = () => setNavbar(!navbar);
 
-  // const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
 
   useEffect(() => {
@@ -26,12 +22,6 @@ const Header = () => {
       }
     });
   }, []);
-
-  // useEffect(() => {
-  //   if (token) {
-  //     dispatch(checkLogIn());
-  //   }
-  // }, [dispatch, token]);
 
   return (
     <header className='container header'>

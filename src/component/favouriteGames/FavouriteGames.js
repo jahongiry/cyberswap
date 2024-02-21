@@ -23,14 +23,14 @@ const FavouriteGames = () => {
         <Slider />
       </div>
       <div className='favouriteGames-btns'>
-        <Link to='/cards' className='cards-link'>
+        <Link to='/pubgucoffer' className='cards-link'>
           <button className='btn'>
-            <span>{translations.favourite.span3}</span>
+            <span>{translations.main.ucsell}</span>
           </button>
         </Link>
-        <Link to='/offer' className='cards-link'>
+        <Link to='/pubgaccountoffer' className='cards-link'>
           <button className='btn'>
-            <span>{translations.favourite.span4}</span>
+            <span>{translations.main.pubgsell}</span>
           </button>
         </Link>
       </div>
