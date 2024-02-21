@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import './header.css';
-import logo from '../../img/mainSection/logo1_1.png';
+import logo from '../../img/mainSection/logo1_1.webp';
 import { useSelector } from 'react-redux';
 import { selectCurrentUser } from '../../slices/authSlice';
 import LanguageSwitcher from './languageSwitcher';
