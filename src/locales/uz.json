@@ -76,10 +76,15 @@
     "phone": "Telefon nomer",
     "password": "Parolingiz",
     "forget": "Parol unitdingizmi",
+    "mehmon": "Mehmon sifatida ko'rish",
     "restore": "Parolni tiklash",
+    "mehmonbutton": "E'lonlar bo'limi",
     "signup": "Royhatdan o'tish",
     "enter": "Kirish",
-    "main": "ASOSIYGA QAYTISH"
+    "main": "ASOSIYGA QAYTISH",
+    "error1": "Raqamning formati noto'g'ri. Iltimos, +998XXXXXXXXX formatidan foydalaning",
+    "error2": "Telefon raqami 13 raqamdan oshmasligi kerak",
+    "error3": "Iltimos, jo'natishdan oldin xatolarni tuzating"
   },
   "popup": {
     "owner": "egasi",

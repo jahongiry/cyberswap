@@ -44,7 +44,9 @@ const chatSlice = createSlice({
       if (!state.chats[chatRoomID]) {
         state.chats[chatRoomID] = { messages: [] };
       }
-      state.chats[chatRoomID].messages.push(action.payload.content);
+      if (!action.payload.messages || action.payload.messages.length > 0) {
+        state.chats[chatRoomID].messages.push(action.payload.content);
+      }
     },
   },
 

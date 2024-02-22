@@ -121,8 +121,8 @@ export const fetchOffer = createAsyncThunk(
         },
       });
       if (response.data) {
-        if (response.data.selling_offers) {
-          return response.data.selling_offers;
+        if (response.data.sales_portfolio) {
+          return response.data.sales_portfolio;
         }
       }
     } catch (error) {
