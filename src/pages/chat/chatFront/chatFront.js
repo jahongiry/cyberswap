@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Chat from '../Chat';
 import Loader from '../../../component/loader/Loader2';
+import moment from 'moment';
 
 const FrontChat = () => {
   const dispatch = useDispatch();
@@ -44,18 +45,14 @@ const FrontChat = () => {
   };
 
   const getMilitaryTime = (dateString) => {
-    if (!dateString || typeof dateString !== 'string') {
+    if (!dateString) {
       return 'Invalid Date';
     }
-    try {
-      const date = new Date(dateString);
-      const hours = date.getHours().toString().padStart(2, '0');
-      const minutes = date.getMinutes().toString().padStart(2, '0');
-
-      return `${hours}:${minutes}`;
-    } catch (e) {
-      console.log({ dateString });
+    const date = moment(dateString);
+    if (!date.isValid()) {
+      return 'Invalid Date';
     }
+    return date.format('HH:mm');
   };
 
   if (status === 'loading') {
