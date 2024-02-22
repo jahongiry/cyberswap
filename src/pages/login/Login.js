@@ -31,7 +31,14 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const actionResult = await dispatch(logIn(credentials));
+      const fullPhoneNumber = `998${credentials.login}`;
+
+      const loginPayload = {
+        login: fullPhoneNumber,
+        password: credentials.password,
+      };
+
+      const actionResult = await dispatch(logIn(loginPayload));
       if (logIn.rejected.match(actionResult)) {
         const errorDetail = actionResult.payload
           ? actionResult.payload.detail
@@ -69,12 +76,13 @@ const Login = () => {
           <img className='logo-in' src={logo1} alt='logo' />
           <h2>{translations.login.welcome}</h2>
           <form className='login-form' onSubmit={handleSubmit}>
-            <div className='input-container'>
+            <div className='input-container phone'>
               <label htmlFor='login'>{translations.login.phone}</label>
+              <span className='prefix-phone'>+998</span>
               <input
-                type='text'
+                type='mobile'
                 id='login'
-                placeholder='+998912345678'
+                placeholder='123456789'
                 value={credentials.login}
                 onChange={handleInputChange}
                 autoComplete='off'
