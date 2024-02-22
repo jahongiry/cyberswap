@@ -16,8 +16,14 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [errorMessage, setErrorMessage] = useState(false);
+  const [phoneError, setPhoneError] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const validatePhoneNumber = (phoneNumber) => {
+    const regex = /^\+998\d{9}$/;
+    return regex.test(phoneNumber);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -71,10 +77,10 @@ const Signup = () => {
               <label htmlFor='phone-number'>{translations.signup.phone}</label>
               <input
                 type='text'
-                id='phone-number' // Make sure this ID is unique and descriptive
+                id='phone-number'
                 placeholder='+998912345678'
-                value={phoneNumber} // Control the input with phoneNumber state
-                onChange={(e) => setPhoneNumber(e.target.value)} // Update state on change
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
               />
             </div>
             <div className='input-container'>
