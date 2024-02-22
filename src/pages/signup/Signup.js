@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Signup = () => {
   const translations = useSelector(selectTranslations);
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('+998');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
@@ -32,8 +32,9 @@ const Signup = () => {
     }
     setPasswordError('');
     try {
+      const noPlusphoneNumber = phoneNumber.replace('+', '');
       const actionResult = await dispatch(
-        signUp({ phone_number: phoneNumber, password })
+        signUp({ phone_number: noPlusphoneNumber, password })
       );
       if (signUp.fulfilled.match(actionResult)) {
         navigate('/confirm');

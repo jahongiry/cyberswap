@@ -17,6 +17,12 @@ const Login = () => {
   });
 
   const [errorMessage, setErrorMessage] = useState(false);
+  const [phoneError, setPhoneError] = useState('');
+
+  const validatePhoneNumber = (phoneNumber) => {
+    const regex = /^\+998\d{9}$/;
+    return regex.test(phoneNumber);
+  };
 
   const handleInputChange = (event) => {
     const { id, value } = event.target;
@@ -24,14 +30,42 @@ const Login = () => {
       ...credentials,
       [id]: value,
     });
+
+    if (id === 'login') {
+      if (value.length === 13) {
+        if (validatePhoneNumber(value)) {
+          setPhoneError('');
+        } else {
+          setPhoneError(translations.login.error1);
+        }
+      } else if (value.length > 13) {
+        setPhoneError(translations.login.error2);
+      } else {
+        setPhoneError('');
+      }
+    }
   };
 
   const dispatch = useDispatch();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (!validatePhoneNumber(credentials.login)) {
+      toast.error(
+        <p className='red-text-important'>{translations.login.error3}</p>
+      );
+      return;
+    }
+    if (phoneError) {
+      toast.error(
+        <p className='red-text-important'>{translations.login.error3}</p>
+      );
+      return;
+    }
+
+    event.preventDefault();
     try {
-      // Remove '+' sign from the phone number if it exists
       const phoneNumber = credentials.login.replace('+', '');
 
       const loginPayload = {
@@ -79,7 +113,6 @@ const Login = () => {
           <form className='login-form' onSubmit={handleSubmit}>
             <div className='input-container phone'>
               <label htmlFor='login'>{translations.login.phone}</label>
-              {/* <span className='prefix-phone'>+998</span> */}
               <input
                 type='mobile'
                 id='login'
@@ -88,6 +121,7 @@ const Login = () => {
                 onChange={handleInputChange}
                 autoComplete='off'
               />
+              {phoneError && <div className='error-message'>{phoneError}</div>}
             </div>
             <div className='input-container'>
               <label htmlFor='password'>{translations.login.password}</label>
@@ -104,10 +138,12 @@ const Login = () => {
             </button>
             <div className='login-footer'>
               <div>
-                <label htmlFor='button'>{translations.login.forget}</label>
-                <button type='button' className='signup-button'>
-                  {translations.login.restore}
-                </button>
+                <label htmlFor='button'>{translations.login.mehmon}</label>
+                <Link to='/cards'>
+                  <button type='button' className='signup-button'>
+                    {translations.login.mehmonbutton}
+                  </button>
+                </Link>
               </div>
               <hr className='vertical-hr' />
               <div>
