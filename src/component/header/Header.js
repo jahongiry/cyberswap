@@ -6,6 +6,13 @@ import { useSelector } from 'react-redux';
 import { selectCurrentUser } from '../../slices/authSlice';
 import LanguageSwitcher from './languageSwitcher';
 import { selectTranslations } from '../../slices/languageSlice';
+import home_icon from '../../img/icons/home.svg';
+import offer_icon from '../../img/icons/offer_icon.svg';
+import contact_icon from '../../img/icons/contact_icon.svg';
+import chat_icon from '../../img/icons/chat_icon.svg';
+import enter_icon from '../../img/icons/enter_icon.svg';
+import hamburger_icon from '../../img/icons/hamburger_icon.svg';
+import x_icon from '../../img/icons/x_icon.svg';
 
 const Header = () => {
   const translations = useSelector(selectTranslations);
@@ -36,32 +43,32 @@ const Header = () => {
         <ul>
           <li onClick={navBtn}>
             <NavLink activeclassname='active' to='/'>
-              <i className='fa-solid fa-house'></i>
+              <img src={home_icon} alt='Home' className='home-icon' />
               {translations.header.main}
             </NavLink>
           </li>
           <li onClick={navBtn}>
             <NavLink to='/cards'>
-              <i className='fa-solid fa-circle-info'></i>
+              <img src={offer_icon} alt='Home' className='home-icon' />
               {translations.header.offers}
             </NavLink>
           </li>
           <li onClick={navBtn}>
             <NavLink to='/contact'>
-              <i className='fa-solid fa-phone'></i>
+              <img src={contact_icon} alt='Home' className='home-icon' />
               {translations.header.contact}
             </NavLink>
           </li>
-          <li onClick={navBtn}>
+          {/* <li onClick={navBtn}>
             <NavLink to='/loginadmin'>
               <i className='fa-solid fa-hammer'></i>
               {translations.header.admin}
             </NavLink>
-          </li>
+          </li> */}
           {user ? (
             <li>
               <Link to='/chatfront' className='sign-in'>
-                <i className='fa-solid fa-comments'></i>
+                <img src={chat_icon} alt='Home' className='home-icon-chat' />
                 {translations.header.chat}
               </Link>
             </li>
@@ -78,11 +85,15 @@ const Header = () => {
         ) : (
           <Link to='/login' className='sign-in'>
             <span>{translations.header.enter}</span>
-            <i className='fa fa-sign-in' aria-hidden='true'></i>
+            <img src={enter_icon} alt='Home' className='enter-icon' />
           </Link>
         )}
         <Link className='nav-btn' onClick={navBtn}>
-          <i className={navbar ? 'fa-solid fa-times' : 'fa-solid fa-bars'}></i>
+          <img
+            className='hamburger_icons'
+            src={navbar ? x_icon : hamburger_icon}
+            alt='Menu'
+          />
         </Link>
       </div>
     </header>

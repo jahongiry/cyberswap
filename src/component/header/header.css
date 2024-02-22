@@ -109,7 +109,6 @@
 .halmet {
   width: 15%;
   height: 15%;
-  /* margin-left: auto; */
 }
 
 .language-btn {
@@ -153,6 +152,28 @@
     border-top-left-radius: 10px;
     border-bottom-right-radius: 10px;
   }
+}
+
+.home-icon {
+  width: 1rem;
+}
+
+.home-icon-chat {
+  width: 1.2rem !important;
+  height: 1.2rem !important;
+  margin-left: 0 !important;
+}
+
+.enter-icon {
+  width: 2rem !important;
+  height: 2rem !important;
+  filter: invert(100%);
+}
+
+.hamburger_icons {
+  width: 2rem !important;
+  height: 2rem !important;
+  filter: brightness(0) invert(1);
 }
 
 @media screen and (max-width: 768px) {

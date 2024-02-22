@@ -12,7 +12,7 @@ const Login = () => {
   const translations = useSelector(selectTranslations);
   const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
-    login: '',
+    login: '+998',
     password: '',
   });
 
@@ -31,10 +31,11 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const fullPhoneNumber = `998${credentials.login}`;
+      // Remove '+' sign from the phone number if it exists
+      const phoneNumber = credentials.login.replace('+', '');
 
       const loginPayload = {
-        login: fullPhoneNumber,
+        login: phoneNumber,
         password: credentials.password,
       };
 
@@ -78,7 +79,7 @@ const Login = () => {
           <form className='login-form' onSubmit={handleSubmit}>
             <div className='input-container phone'>
               <label htmlFor='login'>{translations.login.phone}</label>
-              <span className='prefix-phone'>+998</span>
+              {/* <span className='prefix-phone'>+998</span> */}
               <input
                 type='mobile'
                 id='login'

@@ -3,8 +3,6 @@ import './cards.css';
 import logo1 from '../../component/header/logo1_1.png';
 import pubg from '../../img/pubg.jpeg';
 import { NavLink, Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
 import Popup from './popup/Popup';
 import { selectTranslations } from '../../slices/languageSlice';
 import { useDispatch, useSelector } from 'react-redux';
