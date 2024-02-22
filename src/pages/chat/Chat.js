@@ -111,6 +111,7 @@ const Chat = () => {
               id='username'
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
+              autoComplete='off'
             />
           </div>
           <div className='send-button' onClick={handleSubmit}>
