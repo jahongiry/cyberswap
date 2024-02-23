@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import './popup.css';
 import { selectTranslations } from '../../../slices/languageSlice';
 import { useSelector } from 'react-redux';
@@ -15,8 +16,12 @@ const PopUp = ({
 }) => {
   const translations = useSelector(selectTranslations);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
+  const navigate = useNavigate();
   const transitionDelay = 300;
+  const handleClose = () => {
+    togglePopUp();
+    navigate('/cards');
+  };
 
   const nextImage = () => {
     setTimeout(() => {
@@ -32,12 +37,28 @@ const PopUp = ({
     }, transitionDelay);
   };
   const shouldRenderButtons = images.length > 1;
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'Check out this game!',
+          url: window.location.href,
+        });
+        console.log('Page shared successfully');
+      } catch (error) {
+        console.error('Error in sharing', error);
+      }
+    } else {
+      console.log('Web Share API not supported');
+    }
+  };
+
   if (!isVisible) return null;
   return (
     <div className='pop-up-overlay'>
       <div className='pop-up__container'>
         <div className='pop-up'>
-          <button className='close' onClick={togglePopUp}>
+          <button className='close' onClick={handleClose}>
             <ion-icon name='close-circle-outline'></ion-icon>
           </button>
           <div className='carousel-container'>
@@ -50,7 +71,6 @@ const PopUp = ({
               src={images[currentImageIndex]}
               alt={`Slide ${currentImageIndex}`}
             />
-            {/* Conditionally render the right button */}
             {shouldRenderButtons && (
               <button className='carousel-btn right' onClick={nextImage}>
                 &#10095;
@@ -118,6 +138,13 @@ const PopUp = ({
               </p>
               <p className='facts'>{game.description}</p>
             </div>
+            <hr className='divider2' />
+            {navigator.share && (
+              <button className='share-button' onClick={handleShare}>
+                Share
+                <ion-icon name='share-social-outline'></ion-icon>
+              </button>
+            )}
             <hr className='divider2' />
             <button className='sotib-olish' onClick={openPrePayment}>
               {translations.popup.buy}

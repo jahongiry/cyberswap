@@ -11,6 +11,7 @@ import Loader from '../../component/loader/Loader2';
 import PrePayment from './prePayment/prePayment';
 import WinterPubg from '../../img/pubg_winter.avif';
 import WinterPubg2 from '../../img//Winterpubg.webp';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const Cards = () => {
   const dispatch = useDispatch();
@@ -22,13 +23,23 @@ const Cards = () => {
   const selectedGame = cards.find((game) => game.id === selectedGameId);
   const [selectedCategory, setSelectedCategory] = useState(null);
 
+  const { gameId } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(fetchCards());
+    if (gameId) {
+      setSelectedGameId(gameId);
+    }
+  }, [dispatch, gameId]);
+
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
   };
 
   const togglePopUp = () => {
     setSelectedGameId(null);
-    window.scrollTo(0, 0);
+    navigate('/cards');
   };
 
   useEffect(() => {
@@ -37,6 +48,7 @@ const Cards = () => {
 
   const openPopUp = (id) => {
     setSelectedGameId(id);
+    navigate(`/cards/${id}`);
   };
 
   const openPrePayment = () => {
