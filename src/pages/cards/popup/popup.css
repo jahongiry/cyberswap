@@ -257,3 +257,42 @@
   margin-top: 0.5rem;
   font-size: 1.2rem;
 }
+
+.share-button {
+  border: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  color: white;
+  background-image: linear-gradient(
+    to right bottom,
+    #3a4bbd,
+    /* Similar to sotib-olish gradient start */ #5168fc,
+    /* Similar to sotib-olish gradient end */ #3a4bbd
+      /* Adding a third color for a dynamic effect */
+  );
+  box-shadow: 4px 4px 6px #1b1b1b, -4px -4px 6px #3b3b3b;
+  cursor: pointer;
+  width: 90%; /* Consistency with sotib-olish */
+  margin-top: 1rem;
+  border-top: 2px solid #d6b1d6;
+  border-right: 2px solid #d969c6;
+  border-bottom: 2px solid #775fcf;
+  border-left: 2px solid #775fcf;
+  font-size: 1rem;
+  margin-left: 1rem;
+  text-align: center;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.share-button:hover {
+  background-color: #3454a2;
+  transform: scale(1.05);
+}
+
+.share-button:focus {
+  outline: none;
+}
+
+.share-button ion-icon {
+  margin-right: 5px;
+}
