@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import './cards.css';
 import logo1 from '../../component/header/logo1_1.png';
@@ -22,6 +23,7 @@ const Cards = () => {
   const [showPrePayment, setShowPrePayment] = useState(false);
   const selectedGame = cards.find((game) => game.id === selectedGameId);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  // const [sellerStatus, setSellerStatus] = useState(false);
 
   const { gameId } = useParams();
   const navigate = useNavigate();
@@ -36,6 +38,10 @@ const Cards = () => {
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
   };
+
+  // const handleSellerClick = () => {
+  //   setSellerStatus(!sellerStatus);
+  // };
 
   const togglePopUp = () => {
     setSelectedGameId(null);
@@ -61,7 +67,7 @@ const Cards = () => {
     setShowPrePayment(false);
   };
 
-  if (status === 'loading') {
+  if (status === "loading") {
     return (
       <div>
         <Loader />
@@ -69,72 +75,89 @@ const Cards = () => {
     );
   }
 
-  if (status === 'failed') {
+  if (status === "failed") {
     console.log(error);
     return <div>Error: {error}</div>;
   }
 
   return (
-    <div className='cards-wrapper'>
-      <div className='cards-container'>
-        <img src={WinterPubg2} alt='Pubg background' />
-        <div className='search-container'>
-          <input
-            type='text'
-            placeholder={translations.cards.placeholder}
-            className='search-input'
-          />
-          <button className='search-button'>{translations.cards.search}</button>
+    <div className="cards-wrapper">
+      <div className="cards-container">
+        <div className="card-img__bg">
+          <img src={WinterPubg2} alt="Pubg Mobile" />
         </div>
-        <div className='category-container'>
+
+        {/* search container start */}
+        <div className="search-container">
+          <input
+            type="text"
+            placeholder={translations.cards.placeholder}
+            className="search-input"
+          />
+          <button className="search-button">{translations.cards.search}</button>
+        </div>
+        {/* search container end */}
+
+        {/* category container start */}
+        <div className="category-container">
           <button
             className={`category-button ${
-              selectedCategory === 'UC' ? 'active' : ''
+              selectedCategory === "UC" ? "active" : ""
             }`}
-            onClick={() => handleCategoryClick('UC')}
+            onClick={() => {
+              handleCategoryClick("UC");
+            }}
           >
             UC
           </button>
           <button
             className={`category-button ${
-              selectedCategory === 'Accounts' ? 'active' : ''
+              selectedCategory === "Accounts" ? "active" : ""
             }`}
-            onClick={() => handleCategoryClick('Accounts')}
+            onClick={() => {
+              handleCategoryClick("Accounts");
+            }}
           >
             Accounts
           </button>
         </div>
+
+        {/* category container end */}
+        
+
         {selectedCategory && (
           <>
             {/* <h4 className='filterlash'>{translations.cards.filter}</h4> */}
             <div
-              className={`filter-container ${selectedCategory ? 'active' : ''}`}
+              className={`filter-container ${selectedCategory ? "active" : ""}`}
             >
-              <button className='filter-button'>
-                <ion-icon name='sparkles-outline'></ion-icon>
+              <button className="filter-button">
+                <ion-icon name="sparkles-outline"></ion-icon>
                 {translations.cards.new}
               </button>
-              <button className='filter-button'>
-                <ion-icon name='trending-up-outline'></ion-icon>
+              <button className="filter-button">
+                <ion-icon name="trending-up-outline"></ion-icon>
                 {translations.cards.cheap}
               </button>
-              <button className='filter-button'>
-                <ion-icon name='trending-down-outline'></ion-icon>
+              <button className="filter-button">
+                <ion-icon name="trending-down-outline"></ion-icon>
                 {translations.cards.expensive}
               </button>
             </div>
           </>
         )}
       </div>
-      <div className='cards-section'>
+
+      {/* cards section start  */}
+      <div className="cards-section">
         {cards.map((game) => (
-          <div key={game.id} className='card'>
-            <div className='card-img'>
+          <div key={game.id} className="card">
+            <div className="card-img">
               <img
                 onClick={() => openPopUp(game.id)}
-                className='card-img'
+                className="card-img"
                 src={game.images[0]}
-                alt='image'
+                alt="image"
               />
             </div>
             <h5 onClick={() => openPopUp(game.id)}>{game.name}</h5>
@@ -150,14 +173,14 @@ const Cards = () => {
             <p onClick={() => openPopUp(game.id)}>
               <span>{translations.cards.owner}:</span> {game.seller.username}
             </p>
-            <div className='stars' onClick={() => openPopUp(game.id)}>
-              <ion-icon name='star' className='icon-gold'></ion-icon>
-              <ion-icon name='star' className='icon-gold'></ion-icon>
-              <ion-icon name='star' className='icon-gold'></ion-icon>
-              <ion-icon name='star' className='icon-gold'></ion-icon>
-              <ion-icon name='star-half' className='icon-gold'></ion-icon>
+            <div className="stars" onClick={() => openPopUp(game.id)}>
+              <ion-icon name="star" className="icon-gold"></ion-icon>
+              <ion-icon name="star" className="icon-gold"></ion-icon>
+              <ion-icon name="star" className="icon-gold"></ion-icon>
+              <ion-icon name="star" className="icon-gold"></ion-icon>
+              <ion-icon name="star-half" className="icon-gold"></ion-icon>
             </div>
-            <button onClick={() => openPopUp(game.id)} className='price-button'>
+            <button onClick={() => openPopUp(game.id)} className="price-button">
               {game.cost} UZS
             </button>
             {selectedGameId && (
@@ -179,6 +202,7 @@ const Cards = () => {
           </div>
         ))}
       </div>
+      {/* cards section end  */}
     </div>
   );
 };

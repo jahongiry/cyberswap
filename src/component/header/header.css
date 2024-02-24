@@ -76,9 +76,9 @@
   gap: 5px;
 }
 .header .sign-in img {
-  width: 15%;
+  width: 60px;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
-  margin-left: auto;
 }
 .header .sign-in > span {
   font-family: var(--lato);
