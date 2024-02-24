@@ -139,16 +139,15 @@ const PopUp = ({
               <p className='facts'>{game.description}</p>
             </div>
             <hr className='divider2' />
+            <button className='sotib-olish' onClick={openPrePayment}>
+              {translations.popup.buy}
+            </button>
             {navigator.share && (
               <button className='share-button' onClick={handleShare}>
                 Share
                 <ion-icon name='share-social-outline'></ion-icon>
               </button>
             )}
-            <hr className='divider2' />
-            <button className='sotib-olish' onClick={openPrePayment}>
-              {translations.popup.buy}
-            </button>
           </div>
         </div>
       </div>
