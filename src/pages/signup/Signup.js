@@ -25,8 +25,29 @@ const Signup = () => {
     return regex.test(phoneNumber);
   };
 
+  const handlePhoneNumberChange = (e) => {
+    const input = e.target.value;
+    setPhoneNumber(input);
+    if (input.length > 13) {
+      setPhoneError(translations.login.error1);
+    } else if (!validatePhoneNumber(input) && input.length === 13) {
+      setPhoneError(translations.login.error2);
+    } else {
+      setPhoneError('');
+    }
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!validatePhoneNumber(phoneNumber) || phoneNumber.length !== 13) {
+      setPhoneError(translations.login.error3);
+      toast.error(
+        <p className='red-text-important'>{translations.login.error3}</p>
+      );
+      return;
+    }
+    setPhoneError('');
+
     if (password !== confirmPassword) {
       setPasswordError(translations.signup.mismatch_error);
       toast.error(
@@ -80,8 +101,9 @@ const Signup = () => {
                 id='phone-number'
                 placeholder='+998912345678'
                 value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
+                onChange={handlePhoneNumberChange}
               />
+              {phoneError && <div className='error-message'>{phoneError}</div>}
             </div>
             <div className='input-container'>
               <label htmlFor='password'>{translations.signup.password}</label>

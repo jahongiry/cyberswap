@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from "react";
-import "./cards.css";
-import logo1 from "../../component/header/logo1_1.png";
-import pubg from "../../img/pubg.jpeg";
-import { NavLink, Link } from "react-router-dom";
-import Popup from "./popup/Popup";
-import { selectTranslations } from "../../slices/languageSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchCards } from "../../slices/cardSlice";
-import Loader from "../../component/loader/Loader2";
-import PrePayment from "./prePayment/prePayment";
-import WinterPubg from "../../img/pubg_winter.avif";
-import WinterPubg2 from "../../img//Winterpubg.webp";
+
+import React, { useState, useEffect } from 'react';
+import './cards.css';
+import logo1 from '../../component/header/logo1_1.png';
+import pubg from '../../img/pubg.jpeg';
+import { NavLink, Link } from 'react-router-dom';
+import Popup from './popup/Popup';
+import { selectTranslations } from '../../slices/languageSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCards } from '../../slices/cardSlice';
+import Loader from '../../component/loader/Loader2';
+import PrePayment from './prePayment/prePayment';
+import WinterPubg from '../../img/pubg_winter.avif';
+import WinterPubg2 from '../../img//Winterpubg.webp';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const Cards = () => {
   const dispatch = useDispatch();
@@ -23,6 +25,16 @@ const Cards = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   // const [sellerStatus, setSellerStatus] = useState(false);
 
+  const { gameId } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(fetchCards());
+    if (gameId) {
+      setSelectedGameId(gameId);
+    }
+  }, [dispatch, gameId]);
+
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
   };
@@ -33,7 +45,7 @@ const Cards = () => {
 
   const togglePopUp = () => {
     setSelectedGameId(null);
-    window.scrollTo(0, 0);
+    navigate('/cards');
   };
 
   useEffect(() => {
@@ -42,6 +54,7 @@ const Cards = () => {
 
   const openPopUp = (id) => {
     setSelectedGameId(id);
+    navigate(`/cards/${id}`);
   };
 
   const openPrePayment = () => {

@@ -66,6 +66,7 @@ function App() {
         <Route path='/signup' exact element={<Signup />} />
         <Route path='/confirm' exact element={<Confirm />} />
         <Route path='/cards' exact element={<Cards />} />
+        <Route path='/cards/:gameId' element={<Cards />} />
         <Route
           path='/pubgaccountoffer'
           exact

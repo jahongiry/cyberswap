@@ -4,14 +4,46 @@ import { NavLink, Link } from 'react-router-dom';
 import { buyOffer } from '../../../slices/offerSlice';
 import payme_logo from '../../../img/payme_02.png';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectCurrentUser } from '../../../slices/authSlice';
 
 const PrePayment = ({ closePrePayment, game }) => {
   const dispatch = useDispatch();
   const merchant_id = '65c4bcd3de9e0abfa2a61880';
   const savedLang = localStorage.getItem('languagePreference');
+  const currentUser = useSelector(selectCurrentUser);
 
   const buyOfferForChatTest = () => {
     dispatch(buyOffer(game.id));
+  };
+
+  const toBase64 = (str) => {
+    return btoa(
+      encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function (match, p1) {
+        return String.fromCharCode('0x' + p1);
+      })
+    );
+  };
+
+  const constructURL = () => {
+    const merchantId = `m=${merchant_id}`;
+    const orderId = `ac.order_id=${game.id}`;
+    const amount = `a=${game.cost * 100}`;
+    const baseParams = `${merchantId};${orderId};${amount}`;
+    const encodedParams = toBase64(baseParams);
+    const baseURL = 'https://checkout.paycom.uz/';
+    return `${baseURL}${encodedParams}`;
+  };
+
+  const payme = async () => {
+    const url = constructURL();
+
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error('Error fetching data: ', error);
+    }
   };
 
   return (
@@ -57,28 +89,34 @@ const PrePayment = ({ closePrePayment, game }) => {
 
         <br />
         <br />
-        <form
+
+        {/* <form
           method='POST'
-          action='https://test.paycom.uz'
+          action='https://paycom.uz'
           className='modal-pay-form'
         >
-          <input type='hidden' name='merchant' value={merchant_id} />
+          <input type='hidden' name='merchant' value={merchant_id} /> */}
 
-          {/* Amount in tiyin (1/100 of a sum) */}
-          <input type='hidden' name='amount' value={game.cost} />
+        {/* Amount in tiyin (1/100 of a sum) */}
+        {/* <input type='hidden' name='amount' value={game.cost * 100} /> */}
 
-          {/* Account Fields */}
-          <input type='hidden' name='account[{offer_id}]' value={game.id} />
+        {/* Account Fields */}
+        {/* <input type='hidden' name='account[{offer_id}]' value={game.id} />
+          <input
+            type='hidden'
+            name='account[{user_id}]'
+            value={currentUser.id}
+          />
 
           <input type='hidden' name='lang' value={savedLang} />
 
           <input
             type='hidden'
             name='callback'
-            value={`http://localhost:3000/chat`}
-          />
-          <input type='hidden' name='callback_timeout' value={10000} />
-          {/* <input
+            value={`https://cyberswap.uz/cards/game.id`} */}
+        {/* /> */}
+        {/* <input type='hidden' name='callback_timeout' value={10000} /> */}
+        {/* <input
             type='hidden'
             name='description'
             value='{Payment description}'
@@ -89,13 +127,13 @@ const PrePayment = ({ closePrePayment, game }) => {
             value='{JSON detail object in BASE64}'
           /> */}
 
-          <button type='submit' className='modal-pay-logo'>
-            <img src={payme_logo} alt='payment logo' />
-            <span>
-              Pay with <b>Payme</b>
-            </span>
-          </button>
-        </form>
+        <button onClick={payme} type='submit' className='modal-pay-logo'>
+          <img src={payme_logo} alt='payment logo' />
+          <span>
+            Pay with <b>Payme</b>
+          </span>
+        </button>
+        {/* </form> */}
       </div>
     </div>
   );
