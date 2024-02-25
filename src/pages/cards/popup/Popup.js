@@ -98,6 +98,12 @@ const PopUp = ({
           </div>
           <hr className='divider' />
           <div className='account-details'>
+            {navigator.share && (
+              <button className='share-button' onClick={handleShare}>
+                Share
+                <ion-icon name='share-social-outline'></ion-icon>
+              </button>
+            )}
             <h2>{translations.popup.about}</h2>
             <div className='each-row'>
               <p>
@@ -142,12 +148,6 @@ const PopUp = ({
             <button className='sotib-olish' onClick={openPrePayment}>
               {translations.popup.buy}
             </button>
-            {navigator.share && (
-              <button className='share-button' onClick={handleShare}>
-                Share
-                <ion-icon name='share-social-outline'></ion-icon>
-              </button>
-            )}
           </div>
         </div>
       </div>
