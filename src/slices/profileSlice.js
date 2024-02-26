@@ -159,7 +159,7 @@ export const updateOffer = createAsyncThunk(
         return thunkAPI.rejectWithValue('No authorization token found');
       }
       const response = await axios.put(
-        `/profile/offers/${offerId}`,
+        `/profile/offers/account/${offerId}`,
         offerData,
         {
           headers: {

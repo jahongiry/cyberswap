@@ -69,7 +69,10 @@
     "level": "Level",
     "rp": "RP",
     "skins": "Skinlar",
-    "owner": "Sotuvchi"
+    "owner": "Sotuvchi",
+    "uc_quantity": "Qancha UC",
+    "transfer_time": "Qancha vaqtda UC tushadi",
+    "available_time": "Sotuvchi ish vaqti"
   },
   "login": {
     "welcome": "Hush kelibsiz",
@@ -87,15 +90,19 @@
     "error3": "Iltimos, jo'natishdan oldin xatolarni tuzating"
   },
   "popup": {
-    "owner": "egasi",
-    "about": "Account haqida",
+    "owner": "Sotuvchi",
+    "aboutAccount": "Account haqida",
+    "aboutUc": "UC haqida",
     "id": "ID",
     "level": "Level",
     "rp": "RP",
     "skins": "Skins",
     "extra": "Qo'shimcha malumotlar",
     "buy": "Sotib olish",
-    "lastseen": "Oxirgi online vaqti"
+    "lastseen": "Oxirgi online vaqti",
+    "uc_quantity": "UC soni",
+    "transfer_time": "UC tushish vaqti",
+    "available_time": "Sotuvchi ish vaqti"
   },
   "offer": {
     "title": "Account uchun e'lon yaratish",

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './offer.css';
 import { selectTranslations } from '../../slices/languageSlice';
 import defaultImage from '../../img/pubg.jpeg';
-import { createOffer } from '../../slices/offerSlice';
+import { createPubgAccountOffer } from '../../slices/offerSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { json } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -113,7 +113,7 @@ const Offer = () => {
     };
 
     try {
-      await dispatch(createOffer(offerData)).unwrap();
+      await dispatch(createPubgAccountOffer(offerData)).unwrap();
       navigate('/profile');
     } catch (error) {
       toast.error(<p className='red-text-important'>"Error while creating"</p>);

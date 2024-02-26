@@ -7,8 +7,8 @@ const initialState = {
   error: null,
 };
 
-export const createOffer = createAsyncThunk(
-  'offers/createOffer',
+export const createPubgAccountOffer = createAsyncThunk(
+  'offers/createPubgAccountOffer',
   async ({ data, images }, thunkAPI) => {
     try {
       const token = localStorage.getItem('token');
@@ -16,7 +16,51 @@ export const createOffer = createAsyncThunk(
         return thunkAPI.rejectWithValue('No authorization token found');
       }
 
-      let response = await axios.post('profile/offers', data, {
+      let response = await axios.post('profile/offers/pubg/account', data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const offerId = response.data.id;
+
+      if (offerId && images.length > 0) {
+        const formData = new FormData();
+
+        images.forEach((image) => {
+          formData.append('images', image);
+        });
+
+        response = await axios.post(
+          `profile/offers/images/${offerId}`,
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'multipart/form-data',
+            },
+          }
+        );
+      }
+
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const createPubgUcOffer = createAsyncThunk(
+  'offers/createPubgUcOffer',
+  async ({ data, images }, thunkAPI) => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        return thunkAPI.rejectWithValue('No authorization token found');
+      }
+
+      let response = await axios.post('profile/offers/pubg/uc', data, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
@@ -86,19 +130,28 @@ export const buyOffer = createAsyncThunk(
 const offersSlice = createSlice({
   name: 'offers',
   initialState,
-  reducers: {
-    // Reducers for other actions
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(createOffer.pending, (state) => {
+      .addCase(createPubgAccountOffer.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(createOffer.fulfilled, (state, action) => {
+      .addCase(createPubgAccountOffer.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.offers.push(action.payload);
       })
-      .addCase(createOffer.rejected, (state, action) => {
+      .addCase(createPubgAccountOffer.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.payload;
+      })
+      .addCase(createPubgUcOffer.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(createPubgUcOffer.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.offers.push(action.payload);
+      })
+      .addCase(createPubgUcOffer.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.payload;
       })

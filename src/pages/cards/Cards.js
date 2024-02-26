@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import './cards.css';
 import logo1 from '../../component/header/logo1_1.png';
@@ -23,10 +22,11 @@ const Cards = () => {
   const [showPrePayment, setShowPrePayment] = useState(false);
   const selectedGame = cards.find((game) => game.id === selectedGameId);
   const [selectedCategory, setSelectedCategory] = useState(null);
-  // const [sellerStatus, setSellerStatus] = useState(false);
-
   const { gameId } = useParams();
   const navigate = useNavigate();
+
+  const PUBG_ACCOUNT = 'pubg_account';
+  const PUBG_UC = 'pubg_uc';
 
   useEffect(() => {
     dispatch(fetchCards());
@@ -36,12 +36,14 @@ const Cards = () => {
   }, [dispatch, gameId]);
 
   const handleCategoryClick = (category) => {
-    setSelectedCategory(category);
+    let offerType;
+    if (category === 'UC') {
+      offerType = PUBG_UC;
+    } else if (category === 'Accounts') {
+      offerType = PUBG_ACCOUNT;
+    }
+    setSelectedCategory(offerType);
   };
-
-  // const handleSellerClick = () => {
-  //   setSellerStatus(!sellerStatus);
-  // };
 
   const togglePopUp = () => {
     setSelectedGameId(null);
@@ -67,7 +69,7 @@ const Cards = () => {
     setShowPrePayment(false);
   };
 
-  if (status === "loading") {
+  if (status === 'loading') {
     return (
       <div>
         <Loader />
@@ -75,72 +77,65 @@ const Cards = () => {
     );
   }
 
-  if (status === "failed") {
+  if (status === 'failed') {
     console.log(error);
     return <div>Error: {error}</div>;
   }
 
   return (
-    <div className="cards-wrapper">
-      <div className="cards-container">
-        <div className="card-img__bg">
-          <img src={WinterPubg2} alt="Pubg Mobile" />
+    <div className='cards-wrapper'>
+      <div className='cards-container'>
+        <div className='card-img__bg'>
+          <img src={WinterPubg2} alt='Pubg Mobile' />
         </div>
 
-        {/* search container start */}
-        <div className="search-container">
+        <div className='search-container'>
           <input
-            type="text"
+            type='text'
             placeholder={translations.cards.placeholder}
-            className="search-input"
+            className='search-input'
           />
-          <button className="search-button">{translations.cards.search}</button>
+          <button className='search-button'>{translations.cards.search}</button>
         </div>
-        {/* search container end */}
 
-        {/* category container start */}
-        <div className="category-container">
+        <div className='category-container'>
           <button
             className={`category-button ${
-              selectedCategory === "UC" ? "active" : ""
+              selectedCategory === 'UC' ? 'active' : ''
             }`}
             onClick={() => {
-              handleCategoryClick("UC");
+              handleCategoryClick('UC');
             }}
           >
             UC
           </button>
           <button
             className={`category-button ${
-              selectedCategory === "Accounts" ? "active" : ""
+              selectedCategory === 'Accounts' ? 'active' : ''
             }`}
             onClick={() => {
-              handleCategoryClick("Accounts");
+              handleCategoryClick('Accounts');
             }}
           >
             Accounts
           </button>
         </div>
 
-        {/* category container end */}
-        
-
         {selectedCategory && (
           <>
-            {/* <h4 className='filterlash'>{translations.cards.filter}</h4> */}
             <div
-              className={`filter-container ${selectedCategory ? "active" : ""}`}
+              className={`filter-container ${selectedCategory ? 'active' : ''}`}
             >
-              <button className="filter-button">
-                <ion-icon name="sparkles-outline"></ion-icon>
+              <button className='filter-button'>
+                <ion-icon name='sparkles-outline'></ion-icon>
                 {translations.cards.new}
               </button>
-              <button className="filter-button">
-                <ion-icon name="trending-up-outline"></ion-icon>
+              <button className='filter-button'>
+                <ion-icon name='trending-up-outline'></ion-icon>
                 {translations.cards.cheap}
               </button>
-              <button className="filter-button">
-                <ion-icon name="trending-down-outline"></ion-icon>
+              <button className='filter-button'>
+                <ion-icon name='trending-down-outline'></ion-icon>
                 {translations.cards.expensive}
               </button>
             </div>
@@ -148,61 +143,89 @@ const Cards = () => {
         )}
       </div>
 
-      {/* cards section start  */}
-      <div className="cards-section">
-        {cards.map((game) => (
-          <div key={game.id} className="card">
-            <div className="card-img">
-              <img
+      <div className='cards-section'>
+        {cards
+          .filter(
+            (game) => !selectedCategory || game.offer_type === selectedCategory
+          )
+          .map((game) => (
+            <div key={game.id} className='card'>
+              <div className='card-img'>
+                <img
+                  onClick={() => openPopUp(game.id)}
+                  className='card-img'
+                  src={game.images[0]}
+                  alt='image'
+                />
+              </div>
+              {/* <h5 onClick={() => openPopUp(game.id)}>{game.seller.username}</h5> */}
+              {game.level && (
+                <p onClick={() => openPopUp(game.id)}>
+                  <span>{translations.cards.level}:</span> {game.level}
+                </p>
+              )}
+              {game.quantity && (
+                <p onClick={() => openPopUp(game.id)}>
+                  <span>{translations.cards.uc_quantity}:</span> {game.quantity}
+                </p>
+              )}
+              {game.royal_pass && (
+                <p onClick={() => openPopUp(game.id)}>
+                  <span>{translations.cards.rp}:</span> {game.royal_pass}
+                </p>
+              )}
+              {game.transfer_time && (
+                <p onClick={() => openPopUp(game.id)}>
+                  <span>{translations.cards.transfer_time}:</span>{' '}
+                  {game.transfer_time}
+                </p>
+              )}
+              {game.skins && (
+                <p onClick={() => openPopUp(game.id)}>
+                  <span>{translations.cards.skins}:</span> {game.skins}
+                </p>
+              )}
+              {game.available_time && (
+                <p onClick={() => openPopUp(game.id)}>
+                  <span>{translations.cards.available_time}:</span>{' '}
+                  {game.available_time}
+                </p>
+              )}
+              <p onClick={() => openPopUp(game.id)}>
+                <span>{translations.cards.owner}:</span> {game.seller.username}
+              </p>
+              <div className='stars' onClick={() => openPopUp(game.id)}>
+                <ion-icon name='star' className='icon-gold'></ion-icon>
+                <ion-icon name='star' className='icon-gold'></ion-icon>
+                <ion-icon name='star' className='icon-gold'></ion-icon>
+                <ion-icon name='star' className='icon-gold'></ion-icon>
+                <ion-icon name='star-half' className='icon-gold'></ion-icon>
+              </div>
+              <button
                 onClick={() => openPopUp(game.id)}
-                className="card-img"
-                src={game.images[0]}
-                alt="image"
-              />
+                className='price-button'
+              >
+                {game.cost} UZS
+              </button>
+              {selectedGameId && (
+                <Popup
+                  isVisible={Boolean(selectedGameId)}
+                  togglePopUp={togglePopUp}
+                  game={selectedGame}
+                  images={selectedGame.images}
+                  seller={selectedGame.seller}
+                  openPrePayment={openPrePayment}
+                />
+              )}
+              {showPrePayment && (
+                <PrePayment
+                  game={selectedGameToPay}
+                  closePrePayment={closePrePayment}
+                />
+              )}
             </div>
-            <h5 onClick={() => openPopUp(game.id)}>{game.name}</h5>
-            <p onClick={() => openPopUp(game.id)}>
-              <span>{translations.cards.level}:</span> {game.level}
-            </p>
-            <p onClick={() => openPopUp(game.id)}>
-              <span>{translations.cards.rp}:</span> {game.royal_pass}
-            </p>
-            <p onClick={() => openPopUp(game.id)}>
-              <span>{translations.cards.skins}:</span> {game.skins}
-            </p>
-            <p onClick={() => openPopUp(game.id)}>
-              <span>{translations.cards.owner}:</span> {game.seller.username}
-            </p>
-            <div className="stars" onClick={() => openPopUp(game.id)}>
-              <ion-icon name="star" className="icon-gold"></ion-icon>
-              <ion-icon name="star" className="icon-gold"></ion-icon>
-              <ion-icon name="star" className="icon-gold"></ion-icon>
-              <ion-icon name="star" className="icon-gold"></ion-icon>
-              <ion-icon name="star-half" className="icon-gold"></ion-icon>
-            </div>
-            <button onClick={() => openPopUp(game.id)} className="price-button">
-              {game.cost} UZS
-            </button>
-            {selectedGameId && (
-              <Popup
-                isVisible={Boolean(selectedGameId)}
-                togglePopUp={togglePopUp}
-                game={selectedGame}
-                images={selectedGame.images}
-                seller={selectedGame.seller}
-                openPrePayment={openPrePayment}
-              />
-            )}
-            {showPrePayment && (
-              <PrePayment
-                game={selectedGameToPay}
-                closePrePayment={closePrePayment}
-              />
-            )}
-          </div>
-        ))}
+          ))}
       </div>
-      {/* cards section end  */}
     </div>
   );
 };

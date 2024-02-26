@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './offer.css';
 import { selectTranslations } from '../../slices/languageSlice';
 import defaultImage from '../../img/pubg.jpeg';
-import { createOffer } from '../../slices/offerSlice';
+import { createPubgUcOffer } from '../../slices/offerSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { json } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -49,17 +49,17 @@ const UcOffer = () => {
 
     const offerData = {
       data: {
-        ucAmount,
-        workhours,
-        workminutes,
-        cost: parseInt(cost, 10),
+        quantity: ucAmount,
+        available_time: workhours,
+        transfer_time: workminutes,
         description,
+        cost: parseInt(cost, 10),
       },
       images,
     };
 
     try {
-      await dispatch(createOffer(offerData)).unwrap();
+      await dispatch(createPubgUcOffer(offerData)).unwrap();
       navigate('/profile');
     } catch (error) {
       toast.error(<p className='red-text-important'>"Error while creating"</p>);
@@ -104,7 +104,7 @@ const UcOffer = () => {
             <div className='form-input'>
               <label htmlFor='ucamount'>{translations.ucoffer.ucamount}</label>
               <input
-                type='text'
+                type='number'
                 name='ucamount'
                 value={ucAmount}
                 onChange={(e) => setUcAmount(e.target.value)}

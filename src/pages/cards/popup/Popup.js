@@ -53,6 +53,14 @@ const PopUp = ({
     }
   };
 
+  function productName() {
+    const productNames = {
+      pubg_account: translations.popup.aboutAccount,
+      pubg_uc: translations.popup.aboutUc,
+    };
+    return productNames[game.offer_type];
+  }
+
   if (!isVisible) return null;
   return (
     <div className='pop-up-overlay'>
@@ -83,9 +91,11 @@ const PopUp = ({
               <h3>
                 <span>{translations.popup.owner}:</span> {game.seller.username}
               </h3>
-              <p>
-                {translations.popup.lastseen} {seller.signed_at}
-              </p>
+              {seller.last_seen_at && (
+                <p>
+                  {translations.popup.lastseen} {seller.last_seen_at}
+                </p>
+              )}
               <div className='star-in-popup'>
                 <ion-icon name='star'></ion-icon>
                 <ion-icon name='star'></ion-icon>
@@ -104,38 +114,71 @@ const PopUp = ({
                 <ion-icon name='share-social-outline'></ion-icon>
               </button>
             )}
-            <h2>{translations.popup.about}</h2>
-            <div className='each-row'>
-              <p>
-                <ion-icon name='analytics-outline'></ion-icon>
-                {translations.popup.level}:
-              </p>
-              <p className='facts'>{game.level}</p>
-            </div>
-            <hr className='divider2' />
-            <div className='each-row'>
-              <p>
-                <ion-icon name='aperture-outline'></ion-icon>{' '}
-                {translations.popup.rp}:
-              </p>
-              <ul className='facts'>
-                {game.royal_pass.map((rp, index) => (
-                  <li key={index}>{rp}</li>
-                ))}
-              </ul>
-            </div>
-            <hr className='divider2' />
-            <div className='each-row'>
-              <p>
-                <ion-icon name='body-outline'></ion-icon>
-                {translations.popup.skins}:
-              </p>
-              <div className='facts'>
-                {game.skins.map((skin, index) => (
-                  <p key={index}>{skin}</p>
-                ))}
+            <h2>{productName()}</h2>
+            {game.level && (
+              <div className='each-row'>
+                <p>
+                  <ion-icon name='analytics-outline'></ion-icon>
+                  {translations.popup.level}:
+                </p>
+                <p className='facts'>{game.level}</p>
               </div>
-            </div>
+            )}
+            {game.quantity && (
+              <div className='each-row'>
+                <p>
+                  <ion-icon name='analytics-outline'></ion-icon>
+                  {translations.popup.uc_quantity}:
+                </p>
+                <p className='facts'>{game.quantity}</p>
+              </div>
+            )}
+            <hr className='divider2' />
+            {game.royal_pass && (
+              <div className='each-row'>
+                <p>
+                  <ion-icon name='aperture-outline'></ion-icon>
+                  {translations.popup.rp}:
+                </p>
+                <ul className='facts'>
+                  {game.royal_pass.map((rp, index) => (
+                    <li key={index}>{rp}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {game.transfer_time && (
+              <div className='each-row'>
+                <p>
+                  <ion-icon name='analytics-outline'></ion-icon>
+                  {translations.popup.transfer_time}:
+                </p>
+                <p className='facts'>{game.transfer_time}</p>
+              </div>
+            )}
+            <hr className='divider2' />
+            {game.skins && (
+              <div className='each-row'>
+                <p>
+                  <ion-icon name='body-outline'></ion-icon>
+                  {translations.popup.skins}:
+                </p>
+                <div className='facts'>
+                  {game.skins.map((skin, index) => (
+                    <p key={index}>{skin}</p>
+                  ))}
+                </div>
+              </div>
+            )}
+            {game.available_time && (
+              <div className='each-row'>
+                <p>
+                  <ion-icon name='analytics-outline'></ion-icon>
+                  {translations.popup.available_time}:
+                </p>
+                <p className='facts'>{game.available_time}</p>
+              </div>
+            )}
             <hr className='divider2' />
             <div className='each-row'>
               <p>
