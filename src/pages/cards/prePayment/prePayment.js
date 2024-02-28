@@ -14,6 +14,7 @@ const PrePayment = ({ closePrePayment, game }) => {
 
   const buyOfferForChatTest = () => {
     dispatch(buyOffer(game.id));
+    console.log(game.id);
   };
 
   const toBase64 = (str) => {
@@ -26,11 +27,13 @@ const PrePayment = ({ closePrePayment, game }) => {
 
   const constructURL = () => {
     const merchantId = `m=${merchant_id}`;
-    const orderId = `ac.order_id=${game.id}`;
+    const offerId = `ac.offer_id=${game.id}`;
+    const userId = `ac.user_id=${currentUser.id}`;
     const amount = `a=${game.cost * 100}`;
-    const baseParams = `${merchantId};${orderId};${amount}`;
+    const baseParams = `${merchantId};${userId};${offerId};${amount}`;
     const encodedParams = toBase64(baseParams);
     const baseURL = 'https://checkout.paycom.uz/';
+    console.log(baseParams);
     return `${baseURL}${encodedParams}`;
   };
 
