@@ -223,6 +223,22 @@ const Cards = () => {
             <button onClick={() => openPopUp(game.id)} className='price-button'>
               {game.cost} UZS
             </button>
+            {selectedGameId && (
+              <Popup
+                isVisible={Boolean(selectedGameId)}
+                togglePopUp={togglePopUp}
+                game={selectedGame}
+                images={selectedGame.images}
+                seller={selectedGame.seller}
+                openPrePayment={openPrePayment}
+              />
+            )}
+            {showPrePayment && (
+              <PrePayment
+                game={selectedGameToPay}
+                closePrePayment={closePrePayment}
+              />
+            )}
           </div>
         ))}
       </div>

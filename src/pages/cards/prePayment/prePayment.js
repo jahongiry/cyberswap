@@ -30,7 +30,7 @@ const PrePayment = ({ closePrePayment, game }) => {
     const amount = `a=${game.cost * 100}`;
     const baseParams = `${merchantId};${orderId};${amount}`;
     const encodedParams = toBase64(baseParams);
-    const baseURL = 'https://checkout.paycom.uz/';
+    const baseURL = 'https://checkout.paycom.uz';
     return `${baseURL}${encodedParams}`;
   };
 
