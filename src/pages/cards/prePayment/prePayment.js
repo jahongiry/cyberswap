@@ -12,30 +12,30 @@ const PrePayment = ({ closePrePayment, game }) => {
   const savedLang = localStorage.getItem('languagePreference');
   const currentUser = useSelector(selectCurrentUser);
 
-  const buyOfferForChatTest = () => {
-    dispatch(buyOffer(game.id));
-    console.log(game.id);
-  };
+  // const buyOfferForChatTest = () => {
+  //   dispatch(buyOffer(game.id));
+  //   console.log(game.id);
+  // };
 
-  const toBase64 = (str) => {
-    return btoa(
-      encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function (match, p1) {
-        return String.fromCharCode('0x' + p1);
-      })
-    );
-  };
+  // const toBase64 = (str) => {
+  //   return btoa(
+  //     encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function (match, p1) {
+  //       return String.fromCharCode('0x' + p1);
+  //     })
+  //   );
+  // };
 
-  const constructURL = () => {
-    const merchantId = `m=${merchant_id}`;
-    const offerId = `ac.offer_id=${game.id}`;
-    const userId = `ac.user_id=${currentUser.id}`;
-    const amount = `a=${game.cost * 100}`;
-    const baseParams = `${merchantId};${userId};${offerId};${amount}`;
-    const encodedParams = toBase64(baseParams);
-    const baseURL = 'https://checkout.paycom.uz/';
-    console.log(baseParams);
-    return `${baseURL}${encodedParams}`;
-  };
+  // const constructURL = () => {
+  //   const merchantId = `m=${merchant_id}`;
+  //   const offerId = `ac.offer_id=${game.id}`;
+  //   const userId = `ac.user_id=${currentUser.id}`;
+  //   const amount = `a=${game.cost * 100}`;
+  //   const baseParams = `${merchantId};${userId};${offerId};${amount}`;
+  //   const encodedParams = toBase64(baseParams);
+  //   const baseURL = 'https://checkout.paycom.uz/';
+  //   console.log(baseParams);
+  //   return `${baseURL}${encodedParams}`;
+  // };
 
   const payme = async () => {
     const url = constructURL();
@@ -93,18 +93,15 @@ const PrePayment = ({ closePrePayment, game }) => {
         <br />
         <br />
 
-        {/* <form
+        <form
           method='POST'
-          action='https://paycom.uz'
+          action='https://checkout.paycom.uz/'
           className='modal-pay-form'
         >
-          <input type='hidden' name='merchant' value={merchant_id} /> */}
+          <input type='hidden' name='merchant' value={merchant_id} />
+          <input type='hidden' name='amount' value={game.cost * 100} />
 
-        {/* Amount in tiyin (1/100 of a sum) */}
-        {/* <input type='hidden' name='amount' value={game.cost * 100} /> */}
-
-        {/* Account Fields */}
-        {/* <input type='hidden' name='account[{offer_id}]' value={game.id} />
+          <input type='hidden' name='account[{offer_id}]' value={game.id} />
           <input
             type='hidden'
             name='account[{user_id}]'
@@ -116,10 +113,10 @@ const PrePayment = ({ closePrePayment, game }) => {
           <input
             type='hidden'
             name='callback'
-            value={`https://cyberswap.uz/cards/game.id`} */}
-        {/* /> */}
-        {/* <input type='hidden' name='callback_timeout' value={10000} /> */}
-        {/* <input
+            value={`https://cyberswap.uz/cards/${game.id}`}
+          />
+          <input type='hidden' name='callback_timeout' value={10000} />
+          <input
             type='hidden'
             name='description'
             value='{Payment description}'
@@ -128,15 +125,15 @@ const PrePayment = ({ closePrePayment, game }) => {
             type='hidden'
             name='detail'
             value='{JSON detail object in BASE64}'
-          /> */}
+          />
 
-        <button onClick={payme} type='submit' className='modal-pay-logo'>
-          <img src={payme_logo} alt='payment logo' />
-          <span>
-            Pay with <b>Payme</b>
-          </span>
-        </button>
-        {/* </form> */}
+          <button type='submit' className='modal-pay-logo'>
+            <img src={payme_logo} alt='payment logo' />
+            <span>
+              Pay with <b>Payme</b>
+            </span>
+          </button>
+        </form>
       </div>
     </div>
   );
