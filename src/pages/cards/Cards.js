@@ -24,6 +24,7 @@ const Cards = () => {
   const selectedGame = cards.find((game) => game.id === selectedGameId);
   const [selectedCategory, setSelectedCategory] = useState('ALL');
   const [sortingFilter, setSortingFilter] = useState('new');
+  const [settings, setSettings] = useState(false);
   const { gameId } = useParams();
   const navigate = useNavigate();
 
@@ -39,6 +40,10 @@ const Cards = () => {
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
+  };
+  
+  const handleSettingsClick = () => {
+    setSettings(!settings);
   };
 
   const togglePopUp = () => {
@@ -137,28 +142,28 @@ const Cards = () => {
           </button>
           <button
             className='settings'
-            onClick={() => handleCategoryClick(PUBG_ACCOUNT)}
+            onClick={() => handleSettingsClick()}
           >
             <img src={settings_icon} alt='settings icon' />
           </button>
         </div>
-        <div className={`filter-container ${selectedCategory ? 'active' : ''}`}>
+        <div className={`filter-container ${settings ? 'active' : ''}`}>
           <button
-            className='filter-button'
+            className={`filter-button ${sortingFilter == 'new' ? 'active' : ''}`}
             onClick={() => setSortingFilter('new')}
           >
             <ion-icon name='sparkles-outline'></ion-icon>
             {translations.cards.new}
           </button>
           <button
-            className='filter-button'
+            className={`filter-button ${sortingFilter == 'cheap' ? 'active' : ''}`}
             onClick={() => setSortingFilter('cheap')}
           >
             <ion-icon name='trending-up-outline'></ion-icon>
             {translations.cards.cheap}
           </button>
           <button
-            className='filter-button'
+            className={`filter-button ${sortingFilter == 'expensive' ? 'active' : ''}`}
             onClick={() => setSortingFilter('expensive')}
           >
             <ion-icon name='trending-down-outline'></ion-icon>
