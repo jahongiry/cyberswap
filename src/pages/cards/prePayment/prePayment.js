@@ -12,10 +12,10 @@ const PrePayment = ({ closePrePayment, game }) => {
   const savedLang = localStorage.getItem('languagePreference');
   const currentUser = useSelector(selectCurrentUser);
 
-  // const buyOfferForChatTest = () => {
-  //   dispatch(buyOffer(game.id));
-  //   console.log(game.id);
-  // };
+  const buyOfferForChatTest = () => {
+    dispatch(buyOffer(game.id));
+    console.log(game.id);
+  };
 
   // const toBase64 = (str) => {
   //   return btoa(
@@ -37,17 +37,17 @@ const PrePayment = ({ closePrePayment, game }) => {
   //   return `${baseURL}${encodedParams}`;
   // };
 
-  const payme = async () => {
-    const url = constructURL();
+  // const payme = async () => {
+  //   const url = constructURL();
 
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error('Error fetching data: ', error);
-    }
-  };
+  //   try {
+  //     const response = await fetch(url);
+  //     const data = await response.json();
+  //     console.log(data);
+  //   } catch (error) {
+  //     console.error('Error fetching data: ', error);
+  //   }
+  // };
 
   return (
     <div className='modal-overlay'>
