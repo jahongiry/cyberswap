@@ -72,7 +72,8 @@
     "owner": "Sotuvchi",
     "uc_quantity": "Qancha UC",
     "transfer_time": "Qancha vaqtda UC tushadi",
-    "available_time": "Sotuvchi ish vaqti"
+    "available_time": "Sotuvchi ish vaqti",
+    "all": "Barchasi"
   },
   "login": {
     "welcome": "Hush kelibsiz",

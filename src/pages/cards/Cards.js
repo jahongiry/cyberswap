@@ -12,6 +12,7 @@ import PrePayment from './prePayment/prePayment';
 import WinterPubg from '../../img/pubg_winter.avif';
 import WinterPubg2 from '../../img//Winterpubg.webp';
 import { useParams, useNavigate } from 'react-router-dom';
+import settings_icon from '../../img/icons/settings-outline.svg';
 
 const Cards = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,8 @@ const Cards = () => {
   const [selectedGameToPay, setSelectedGameToPay] = useState(null);
   const [showPrePayment, setShowPrePayment] = useState(false);
   const selectedGame = cards.find((game) => game.id === selectedGameId);
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState('ALL');
+  const [sortingFilter, setSortingFilter] = useState('new');
   const { gameId } = useParams();
   const navigate = useNavigate();
 
@@ -36,13 +38,7 @@ const Cards = () => {
   }, [dispatch, gameId]);
 
   const handleCategoryClick = (category) => {
-    let offerType;
-    if (category === 'UC') {
-      offerType = PUBG_UC;
-    } else if (category === 'Accounts') {
-      offerType = PUBG_ACCOUNT;
-    }
-    setSelectedCategory(offerType);
+    setSelectedCategory(category);
   };
 
   const togglePopUp = () => {
@@ -68,6 +64,22 @@ const Cards = () => {
   const closePrePayment = () => {
     setShowPrePayment(false);
   };
+
+  const sortedAndFilteredCards = cards
+    .filter(
+      (game) =>
+        selectedCategory === 'ALL' || game.offer_type === selectedCategory
+    )
+    .sort((a, b) => {
+      if (sortingFilter === 'cheap') {
+        return a.cost - b.cost;
+      } else if (sortingFilter === 'expensive') {
+        return b.cost - a.cost;
+      } else if (sortingFilter === 'new') {
+        return new Date(b.created_at) - new Date(a.created_at);
+      }
+      return 0;
+    });
 
   if (status === 'loading') {
     return (
@@ -101,130 +113,118 @@ const Cards = () => {
         <div className='category-container'>
           <button
             className={`category-button ${
-              selectedCategory === 'UC' ? 'active' : ''
+              selectedCategory === 'ALL' ? 'active' : ''
             }`}
-            onClick={() => {
-              handleCategoryClick('UC');
-            }}
+            onClick={() => handleCategoryClick('ALL')}
+          >
+            {translations.cards.all}
+          </button>
+          <button
+            className={`category-button ${
+              selectedCategory === PUBG_UC ? 'active' : ''
+            }`}
+            onClick={() => handleCategoryClick(PUBG_UC)}
           >
             UC
           </button>
           <button
             className={`category-button ${
-              selectedCategory === 'Accounts' ? 'active' : ''
+              selectedCategory === PUBG_ACCOUNT ? 'active' : ''
             }`}
-            onClick={() => {
-              handleCategoryClick('Accounts');
-            }}
+            onClick={() => handleCategoryClick(PUBG_ACCOUNT)}
           >
             Accounts
           </button>
+          <button
+            className='settings'
+            onClick={() => handleCategoryClick(PUBG_ACCOUNT)}
+          >
+            <img src={settings_icon} alt='settings icon' />
+          </button>
         </div>
-
-        {selectedCategory && (
-          <>
-            <div
-              className={`filter-container ${selectedCategory ? 'active' : ''}`}
-            >
-              <button className='filter-button'>
-                <ion-icon name='sparkles-outline'></ion-icon>
-                {translations.cards.new}
-              </button>
-              <button className='filter-button'>
-                <ion-icon name='trending-up-outline'></ion-icon>
-                {translations.cards.cheap}
-              </button>
-              <button className='filter-button'>
-                <ion-icon name='trending-down-outline'></ion-icon>
-                {translations.cards.expensive}
-              </button>
-            </div>
-          </>
-        )}
+        <div className={`filter-container ${selectedCategory ? 'active' : ''}`}>
+          <button
+            className='filter-button'
+            onClick={() => setSortingFilter('new')}
+          >
+            <ion-icon name='sparkles-outline'></ion-icon>
+            {translations.cards.new}
+          </button>
+          <button
+            className='filter-button'
+            onClick={() => setSortingFilter('cheap')}
+          >
+            <ion-icon name='trending-up-outline'></ion-icon>
+            {translations.cards.cheap}
+          </button>
+          <button
+            className='filter-button'
+            onClick={() => setSortingFilter('expensive')}
+          >
+            <ion-icon name='trending-down-outline'></ion-icon>
+            {translations.cards.expensive}
+          </button>
+        </div>
       </div>
 
       <div className='cards-section'>
-        {cards
-          .filter(
-            (game) => !selectedCategory || game.offer_type === selectedCategory
-          )
-          .map((game) => (
-            <div key={game.id} className='card'>
-              <div className='card-img'>
-                <img
-                  onClick={() => openPopUp(game.id)}
-                  className='card-img'
-                  src={game.images[0]}
-                  alt='image'
-                />
-              </div>
-              {/* <h5 onClick={() => openPopUp(game.id)}>{game.seller.username}</h5> */}
-              {game.level && (
-                <p onClick={() => openPopUp(game.id)}>
-                  <span>{translations.cards.level}:</span> {game.level}
-                </p>
-              )}
-              {game.quantity && (
-                <p onClick={() => openPopUp(game.id)}>
-                  <span>{translations.cards.uc_quantity}:</span> {game.quantity}
-                </p>
-              )}
-              {game.royal_pass && (
-                <p onClick={() => openPopUp(game.id)}>
-                  <span>{translations.cards.rp}:</span> {game.royal_pass}
-                </p>
-              )}
-              {game.transfer_time && (
-                <p onClick={() => openPopUp(game.id)}>
-                  <span>{translations.cards.transfer_time}:</span>{' '}
-                  {game.transfer_time}
-                </p>
-              )}
-              {game.skins && (
-                <p onClick={() => openPopUp(game.id)}>
-                  <span>{translations.cards.skins}:</span> {game.skins}
-                </p>
-              )}
-              {game.available_time && (
-                <p onClick={() => openPopUp(game.id)}>
-                  <span>{translations.cards.available_time}:</span>{' '}
-                  {game.available_time}
-                </p>
-              )}
-              <p onClick={() => openPopUp(game.id)}>
-                <span>{translations.cards.owner}:</span> {game.seller.username}
-              </p>
-              <div className='stars' onClick={() => openPopUp(game.id)}>
-                <ion-icon name='star' className='icon-gold'></ion-icon>
-                <ion-icon name='star' className='icon-gold'></ion-icon>
-                <ion-icon name='star' className='icon-gold'></ion-icon>
-                <ion-icon name='star' className='icon-gold'></ion-icon>
-                <ion-icon name='star-half' className='icon-gold'></ion-icon>
-              </div>
-              <button
+        {sortedAndFilteredCards.map((game) => (
+          <div key={game.id} className='card'>
+            <div className='card-img'>
+              <img
                 onClick={() => openPopUp(game.id)}
-                className='price-button'
-              >
-                {game.cost} UZS
-              </button>
-              {selectedGameId && (
-                <Popup
-                  isVisible={Boolean(selectedGameId)}
-                  togglePopUp={togglePopUp}
-                  game={selectedGame}
-                  images={selectedGame.images}
-                  seller={selectedGame.seller}
-                  openPrePayment={openPrePayment}
-                />
-              )}
-              {showPrePayment && (
-                <PrePayment
-                  game={selectedGameToPay}
-                  closePrePayment={closePrePayment}
-                />
-              )}
+                className='card-img'
+                src={game.images[0]}
+                alt='image'
+              />
             </div>
-          ))}
+            {game.level && (
+              <p onClick={() => openPopUp(game.id)}>
+                <span>{translations.cards.level}:</span> {game.level}
+              </p>
+            )}
+            {game.quantity && (
+              <p onClick={() => openPopUp(game.id)}>
+                <span>{translations.cards.uc_quantity}:</span> {game.quantity}
+              </p>
+            )}
+            {game.royal_pass && (
+              <p onClick={() => openPopUp(game.id)}>
+                <span>{translations.cards.rp}:</span> {game.royal_pass}
+              </p>
+            )}
+            {game.transfer_time && (
+              <p onClick={() => openPopUp(game.id)}>
+                <span>{translations.cards.transfer_time}:</span>
+                {game.transfer_time}
+              </p>
+            )}
+            {game.skins && (
+              <p onClick={() => openPopUp(game.id)}>
+                <span>{translations.cards.skins}:</span> {game.skins}
+              </p>
+            )}
+            {game.available_time && (
+              <p onClick={() => openPopUp(game.id)}>
+                <span>{translations.cards.available_time}:</span>
+                {game.available_time}
+              </p>
+            )}
+            <p onClick={() => openPopUp(game.id)}>
+              <span>{translations.cards.owner}:</span> {game.seller.username}
+            </p>
+            <div className='stars' onClick={() => openPopUp(game.id)}>
+              <ion-icon name='star' className='icon-gold'></ion-icon>
+              <ion-icon name='star' className='icon-gold'></ion-icon>
+              <ion-icon name='star' className='icon-gold'></ion-icon>
+              <ion-icon name='star' className='icon-gold'></ion-icon>
+              <ion-icon name='star-half' className='icon-gold'></ion-icon>
+            </div>
+            <button onClick={() => openPopUp(game.id)} className='price-button'>
+              {game.cost} UZS
+            </button>
+          </div>
+        ))}
       </div>
     </div>
   );
