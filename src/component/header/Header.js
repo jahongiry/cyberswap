@@ -31,7 +31,9 @@ const Header = () => {
   }, []);
 
   return (
-    <header className='container header'>
+    <header className='container header' onClick={() => {
+      navbar ? setNavbar(false) : console.log();
+    }}>
       <Link to='/'>
         <div className='logo'>
           <img src={logo} alt='Cyberswap' />

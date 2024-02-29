@@ -47,6 +47,9 @@
   transition: all 0.3s ease;
   position: relative;
 }
+.header nav ul li a img {
+  display: none;
+}
 .header nav ul li a i {
   font-size: var(--smaller-fs);
   display: none;
