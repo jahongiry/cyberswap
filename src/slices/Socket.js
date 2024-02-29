@@ -12,9 +12,7 @@ export const initializeSocket = () => {
       query: { token: encodeURIComponent(token) },
       transports: ['websocket'],
     });
-
     socket.on('message', (newMessage) => {
-      console.log(newMessage);
       store.dispatch(addMessage(newMessage));
     });
   }

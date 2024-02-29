@@ -84,22 +84,28 @@ const Chat = () => {
       <ChatHeader sender={chatUsers} />
       <div className='chat-container'>
         <div className='chat-messages'>
-          {messages.map((message) => (
-            <div
-              key={message.id}
-              className={`bubble ${
-                message.sender.id === user.id ? 'sender' : 'receiver'
-              } ${getMessageClass(message)}`}
-            >
-              {message.content}
-              <div className='message-details'>
-                <span className='message-time'>
-                  {getMilitaryTime(message.created_at)}
-                </span>
-                <img src={unread_tick} alt='Unread' className='unread-tick' />
+          {messages.map((message) => {
+            const isSender = message.sender
+              ? message.sender.id === user?.id
+              : false;
+            return (
+              <div
+                key={message.id}
+                className={`bubble ${
+                  isSender ? 'sender' : 'receiver'
+                } ${getMessageClass(message)}`}
+              >
+                {message.content}
+                <div className='message-details'>
+                  <span className='message-time'>
+                    {getMilitaryTime(message.created_at)}
+                  </span>
+                  <img src={unread_tick} alt='Unread' className='unread-tick' />
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
+
           <div ref={messagesEndRef} />
         </div>
         <form className='form-chat' onSubmit={handleSubmit}>

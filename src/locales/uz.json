@@ -198,7 +198,13 @@
     "yes": "Ha, o'chirish",
     "cancel": "Ortga qaytish"
   },
-  "admin": {
-    "rules": "Qoidalar"
+  "prePayment": {
+    "rule1": "Siz to'lovni bizga CyberSwap ga amalga oshirasiz va faqat sotuvchi sizga accountni to'liq o'tkazib bergandan so'ng bizdan pulni qabul qilib oladi",
+    "receive": "Qabul qilish",
+    "afterReceive": "Sotib olganingizdan keyin",
+    "instuctions": "Qo'llanmalar",
+    "chat": "Sotuvchi bilan Chat",
+    "moneyReturn": "Pulni 100% qaytarib olish",
+    "choose": "Quyidagi to'lov usullaridan birini tanlang"
   }
 }

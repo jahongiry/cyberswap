@@ -19,7 +19,6 @@ const PopUp = ({
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const navigate = useNavigate();
   const transitionDelay = 300;
-  console.log(seller.id);
   const handleClose = () => {
     togglePopUp();
     navigate('/cards');
