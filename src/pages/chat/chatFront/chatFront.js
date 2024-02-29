@@ -16,7 +16,7 @@ const FrontChat = () => {
   const [selectedChatId, setSelectedChatId] = useState(null);
   const chatsObject = useSelector((state) => state.chat.chats);
   const chatsArray = Object.values(chatsObject);
-  console.log(chats);
+
   useEffect(() => {
     if (Object.keys(chats).length === 0) {
       dispatch(fetchChats());
@@ -83,7 +83,11 @@ const FrontChat = () => {
       </header>
       <div className='chat-list'>
         {chatsArray.map((chat) => (
-          <div className='chat-info' onClick={() => openChat(chat.id)}>
+          <div
+            key={chat.id}
+            className='chat-info'
+            onClick={() => openChat(chat.id)}
+          >
             <img
               src={chat.users[0].image}
               alt={chat.users[0].username}

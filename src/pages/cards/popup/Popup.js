@@ -3,8 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import './popup.css';
 import { selectTranslations } from '../../../slices/languageSlice';
 import { useSelector } from 'react-redux';
-import image1 from '../../../img/pubg_page.png';
-import image2 from '../../../img/pubg.jpeg';
+import { selectCurrentUser } from '../../../slices/authSlice';
+import { Link } from 'react-router-dom';
 
 const PopUp = ({
   isVisible,
@@ -14,10 +14,12 @@ const PopUp = ({
   seller,
   openPrePayment,
 }) => {
+  const currentUser = useSelector(selectCurrentUser);
   const translations = useSelector(selectTranslations);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const navigate = useNavigate();
   const transitionDelay = 300;
+  console.log(seller.id);
   const handleClose = () => {
     togglePopUp();
     navigate('/cards');
@@ -188,9 +190,15 @@ const PopUp = ({
               <p className='facts'>{game.description}</p>
             </div>
             <hr className='divider2' />
-            <button className='sotib-olish' onClick={openPrePayment}>
-              {translations.popup.buy}
-            </button>
+            {currentUser && seller.id === currentUser.id ? (
+              <button className='sotib-olish c'>
+                <Link to='/profile'>{translations.popup.myOrder}</Link>
+              </button>
+            ) : (
+              <button className='sotib-olish' onClick={openPrePayment}>
+                {translations.popup.buy}
+              </button>
+            )}
           </div>
         </div>
       </div>

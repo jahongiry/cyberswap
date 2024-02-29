@@ -103,7 +103,8 @@
     "lastseen": "Oxirgi online vaqti",
     "uc_quantity": "UC soni",
     "transfer_time": "UC tushish vaqti",
-    "available_time": "Sotuvchi ish vaqti"
+    "available_time": "Sotuvchi ish vaqti",
+    "myOrder": "Mening e'lonim"
   },
   "offer": {
     "title": "Account uchun e'lon yaratish",
@@ -196,5 +197,8 @@
     "are_you_sure": "E'loningizni o'chirmoqchimisiz?",
     "yes": "Ha, o'chirish",
     "cancel": "Ortga qaytish"
+  },
+  "admin": {
+    "rules": "Qoidalar"
   }
 }

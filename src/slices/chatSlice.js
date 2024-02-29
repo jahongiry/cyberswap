@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from '../api/axios';
 import { act } from 'react-dom/test-utils';
-import io from 'socket.io-client';
 
 const initialState = {
   socket: null,
@@ -56,9 +55,43 @@ const chatSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(fetchChats.fulfilled, (state, action) => {
+        const savedLang = localStorage.getItem('languagePreference');
+        const rules_uz = 'Assalomu alekum, CyberSwap qoidalari:';
+        const rules_ru = 'Привет, правила CyberSwap:';
         state.status = 'succeeded';
         action.payload.forEach((chat) => {
-          state.chats[chat.id] = { ...chat, messages: chat.messages };
+          const messageContent =
+            savedLang === 'uz'
+              ? rules_uz
+              : savedLang === 'ru'
+              ? rules_ru
+              : rules_uz;
+
+          const helloWorldMessage = {
+            id: `hello-world-static-${chat.id}`,
+            content: messageContent,
+            sender: 'admin',
+            created_at: new Date().toISOString(),
+          };
+
+          const hasHelloWorldMessage = state.chats[chat.id]?.messages.some(
+            (message) => message.id === helloWorldMessage.id
+          );
+
+          if (!hasHelloWorldMessage) {
+            if (!state.chats[chat.id]) {
+              state.chats[chat.id] = { ...chat, messages: [helloWorldMessage] };
+            } else {
+              state.chats[chat.id].messages = [
+                helloWorldMessage,
+                ...state.chats[chat.id].messages,
+              ];
+            }
+          } else {
+            if (!state.chats[chat.id]) {
+              state.chats[chat.id] = { ...chat, messages: chat.messages };
+            }
+          }
         });
       })
       .addCase(fetchChats.rejected, (state, action) => {

@@ -12,6 +12,7 @@ import './chat.css';
 import unread_tick from '../../img/checkmark-outline.svg';
 import read_tick from '../../img/checkmark-done-outline.svg';
 import moment from 'moment';
+import hamburger from '../../img/icons/hamburger_icon.svg';
 
 const Chat = () => {
   const dispatch = useDispatch();
@@ -102,8 +103,8 @@ const Chat = () => {
           <div ref={messagesEndRef} />
         </div>
         <form className='form-chat' onSubmit={handleSubmit}>
-          <div className='file-upload'>
-            <ion-icon name='attach-outline'></ion-icon>
+          <div className='hamburger-chat'>
+            <img src={hamburger} alt='hamburger button' />
           </div>
           <div className='input-container'>
             <input
