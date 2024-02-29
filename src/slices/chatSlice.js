@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from '../api/axios';
 import { act } from 'react-dom/test-utils';
+import moment from 'moment';
 
 const initialState = {
   socket: null,
@@ -71,7 +72,7 @@ const chatSlice = createSlice({
             id: `hello-world-static-${chat.id}`,
             content: messageContent,
             sender: 'admin',
-            created_at: new Date().toISOString(),
+            created_at: moment().toISOString(),
           };
 
           const hasHelloWorldMessage = state.chats[chat.id]?.messages.some(

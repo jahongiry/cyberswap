@@ -25,6 +25,7 @@ const Cards = () => {
   const [selectedCategory, setSelectedCategory] = useState('ALL');
   const [sortingFilter, setSortingFilter] = useState('new');
   const [settings, setSettings] = useState(false);
+  const [searchInput, setSearchInput] = useState('');
   const { gameId } = useParams();
   const navigate = useNavigate();
 
@@ -41,7 +42,7 @@ const Cards = () => {
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
   };
-  
+
   const handleSettingsClick = () => {
     setSettings(!settings);
   };
@@ -70,18 +71,37 @@ const Cards = () => {
     setShowPrePayment(false);
   };
 
+  const handleSearchInputChange = (e) => {
+    setSearchInput(e.target.value.toLowerCase());
+  };
+
   const sortedAndFilteredCards = cards
-    .filter(
-      (game) =>
-        selectedCategory === 'ALL' || game.offer_type === selectedCategory
-    )
+    .filter((game) => {
+      const matchesCategory =
+        selectedCategory === 'ALL' || game.offer_type === selectedCategory;
+
+      const level = game.level?.toString().toLowerCase() || '';
+      const userName = game.seller.username?.toString().toLowerCase() || '';
+      const quantity = game.quantity?.toString().toLowerCase() || '';
+      const royalPass = game.royal_pass?.toLowerCase() || '';
+      const matchesSearch =
+        searchInput.length === 0 ||
+        level.includes(searchInput) ||
+        userName.includes(searchInput) ||
+        quantity.includes(searchInput) ||
+        royalPass.includes(searchInput);
+
+      return matchesCategory && matchesSearch;
+    })
     .sort((a, b) => {
       if (sortingFilter === 'cheap') {
         return a.cost - b.cost;
       } else if (sortingFilter === 'expensive') {
         return b.cost - a.cost;
       } else if (sortingFilter === 'new') {
-        return new Date(b.created_at) - new Date(a.created_at);
+        return (
+          new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+        );
       }
       return 0;
     });
@@ -111,6 +131,7 @@ const Cards = () => {
             type='text'
             placeholder={translations.cards.placeholder}
             className='search-input'
+            onChange={handleSearchInputChange}
           />
           <button className='search-button'>{translations.cards.search}</button>
         </div>
@@ -140,30 +161,33 @@ const Cards = () => {
           >
             Accounts
           </button>
-          <button
-            className='settings'
-            onClick={() => handleSettingsClick()}
-          >
+          <button className='settings' onClick={() => handleSettingsClick()}>
             <img src={settings_icon} alt='settings icon' />
           </button>
         </div>
         <div className={`filter-container ${settings ? 'active' : ''}`}>
           <button
-            className={`filter-button ${sortingFilter == 'new' ? 'active' : ''}`}
+            className={`filter-button ${
+              sortingFilter == 'new' ? 'active' : ''
+            }`}
             onClick={() => setSortingFilter('new')}
           >
             <ion-icon name='sparkles-outline'></ion-icon>
             {translations.cards.new}
           </button>
           <button
-            className={`filter-button ${sortingFilter == 'cheap' ? 'active' : ''}`}
+            className={`filter-button ${
+              sortingFilter == 'cheap' ? 'active' : ''
+            }`}
             onClick={() => setSortingFilter('cheap')}
           >
             <ion-icon name='trending-up-outline'></ion-icon>
             {translations.cards.cheap}
           </button>
           <button
-            className={`filter-button ${sortingFilter == 'expensive' ? 'active' : ''}`}
+            className={`filter-button ${
+              sortingFilter == 'expensive' ? 'active' : ''
+            }`}
             onClick={() => setSortingFilter('expensive')}
           >
             <ion-icon name='trending-down-outline'></ion-icon>
