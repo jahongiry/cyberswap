@@ -86,6 +86,8 @@ const Chat = () => {
       : 'long-message';
   };
 
+  const randomId = Math.random().toString(36).substring(2, 15);
+
   return (
     <div className='chat-page-main'>
       <ChatHeader sender={chatUsers} />
@@ -125,16 +127,15 @@ const Chat = () => {
             />
           )
         ) : null}
-
         <form className='form-chat' onSubmit={handleSubmit}>
           <div className='hamburger-chat' onClick={togglePopup}>
             <img src={hamburger} alt='hamburger button' />
           </div>
           <div className='input-container'>
             <input
-              name='chat-text'
+              name={`chat-text-${randomId}`}
               type='text'
-              id='username'
+              id={`chat-text-${randomId}`}
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               autoComplete='off'
