@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { finalizeOffer } from '../../../slices/chatSlice';
 import './chatFinishSeller.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectTranslations } from '../../../slices/languageSlice';
 
 const ChatFinishBuyer = ({ onClose, offerId }) => {
   const dispatch = useDispatch();
+  const translations = useSelector(selectTranslations);
   const [checkboxes, setCheckboxes] = useState({
     checkbox1: false,
     checkbox2: false,
@@ -43,7 +46,9 @@ const ChatFinishBuyer = ({ onClose, offerId }) => {
           X
         </button>
       </div>
-      <h2 className='finish-header'>Savdoni tugatish</h2>
+      <h2 className='finish-header'>
+        {translations.finializeChat.buyerFinishHeader}
+      </h2>
       <form onSubmit={handleSubmit}>
         <div className='checkbox-group'>
           <label>
@@ -53,7 +58,7 @@ const ChatFinishBuyer = ({ onClose, offerId }) => {
               checked={checkboxes.checkbox1}
               onChange={handleChange}
             />
-            Mahsulotni to'liq qabul qilindi
+            {translations.finializeChat.buyerFinishAccept}
           </label>
         </div>
         <div className='checkbox-group'>
@@ -64,7 +69,7 @@ const ChatFinishBuyer = ({ onClose, offerId }) => {
               checked={checkboxes.checkbox2}
               onChange={handleChange}
             />
-            Hech qanday etirozim yo'q
+            {translations.finializeChat.buyerFinishNoComplain}
           </label>
         </div>
         <div className='checkbox-group'>
@@ -75,11 +80,11 @@ const ChatFinishBuyer = ({ onClose, offerId }) => {
               checked={checkboxes.checkbox3}
               onChange={handleChange}
             />
-            To'lovni sotuvchiga o'tkazish mumkin
+            {translations.finializeChat.buyerFinishtransfer}
           </label>
         </div>
         <button type='submit' className='submit-button'>
-          Tugatish
+          {translations.finializeChat.finishButton}
         </button>
       </form>
     </div>

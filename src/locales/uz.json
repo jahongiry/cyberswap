@@ -206,5 +206,15 @@
     "chat": "Sotuvchi bilan Chat",
     "moneyReturn": "Pulni 100% qaytarib olish",
     "choose": "Quyidagi to'lov usullaridan birini tanlang"
+  },
+  "finializeChat": {
+    "sellerFinishHeader": "Savdoni tugatish",
+    "sellerFinishpar1": "Mahsulot sotib oluvchiga o'tkazilgandan so'ng savdo tugatiladi va sizga pul mablagi tushadi",
+    "sellerFinishpar2": " Savollar uchun @jahongiryusupov94 ga telegramda yozing",
+    "buyerFinishHeader": "Savdoni tugatish",
+    "buyerFinishAccept": "Mahsulotni to'liq qabul qilindi",
+    "buyerFinishNoComplain": "Hech qanday etirozim yo'q",
+    "buyerFinishtransfer": "To'lovni sotuvchiga o'tkazish mumkin",
+    "finishButton": "Tugatish"
   }
 }

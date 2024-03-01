@@ -206,5 +206,16 @@
     "chat": "Чат с продавцом",
     "moneyReturn": "100% возврат денег",
     "choose": "Выберите один из следующих способов оплаты"
+  },
+
+  "finializeChat": {
+    "sellerFinishHeader": "Завершение продажи",
+    "sellerFinishpar1": "После передачи товара покупателю сделка будет завершена, и вы получите денежные средства",
+    "sellerFinishpar2": "По вопросам пишите в телеграм @jahongiryusupov94",
+    "buyerFinishHeader": "Завершение покупки",
+    "buyerFinishAccept": "Товар полностью принят",
+    "buyerFinishNoComplain": "У меня нет никаких возражений",
+    "buyerFinishtransfer": "Можно перевести платеж продавцу",
+    "finishButton": "Завершить"
   }
 }
