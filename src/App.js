@@ -25,6 +25,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import FrontChat from './pages/chat/chatFront/chatFront';
 import UcOffer from './pages/offer/UcOffer';
 import { initializeSocket, disconnectSocket } from '../src/slices/Socket';
+import AdminProtectedRoute from './protectedRoutes/adminProtectedRoute';
 
 function App() {
   const dispatch = useDispatch();
@@ -91,7 +92,14 @@ function App() {
         <Route path='/chatfront' exact element={<FrontChat />} />
         <Route path='/loader' element={<Loader />} />
         <Route path='/loginadmin' element={<LoginAdmin />} />
-        <Route path='/admin' element={<Admin />} />
+        <Route
+          path='/admin'
+          element={
+            <AdminProtectedRoute>
+              <Admin />
+            </AdminProtectedRoute>
+          }
+        />
       </Routes>
       {!shouldHideHeaderAndFooter() && <Footer />}
     </div>

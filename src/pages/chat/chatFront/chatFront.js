@@ -38,8 +38,8 @@ const FrontChat = () => {
   };
 
   const truncateChatFront = (lastChat) => {
-    if (lastChat.length > 30) {
-      return lastChat.substring(0, 30) + '...';
+    if (lastChat.length > 20) {
+      return lastChat.substring(0, 20) + '...';
     }
     return lastChat;
   };
@@ -98,7 +98,7 @@ const FrontChat = () => {
                 <div className='user-name'>
                   {truncateUsername(chat.users[0].username)}
                 </div>
-                {chat.messages.content && (
+                {chat.messages[0].content && (
                   <p className='last-message'>
                     {truncateChatFront(
                       chat.messages[chat.messages.length - 1].content

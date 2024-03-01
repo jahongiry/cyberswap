@@ -35,6 +35,35 @@ export const fetchChats = createAsyncThunk(
   }
 );
 
+export const finalizeOffer = createAsyncThunk(
+  'profile/finalizeOffer',
+  async ({ offer_id }, thunkAPI) => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        return thunkAPI.rejectWithValue('No authorization token found');
+      }
+
+      const response = await axios.post(
+        '/profile/offers/finalized/',
+        { offer_id },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      if (error.response) {
+        return thunkAPI.rejectWithValue(error.response.data);
+      } else {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+    }
+  }
+);
+
 const chatSlice = createSlice({
   name: 'chat',
   initialState,
@@ -56,43 +85,9 @@ const chatSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(fetchChats.fulfilled, (state, action) => {
-        const savedLang = localStorage.getItem('languagePreference');
-        const rules_uz = 'Assalomu alekum, CyberSwap qoidalari:';
-        const rules_ru = 'Привет, правила CyberSwap:';
         state.status = 'succeeded';
         action.payload.forEach((chat) => {
-          const messageContent =
-            savedLang === 'uz'
-              ? rules_uz
-              : savedLang === 'ru'
-              ? rules_ru
-              : rules_uz;
-
-          const helloWorldMessage = {
-            id: `hello-world-static-${chat.id}`,
-            content: messageContent,
-            sender: 'admin',
-            created_at: moment().toISOString(),
-          };
-
-          const hasHelloWorldMessage = state.chats[chat.id]?.messages.some(
-            (message) => message.id === helloWorldMessage.id
-          );
-
-          if (!hasHelloWorldMessage) {
-            if (!state.chats[chat.id]) {
-              state.chats[chat.id] = { ...chat, messages: [helloWorldMessage] };
-            } else {
-              state.chats[chat.id].messages = [
-                helloWorldMessage,
-                ...state.chats[chat.id].messages,
-              ];
-            }
-          } else {
-            if (!state.chats[chat.id]) {
-              state.chats[chat.id] = { ...chat, messages: chat.messages };
-            }
-          }
+          state.chats[chat.id] = { ...chat, messages: chat.messages };
         });
       })
       .addCase(fetchChats.rejected, (state, action) => {

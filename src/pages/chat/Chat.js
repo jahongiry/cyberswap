@@ -13,6 +13,8 @@ import unread_tick from '../../img/checkmark-outline.svg';
 import read_tick from '../../img/checkmark-done-outline.svg';
 import moment from 'moment';
 import hamburger from '../../img/icons/hamburger_icon.svg';
+import ChatFinishBuyer from './chatFinish/chatFinishSeller';
+import ChatFinishSeller from './chatFinish/chatFinishSeller';
 
 const Chat = () => {
   const dispatch = useDispatch();
@@ -22,6 +24,7 @@ const Chat = () => {
   const chats = useSelector((state) => state.chat.chats);
   const messages = chats[selectedChatId]?.messages || [];
   const user = useSelector((state) => state.auth.user);
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
@@ -71,6 +74,10 @@ const Chat = () => {
     dispatch(fetchChats());
   }, [dispatch]);
 
+  const togglePopup = () => {
+    setIsPopupVisible(!isPopupVisible);
+  };
+
   const getMessageClass = (message) => {
     return message.content.length <= 20
       ? message.content.length <= 2
@@ -108,8 +115,19 @@ const Chat = () => {
 
           <div ref={messagesEndRef} />
         </div>
+        {isPopupVisible && chats[selectedChatId]?.offer ? (
+          chats[selectedChatId].offer.seller_id === user?.id ? (
+            <ChatFinishSeller onClose={togglePopup} />
+          ) : (
+            <ChatFinishBuyer
+              offerId={chats[selectedChatId].offer.id}
+              onClose={togglePopup}
+            />
+          )
+        ) : null}
+
         <form className='form-chat' onSubmit={handleSubmit}>
-          <div className='hamburger-chat'>
+          <div className='hamburger-chat' onClick={togglePopup}>
             <img src={hamburger} alt='hamburger button' />
           </div>
           <div className='input-container'>

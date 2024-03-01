@@ -1,14 +1,43 @@
 import './loginAdmin.css';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectTranslations } from '../../slices/languageSlice';
 import logo1 from '../../component/header/logo1_1.png';
 import { NavLink } from 'react-router-dom';
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { selectTranslations } from '../../slices/languageSlice';
-import { useSelector } from 'react-redux';
+import { MAINURL } from '../../api/axios';
 
 const Login = () => {
   const translations = useSelector(selectTranslations);
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(
+        `${MAINURL}/admin/login`,
+        `username=${username}&password=${password}`,
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        }
+      );
+
+      if (response.data.access_token) {
+        localStorage.setItem('admintoken', response.data.access_token);
+        navigate('/admin');
+      } else {
+        console.error('Login failed: No access token received');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+    }
+  };
 
   return (
     <div className='login-section'>
@@ -22,27 +51,35 @@ const Login = () => {
           </div>
           <img className='logo-in' src={logo1} alt='logo' />
           <h2>{translations.login.welcome}</h2>
-          <form className='login-form'>
+          <form className='login-form' onSubmit={handleLogin}>
             <div className='input-container'>
               <label htmlFor='login'>{translations.login.phone}</label>
-              <input type='text' id='login' placeholder='+998912345678' />
+              <input
+                type='text'
+                id='login'
+                placeholder='+998912345678'
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
             </div>
             <div className='input-container'>
               <label htmlFor='password'>{translations.login.password}</label>
-              <input type='password' id='password' placeholder='Password' />
+              <input
+                type='password'
+                id='password'
+                placeholder='Password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </div>
-            <div className='login-footer'></div>
             <button type='submit' className='login-main'>
               {translations.login.enter}
             </button>
             <div className='back-home'>
               <hr />
-              <NavLink activeclassname='forgot-password' to='/'>
-                {translations.login.main}
-              </NavLink>
+              <NavLink to='/'>{translations.login.main}</NavLink>
               <hr />
             </div>
-            <hr className='bottom-line' />
           </form>
           <div className='corner-item bottom-left'></div>
           <div className='corner-item bottom-right'></div>
