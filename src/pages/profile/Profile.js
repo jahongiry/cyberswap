@@ -168,12 +168,6 @@ const Profile = () => {
     dispatch(logOutUser());
   };
 
-  // useEffect(() => {
-  //   if (!currentUser) {
-  //     dispatch(checkLogIn());
-  //   }
-  // }, [dispatch, currentUser]);
-
   const toggleEditButtons = () => {
     setShowEditButtons(!showEditButtons);
   };
@@ -185,6 +179,10 @@ const Profile = () => {
   const refreshOffers = () => {
     dispatch(fetchOffer());
   };
+
+  const availableOffers = offers.filter(
+    (offer) => offer.status === 'available'
+  );
 
   if (!currentUser) {
     return (
@@ -254,13 +252,16 @@ const Profile = () => {
             <button className='profile-offer__btn active'>
               {translations.profile.profileOffer}
             </button>
+            <Link to='/chatfront'>
+              <button className='profile-offer__chat'>Chat</button>
+            </Link>
             <button className='profile-history__btn'>
               {translations.profile.profileHistory}
             </button>
           </div>
 
           <div className='data-container'>
-            {offers.length == 0 ? (
+            {availableOffers.length == 0 ? (
               <div className='no-offers'>
                 <p>{translations.profile.no_active_orders}.</p>
                 <Link to='/offer' className='create-offer-profile'>
@@ -268,7 +269,7 @@ const Profile = () => {
                 </Link>
               </div>
             ) : (
-              offers.map((offerData) => (
+              availableOffers.map((offerData) => (
                 <div className='data-content' key={offerData.id}>
                   <div className='content-box'>
                     <div className='content-img'>
