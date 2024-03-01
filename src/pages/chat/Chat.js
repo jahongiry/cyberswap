@@ -132,6 +132,7 @@ const Chat = () => {
           </div>
           <div className='input-container'>
             <input
+              name='chat-text'
               type='text'
               id='username'
               value={inputValue}
