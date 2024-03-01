@@ -254,12 +254,12 @@ const Profile = () => {
             <button className='profile-offer__btn active'>
               {translations.profile.profileOffer}
             </button>
-            <Link to='/chatfront'>
-              <button className='profile-offer__chat'>Chat</button>
-            </Link>
             <button className='profile-history__btn'>
               {translations.profile.profileHistory}
             </button>
+            <Link to='/chatfront'>
+              <button className='profile-offer__chat'>Chats</button>
+            </Link>
           </div>
 
           <div className='data-container'>
