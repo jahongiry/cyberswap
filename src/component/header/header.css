@@ -229,6 +229,9 @@
     width: 100%;
     color: #000;
   }
+  .header nav ul li a img {
+    display: block;
+  }
   .header nav ul li a i {
     display: block;
     color: #000;

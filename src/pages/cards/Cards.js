@@ -80,10 +80,16 @@ const Cards = () => {
       const matchesCategory =
         selectedCategory === 'ALL' || game.offer_type === selectedCategory;
 
-      const level = game.level?.toString().toLowerCase() || '';
-      const userName = game.seller.username?.toString().toLowerCase() || '';
-      const quantity = game.quantity?.toString().toLowerCase() || '';
-      const royalPass = game.royal_pass?.toLowerCase() || '';
+      const level = (game.level ? game.level.toString() : '').toLowerCase();
+      const userName = (
+        game.seller.username ? game.seller.username.toString() : ''
+      ).toLowerCase();
+      const quantity = (
+        game.quantity ? game.quantity.toString() : ''
+      ).toLowerCase();
+      const royalPass = (
+        game.royal_pass ? game.royal_pass.toString() : ''
+      ).toLowerCase();
       const matchesSearch =
         searchInput.length === 0 ||
         level.includes(searchInput) ||
