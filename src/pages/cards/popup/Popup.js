@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
 import './popup.css';
 import { selectTranslations } from '../../../slices/languageSlice';
 import { useSelector } from 'react-redux';
 import { selectCurrentUser } from '../../../slices/authSlice';
-import { Link } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 
 const PopUp = ({
   isVisible,
@@ -189,12 +188,21 @@ const PopUp = ({
               <p className='facts'>{game.description}</p>
             </div>
             <hr className='divider2' />
-            {currentUser && seller.id === currentUser.id ? (
-              <button className='sotib-olish c'>
-                <Link to='/profile'>{translations.popup.myOrder}</Link>
-              </button>
+            {currentUser ? (
+              seller.id === currentUser.id ? (
+                <button className='sotib-olish c'>
+                  <Link to='/profile'>{translations.popup.myOrder}</Link>
+                </button>
+              ) : (
+                <button className='sotib-olish' onClick={openPrePayment}>
+                  {translations.popup.buy}
+                </button>
+              )
             ) : (
-              <button className='sotib-olish' onClick={openPrePayment}>
+              <button
+                className='sotib-olish'
+                onClick={() => navigate('/signup')}
+              >
                 {translations.popup.buy}
               </button>
             )}
