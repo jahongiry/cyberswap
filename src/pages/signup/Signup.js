@@ -149,9 +149,9 @@ const Signup = () => {
               <hr className='vertical-hr' />
               <div>
                 <hr className='horizontal-hr' />
-                <NavLink to='/login'>
+                <NavLink to='/'>
                   <button type='submit' className='login-button royhat'>
-                    {translations.signup.back}
+                    {translations.login.main}
                   </button>
                 </NavLink>
               </div>
