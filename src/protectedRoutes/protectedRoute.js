@@ -21,7 +21,7 @@ const ProtectedRoute = ({ children }) => {
 
   if (!isLoggedIn) {
     localStorage.setItem('lastPath', location.pathname);
-    return <Navigate to='/login' />;
+    return <Navigate to='/signup' />;
   }
 
   return children;
