@@ -368,4 +368,29 @@
 }
 
 .profile-offer__chat {
+  display: inline-block;
+  text-decoration: none; /* Removes underline */
+  background-color: #007bff; /* Blue background */
+  transition: background-color 0.3s, transform 0.2s;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  margin-top: 1rem;
+  color: #fff; /* White text */
+  font-size: 0.8rem;
+  padding: 10px 20px;
+}
+
+/* Hover effect for .profile-offer__chat */
+.profile-offer__chat:hover {
+  background-color: #0069d9; /* Darker blue background on hover */
+  transform: translateY(-2px); /* Slightly raise the button */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Active effect for .profile-offer__chat */
+.profile-offer__chat:active {
+  background-color: #005cbf; /* Even darker blue on active click */
+  transform: translateY(1px); /* Push down the button */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
