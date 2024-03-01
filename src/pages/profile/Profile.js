@@ -109,6 +109,8 @@ const Profile = () => {
     setIsEditPasswordPopupVisible(false);
   };
 
+  const test = 5;
+
   const handlePasswordSubmit = ({ oldPassword, newPassword }) => {
     dispatch(updatePassword({ oldPassword, newPassword }))
       .then((response) => {
