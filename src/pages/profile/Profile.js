@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './profile.css';
 import profileImg from '../../img/halmet.png';
+import back_icon from '../../img/icons/back_icon.svg';
+import edit_icon from '../../img/icons/edit_icon.svg';
+import create_icon from '../../img/icons/create_icon.svg';
 import {
   logOutUser,
   selectCurrentUser,
@@ -197,8 +200,8 @@ const Profile = () => {
     <div className='profile container'>
       <div className='profile-wrapper'>
         <div className='profile-header'>
-          <NavLink className='chiqish' onClick={handleLogout} to='/'>
-            <ion-icon name='arrow-back-circle-outline'></ion-icon>
+          <NavLink className='exit-profile' onClick={handleLogout} to='/'>
+            <img src={back_icon} className="back-icon" alt="back_icon" />
             <span>{translations.profile.exit}</span>
           </NavLink>
           <span>{translations.profile.span1}</span>
@@ -217,12 +220,12 @@ const Profile = () => {
 
           <button className='profile-edit' onClick={toggleEditButtons}>
             {translations.profile.profileEdit}
-            <ion-icon name='cog-outline'></ion-icon>
+            <img src={edit_icon} className="edit-icon" alt="edit_icon" />
           </button>
           {showEditButtons && (
             <div className='edit-btns'>
               <button className='edit-name' onClick={handleEditNameClick}>
-                <ion-icon name='create-outline'></ion-icon>
+                <img src={create_icon} className="create-icon" alt="create_icon" />
                 {translations.profile.editName}
               </button>
               {isEditPopupVisible && (
@@ -236,7 +239,7 @@ const Profile = () => {
                 className='edit-password'
                 onClick={handleEditPasswordClick}
               >
-                <ion-icon name='create-outline'></ion-icon>
+                <img src={create_icon} className="create-icon" alt="create_icon" />
                 {translations.profile.editPassword}
               </button>
               {isEditPasswordPopupVisible && (
