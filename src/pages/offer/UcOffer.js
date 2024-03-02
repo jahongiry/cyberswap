@@ -48,21 +48,19 @@ const UcOffer = () => {
     setLoading(true);
 
     const offerData = {
-      data: {
-        quantity: ucAmount,
-        available_time: workhours,
-        transfer_time: workminutes,
-        description,
-        cost: parseInt(cost, 10),
-      },
       images,
+      cost,
+      quantity: ucAmount,
+      available_time: workhours,
+      transfer_time: workminutes,
+      description,
     };
 
     try {
       await dispatch(createPubgUcOffer(offerData)).unwrap();
       navigate('/profile');
     } catch (error) {
-      toast.error(<p className='red-text-important'>"Error while creating"</p>);
+      toast.error(<p className='red-text-important'>Error while creating</p>);
     } finally {
       setLoading(false);
     }

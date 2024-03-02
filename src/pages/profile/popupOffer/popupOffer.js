@@ -112,11 +112,11 @@ const EditOffer = ({ isOpen, onClose, offerInfo, onSuccessfulSubmit }) => {
           offerData: offerDataWithoutImages,
         })
       );
-      if (images.length > 0) {
-        await dispatch(
-          updateOfferImages({ offerId: offerInfo.id, images })
-        ).then(() => {});
-      }
+      // if (images.length > 0) {
+      //   await dispatch(
+      //     updateOfferImages({ offerId: offerInfo.id, images })
+      //   ).then(() => {});
+      // }
       onSuccessfulSubmit();
       onClose();
     } catch (error) {
@@ -132,7 +132,7 @@ const EditOffer = ({ isOpen, onClose, offerInfo, onSuccessfulSubmit }) => {
         </button>
         <h1>{translations.popup_profile.offer_heading}</h1>
         <form onSubmit={handleSubmit}>
-          <div className='image-upload-container'>
+          {/* <div className='image-upload-container'>
             {imagePreviews.map((image, index) => (
               <div key={index} className='image-preview'>
                 <img src={image} alt={`upload-preview-${index}`} />
@@ -151,7 +151,7 @@ const EditOffer = ({ isOpen, onClose, offerInfo, onSuccessfulSubmit }) => {
                 <div className='plus-sign'>+</div>
               </label>
             )}
-          </div>
+          </div> */}
           <div className='form-group'>
             <div className='form-input'>
               <label htmlFor='level'>{translations.offer.level}</label>

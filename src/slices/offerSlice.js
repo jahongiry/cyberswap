@@ -3,94 +3,98 @@ import axios from '../api/axios';
 
 const initialState = {
   offers: [],
-  status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
+  status: 'idle',
   error: null,
 };
 
 export const createPubgAccountOffer = createAsyncThunk(
   'offers/createPubgAccountOffer',
-  async ({ data, images }, thunkAPI) => {
+  async ({ images, ...data }, thunkAPI) => {
     try {
       const token = localStorage.getItem('token');
       if (!token) {
         return thunkAPI.rejectWithValue('No authorization token found');
       }
 
-      let response = await axios.post('profile/offers/pubg/account', data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
+      const formData = new FormData();
+
+      images.forEach((image) => {
+        formData.append('images', image);
       });
 
-      const offerId = response.data.id;
-
-      if (offerId && images.length > 0) {
-        const formData = new FormData();
-
-        images.forEach((image) => {
-          formData.append('images', image);
+      if (data.royal_pass) {
+        data.royal_pass.forEach((pass) => {
+          formData.append('royal_pass', pass);
         });
-
-        response = await axios.post(
-          `profile/offers/images/${offerId}`,
-          formData,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              'Content-Type': 'multipart/form-data',
-            },
-          }
-        );
       }
+
+      if (data.skins) {
+        data.skins.forEach((skin) => {
+          formData.append('skins', skin);
+        });
+      }
+
+      Object.entries(data).forEach(([key, value]) => {
+        if (key !== 'royal_pass' && key !== 'skins') {
+          if (typeof value === 'boolean') {
+            formData.append(key, value ? 'true' : 'false');
+          } else {
+            formData.append(key, value);
+          }
+        }
+      });
+
+      const response = await axios.post(
+        '/profile/offers/pubg/account',
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      return thunkAPI.rejectWithValue(
+        error.response ? error.response.data : error.message
+      );
     }
   }
 );
 
 export const createPubgUcOffer = createAsyncThunk(
   'offers/createPubgUcOffer',
-  async ({ data, images }, thunkAPI) => {
+  async ({ images, ...data }, thunkAPI) => {
     try {
       const token = localStorage.getItem('token');
       if (!token) {
         return thunkAPI.rejectWithValue('No authorization token found');
       }
 
-      let response = await axios.post('profile/offers/pubg/uc', data, {
+      const formData = new FormData();
+
+      images.forEach((image) => {
+        formData.append('images', image);
+      });
+
+      formData.append('cost', data.cost);
+      formData.append('quantity', data.quantity);
+      formData.append('available_time', data.available_time);
+      formData.append('transfer_time', data.transfer_time);
+      formData.append('description', data.description);
+
+      const response = await axios.post('/profile/offers/pubg/uc', formData, {
         headers: {
           Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
         },
       });
 
-      const offerId = response.data.id;
-
-      if (offerId && images.length > 0) {
-        const formData = new FormData();
-
-        images.forEach((image) => {
-          formData.append('images', image);
-        });
-
-        response = await axios.post(
-          `profile/offers/images/${offerId}`,
-          formData,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              'Content-Type': 'multipart/form-data',
-            },
-          }
-        );
-      }
-
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      return thunkAPI.rejectWithValue(
+        error.response ? error.response.data : error.message
+      );
     }
   }
 );
@@ -155,19 +159,11 @@ const offersSlice = createSlice({
         state.status = 'failed';
         state.error = action.payload;
       })
-      // Handle buyOffer thunk
-      .addCase(buyOffer.pending, (state) => {
-        // Handle pending state
-      })
-      .addCase(buyOffer.fulfilled, (state, action) => {
-        // Handle successful buy offer
-        // Update state as necessary
-      })
+      .addCase(buyOffer.pending, (state) => {})
+      .addCase(buyOffer.fulfilled, (state, action) => {})
       .addCase(buyOffer.rejected, (state, action) => {
-        // Handle failed buy offer
         state.error = action.payload;
       });
-    // Add other cases for other async thunks if needed
   },
 });
 

@@ -94,6 +94,14 @@
 }
 
 @media screen and (max-width: 992px) {
+  .home-container__info .home-btns {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
   .home-container {
     grid-template-columns: 1fr 1fr;
   }

@@ -99,21 +99,19 @@ const Offer = () => {
     }
     setIsConnectRequired(false);
 
-    const offerData = {
-      data: {
-        level: parseInt(level, 10),
-        rating: parseInt(rating, 10),
-        royal_pass,
-        skins,
-        cost: parseInt(cost, 10),
-        description,
-        connects,
-      },
+    const formData = {
       images,
+      level: parseInt(level, 10),
+      rating: parseInt(rating, 10),
+      royal_pass: royal_pass,
+      skins: skins,
+      cost: parseInt(cost, 10),
+      description: description,
+      ...connects,
     };
 
     try {
-      await dispatch(createPubgAccountOffer(offerData)).unwrap();
+      await dispatch(createPubgAccountOffer(formData)).unwrap();
       navigate('/profile');
     } catch (error) {
       toast.error(<p className='red-text-important'>"Error while creating"</p>);
