@@ -13,7 +13,7 @@ const ChatHeader = ({ sender }) => {
 
   return (
     <div className='chat-header'>
-      <Link to='../chatfront' className='back-button'>
+      <Link to='../chats' className='back-button'>
         <ion-icon name='arrow-back-outline'></ion-icon>
       </Link>
       <div className='user-info'>
