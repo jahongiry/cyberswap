@@ -175,6 +175,31 @@ export const updateOffer = createAsyncThunk(
   }
 );
 
+export const updateUcOffer = createAsyncThunk(
+  'profile/updateOffer',
+  async ({ offerId, offerData }, thunkAPI) => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        return thunkAPI.rejectWithValue('No authorization token found');
+      }
+      const response = await axios.put(
+        `/profile/offers/pubg/uc/${offerId}`,
+        offerData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
 export const updateOfferImages = createAsyncThunk(
   'profile/updateOfferImages',
   async ({ offerId, images }, thunkAPI) => {

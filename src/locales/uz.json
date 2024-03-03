@@ -139,8 +139,9 @@
     "pricePlaceholder": "Namuna: 13000",
     "ucamountPlaceholder": "60",
     "workhoursPlaceholder": "9:00 dan 23:00 gacha",
-    "messagePlaceholder": "Eng arzon UC lar va tez himat...",
-    "imageRequiredMessage": "Rasm yuklash majburiy"
+    "messagePlaceholder": "Eng arzon UC lar va tez hizmat...",
+    "imageRequiredMessage": "Rasm yuklash majburiy",
+    "update": "Yangilash"
   },
   "signup": {
     "title": "Ro'yxatdan o'ting",
@@ -172,7 +173,8 @@
     "profileOffer": "E'lonlarim",
     "profileHistory": "Arxivlarim",
     "price": "Narx",
-    "level": "Lvl",
+    "level": "Account Lvl",
+    "ucAmount": "UC soni",
     "updateInfo": "Yangilash",
     "no_active_orders": "Hozirda faol e'loningiz yo'q",
     "create_new": "Yangi e'lon yaratish",

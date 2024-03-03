@@ -28,6 +28,7 @@ import EditPasswordPopup from './popupPassword/popupPassword';
 import ConfirmationPopup from './offerDeletePopUp';
 import EditOffer from './popupOffer/popupOffer';
 import { toast } from 'react-toastify';
+import EditUcOffer from './popupOffer/popupOfferUc';
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -111,8 +112,6 @@ const Profile = () => {
   const handleClosePasswordPopup = () => {
     setIsEditPasswordPopupVisible(false);
   };
-
-  const test = 5;
 
   const handlePasswordSubmit = ({ oldPassword, newPassword }) => {
     dispatch(updatePassword({ oldPassword, newPassword }))
@@ -201,7 +200,7 @@ const Profile = () => {
       <div className='profile-wrapper'>
         <div className='profile-header'>
           <NavLink className='exit-profile' onClick={handleLogout} to='/'>
-            <img src={back_icon} className="back-icon" alt="back_icon" />
+            <img src={back_icon} className='back-icon' alt='back_icon' />
             <span>{translations.profile.exit}</span>
           </NavLink>
           <span>{translations.profile.span1}</span>
@@ -220,12 +219,16 @@ const Profile = () => {
 
           <button className='profile-edit' onClick={toggleEditButtons}>
             {translations.profile.profileEdit}
-            <img src={edit_icon} className="edit-icon" alt="edit_icon" />
+            <img src={edit_icon} className='edit-icon' alt='edit_icon' />
           </button>
           {showEditButtons && (
             <div className='edit-btns'>
               <button className='edit-name' onClick={handleEditNameClick}>
-                <img src={create_icon} className="create-icon" alt="create_icon" />
+                <img
+                  src={create_icon}
+                  className='create-icon'
+                  alt='create_icon'
+                />
                 {translations.profile.editName}
               </button>
               {isEditPopupVisible && (
@@ -239,7 +242,11 @@ const Profile = () => {
                 className='edit-password'
                 onClick={handleEditPasswordClick}
               >
-                <img src={create_icon} className="create-icon" alt="create_icon" />
+                <img
+                  src={create_icon}
+                  className='create-icon'
+                  alt='create_icon'
+                />
                 {translations.profile.editPassword}
               </button>
               {isEditPasswordPopupVisible && (
@@ -281,10 +288,17 @@ const Profile = () => {
                       <img src={currentUser.image} alt={offerData.name} />
                     </div>
                     <div className='content-info'>
-                      <p className='content-level'>
-                        {translations.profile.level}:{' '}
-                        <span>{offerData.level}</span>
-                      </p>
+                      {offerData.offer_type === 'pubg_uc' ? (
+                        <p className='content-level'>
+                          {translations.profile.ucAmount}:{' '}
+                          <span>{offerData.quantity}</span>
+                        </p>
+                      ) : (
+                        <p className='content-level'>
+                          {translations.profile.level}:{' '}
+                          <span>{offerData.level}</span>
+                        </p>
+                      )}
                       <p className='content-price'>
                         {translations.profile.price}:{' '}
                         <span>{offerData.cost}</span> so'm
@@ -313,14 +327,23 @@ const Profile = () => {
               onClose={handleDeleteCancel}
               onConfirm={handleDeleteConfirm}
             />
-            {isEditOfferPopupVisible && selectedOffer && (
-              <EditOffer
-                onSuccessfulSubmit={refreshOffers}
-                isOpen={isEditOfferPopupVisible}
-                onClose={handleCloseEditOfferPopup}
-                offerInfo={selectedOffer}
-              />
-            )}
+            {isEditOfferPopupVisible &&
+              selectedOffer &&
+              (selectedOffer.offer_type === 'pubg_uc' ? (
+                <EditUcOffer
+                  onSuccessfulSubmit={refreshOffers}
+                  isOpen={isEditOfferPopupVisible}
+                  onClose={handleCloseEditOfferPopup}
+                  offerInfo={selectedOffer}
+                />
+              ) : (
+                <EditOffer
+                  onSuccessfulSubmit={refreshOffers}
+                  isOpen={isEditOfferPopupVisible}
+                  onClose={handleCloseEditOfferPopup}
+                  offerInfo={selectedOffer}
+                />
+              ))}
           </div>
         </div>
       </div>
