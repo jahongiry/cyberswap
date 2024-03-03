@@ -119,9 +119,28 @@
   background: #2b3b52;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   padding: 14px;
+  width: 100%;
   display: grid;
-  grid-template-columns: 1fr 10fr 1fr;
+  grid-template-columns: 1fr 10fr 1.2fr;
+  align-items: center;
+  gap: 10px;
 }
+
+.hamburger-chat {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hamburger-chat img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(100);
+}
+
 
 .file-upload ion-icon {
   width: 3rem;
@@ -129,28 +148,59 @@
   margin-top: -0.5rem;
 }
 
+.send-button  {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .send-button .send_icon {
-  width: 3rem;
-  height: 4rem;
-  margin-top: -0.5rem;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: invert(1);
+}
+
+.input-container {
+  width: 100%;
 }
 
 .input-container input {
   width: 100%;
-  padding: 15px;
-  border-radius: 25px;
+  padding: 5px 10px;
+  border-radius: 15px;
   background: linear-gradient(135deg, #587093, #344a66) border-box;
   box-shadow: inset 2px 2px 5px #1b1b1b, inset -2px -2px 5px #3b3b3b; /* Neumorphism effect */
   color: white;
-  border: 2px solid white;
+  border: 1px solid white;
   font-size: 1rem;
 }
 
-.hamburger-chat {
-  margin-top: 0.2rem;
-  margin-right: 0.4rem;
-  margin-left: -0.2rem;
-  width: 2.3rem !important;
-  height: 2.6rem !important;
-  filter: brightness(0) invert(1);
+@media (min-width: 768px){
+  .hamburger-chat {
+    aspect-ratio: unset;
+  }
+  .hamburger-chat img {
+    width: 50px;
+    height: auto;
+  }
+  .send-button  {
+    aspect-ratio: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .send-button .send_icon {
+    width: 50px;
+    height: auto;
+  }
+
+  .input-container input {
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: 2px solid white;
+  }
 }
