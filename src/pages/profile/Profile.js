@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './profile.css';
 import profileImg from '../../img/halmet.png';
 import back_icon from '../../img/icons/back_icon.svg';
+import logout_icon from '../../img/icons/logout_2.svg';
 import edit_icon from '../../img/icons/edit_icon.svg';
 import create_icon from '../../img/icons/create_icon.svg';
 import {
@@ -200,7 +201,7 @@ const Profile = () => {
       <div className='profile-wrapper'>
         <div className='profile-header'>
           <NavLink className='exit-profile' onClick={handleLogout} to='/'>
-            <img src={back_icon} className='back-icon' alt='back_icon' />
+            <img src={logout_icon} className='back-icon' alt='back_icon' />
             <span>{translations.profile.exit}</span>
           </NavLink>
           <span>{translations.profile.span1}</span>
