@@ -52,9 +52,9 @@ const PrePayment = ({ closePrePayment, game }) => {
         </h4>
         <br />
         <br />
-        <Link to='/chat' onClick={buyOfferForChatTest}>
+        {/* <Link to='/chats' onClick={buyOfferForChatTest}>
           <h5>testing chat</h5>
-        </Link>
+        </Link> */}
 
         <br />
         <br />
@@ -75,9 +75,6 @@ const PrePayment = ({ closePrePayment, game }) => {
           <input type='hidden' name='callback_timeout' value={2000} />
           <button type='submit' className='modal-pay-logo'>
             <img src={payme_logo} alt='payment logo' />
-            <span>
-              Pay with <b>Payme</b>
-            </span>
           </button>
         </form>
       </div>
