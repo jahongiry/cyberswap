@@ -70,7 +70,7 @@ const PrePayment = ({ closePrePayment, game }) => {
           <input
             type='hidden'
             name='callback'
-            value={`https://cyberswap.uz/${game.id}`}
+            value={`https://cyberswap.uz/chats`}
           />
           <input type='hidden' name='callback_timeout' value={2000} />
           <button type='submit' className='modal-pay-logo'>
