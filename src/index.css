@@ -113,6 +113,7 @@ html {
   box-sizing: border-box;
   font-family: var(--Arial);
   color: var(--text-color);
+  overscroll-behavior: none;
 }
 
 body {
