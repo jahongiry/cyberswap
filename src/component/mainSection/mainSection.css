@@ -138,6 +138,10 @@
     gap: 2rem;
   }
 
+  .home-container__info .home-btns {
+    align-self: center;
+  }
+
   .mainSection .home-container__info .statistics {
     display: none;
   }
