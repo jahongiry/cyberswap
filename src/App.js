@@ -51,7 +51,7 @@ function App() {
     return (
       pathname.startsWith('/admin') ||
       pathname === '/chat' ||
-      pathname === '/chatfront'
+      pathname === '/chats'
     );
   };
 
