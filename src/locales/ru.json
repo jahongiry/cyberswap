@@ -140,7 +140,8 @@
     "ucamountPlaceholder": "60",
     "workhoursPlaceholder": "с 9:00 до 23:00",
     "messagePlaceholder": "Самые дешевые UC и быстрое обслуживание...",
-    "imageRequiredMessage": "Загрузка изображения обязательна"
+    "imageRequiredMessage": "Загрузка изображения обязательна",
+    "update": "Обновить"
   },
   "signup": {
     "title": "Зарегистрироваться",
