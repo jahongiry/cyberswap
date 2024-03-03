@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { finalizeOffer } from '../../../slices/chatSlice';
 import './chatFinishSeller.css';
 import { useDispatch, useSelector } from 'react-redux';

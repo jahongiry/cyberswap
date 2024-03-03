@@ -14,7 +14,7 @@ import read_tick from '../../img/checkmark-done-outline.svg';
 import moment from 'moment';
 import hamburger from '../../img/icons/hamburger_icon.svg';
 import send_icon from '../../img/icons/send_icon.svg';
-import ChatFinishBuyer from './chatFinish/chatFinishSeller';
+import ChatFinishBuyer from './chatFinish/chatFinishBuyer';
 import ChatFinishSeller from './chatFinish/chatFinishSeller';
 
 const Chat = () => {
@@ -143,7 +143,7 @@ const Chat = () => {
             />
           </div>
           <div className='send-button' onClick={handleSubmit}>
-            <img src={send_icon} className="send_icon" alt='send icon' />
+            <img src={send_icon} className='send_icon' alt='send icon' />
           </div>
         </form>
       </div>
