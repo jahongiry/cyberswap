@@ -124,7 +124,9 @@
     "levelAchiv": "Namuna: 700+",
     "messagePlaceholder": "Lednik lvl 3, Qilich lvl 2, Redki skinlar...",
     "connectRequiredMessage": "Kamida bitta connectni tanlang 👆",
-    "imageRequiredMessage": "Rasm yuklash majburiy"
+    "imageRequiredMessage": "Rasm yuklash majburiy",
+    "addRoyalPass": "Kamida bitta Roya pass qo'shing 👆",
+    "addSkins": "Kamida bitta Skin qo'shing 👆"
   },
   "ucoffer": {
     "title": "UC uchun e'lon yaratish",

@@ -144,6 +144,7 @@
 }
 
 .error-message {
+  margin-top: -0.6rem !important;
   color: red;
 }
 

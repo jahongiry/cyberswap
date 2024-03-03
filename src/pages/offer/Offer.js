@@ -26,6 +26,8 @@ const Offer = () => {
   const [loading, setLoading] = useState(false);
   const [isConnectRequired, setIsConnectRequired] = useState(false);
   const [isImageRequired, setIsImageRequired] = useState(false);
+  const [showSkinWarning, setShowSkinWarning] = useState(false);
+  const [showRoyalPassWarning, setShowRoyalPassWarning] = useState(false);
   const [connects, setConnects] = useState({
     phone_number: false,
     email: false,
@@ -34,11 +36,11 @@ const Offer = () => {
     twitter: false,
     game_center: false,
   });
-
   const handleAddSkin = () => {
     if (currentSkin.trim() !== '' && !skins.includes(currentSkin.trim())) {
       setSkins([...skins, currentSkin.trim()]);
       setCurrentSkin('');
+      setShowSkinWarning(false);
     }
   };
 
@@ -53,6 +55,7 @@ const Offer = () => {
     ) {
       setRoyal_pass([...royal_pass, currentRoyalPass.trim()]);
       setCurrentRoyalPass('');
+      setShowRoyalPassWarning(false);
     }
   };
 
@@ -91,12 +94,21 @@ const Offer = () => {
     e.preventDefault();
     setLoading(true);
 
+    const hasSkins = skins.length > 0;
+    const hasRoyalPasses = royal_pass.length > 0;
+
+    setShowSkinWarning(!hasSkins);
+    setShowRoyalPassWarning(!hasRoyalPasses);
+
     const isAnyConnectSelected = Object.values(connects).some((value) => value);
-    if (!isAnyConnectSelected) {
-      setIsConnectRequired(true);
+    if (!hasSkins || !hasRoyalPasses || !isAnyConnectSelected) {
+      if (!isAnyConnectSelected) {
+        setIsConnectRequired(true);
+      }
       setLoading(false);
       return;
     }
+
     setIsConnectRequired(false);
 
     const formData = {
@@ -220,8 +232,12 @@ const Offer = () => {
                   </button>
                 )}
               </div>
+              {showRoyalPassWarning && (
+                <p className='error-message'>
+                  {translations.offer.addRoyalPass}
+                </p>
+              )}
             </div>
-
             <div className='form-input'>
               <label htmlFor='skin'>{translations.offer.skins}</label>
               <div className='skin-input-container'>
@@ -255,6 +271,9 @@ const Offer = () => {
                   </button>
                 )}
               </div>
+              {showSkinWarning && (
+                <p className='error-message'>{translations.offer.addSkins}</p>
+              )}
             </div>
           </div>
           <div className='form-input'>
