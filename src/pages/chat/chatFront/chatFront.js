@@ -98,7 +98,7 @@ const FrontChat = () => {
                 <div className='user-name'>
                   {truncateUsername(chat.users[0].username)}
                 </div>
-                {chat.messages[0].content && (
+                {chat.messages.length > 0 && (
                   <p className='last-message'>
                     {truncateChatFront(
                       chat.messages[chat.messages.length - 1].content
@@ -106,7 +106,7 @@ const FrontChat = () => {
                   </p>
                 )}
               </div>
-              {chat.messages.created_at && (
+              {chat.messages.length > 0 && (
                 <p className='last-message-time'>
                   {getMilitaryTime(
                     chat.messages[chat.messages.length - 1].created_at

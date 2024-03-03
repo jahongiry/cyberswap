@@ -91,7 +91,7 @@ export const updateProfileImage = createAsyncThunk(
       }
 
       const formData = new FormData();
-      formData.append('image', imageFile); // Assuming 'image' is the field name expected by your backend
+      formData.append('image', imageFile);
 
       const response = await axios.put('/profile/image', formData, {
         headers: {
@@ -159,7 +159,7 @@ export const updateOffer = createAsyncThunk(
         return thunkAPI.rejectWithValue('No authorization token found');
       }
       const response = await axios.put(
-        `/profile/offers/account/${offerId}`,
+        `/profile/offers/pubg/account/${offerId}`,
         offerData,
         {
           headers: {
@@ -229,7 +229,6 @@ const profileSlice = createSlice({
       })
       .addCase(updateUsername.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        // Update the username in the profile state
         if (state.profile) {
           state.profile.username = action.payload.username;
         }
