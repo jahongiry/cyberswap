@@ -31,9 +31,12 @@ const Header = () => {
   }, []);
 
   return (
-    <header className='container header' onClick={() => {
-      navbar ? setNavbar(false) : console.log();
-    }}>
+    <header
+      className='container header'
+      onClick={() => {
+        navbar ? setNavbar(false) : console.log();
+      }}
+    >
       <Link to='/'>
         <div className='logo'>
           <img src={logo} alt='Cyberswap' />
@@ -69,7 +72,7 @@ const Header = () => {
           </li> */}
           {user ? (
             <li>
-              <Link to='/chatfront' className='sign-in'>
+              <Link to='/chats' className='sign-in'>
                 <img src={chat_icon} alt='Home' className='home-icon-chat' />
                 {translations.header.chat}
               </Link>

@@ -12,7 +12,7 @@
 }
 
 .main-btn span {
-  font-size: 0.79rem;
+  font-size: 1rem;
 }
 
 .home-container {
@@ -107,7 +107,6 @@
 }
 
 @media screen and (max-width: 992px) {
-
   .home-container {
     grid-template-columns: 1fr 1fr;
   }
@@ -125,7 +124,6 @@
     order: -1;
     grid-column: auto / span 2;
   }
-  
 }
 @media screen and (max-width: 768px) {
   .mainSection {

@@ -268,7 +268,7 @@ const Profile = () => {
             <button className='profile-history__btn'>
               {translations.profile.profileHistory}
             </button>
-            <Link to='/chatfront'>
+            <Link to='/chats'>
               <button className='profile-offer__chat'>Chats</button>
             </Link>
           </div>

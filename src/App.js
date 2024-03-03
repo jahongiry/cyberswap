@@ -89,7 +89,7 @@ function App() {
         <Route path='/payment' exact element={<Payment />} />
         <Route path='/profile' exact element={<Profile />} />
         <Route path='/chat' exact element={<Chat />} />
-        <Route path='/chatfront' exact element={<FrontChat />} />
+        <Route path='/chats' exact element={<FrontChat />} />
         <Route path='/loader' element={<Loader />} />
         <Route path='/loginadmin' element={<LoginAdmin />} />
         <Route
