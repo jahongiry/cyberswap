@@ -115,6 +115,7 @@ img {
   .app {
     overflow-x: hidden;
     max-width: 100%;
+    overflow-y: hidden;
   }
 }
 
@@ -125,5 +126,6 @@ img {
   .app {
     overflow-x: hidden;
     max-width: 100%;
+    overflow-y: hidden;
   }
 }

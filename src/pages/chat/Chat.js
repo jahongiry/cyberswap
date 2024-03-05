@@ -27,6 +27,7 @@ const Chat = () => {
   const user = useSelector((state) => state.auth.user);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const messagesEndRef = useRef(null);
+  console.log(chats[selectedChatId].offer.status);
 
   useEffect(() => {
     if (!selectedChatId || !chatUsers) {

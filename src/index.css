@@ -118,10 +118,12 @@ html {
 
 body {
   background: #0f082c;
+  overflow-y: hidden;
 }
 
 .app {
   margin: 0 auto;
   width: 100%;
   background: var(--bg-color);
+  overflow-y: hidden;
 }
