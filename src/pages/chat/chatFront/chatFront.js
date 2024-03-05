@@ -114,10 +114,16 @@ const FrontChat = () => {
                 </p>
               )}
             </div>
-            <div className='offer-show'>
-              <p>LVL: {chat.offer.level}</p>
-              <p>UZS: {chat.offer.cost}</p>
-            </div>
+            {chat.offer.offer_type === 'pubg_account' ? (
+              <div className='offer-show'>
+                <p>LVL: {chat.offer.level}</p>
+                <p>UZS: {chat.offer.cost}</p>
+              </div>
+            ) : chat.offer.offer_type === 'pubg_uc' ? (
+              <div className='offer-show'>
+                <p>UC: {chat.offer.quantity}</p> <p>UZS: {chat.offer.cost}</p>
+              </div>
+            ) : null}
           </div>
         ))}
       </div>

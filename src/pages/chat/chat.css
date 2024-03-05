@@ -141,14 +141,13 @@
   filter: brightness(100);
 }
 
-
 .file-upload ion-icon {
   width: 3rem;
   height: 4rem;
   margin-top: -0.5rem;
 }
 
-.send-button  {
+.send-button {
   width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
@@ -170,7 +169,7 @@
 
 .input-container input {
   width: 100%;
-  padding: 5px 10px;
+  padding: 10px 10px;
   border-radius: 15px;
   background: linear-gradient(135deg, #587093, #344a66) border-box;
   box-shadow: inset 2px 2px 5px #1b1b1b, inset -2px -2px 5px #3b3b3b; /* Neumorphism effect */
@@ -179,7 +178,7 @@
   font-size: 1rem;
 }
 
-@media (min-width: 768px){
+@media (min-width: 768px) {
   .hamburger-chat {
     aspect-ratio: unset;
   }
@@ -187,7 +186,7 @@
     width: 50px;
     height: auto;
   }
-  .send-button  {
+  .send-button {
     aspect-ratio: unset;
     display: flex;
     align-items: center;
