@@ -17,14 +17,6 @@ import send_icon from '../../img/icons/send_icon.svg';
 import ChatFinishBuyer from './chatFinish/chatFinishBuyer';
 import ChatFinishSeller from './chatFinish/chatFinishSeller';
 
-function preventScroll(e) {
-  e.preventDefault();
-  e.stopPropagation();
-  return false;
-}
-
-document.addEventListener('scroll', preventScroll, { passive: false });
-
 const Chat = () => {
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState('');
@@ -35,7 +27,7 @@ const Chat = () => {
   const user = useSelector((state) => state.auth.user);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const messagesEndRef = useRef(null);
-  console.log(chats[selectedChatId].offer.status);
+  // console.log(chats[selectedChatId].offer.status);
 
   useEffect(() => {
     if (!selectedChatId || !chatUsers) {
