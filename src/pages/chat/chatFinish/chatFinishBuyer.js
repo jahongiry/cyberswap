@@ -3,6 +3,7 @@ import { finalizeOffer } from '../../../slices/chatSlice';
 import './chatFinishSeller.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTranslations } from '../../../slices/languageSlice';
+import { useNavigate } from 'react-router-dom';
 
 const ChatFinishBuyer = ({ onClose, offerId }) => {
   const dispatch = useDispatch();
@@ -12,6 +13,7 @@ const ChatFinishBuyer = ({ onClose, offerId }) => {
     checkbox2: false,
     checkbox3: false,
   });
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     const { name, checked } = event.target;
@@ -28,6 +30,7 @@ const ChatFinishBuyer = ({ onClose, offerId }) => {
         .unwrap()
         .then(() => {
           console.log('Offer finalized successfully');
+          navigate('/chats');
           onClose();
         })
         .catch((error) => {
