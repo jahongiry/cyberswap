@@ -141,6 +141,10 @@
   display: none;
 }
 
+.nav-mobile li {
+  text-align: center;
+}
+
 @media screen and (max-width: 992px) {
   .header nav ul {
     gap: 1rem;
@@ -222,10 +226,11 @@
     justify-content: center;
     border: 2px solid black;
     background: white;
+    border-radius: 10px;
   }
   .header nav ul li a {
     display: flex;
-    justify-content: center;
+    margin-left: 3rem;
     width: 100%;
     color: #000;
   }

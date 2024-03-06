@@ -45,7 +45,7 @@ const Header = () => {
       </Link>
 
       <nav className={navbar ? 'mobile' : ''} onClick={navBtn}>
-        <ul>
+        <ul className='nav-mobile'>
           <li onClick={navBtn}>
             <NavLink activeclassname='active' to='/'>
               <img src={home_icon} alt='Home' className='home-icon' />
