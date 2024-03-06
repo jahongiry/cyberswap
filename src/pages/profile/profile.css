@@ -59,6 +59,11 @@
   filter: invert(1);
 }
 
+.create_new_offer {
+  display: flex;
+  gap: 0.4rem;
+}
+
 .profile-header .exit-profile > span {
   color: #fff;
   font-weight: bold;
@@ -351,6 +356,7 @@
 .no-offers {
   text-align: center;
   gap: 1rem;
+  margin: auto;
 }
 
 .no-offers p {

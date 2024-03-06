@@ -277,9 +277,14 @@ const Profile = () => {
             {availableOffers.length == 0 ? (
               <div className='no-offers'>
                 <p>{translations.profile.no_active_orders}.</p>
-                <Link to='/offer' className='create-offer-profile'>
-                  <h3>{translations.profile.create_new}!</h3>
-                </Link>
+                <div className='create_new_offer'>
+                  <Link to='/pubgaccountoffer' className='create-offer-profile'>
+                    <h3>{translations.profile.create_new_account}!</h3>
+                  </Link>
+                  <Link to='/pubgucoffer' className='create-offer-profile'>
+                    <h3>{translations.profile.create_new_uc}!</h3>
+                  </Link>
+                </div>
               </div>
             ) : (
               availableOffers.map((offerData) => (
