@@ -16,6 +16,7 @@ import hamburger from '../../img/icons/hamburger_icon.svg';
 import send_icon from '../../img/icons/send_icon.svg';
 import ChatFinishBuyer from './chatFinish/chatFinishBuyer';
 import ChatFinishSeller from './chatFinish/chatFinishSeller';
+import { selectTranslations } from '../../slices/languageSlice';
 
 const Chat = () => {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const Chat = () => {
   const user = useSelector((state) => state.auth.user);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const messagesEndRef = useRef(null);
-  // console.log(chats[selectedChatId].offer.status);
+  const translations = useSelector(selectTranslations);
 
   useEffect(() => {
     if (!selectedChatId || !chatUsers) {
@@ -129,24 +130,31 @@ const Chat = () => {
             />
           )
         ) : null}
-        <form className='form-chat' onSubmit={handleSubmit}>
-          <div className='hamburger-chat' onClick={togglePopup}>
-            <img src={hamburger} alt='hamburger button' />
+        {chats[selectedChatId]?.offer &&
+        chats[selectedChatId].offer.status === 'finalized' ? (
+          <div className='offer-finished-container'>
+            {translations.chat.finishedchat}
           </div>
-          <div className='input-container'>
-            <input
-              name={`chat-text-${randomId}`}
-              type='text'
-              id={`chat-text-${randomId}`}
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              autoComplete='off'
-            />
-          </div>
-          <div className='send-button' onClick={handleSubmit}>
-            <img src={send_icon} className='send_icon' alt='send icon' />
-          </div>
-        </form>
+        ) : (
+          <form className='form-chat' onSubmit={handleSubmit}>
+            <div className='hamburger-chat' onClick={togglePopup}>
+              <img src={hamburger} alt='hamburger button' />
+            </div>
+            <div className='input-container'>
+              <input
+                name={`chat-text-${randomId}`}
+                type='text'
+                id={`chat-text-${randomId}`}
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                autoComplete='off'
+              />
+            </div>
+            <div className='send-button' onClick={handleSubmit}>
+              <img src={send_icon} className='send_icon' alt='send icon' />
+            </div>
+          </form>
+        )}
       </div>
     </div>
   );

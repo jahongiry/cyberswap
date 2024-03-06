@@ -221,5 +221,8 @@
     "buyerFinishNoComplain": "У меня нет никаких возражений",
     "buyerFinishtransfer": "Можно перевести платеж продавцу",
     "finishButton": "Завершить"
+  },
+  "chat": {
+    "finishedchat": "Этот oбъявление завершен"
   }
 }

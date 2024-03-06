@@ -18,6 +18,12 @@
   padding-top: 0.3rem;
 }
 
+.offer-finished-container {
+  padding: 1.5rem;
+  background-image: linear-gradient(to bottom, #3d4e65, #263743, #112532);
+  text-align: center;
+}
+
 .chat-messages {
   flex-grow: 1;
   overflow-y: auto;

@@ -108,12 +108,12 @@ const PopUp = ({
           </div>
           <hr className='divider' />
           <div className='account-details'>
-            {navigator.share && (
+            {/* {navigator.share && (
               <button className='share-button' onClick={handleShare}>
                 Share
                 <ion-icon name='share-social-outline'></ion-icon>
               </button>
-            )}
+            )} */}
             <h2>{productName()}</h2>
             {game.level && (
               <div className='each-row'>

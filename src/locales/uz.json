@@ -220,5 +220,8 @@
     "buyerFinishNoComplain": "Hech qanday etirozim yo'q",
     "buyerFinishtransfer": "To'lovni sotuvchiga o'tkazish mumkin",
     "finishButton": "Tugatish"
+  },
+  "chat": {
+    "finishedchat": "Ushbu e'lon tugatilgan"
   }
 }
