@@ -142,7 +142,7 @@ const Signup = () => {
             </button>
             <div className='login-footer'>
               <div>
-                <label htmlFor='button'>
+                <label htmlFor='button' className='button-label'>
                   {translations.signup.backtoenter}
                 </label>
                 <NavLink to='/login'>

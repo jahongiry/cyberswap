@@ -22,6 +22,10 @@
   color: red;
 }
 
+.button-up {
+  margin-bottom: -1rem;
+}
+
 .login-section .login-container {
   width: 400px;
   padding: 10px;

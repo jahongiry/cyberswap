@@ -116,6 +116,7 @@ const Login = () => {
             <div className='input-container phone'>
               <label htmlFor='login'>{translations.login.phone}</label>
               <input
+                name={`phone-${randomId}`}
                 type='mobile'
                 id='login'
                 placeholder='123456789'
@@ -131,8 +132,7 @@ const Login = () => {
               <label htmlFor='password'>{translations.login.password}</label>
               <input
                 type='password'
-                name={`phone-${randomId}`}
-                id={`phone-${randomId}`}
+                id='password'
                 placeholder='Password'
                 value={credentials.password}
                 onChange={handleInputChange}
@@ -143,7 +143,9 @@ const Login = () => {
             </button>
             <div className='login-footer'>
               <div>
-                <label htmlFor='button'>{translations.login.mehmon}</label>
+                <label className='button-up' htmlFor='button'>
+                  {translations.login.mehmon}
+                </label>
                 <Link to='/cards'>
                   <button type='button' className='signup-button'>
                     {translations.login.mehmonbutton}
