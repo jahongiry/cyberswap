@@ -106,7 +106,9 @@ const Signup = () => {
                 value={phoneNumber}
                 onChange={handlePhoneNumberChange}
               />
-              {phoneError && <div className='error-message'>{phoneError}</div>}
+              {phoneError && (
+                <div className='error-message-signup'>{phoneError}</div>
+              )}
             </div>
             <div className='input-container'>
               <label htmlFor='password'>{translations.signup.password}</label>

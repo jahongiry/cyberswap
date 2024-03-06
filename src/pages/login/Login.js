@@ -123,7 +123,9 @@ const Login = () => {
                 onChange={handleInputChange}
                 autoComplete='off'
               />
-              {phoneError && <div className='error-message'>{phoneError}</div>}
+              {phoneError && (
+                <div className='error-message-login'>{phoneError}</div>
+              )}
             </div>
             <div className='input-container'>
               <label htmlFor='password'>{translations.login.password}</label>

@@ -16,6 +16,12 @@
   color: red !important;
 }
 
+.error-message-login {
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  color: red;
+}
+
 .login-section .login-container {
   width: 400px;
   padding: 10px;
