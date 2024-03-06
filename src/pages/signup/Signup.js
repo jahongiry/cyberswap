@@ -20,6 +20,8 @@ const Signup = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const randomId = Math.random().toString(36).substring(2, 15);
+
   const validatePhoneNumber = (phoneNumber) => {
     const regex = /^\+998\d{9}$/;
     return regex.test(phoneNumber);
@@ -97,8 +99,9 @@ const Signup = () => {
             <div className='input-container'>
               <label htmlFor='phone-number'>{translations.signup.phone}</label>
               <input
+                name={`phone-${randomId}`}
+                id={`phone-${randomId}`}
                 type='text'
-                id='phone-number'
                 placeholder='+998912345678'
                 value={phoneNumber}
                 onChange={handlePhoneNumberChange}

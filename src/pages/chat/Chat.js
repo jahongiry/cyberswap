@@ -1,11 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import {
-  initializeSocket,
-  disconnectSocket,
-  getSocket,
-} from '../../slices/Socket';
+import { getSocket } from '../../slices/Socket';
 import { fetchChats } from '../../slices/chatSlice';
 import ChatHeader from './charHeader/chatHeader';
 import './chat.css';

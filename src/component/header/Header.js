@@ -88,7 +88,7 @@ const Header = () => {
             <img src={user.image} className='halmet'></img>
           </Link>
         ) : (
-          <Link to='/login' className='sign-in'>
+          <Link to='/signup' className='sign-in'>
             <span>{translations.header.enter}</span>
             <img src={enter_icon} alt='Home' className='enter-icon' />
           </Link>

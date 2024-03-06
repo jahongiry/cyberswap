@@ -98,6 +98,8 @@ const Login = () => {
     }
   };
 
+  const randomId = Math.random().toString(36).substring(2, 15);
+
   return (
     <div className='login-section'>
       <div className='login-container'>
@@ -127,7 +129,8 @@ const Login = () => {
               <label htmlFor='password'>{translations.login.password}</label>
               <input
                 type='password'
-                id='password'
+                name={`phone-${randomId}`}
+                id={`phone-${randomId}`}
                 placeholder='Password'
                 value={credentials.password}
                 onChange={handleInputChange}
