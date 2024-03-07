@@ -44,6 +44,7 @@ const Profile = () => {
   const [selectedOfferId, setSelectedOfferId] = useState(null);
   const [isEditOfferPopupVisible, setIsEditOfferPopupVisible] = useState(false);
   const [selectedOffer, setSelectedOffer] = useState(null);
+  const [imageUploadError, setImageUploadError] = useState('');
 
   const handleEditOfferClick = (offerData) => {
     setSelectedOffer(offerData);
@@ -96,6 +97,12 @@ const Profile = () => {
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file) {
+      if (!file.type.startsWith('image/')) {
+        setImageUploadError('Only image files are allowed.');
+        return;
+      }
+      setImageUploadError('');
+
       dispatch(updateProfileImage(file)).then(() => {
         dispatch(updatedProfileInfo());
       });
@@ -213,6 +220,9 @@ const Profile = () => {
               hidden
               onChange={handleImageChange}
             />
+            {imageUploadError && (
+              <p className='error-message'>{imageUploadError}</p>
+            )}
           </div>
         </div>
         <div className='profile-info'>

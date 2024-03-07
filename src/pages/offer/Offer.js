@@ -28,6 +28,7 @@ const Offer = () => {
   const [isImageRequired, setIsImageRequired] = useState(false);
   const [showSkinWarning, setShowSkinWarning] = useState(false);
   const [showRoyalPassWarning, setShowRoyalPassWarning] = useState(false);
+  const [imageError, setImageError] = useState('');
   const [connects, setConnects] = useState({
     phone_number: false,
     email: false,
@@ -65,16 +66,33 @@ const Offer = () => {
 
   const handleImageChange = (e) => {
     if (e.target.files && e.target.files.length > 0) {
-      const newImages = Array.from(e.target.files);
-      setImages((prevImages) => [...prevImages, ...newImages]);
-
-      const newImagePreviews = newImages.map((file) =>
-        URL.createObjectURL(file)
+      const allFiles = Array.from(e.target.files);
+      const imageFiles = allFiles.filter((file) =>
+        file.type.startsWith('image/')
       );
-      setImagePreviews((prevPreviews) => [
-        ...prevPreviews,
-        ...newImagePreviews,
-      ]);
+      if (imageFiles.length < allFiles.length) {
+        setImageError(
+          'Only image files are allowed. Other file types have been ignored.'
+        );
+      } else {
+        setImageError('');
+      }
+
+      const totalImagesAfterAddition = images.length + imageFiles.length;
+
+      if (totalImagesAfterAddition <= 5) {
+        setImages((prevImages) => [...prevImages, ...imageFiles]);
+
+        const newImagePreviews = imageFiles.map((file) =>
+          URL.createObjectURL(file)
+        );
+        setImagePreviews((prevPreviews) => [
+          ...prevPreviews,
+          ...newImagePreviews,
+        ]);
+      } else {
+        setImageError('You cannot add more than 5 images.');
+      }
     }
   };
 
@@ -165,12 +183,14 @@ const Offer = () => {
                   multiple
                   accept='image/*'
                   style={{ display: 'none' }}
-                  required
+                  required={imagePreviews.length === 0}
                 />
                 <div className='plus-sign'>+</div>
               </label>
             )}
+            {imageError && <p className='error-message'>{imageError}</p>}
           </div>
+
           <div className='form-group'>
             <div className='form-input'>
               <label htmlFor='level'>{translations.offer.level}</label>
