@@ -201,7 +201,13 @@ const PopUp = ({
             ) : (
               <button
                 className='sotib-olish'
-                onClick={() => navigate('/signup')}
+                onClick={() => {
+                  localStorage.setItem(
+                    'redirectToAfterAuth',
+                    window.location.pathname
+                  );
+                  navigate('/signup');
+                }}
               >
                 {translations.popup.buy}
               </button>

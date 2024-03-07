@@ -19,16 +19,19 @@ const Confirm = () => {
       const actionResult = await dispatch(verifyNumber(otp));
       const userData = actionResult.payload;
 
-      if (userData && userData.token) {
+      const redirectTo = localStorage.getItem('redirectToAfterAuth');
+      if (redirectTo) {
+        console.log('Redirecting to:', redirectTo);
+        navigate(redirectTo);
+        localStorage.removeItem('redirectToAfterAuth');
+      } else if (userData && userData.token) {
         const lastPath = localStorage.getItem('lastPath') || '/';
+        console.log('Navigating to last path:', lastPath);
         navigate(lastPath);
         localStorage.removeItem('lastPath');
       } else {
-        // Handle login failure (e.g., show an error message)
       }
-    } catch (error) {
-      // Handle error (e.g., incorrect credentials, server error)
-    }
+    } catch (error) {}
   };
 
   return (

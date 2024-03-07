@@ -93,6 +93,11 @@ const Login = () => {
         navigate(lastPath);
         localStorage.removeItem('lastPath');
       }
+      const redirectTo = localStorage.getItem('redirectToAfterAuth');
+      if (redirectTo) {
+        navigate(redirectTo);
+        localStorage.removeItem('redirectToAfterAuth');
+      }
     } catch (error) {
       toast.error(<p className='red-text-important'>{error.message}</p>);
     }
