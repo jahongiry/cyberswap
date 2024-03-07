@@ -22,13 +22,33 @@ const UcOffer = () => {
   const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(false);
   const [isImageRequired, setIsImageRequired] = useState(false);
+  const [imageError, setImageError] = useState('');
 
   const handleImageChange = (e) => {
     if (e.target.files && e.target.files.length > 0) {
-      const newImages = Array.from(e.target.files);
-      setImages((prevImages) => [...prevImages, ...newImages]);
+      const allFiles = Array.from(e.target.files);
+      const imageFiles = allFiles.filter((file) =>
+        file.type.startsWith('image/')
+      );
 
-      const newImagePreviews = newImages.map((file) =>
+      if (imageFiles.length < allFiles.length) {
+        setImageError(
+          'Only image files are allowed. Other file types have been ignored.'
+        );
+      } else {
+        setImageError('');
+      }
+
+      const totalImagesAfterAddition = images.length + imageFiles.length;
+
+      if (totalImagesAfterAddition > 5) {
+        setImageError('You cannot add more than 5 images.');
+        return;
+      }
+
+      setImages((prevImages) => [...prevImages, ...imageFiles]);
+
+      const newImagePreviews = imageFiles.map((file) =>
         URL.createObjectURL(file)
       );
       setImagePreviews((prevPreviews) => [
@@ -92,12 +112,15 @@ const UcOffer = () => {
                   multiple
                   accept='image/*'
                   style={{ display: 'none' }}
-                  required
+                  required={imagePreviews.length === 0}
                 />
                 <div className='plus-sign'>+</div>
               </label>
             )}
+            {/* Display the error message if it exists */}
+            {imageError && <p className='error-message'>{imageError}</p>}
           </div>
+
           <div className='form-group'>
             <div className='form-input'>
               <label htmlFor='ucamount'>{translations.ucoffer.ucamount}</label>
