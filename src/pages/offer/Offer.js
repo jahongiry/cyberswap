@@ -208,7 +208,7 @@ const Offer = () => {
             <div className='form-input'>
               <label htmlFor='achievement'>{translations.offer.achiv}</label>
               <input
-                type='text'
+                type='number'
                 name='achievement'
                 id='achievement'
                 value={rating}
