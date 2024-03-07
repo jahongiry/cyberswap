@@ -90,3 +90,10 @@
   color: #d0dfe8;
   font-weight: bold;
 }
+
+
+.no-chat {
+  padding: 1rem;
+  text-align: center;
+  font-family: monospace, sans-serif;
+}

@@ -81,8 +81,13 @@ const FrontChat = () => {
           </button>
         </Link>
       </header>
+
       <div className='chat-list'>
-        {chatsArray.map((chat) => (
+
+        {chatsArray.length === 0 ? (
+          <h1 className='no-chat'>hozircha chat yaratilmagan</h1>
+        ) :
+        chatsArray.map((chat) => (
           <div
             key={chat.id}
             className='chat-info'
@@ -126,6 +131,7 @@ const FrontChat = () => {
             ) : null}
           </div>
         ))}
+
       </div>
       {selectedChatId && <Chat chatId={selectedChatId} />}
     </div>
