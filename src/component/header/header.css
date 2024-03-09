@@ -222,6 +222,7 @@
   .header nav ul li {
     width: 100%;
     padding: 10px;
+    padding-left: 3rem;
     display: flex;
     justify-content: center;
     border: 2px solid black;
@@ -230,7 +231,6 @@
   }
   .header nav ul li a {
     display: flex;
-    margin-left: 3rem;
     width: 100%;
     color: #000;
   }
@@ -253,6 +253,12 @@
 }
 
 @media screen and (max-width: 576px) {
+  .header nav ul {
+    padding: 1.5rem;
+  }
+  .header nav ul li {
+    padding-left: 1.5rem;
+  }
   .language-btn {
     margin-right: 0;
   }
@@ -269,6 +275,9 @@
 }
 
 @media screen and (max-width: 360px) {
+  .header nav ul li {
+    padding-left: 1rem;
+  }
   .header-btns {
     gap: 10px;
   }

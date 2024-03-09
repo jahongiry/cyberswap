@@ -2,11 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './footer.css';
 import logo from './img/logo1_1.png';
-import twitchImg from './img/twitch.png';
-import robloxImg from './img/roblax.png';
-import asusImg from './img/asus.png';
-import canonImg from './img/canon.png';
-import microsoftImg from './img/microsoft.png';
 import { useSelector } from 'react-redux';
 import { selectTranslations } from '../../slices/languageSlice';
 
@@ -14,6 +9,8 @@ const Footer = () => {
   const translations = useSelector(selectTranslations);
   return (
     <footer className='container footer'>
+
+      {/* footer-container start */}
       <div className='footer-container'>
         <div className='footer-content footer-logo'>
           <Link to='/'>
@@ -31,13 +28,13 @@ const Footer = () => {
 
           <ul>
             <li>
-              <Link>{translations.footer.link1}</Link>
+              <Link to='/pubgucoffer'>{translations.footer.link1}</Link>
             </li>
             <li>
-              <Link>{translations.footer.link2}</Link>
+              <Link to='/pubgaccountoffer'>{translations.footer.link2}</Link>
             </li>
             <li>
-              <Link>{translations.footer.link3}</Link>
+              <Link to='/cards'>{translations.footer.link3}</Link>
             </li>
           </ul>
         </div>
@@ -47,54 +44,17 @@ const Footer = () => {
 
           <ul>
             <li>
-              <Link>{translations.footer.link4}</Link>
+              <Link to="/contact">{translations.footer.link4}</Link>
             </li>
+            
             <li>
-              <Link>{translations.footer.link5}</Link>
-            </li>
-            <li>
-              <Link>{translations.footer.link6}</Link>
+              <Link to='https://t.me/cyberswap_uz'>{translations.footer.link6}</Link>
             </li>
           </ul>
         </div>
 
-        <div className='footer-content resource'>
-          <h3>{translations.footer.socialmedia}</h3>
-
-          <ul>
-            <li>
-              <Link>{translations.footer.link7}</Link>
-            </li>
-            <li>
-              <Link>{translations.footer.link8}</Link>
-            </li>
-            <li>
-              <Link>{translations.footer.link9}</Link>
-            </li>
-          </ul>
-        </div>
       </div>
-      {/* footer-container start */}
-
-      {/* footer-partner start */}
-      <div className='footer-partner'>
-        <div className='img'>
-          <img src={twitchImg} alt='twitch' />
-        </div>
-        <div className='img'>
-          <img src={robloxImg} alt='roblox' />
-        </div>
-        <div className='img'>
-          <img src={asusImg} alt='asus' />
-        </div>
-        <div className='img'>
-          <img src={canonImg} alt='canon' />
-        </div>
-        <div className='img'>
-          <img src={microsoftImg} alt='microsoft' />
-        </div>
-      </div>
-      {/* footer-partner start */}
+      {/* footer-container end */}
 
       {/* footer-copyright start */}
       <div className='footer-copyright'>
@@ -121,6 +81,7 @@ const Footer = () => {
         </p>
       </div>
       {/* footer-copyright end */}
+
     </footer>
   );
 };

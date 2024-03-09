@@ -1,5 +1,5 @@
 .footer {
-    padding-top: 6rem;
+    padding-top: 3rem;
     padding-bottom: 3rem;
     display: flex;
     flex-direction: column;
@@ -67,14 +67,6 @@
     text-transform: capitalize;
 }
 
-.footer-partner {
-    margin-top: 2rem;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 2rem;
-}
 
 .footer-copyright {
     margin-top: 3rem;
@@ -118,19 +110,21 @@
     .footer-container {
         grid-template-columns: 3fr 2fr 2fr 2fr ;
     }
-    
-
 }
 @media  screen and (max-width: 992px){
+    .footer {
+        padding-top: 1rem;
+    }
     .footer-container {
         grid-template-columns: 1fr 1fr 1fr;
+        gap: 1rem;
     }
     .footer-container .footer-logo {
         grid-column: auto / span 3;
     }
     
-    .footer-partner .img {
-        height: 3vw;
+    .footer-container .footer-logo > p  {
+        margin-top: 0.5rem;    
     }
     .footer-content > ul {
         margin-top: 1.6rem;
